@@ -8,7 +8,7 @@
 <title>Deadsec 2023 | My blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="xee1 category: web
-From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.
+solution From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.
 I crafted a payload to read /flag.txt , we also need to pass it through a php filter , we get the flag in base64 format">
 <meta name="author" content="">
 <link rel="canonical" href="https://f0rk3b0mb.github.io/posts/deadsec_2023/">
@@ -60,7 +60,7 @@ I crafted a payload to read /flag.txt , we also need to pass it through a php fi
     </style>
 </noscript><meta property="og:title" content="Deadsec 2023" />
 <meta property="og:description" content="xee1 category: web
-From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.
+solution From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.
 I crafted a payload to read /flag.txt , we also need to pass it through a php filter , we get the flag in base64 format" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://f0rk3b0mb.github.io/posts/deadsec_2023/" /><meta property="article:section" content="posts" />
@@ -70,7 +70,7 @@ I crafted a payload to read /flag.txt , we also need to pass it through a php fi
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Deadsec 2023"/>
 <meta name="twitter:description" content="xee1 category: web
-From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.
+solution From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.
 I crafted a payload to read /flag.txt , we also need to pass it through a php filter , we get the flag in base64 format"/>
 
 
@@ -100,12 +100,12 @@ I crafted a payload to read /flag.txt , we also need to pass it through a php fi
   "@type": "BlogPosting",
   "headline": "Deadsec 2023",
   "name": "Deadsec 2023",
-  "description": "xee1 category: web\nFrom the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.\nI crafted a payload to read /flag.txt , we also need to pass it through a php filter , we get the flag in base64 format",
+  "description": "xee1 category: web\nsolution From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.\nI crafted a payload to read /flag.txt , we also need to pass it through a php filter , we get the flag in base64 format",
   "keywords": [
     
   ],
-  "articleBody": "xee1 category: web\nFrom the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.\nI crafted a payload to read /flag.txt , we also need to pass it through a php filter , we get the flag in base64 format\nxee2 category: web\nThis challenge is a subsequent of xxe2 but required a more complex approach, this time we have to receive the flag remotely since our user input is not being reflaected in the site , this is known as blind xxe . You can read more about it here\nso after some research i created thhis payload that reads the /flag.txt and sends it to a ngrok endpoint, ps we also have to pass read the flag through a php filter\nI get a hit and we can decode the flag from base64 as shown below\nBing category: web\nThis was a little complicated , i saw it as more of a bash jail than a web challenge.\nBasically you wegiven a simple site with page that would serve the flag, there was clearly command injection , cince you could run the i command. There was also a poor attempt at a regex filter at the frontend so this challnge could only be solved using burp.\nfile reading commands like cat were blocked also spaces , so you had to try any command you knew to read a file. Heres the solution:\n‘head$IFS/fl??.txt|rev’\nwithout the rev the page will not display there may be a flag filter , so we reverse it\n",
-  "wordCount" : "297",
+  "articleBody": "xee1 category: web\nsolution From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.\nI crafted a payload to read /flag.txt , we also need to pass it through a php filter , we get the flag in base64 format\nxee2 category: web\nsolution This challenge is a subsequent of xxe2 but required a more complex approach, this time we have to receive the flag remotely since our user input is not being reflaected in the site , this is known as blind xxe . You can read more about it here\nso after some research i created thhis payload that reads the /flag.txt and sends it to a ngrok endpoint, ps we also have to pass read the flag through a php filter\nI get a hit and we can decode the flag from base64 as shown below\nBing category: web\nsolution This was a little complicated , i saw it as more of a bash jail than a web challenge.\nBasically you wegiven a simple site with page that would serve the flag, there was clearly command injection , cince you could run the i command. There was also a poor attempt at a regex filter at the frontend so this challnge could only be solved using burp.\nfile reading commands like cat were blocked also spaces , so you had to try any command you knew to read a file. Heres the solution:\n‘head$IFS/fl??.txt|rev’\nwithout the rev the page will not display there may be a flag filter , so we reverse it\n",
+  "wordCount" : "300",
   "inLanguage": "en",
   "datePublished": "2023-05-21T12:44:03+03:00",
   "dateModified": "2023-05-21T12:44:03+03:00",
@@ -180,8 +180,9 @@ I crafted a payload to read /flag.txt , we also need to pass it through a php fi
 
 </div>
   </header> 
-  <div class="post-content"><h4 id="xee1">xee1<a hidden class="anchor" aria-hidden="true" href="#xee1">#</a></h4>
+  <div class="post-content"><h3 id="xee1">xee1<a hidden class="anchor" aria-hidden="true" href="#xee1">#</a></h3>
 <p>category: web</p>
+<h4 id="solution">solution<a hidden class="anchor" aria-hidden="true" href="#solution">#</a></h4>
 <p>From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.</p>
 <p><img loading="lazy" src="/images/xee/Screenshot%20from%202023-05-19%2017-24-25.png" alt="image1"  />
 </p>
@@ -194,6 +195,7 @@ I crafted a payload to read /flag.txt , we also need to pass it through a php fi
 </p>
 <h3 id="xee2">xee2<a hidden class="anchor" aria-hidden="true" href="#xee2">#</a></h3>
 <p>category: web</p>
+<h4 id="solution-1">solution<a hidden class="anchor" aria-hidden="true" href="#solution-1">#</a></h4>
 <p>This challenge is a subsequent of xxe2 but required a  more complex approach, this time we have to receive the flag remotely since our user input is not being reflaected in the site , this is known as blind xxe . You can read more about it <a href="https://www.invicti.com/learn/out-of-band-xml-external-entity-oob-xxe/">here</a></p>
 <p>so after some research i created thhis payload that reads the /flag.txt and sends it to a ngrok endpoint, ps we also have to pass read the flag through a php filter</p>
 <p><img loading="lazy" src="/images/xee/Screenshot%20from%202023-05-19%2019-11-26.png" alt="image4"  />
@@ -203,6 +205,7 @@ I crafted a payload to read /flag.txt , we also need to pass it through a php fi
 </p>
 <h3 id="bing">Bing<a hidden class="anchor" aria-hidden="true" href="#bing">#</a></h3>
 <p>category: web</p>
+<h4 id="solution-2">solution<a hidden class="anchor" aria-hidden="true" href="#solution-2">#</a></h4>
 <p>This was a little complicated , i saw it as more of a bash jail than a web challenge.</p>
 <p>Basically you wegiven a simple site with page that would serve the flag,  there was clearly command injection , cince you could run the i command. There was also a poor attempt at a  regex filter at the frontend so this challnge could only be solved using burp.</p>
 <p>file reading commands like cat were blocked also spaces , so you had to try any command you knew to read a file. Heres the solution:</p>
