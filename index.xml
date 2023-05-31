@@ -36,14 +36,5 @@ solution From the title you can tell this is a classic xxe challenge , when you 
 I crafted a payload to read /flag.txt , we also need to pass it through a php filter , we get the flag in base64 format</description>
     </item>
     
-    <item>
-      <title>About me</title>
-      <link>https://f0rk3b0mb.github.io/posts/mypost/</link>
-      <pubDate>Wed, 17 May 2023 12:44:03 +0300</pubDate>
-      
-      <guid>https://f0rk3b0mb.github.io/posts/mypost/</guid>
-      <description>f0rk3b0mb Ctf player | Cybersec GitHub LinkedIn Twitter Discord </description>
-    </item>
-    
   </channel>
 </rss>
