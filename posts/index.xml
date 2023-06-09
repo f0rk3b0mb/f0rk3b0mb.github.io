@@ -6,14 +6,28 @@
     <description>Recent content in Posts on My blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Jun 2023 16:31:02 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Jun 2023 17:22:15 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTB PC</title>
+      <link>https://f0rk3b0mb.github.io/posts/pc/</link>
+      <pubDate>Fri, 09 Jun 2023 17:22:15 +0300</pubDate>
+      
+      <guid>https://f0rk3b0mb.github.io/posts/pc/</guid>
+      <description>htb pc writeup category: web
+difficulty: easy
+Hello, and welcome to another walkthrough of a htb machine.
+When you run a port scan on the target we get port 22 open , a full port scan reveals port 50015 that nmap cannot tell the service which it is running
+open port 22 open port 50015 a little reserarch i found out that the service is grpc &amp;raquo; for more datails of what it is here</description>
+    </item>
+    
     <item>
       <title>HTB Monitortwo</title>
       <link>https://f0rk3b0mb.github.io/posts/monitor2/</link>
       <pubDate>Fri, 02 Jun 2023 16:31:02 +0300</pubDate>
       
       <guid>https://f0rk3b0mb.github.io/posts/monitor2/</guid>
-      <description>HTB monitortwo writeup categoty : web difficulty : easy
+      <description>HTB monitortwo writeup categoty : web
+difficulty : easy
 As always we begin with a port scan
 Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan Connect Scan Timing: About 56.80% done; ETC: 12:46 (0:00:15 remaining) Nmap scan report for 10.10.11.211 Host is up (0.28s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.</description>
     </item>

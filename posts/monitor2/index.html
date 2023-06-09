@@ -7,7 +7,8 @@
 <meta name="robots" content="index, follow">
 <title>HTB Monitortwo | My blog</title>
 <meta name="keywords" content="">
-<meta name="description" content="HTB monitortwo writeup categoty : web difficulty : easy
+<meta name="description" content="HTB monitortwo writeup categoty : web
+difficulty : easy
 As always we begin with a port scan
 Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan Connect Scan Timing: About 56.80% done; ETC: 12:46 (0:00:15 remaining) Nmap scan report for 10.10.11.211 Host is up (0.28s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.">
 <meta name="author" content="">
@@ -59,7 +60,8 @@ Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 e
 
     </style>
 </noscript><meta property="og:title" content="HTB Monitortwo" />
-<meta property="og:description" content="HTB monitortwo writeup categoty : web difficulty : easy
+<meta property="og:description" content="HTB monitortwo writeup categoty : web
+difficulty : easy
 As always we begin with a port scan
 Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan Connect Scan Timing: About 56.80% done; ETC: 12:46 (0:00:15 remaining) Nmap scan report for 10.10.11.211 Host is up (0.28s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8." />
 <meta property="og:type" content="article" />
@@ -69,7 +71,8 @@ Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 e
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="HTB Monitortwo"/>
-<meta name="twitter:description" content="HTB monitortwo writeup categoty : web difficulty : easy
+<meta name="twitter:description" content="HTB monitortwo writeup categoty : web
+difficulty : easy
 As always we begin with a port scan
 Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan Connect Scan Timing: About 56.80% done; ETC: 12:46 (0:00:15 remaining) Nmap scan report for 10.10.11.211 Host is up (0.28s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8."/>
 
@@ -100,11 +103,11 @@ Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 e
   "@type": "BlogPosting",
   "headline": "HTB Monitortwo",
   "name": "HTB Monitortwo",
-  "description": "HTB monitortwo writeup categoty : web difficulty : easy\nAs always we begin with a port scan\nStarting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan Connect Scan Timing: About 56.80% done; ETC: 12:46 (0:00:15 remaining) Nmap scan report for 10.10.11.211 Host is up (0.28s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.",
+  "description": "HTB monitortwo writeup categoty : web\ndifficulty : easy\nAs always we begin with a port scan\nStarting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan Connect Scan Timing: About 56.80% done; ETC: 12:46 (0:00:15 remaining) Nmap scan report for 10.10.11.211 Host is up (0.28s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.",
   "keywords": [
     
   ],
-  "articleBody": "HTB monitortwo writeup categoty : web difficulty : easy\nAs always we begin with a port scan\nStarting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan Connect Scan Timing: About 56.80% done; ETC: 12:46 (0:00:15 remaining) Nmap scan report for 10.10.11.211 Host is up (0.28s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0) 80/tcp open http nginx 1.18.0 (Ubuntu) |_http-server-header: nginx/1.18.0 (Ubuntu) |_http-title: Login to Cacti Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 53.63 seconds As you can see there is a web interface , it is a login page and it utilizes something called cacti version 1.2.22\nUsing searchsploit :\nrunning the exploit, BOOM!! we get a reverse shell\n Looking around there is nothing really interesting , i ran linpeas and all i could find was a suid binary called capsh , you can check out how to exploit it here\nbut there was nothing in the root folder , turns out we were in a docker container that ran the webserver.The file that caught my attention was entrypoint.sh in the root folder.\n#!/bin/bash set -ex wait-for-it db:3306 -t 300 -- echo \"database is connected\" if [[ ! $(mysql --host=db --user=root --password=root cacti -e \"show tables\") =~ \"automation_devices\" ]]; then mysql --host=db --user=root --password=root cacti =db --user=root --password=root cacti -e \"UPDATE user_auth SET must_change_password='' WHERE username = 'admin'\" mysql --host=db --user=root --password=root cacti -e \"SET GLOBAL time_zone = 'UTC'\" fi chown www-data:www-data -R /var/www/html # first arg is `-f` or `--some-option` if [ \"${1#-}\" != \"$1\" ]; then set -- apache2-foreground \"$@\" fi exec \"$@\" As you can see , we can use that format to run mysql statements.I used the following to dump users in the user_auth table.\nmysql --host=db --user=root --password=root cacti -e \"SELECT * FROM user_auth\" We get that there are 3 user accounts, admin, guest and marcus and their password hashes.I saved the hashes to a file and let john-the-ripper do its thing.\nI tried logging in the webpage but i got access denied and then tried ssh login as marcus, BOOM!! i am now marcus.\nWe can read the user.txt in the home folder\nI tried running linpeas again but still got nothing , also checked suid binaries but still nothing , at this point i did not know what to do.\nI got a hint that there was a docker vulnerability that resulted in privilledge escalation , you can read more and get the exploit here CVE-2021-41091\nFor this exploit to work you will utilize the capsh privesc we had discovered earlier in the reverse shell to set the “chmod u+s bash” .\nthen we execute the bash binary above as the in the marcus ssh session, BOOM!! root baby!!\nGoodbye ;)\n",
+  "articleBody": "HTB monitortwo writeup categoty : web\ndifficulty : easy\nAs always we begin with a port scan\nStarting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan Connect Scan Timing: About 56.80% done; ETC: 12:46 (0:00:15 remaining) Nmap scan report for 10.10.11.211 Host is up (0.28s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0) 80/tcp open http nginx 1.18.0 (Ubuntu) |_http-server-header: nginx/1.18.0 (Ubuntu) |_http-title: Login to Cacti Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 53.63 seconds As you can see there is a web interface , it is a login page and it utilizes something called cacti version 1.2.22\nUsing searchsploit :\nrunning the exploit, BOOM!! we get a reverse shell\n Looking around there is nothing really interesting , i ran linpeas and all i could find was a suid binary called capsh , you can check out how to exploit it here\nbut there was nothing in the root folder , turns out we were in a docker container that ran the webserver.The file that caught my attention was entrypoint.sh in the root folder.\n#!/bin/bash set -ex wait-for-it db:3306 -t 300 -- echo \"database is connected\" if [[ ! $(mysql --host=db --user=root --password=root cacti -e \"show tables\") =~ \"automation_devices\" ]]; then mysql --host=db --user=root --password=root cacti =db --user=root --password=root cacti -e \"UPDATE user_auth SET must_change_password='' WHERE username = 'admin'\" mysql --host=db --user=root --password=root cacti -e \"SET GLOBAL time_zone = 'UTC'\" fi chown www-data:www-data -R /var/www/html # first arg is `-f` or `--some-option` if [ \"${1#-}\" != \"$1\" ]; then set -- apache2-foreground \"$@\" fi exec \"$@\" As you can see , we can use that format to run mysql statements.I used the following to dump users in the user_auth table.\nmysql --host=db --user=root --password=root cacti -e \"SELECT * FROM user_auth\" We get that there are 3 user accounts, admin, guest and marcus and their password hashes.I saved the hashes to a file and let john-the-ripper do its thing.\nI tried logging in the webpage but i got access denied and then tried ssh login as marcus, BOOM!! i am now marcus.\nWe can read the user.txt in the home folder\nI tried running linpeas again but still got nothing , also checked suid binaries but still nothing , at this point i did not know what to do.\nI got a hint that there was a docker vulnerability that resulted in privilledge escalation , you can read more and get the exploit here CVE-2021-41091\nFor this exploit to work you will utilize the capsh privesc we had discovered earlier in the reverse shell to set the “chmod u+s bash” .\nthen we execute the bash binary above as the in the marcus ssh session, BOOM!! root baby!!\nGoodbye ;)\n",
   "wordCount" : "498",
   "inLanguage": "en",
   "datePublished": "2023-06-02T16:31:02+03:00",
@@ -181,8 +184,8 @@ Starting Nmap 7.80 ( https://nmap.org ) at 2023-06-02 12:45 EAT Stats: 0:00:21 e
 </div>
   </header> 
   <div class="post-content"><h4 id="htb-monitortwo-writeup">HTB monitortwo writeup<a hidden class="anchor" aria-hidden="true" href="#htb-monitortwo-writeup">#</a></h4>
-<p>categoty : web
-difficulty : easy</p>
+<p>categoty : web</p>
+<p>difficulty : easy</p>
 <p>As always we begin with a port scan</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 Starting Nmap 7.80 <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2023-06-02 12:45 EAT
