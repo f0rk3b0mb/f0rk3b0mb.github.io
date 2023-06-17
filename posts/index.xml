@@ -6,7 +6,19 @@
     <description>Recent content in Posts on f0rk3b0mb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Jun 2023 17:22:15 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jun 2023 20:58:33 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nahamcon2023</title>
+      <link>https://f0rk3b0mb.github.io/posts/nahamcon2023/</link>
+      <pubDate>Thu, 15 Jun 2023 20:58:33 +0300</pubDate>
+      
+      <guid>https://f0rk3b0mb.github.io/posts/nahamcon2023/</guid>
+      <description>Nahamcon CTF 2023 writeups warmups  blobber Thic challenge had a downloadable part , the file was a sqlite database.
+I opened the file using sqlite database browser
+browsing the data there is only gibberish , except on line 238 where data is a blob object.Blobs in sqlite is whereby files can be addedtto database as entries. Read more here
+we can use this sql statement to get the blob</description>
+    </item>
+    
     <item>
       <title>HTB PC</title>
       <link>https://f0rk3b0mb.github.io/posts/pc/</link>
