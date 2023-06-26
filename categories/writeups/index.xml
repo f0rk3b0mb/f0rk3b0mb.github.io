@@ -12,7 +12,7 @@
         <pubDate>Thu, 15 Jun 2023 20:58:33 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/nahamcon2023/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/nahamsec.png" alt="Featured image of post Nahamcon2023" /&gt;&lt;h4 id=&#34;nahamcon-ctf-2023-writeups&#34;&gt;Nahamcon CTF 2023 writeups&lt;/h4&gt;
+        <description>&lt;h4 id=&#34;nahamcon-ctf-2023-writeups&#34;&gt;Nahamcon CTF 2023 writeups&lt;/h4&gt;
 &lt;h3 id=&#34;warmups&#34;&gt;warmups&lt;/h3&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;blobber&#34;&gt;blobber&lt;/h3&gt;
@@ -477,7 +477,7 @@ where D is any number between 1-9
         <pubDate>Wed, 31 May 2023 13:03:23 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/bic-winter-con-2023/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/ctfroom.png" alt="Featured image of post Bic winter con 2023" /&gt;&lt;p&gt;check it out on my github &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/f0rk3b0mb/bicWC&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;p&gt;check it out on my github &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/f0rk3b0mb/bicWC&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
@@ -497,7 +497,7 @@ where D is any number between 1-9
         <pubDate>Sun, 21 May 2023 12:44:03 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/deadsec-2023/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/deadsec.png" alt="Featured image of post Deadsec 2023" /&gt;&lt;h3 id=&#34;xee1&#34;&gt;xee1&lt;/h3&gt;
+        <description>&lt;h3 id=&#34;xee1&#34;&gt;xee1&lt;/h3&gt;
 &lt;p&gt;category: web&lt;/p&gt;
 &lt;h4 id=&#34;solution&#34;&gt;solution&lt;/h4&gt;
 &lt;p&gt;From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.&lt;/p&gt;
