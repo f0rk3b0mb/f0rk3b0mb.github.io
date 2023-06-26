@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Categories on f0rk3b0mb</title>
-    <link>https://f0rk3b0mb.github.io/categories/</link>
-    <description>Recent content in Categories on f0rk3b0mb</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on f0rk3b0mb</title>
+        <link>https://f0rk3b0mb.github.io/categories/</link>
+        <description>Recent content in Categories on f0rk3b0mb</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 15 Jun 2023 20:58:33 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ctf writeups</title>
+        <link>https://f0rk3b0mb.github.io/categories/writeups/</link>
+        <pubDate>Thu, 15 Jun 2023 20:58:33 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/categories/writeups/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>htb boxes</title>
+        <link>https://f0rk3b0mb.github.io/categories/htb-boxes/</link>
+        <pubDate>Fri, 09 Jun 2023 17:22:15 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/categories/htb-boxes/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
 </rss>
