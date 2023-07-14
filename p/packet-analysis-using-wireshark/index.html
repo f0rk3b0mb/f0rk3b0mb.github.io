@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='f0rk3b0mb&#39;s blog'>
-<title>Posts</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Wireshark packet analysis (basic) To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along here.
+You can also download this here. I will use this pcap to demonstrate how to extract files from captured network traffic.
+DEMO 1  How many packets have been captured?
+The number of packets is shown at the right bottom of the screenshot above: 1309'>
+<title>Packet analysis using Wireshark</title>
 
-<link rel='canonical' href='https://f0rk3b0mb.github.io/post/'>
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/packet-analysis-using-wireshark/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Posts'>
-<meta property='og:description' content='f0rk3b0mb&#39;s blog'>
-<meta property='og:url' content='https://f0rk3b0mb.github.io/post/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Packet analysis using Wireshark'>
+<meta property='og:description' content='Wireshark packet analysis (basic) To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along here.
+You can also download this here. I will use this pcap to demonstrate how to extract files from captured network traffic.
+DEMO 1  How many packets have been captured?
+The number of packets is shown at the right bottom of the screenshot above: 1309'>
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/packet-analysis-using-wireshark/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2023-07-14T11:47:02&#43;03:00 '/>
-<meta name="twitter:title" content="Posts">
-<meta name="twitter:description" content="f0rk3b0mb&#39;s blog"><link rel="alternate" type="application/rss&#43;xml" href="https://f0rk3b0mb.github.io/post/index.xml">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-07-14T11:47:02&#43;03:00'/><meta property='article:modified_time' content='2023-07-14T11:47:02&#43;03:00'/>
+<meta name="twitter:title" content="Packet analysis using Wireshark">
+<meta name="twitter:description" content="Wireshark packet analysis (basic) To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along here.
+You can also download this here. I will use this pcap to demonstrate how to extract files from captured network traffic.
+DEMO 1  How many packets have been captured?
+The number of packets is shown at the right bottom of the screenshot above: 1309">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
 var doNotTrack = false;
@@ -25,7 +34,9 @@ if (!doNotTrack) {
 </script>
 
     </head>
-    <body class="">
+    <body class="
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -302,61 +313,10 @@ if (!doNotTrack) {
     <aside class="sidebar right-sidebar sticky">
         
             
-                <form action="/search/" class="search-form widget" >
-        <p>
-            <label>Search</label>
-            <input name="keyword" required placeholder="Type something..." />
-        
-            <button title="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-            </button>
-        </p>
-    </form>
-            
-        
-            
-                <section class="widget archives">
+                
+    <section class="widget archives">
         <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Archives</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2023">
-                        
-                            <span class="year">2023</span>
-                            <span class="count">7</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -366,21 +326,26 @@ if (!doNotTrack) {
 
 
 
-    </div>
-    <h2 class="widget-title section-title">Categories</h2>
-
-    <div class="tagCloud-tags">
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
         
-            <a href="/categories/writeups/" class="font_size_4">
-                ctf writeups
-            </a>
-        
-            <a href="/categories/htb-boxes/" class="font_size_2">
-                htb boxes
-            </a>
-        
-    </div>
-</section>
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#wireshark-packet-analysis-basic">Wireshark packet analysis (basic)</a>
+          <ol>
+            <li><a href="#demo-1">DEMO 1</a></li>
+            <li><a href="#demo-2">DEMO 2</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
 
             
         
@@ -388,96 +353,257 @@ if (!doNotTrack) {
 
 
             <main class="main full-width">
-    <header>
-        <h3 class="section-title">
-            
-                Section
-            
-        </h3>
+    <article class="main-article">
+    <header class="article-header">
 
-        <div class="section-card">
-            <div class="section-details">
-                <h3 class="section-count">7 pages</h3>
-                <h1 class="section-term">Posts</h1>
-                
-            </div>
-        </div>
-    </header>
+    <div class="article-details">
     
-    <section class="article-list--compact">
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/packet-analysis-using-wireshark/">Packet analysis using Wireshark</a>
+        </h2>
+    
         
-            <article>
-    <a href="/p/packet-analysis-using-wireshark/">
-        <div class="article-details">
-            <h2 class="article-title">Packet analysis using Wireshark</h2>
-            <footer class="article-time">
-                <time datetime='2023-07-14T11:47:02&#43;03:00'>Jul 14, 2023</time>
-            </footer>
-        </div>
-    </a>
-</article>
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
         
-            <article>
-    <a href="/p/nahamcon2023/">
-        <div class="article-details">
-            <h2 class="article-title">Nahamcon2023</h2>
-            <footer class="article-time">
-                <time datetime='2023-06-15T20:58:33&#43;03:00'>Jun 15, 2023</time>
-            </footer>
-        </div>
-    </a>
-</article>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 14, 2023</time>
+            </div>
         
-            <article>
-    <a href="/p/htb-pc/">
-        <div class="article-details">
-            <h2 class="article-title">HTB PC</h2>
-            <footer class="article-time">
-                <time datetime='2023-06-09T17:22:15&#43;03:00'>Jun 09, 2023</time>
-            </footer>
-        </div>
-    </a>
-</article>
+
         
-            <article>
-    <a href="/p/htb-monitortwo/">
-        <div class="article-details">
-            <h2 class="article-title">HTB Monitortwo</h2>
-            <footer class="article-time">
-                <time datetime='2023-06-02T16:31:02&#43;03:00'>Jun 02, 2023</time>
-            </footer>
-        </div>
-    </a>
-</article>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
         
-            <article>
-    <a href="/p/bic-winter-con-2023/">
-        <div class="article-details">
-            <h2 class="article-title">Bic winter con 2023</h2>
-            <footer class="article-time">
-                <time datetime='2023-05-31T13:03:23&#43;03:00'>May 31, 2023</time>
-            </footer>
-        </div>
-    </a>
-</article>
-        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h3 id="wireshark-packet-analysis-basic">Wireshark packet analysis (basic)</h3>
+<p>To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along <a class="link" href="./Capture.pcapng" >here</a>.</p>
+<p>You can also download this <a class="link" href="" >here</a>. I will use this pcap to demonstrate how to extract files from captured network traffic.</p>
+<h4 id="demo-1">DEMO 1</h4>
+<hr>
+<p>How many packets have been captured?</p>
+<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-28-48.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="App Screenshot"
+	
+	
+></p>
+<p>The number of packets is shown at the right bottom of the screenshot above: 1309</p>
+<hr>
+<p>What is the IP address of the attacker?</p>
+<p>Here we will use the TCP filter in Wireshark as shown below:</p>
+<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2008-09-44.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="App Screenshot"
+	
+	
+></p>
+<p>The IP address is 45.15.156.72</p>
+<hr>
+<p>Which city is the IP address based in?</p>
+<p>We will use an online IP locator tool:</p>
+<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-37-57.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="App Screenshot"
+	
+	
+></p>
+<p>The city is Amsterdam</p>
+<hr>
+<p>How many DNS servers are in the pcap?</p>
+<p>Here we just use the DNS filter in Wireshark:</p>
+<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-39-57.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="App Screenshot"
+	
+	
+></p>
+<p>The answer is two. There is one with IP xxx.100 and xxx.101</p>
+<hr>
+<p>What is the IP of the NTP server?</p>
+<p>Here we will use the NTP filter in Wireshark:</p>
+<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2008-09-52.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="App Screenshot"
+	
+	
+></p>
+<p>The IP address, as you can see above, is 51.145.123.29</p>
+<hr>
+<p>What machine ID was transmitted to the attacker?</p>
+<p>Here we will follow the TCP stream of one of the requests to the attacker as shown below. This time we will use the IP address filter <code>&lt;ip.addr == 45.15.156.72&gt;</code>:</p>
+<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-45-38.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="App Screenshot"
+	
+	
+></p>
+<p>The machine ID is a parameter of the POST request.</p>
+<hr>
+<p>What is the user-agent?</p>
+<p>As you can see from the picture above, the user-agent is &ldquo;x&rdquo;</p>
+<hr>
+<p>What was the MAC address of the compromised machine?</p>
+<p>We just have to double click on one of the TCP packets between the attacker and compromised machine as shown below. The MAC address is on the blue line I have highlighted:</p>
+<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-50-18.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="App Screenshot"
+	
+	
+></p>
+<hr>
+<p>What email address is the registrar of the IP address?</p>
+<p>Here we will conduct a WHOIS search on the IP address. To make it even easier, we will combine it with a grep filter for the @ symbol, which is used in email addresses:</p>
+<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-53-54.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="App Screenshot"
+	
+	
+></p>
+<hr>
+<h4 id="demo-2">DEMO 2</h4>
+<p>Scrolling through the pcap, you can see weird filenames ending in .ts. I googled this and found out that it is a file extension for video files.</p>
+<p>To extract files, you will first have to identify the stream of the files you want to extract. In this case, it&rsquo;s stream 3. Select packet &gt; right click &gt; follow TCP stream.</p>
+<p>You can move through subsequent streams by using the stream buttons:</p>
+<p><img src="/images/wireshark/stream.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="stream"
+	
+	
+></p>
+<p>You now have to export the stream to a file. In my case, I called the file filtered.pcapng:</p>
+<p><img src="/images/wireshark/export.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="export"
+	
+	
+></p>
+<p>Open the filtered.pcapng in Wireshark. Go to File &gt; Export Objects &gt; HTTP:</p>
+<p><img src="/images/wireshark/objects.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="objects"
+	
+	
+></p>
+<p>You can click on each and then save. The resulting files can be opened with any video player. The flag is in WyK2SW5mcYDArna2IlwZ4C4SwDjZ717a5.ts.</p>
+<hr>
+<p>The above challenges are a good entry to learning to use Wireshark and understanding networking.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
-    <nav class='pagination'>
-        
-        
+    </footer>
 
-        
-            
-                <span class='page-link current'>1</span>
-                
-            
-            
-                    <a class='page-link' href='/post/page/2/'>2</a>
-                
-            
-    </nav>
 
-<footer class="site-footer">
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
@@ -490,6 +616,84 @@ if (!doNotTrack) {
     </section>
 </footer>
 
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
 
             </main>
         </div>

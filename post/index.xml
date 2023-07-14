@@ -6,7 +6,171 @@
         <description>Recent content in Posts on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 15 Jun 2023 20:58:33 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 14 Jul 2023 11:47:02 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Packet analysis using Wireshark</title>
+        <link>https://f0rk3b0mb.github.io/p/packet-analysis-using-wireshark/</link>
+        <pubDate>Fri, 14 Jul 2023 11:47:02 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/packet-analysis-using-wireshark/</guid>
+        <description>&lt;h3 id=&#34;wireshark-packet-analysis-basic&#34;&gt;Wireshark packet analysis (basic)&lt;/h3&gt;
+&lt;p&gt;To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along &lt;a class=&#34;link&#34; href=&#34;./Capture.pcapng&#34; &gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can also download this &lt;a class=&#34;link&#34; href=&#34;&#34; &gt;here&lt;/a&gt;. I will use this pcap to demonstrate how to extract files from captured network traffic.&lt;/p&gt;
+&lt;h4 id=&#34;demo-1&#34;&gt;DEMO 1&lt;/h4&gt;
+&lt;hr&gt;
+&lt;p&gt;How many packets have been captured?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/Screenshot%20from%202023-03-01%2007-28-48.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;App Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The number of packets is shown at the right bottom of the screenshot above: 1309&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;What is the IP address of the attacker?&lt;/p&gt;
+&lt;p&gt;Here we will use the TCP filter in Wireshark as shown below:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/Screenshot%20from%202023-03-01%2008-09-44.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;App Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The IP address is 45.15.156.72&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Which city is the IP address based in?&lt;/p&gt;
+&lt;p&gt;We will use an online IP locator tool:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/Screenshot%20from%202023-03-01%2007-37-57.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;App Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The city is Amsterdam&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;How many DNS servers are in the pcap?&lt;/p&gt;
+&lt;p&gt;Here we just use the DNS filter in Wireshark:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/Screenshot%20from%202023-03-01%2007-39-57.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;App Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The answer is two. There is one with IP xxx.100 and xxx.101&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;What is the IP of the NTP server?&lt;/p&gt;
+&lt;p&gt;Here we will use the NTP filter in Wireshark:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/Screenshot%20from%202023-03-01%2008-09-52.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;App Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The IP address, as you can see above, is 51.145.123.29&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;What machine ID was transmitted to the attacker?&lt;/p&gt;
+&lt;p&gt;Here we will follow the TCP stream of one of the requests to the attacker as shown below. This time we will use the IP address filter &lt;code&gt;&amp;lt;ip.addr == 45.15.156.72&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/Screenshot%20from%202023-03-01%2007-45-38.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;App Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The machine ID is a parameter of the POST request.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;What is the user-agent?&lt;/p&gt;
+&lt;p&gt;As you can see from the picture above, the user-agent is &amp;ldquo;x&amp;rdquo;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;What was the MAC address of the compromised machine?&lt;/p&gt;
+&lt;p&gt;We just have to double click on one of the TCP packets between the attacker and compromised machine as shown below. The MAC address is on the blue line I have highlighted:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/Screenshot%20from%202023-03-01%2007-50-18.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;App Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;What email address is the registrar of the IP address?&lt;/p&gt;
+&lt;p&gt;Here we will conduct a WHOIS search on the IP address. To make it even easier, we will combine it with a grep filter for the @ symbol, which is used in email addresses:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/Screenshot%20from%202023-03-01%2007-53-54.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;App Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;demo-2&#34;&gt;DEMO 2&lt;/h4&gt;
+&lt;p&gt;Scrolling through the pcap, you can see weird filenames ending in .ts. I googled this and found out that it is a file extension for video files.&lt;/p&gt;
+&lt;p&gt;To extract files, you will first have to identify the stream of the files you want to extract. In this case, it&amp;rsquo;s stream 3. Select packet &amp;gt; right click &amp;gt; follow TCP stream.&lt;/p&gt;
+&lt;p&gt;You can move through subsequent streams by using the stream buttons:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/stream.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;stream&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;You now have to export the stream to a file. In my case, I called the file filtered.pcapng:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/export.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;export&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Open the filtered.pcapng in Wireshark. Go to File &amp;gt; Export Objects &amp;gt; HTTP:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/objects.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;objects&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;You can click on each and then save. The resulting files can be opened with any video player. The flag is in WyK2SW5mcYDArna2IlwZ4C4SwDjZ717a5.ts.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;The above challenges are a good entry to learning to use Wireshark and understanding networking.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Nahamcon2023</title>
         <link>https://f0rk3b0mb.github.io/p/nahamcon2023/</link>
         <pubDate>Thu, 15 Jun 2023 20:58:33 +0300</pubDate>
