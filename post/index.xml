@@ -313,7 +313,7 @@ pwhash,username
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;the hashes are clearly bcrypt&lt;/p&gt;
 &lt;p&gt;to login as admin we can use the following sql statement. I got it from &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://stackoverflow.com/questions/50756182/sql-injection-with-password-verify&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;here&lt;/a&gt;&lt;/p&gt;
+    &gt;here&lt;/a&gt;   . Here we acn set our own bcrypt hash  which we have knowlledge of the password.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
