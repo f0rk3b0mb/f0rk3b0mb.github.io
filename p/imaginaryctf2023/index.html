@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='ImaginaryCTF Imaginaryctf web writeups  Idoriot This web challenge was very simple , while registering a new user you could set their id , so just set user_id as 0 to get the flag. Login to get the flag
+ Idoriot revenge This challenge is related to the first one but we can nset the user id as a parameter , in th source , there is this filter
+1 2 3 4 5 6 7 8 9 10 11 12  if (isset($_GET[&amp;#39;user_id&amp;#39;])) { $user_id = (int) $_GET[&amp;#39;user_id&amp;#39;]; // Check if the user is admin  if ($user_id == &amp;#34;php&amp;#34; &amp;amp;&amp;amp; preg_match(&amp;#34;/&amp;#34;.'>
+<title>ImaginaryCTF2023</title>
+
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/imaginaryctf2023/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='ImaginaryCTF2023'>
+<meta property='og:description' content='ImaginaryCTF Imaginaryctf web writeups  Idoriot This web challenge was very simple , while registering a new user you could set their id , so just set user_id as 0 to get the flag. Login to get the flag
+ Idoriot revenge This challenge is related to the first one but we can nset the user id as a parameter , in th source , there is this filter
+1 2 3 4 5 6 7 8 9 10 11 12  if (isset($_GET[&amp;#39;user_id&amp;#39;])) { $user_id = (int) $_GET[&amp;#39;user_id&amp;#39;]; // Check if the user is admin  if ($user_id == &amp;#34;php&amp;#34; &amp;amp;&amp;amp; preg_match(&amp;#34;/&amp;#34;.'>
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/imaginaryctf2023/'>
+<meta property='og:site_name' content='f0rk3b0mb'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-07-23T12:41:18&#43;03:00'/><meta property='article:modified_time' content='2023-07-23T12:41:18&#43;03:00'/>
+<meta name="twitter:title" content="ImaginaryCTF2023">
+<meta name="twitter:description" content="ImaginaryCTF Imaginaryctf web writeups  Idoriot This web challenge was very simple , while registering a new user you could set their id , so just set user_id as 0 to get the flag. Login to get the flag
+ Idoriot revenge This challenge is related to the first one but we can nset the user id as a parameter , in th source , there is this filter
+1 2 3 4 5 6 7 8 9 10 11 12  if (isset($_GET[&amp;#39;user_id&amp;#39;])) { $user_id = (int) $_GET[&amp;#39;user_id&amp;#39;]; // Check if the user is admin  if ($user_id == &amp;#34;php&amp;#34; &amp;amp;&amp;amp; preg_match(&amp;#34;/&amp;#34;.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-45FL0WGH80', { 'anonymize_ip': false });
+}
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/profile_hub3b0d2e82dc0f1a42217f1a43502a3c9_183580_300x0_resize_box_3.png" width="300"
+                            height="392" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😎</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">f0rk3b0mb</a></h1>
+            <h2 class="site-description">Ctf player p3rf3ctr00t_ke | Cyber_security_analyst | purple_teamer | blogger</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://discordapp.com/users/888054460956422195'
+                        target="_blank"
+                        title="discord"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="UTF-8"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+    <g>
+        <path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" fill="#5865F2" fill-rule="nonzero">
+</path>
+    </g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/f0rk3b0mb'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://ke.linkedin.com/in/abel-biketi-261212257'
+                        target="_blank"
+                        title="linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <title>LinkedIn-color</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+
+</defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Color-" transform="translate(-702.000000, -265.000000)" fill="#007EBB">
+            <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" id="LinkedIn">
+
+</path>
+        </g>
+    </g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:abelbiketi@gmail.com'
+                        target="_blank"
+                        title="mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="utf-8"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 1024 1024" class="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M182.857143 138.971429h724.114286s29.257143 0 51.2 29.257142 7.314286 43.885714 7.314285 43.885715l-438.857143 292.571428-424.228571-270.628571s-14.628571-14.628571-7.314286-43.885714c7.314286-14.628571 21.942857-29.257143 36.571429-43.885715l21.942857-14.628571 29.257143 7.314286z" fill="#F4B1B2" /><path d="M526.628571 533.942857c-7.314286 0-7.314286 0-14.628571-7.314286L87.771429 256c-7.314286-7.314286-29.257143-29.257143-21.942858-73.142857 14.628571-21.942857 29.257143-36.571429 43.885715-58.514286l29.257143-21.942857h21.942857l29.257143 7.314286h724.114285c7.314286 0 43.885714 0 73.142857 36.571428s14.628571 65.828571 7.314286 80.457143l-446.171428 292.571429c-14.628571 14.628571-14.628571 14.628571-21.942858 14.628571zM124.342857 212.114286l402.285714 256 416.914286-277.942857s0-7.314286-7.314286-7.314286c-14.628571-14.628571-29.257143-14.628571-29.257142-14.628572H182.857143h-7.314286l-14.628571-7.314285-14.628572 7.314285c-7.314286 7.314286-21.942857 21.942857-29.257143 36.571429 0 0 0 7.314286 7.314286 7.314286z" fill="#D72822" /><path d="M899.657143 914.285714H175.542857c-58.514286 0-109.714286-51.2-109.714286-109.714285V219.428571c0-58.514286 51.2-109.714286 109.714286-109.714285h724.114286c58.514286 0 109.714286 51.2 109.714286 109.714285v585.142858c0 58.514286-51.2 109.714286-109.714286 109.714285zM175.542857 168.228571c-29.257143 0-51.2 21.942857-51.2 51.2v585.142858c0 29.257143 21.942857 51.2 51.2 51.2h724.114286c29.257143 0 51.2-21.942857 51.2-51.2V219.428571c0-29.257143-21.942857-51.2-51.2-51.2H175.542857z" fill="#D72822" /><path d="M972.8 863.085714c-7.314286 0-14.628571 0-21.942857-7.314285L629.028571 453.485714c-7.314286-7.314286-7.314286-29.257143 7.314286-36.571428 14.628571-7.314286 29.257143-7.314286 36.571429 7.314285l321.828571 394.971429c7.314286 14.628571 7.314286 29.257143-7.314286 36.571429 0 0-7.314286 7.314286-14.628571 7.314285z" fill="#D72822" /><path d="M117.028571 863.085714c-7.314286 0-14.628571 0-14.628571-7.314285-14.628571-7.314286-14.628571-29.257143-7.314286-36.571429l299.885715-394.971429c7.314286-14.628571 29.257143-14.628571 36.571428-7.314285 14.628571 7.314286 14.628571 29.257143 7.314286 36.571428l-299.885714 394.971429c-7.314286 7.314286-14.628571 14.628571-21.942858 14.628571z" fill="#D72822" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>about</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#imaginaryctf">ImaginaryCTF</a>
+          <ol>
+            <li><a href="#imaginaryctf-web-writeups">Imaginaryctf web writeups</a></li>
+            <li><a href="#idoriot">Idoriot</a></li>
+            <li><a href="#idoriot-revenge">Idoriot revenge</a></li>
+            <li><a href="#blank">Blank</a></li>
+            <li><a href="#perfect-picture">Perfect picture</a></li>
+            <li><a href="#roks">Roks</a></li>
+            <li><a href="#login">Login</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/imaginaryctf2023/">ImaginaryCTF2023</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 23, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h3 id="imaginaryctf">ImaginaryCTF</h3>
+<h4 id="imaginaryctf-web-writeups">Imaginaryctf web writeups</h4>
+<hr>
+<h4 id="idoriot">Idoriot</h4>
+<p>This web challenge was very simple , while registering a new user you could set their id  , so just set user_id as 0 to get the flag. Login to get the flag</p>
+<hr>
+<h4 id="idoriot-revenge">Idoriot revenge</h4>
+<p>This challenge is related to the first one but we can nset the user id as a parameter , in th source , there is this filter</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php">
+<span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$user_id</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">];</span>
+    <span class="c1">// Check if the user is admin
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nv">$user_id</span> <span class="o">==</span> <span class="s2">&#34;php&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="o">.</span><span class="nv">$admin</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span><span class="o">.</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="c1">// Read the flag from flag.txt
+</span><span class="c1"></span>        <span class="nv">$flag</span> <span class="o">=</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="s1">&#39;/flag.txt&#39;</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="s2">&#34;&lt;h1&gt;Flag&lt;/h1&gt;&#34;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">&#34;&lt;p&gt;</span><span class="si">$flag</span><span class="s2">&lt;/p&gt;&#34;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>it checks if the user_id is equal to &ldquo;php&rdquo; and if the username contains &ldquo;admin&rdquo;.</p>
+<p>This is classic php type juggling read more &raquo; <a class="link" href="https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf"  target="_blank" rel="noopener"
+    >here</a>  there is also a chart showing what will be True os False , in this case if i set user_id=0  it will be equal to &ldquo;php&rdquo;. For the username , register any user with a username that contains &ldquo;admin&rdquo; but not &ldquo;admin&rdquo; like eg (admino)</p>
+<p><img src="/images/ImaCTF2023/idoriot_revenge.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="flag"
+	
+	
+></p>
+<hr>
+<h4 id="blank">Blank</h4>
+<p>This challenge tested knowledge is sql.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js">
+<span class="nx">db</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM users WHERE username = &#34;&#39;</span> <span class="o">+</span> <span class="nx">username</span> <span class="o">+</span> <span class="s1">&#39;&#34; and password = &#34;&#39;</span> <span class="o">+</span> <span class="nx">password</span><span class="o">+</span> <span class="s1">&#39;&#34;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">row</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>as you can see , user input is directly added to the sql statement which is very dangerous. Also theapplication was not checking the password.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/flag&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">username</span> <span class="o">==</span> <span class="s2">&#34;admin&#34;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Welcome admin. The flag is &#39;</span> <span class="o">+</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;flag.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">));</span>
+  <span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>THe username had to be &ldquo;admin&rdquo;. so we can only inject via password field</p>
+<p><img src="/images/ImaCTF2023/blank_payload.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="payload"
+	
+	
+></p>
+<p>This will satisfy this part of the code and return rows</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">row</span><span class="p">,</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+        <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">loggedIn</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">username</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Login successful!&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/ImaCTF2023/blank.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="flag"
+	
+	
+></p>
+<hr>
+<h4 id="perfect-picture">Perfect picture</h4>
+<p>This challenge required uploading a picture with specific characterictics</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">uploaded_image</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;flag.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">uploaded_image</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span>
+        <span class="k">if</span> <span class="n">w</span> <span class="o">!=</span> <span class="mi">690</span> <span class="ow">or</span> <span class="n">h</span> <span class="o">!=</span> <span class="mi">420</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">412</span><span class="p">,</span> <span class="mi">309</span><span class="p">))</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">52</span><span class="p">,</span> <span class="mi">146</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">123</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="mi">209</span><span class="p">))</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">231</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">264</span><span class="p">,</span> <span class="mi">143</span><span class="p">))</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="mi">136</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">213</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">with</span> <span class="n">exiftool</span><span class="o">.</span><span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">uploaded_image</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&#34;PNG:Description&#34;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;jctf</span><span class="si">{not_the_flag}</span><span class="s2">&#34;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&#34;PNG:Title&#34;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;kool_pic&#34;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&#34;PNG:Author&#34;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;anon&#34;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">flag</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>to satisfy those i wrote a pytho script</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="k">def</span> <span class="nf">create_and_modify_image</span><span class="p">():</span>
+    <span class="c1"># Step 1: Create the Image</span>
+    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">690</span><span class="p">,</span> <span class="mi">420</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&#34;RGBA&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># Step 2: Modify Pixel Colors</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">412</span><span class="p">,</span> <span class="mi">309</span><span class="p">),</span> <span class="p">(</span><span class="mi">52</span><span class="p">,</span> <span class="mi">146</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">123</span><span class="p">))</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="mi">209</span><span class="p">),</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">231</span><span class="p">))</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">264</span><span class="p">,</span> <span class="mi">143</span><span class="p">),</span> <span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="mi">136</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">213</span><span class="p">))</span>
+    <span class="c1"># Step 3: Save the Image</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&#34;created_image.png&#34;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+    <span class="n">create_and_modify_image</span><span class="p">()</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>you also have to run  the following command to set the exit data</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+exiftool -PNG:Description<span class="o">=</span><span class="s2">&#34;jctf{not_the_flag}&#34;</span> -PNG:Title<span class="o">=</span><span class="s2">&#34;kool_pic&#34;</span> -PNG:Author<span class="o">=</span><span class="s2">&#34;anon&#34;</span> created_image.png
+
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/ImaCTF2023/picture_perfect.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="flag"
+	
+	
+></p>
+<hr>
+<h4 id="roks">Roks</h4>
+<p>This challenge was obviously an lfi</p>
+<p>php  urldecode() only decodes once i.e  it only decodes one layer , so if i  encode on several layers i can bypass the filter with decoded 2 layers</p>
+<p>the flag was at ../../../../flag.png according to the dockerfile , urlencode this 3 times and send it to get the flag</p>
+<p><img src="/images/ImaCTF2023/roks_burp.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="burp"
+	
+	
+></p>
+<hr>
+<h4 id="login">Login</h4>
+<p>This challenge tested knowledge in sql and bcrypt hashing.</p>
+<p>Using sqlmap you could extract the database table users and data</p>
+<p><img src="/images/ImaCTF2023/sqlmap.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="sqlmap"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+pwhash,username
+<span class="nv">$2</span>y<span class="nv">$10$vw1OC907</span>/WpJagql/LmHV.7zs8I3RE9N0BC4/Tx9I90epSI2wr3S.,guest
+<span class="nv">$2</span>y<span class="nv">$10$Is00vB1hRNHYBl9BzJwDouQFCU85YyRjJ81q0CX1a3sYtvsZvJudC</span>,admi
+
+</code></pre></td></tr></table>
+</div>
+</div><p>the hashes are clearly bcrypt</p>
+<p>to login as admin we can use the following sql statement. I got it from &raquo; <a class="link" href="https://stackoverflow.com/questions/50756182/sql-injection-with-password-verify"  target="_blank" rel="noopener"
+    >here</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">
+</span><span class="w"></span><span class="n">xxx</span><span class="s1">&#39; UNION SELECT &#39;</span><span class="k">admin</span><span class="s1">&#39; AS username,&#39;</span><span class="err">$</span><span class="mi">2</span><span class="n">y$10$C4lfi0f8kouggVBFkKF1ru</span><span class="p">.</span><span class="o">/</span><span class="n">NEQTKqptjJCh6JI</span><span class="o">/</span><span class="n">hJieELWHLeFXi</span><span class="s1">&#39; AS pwhash--
+</span><span class="s1">
+</span><span class="s1">
+</span><span class="s1">and the password as &#34;a&#34;
+</span><span class="s1">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>Here we get the magic , in my case it was &ldquo;688a35c685a7a654abc80f8e123ad9f0&rdquo;</p>
+<p><img src="/images/ImaCTF2023/magic.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="magic"
+	
+	
+></p>
+<p>In the code if we supply the magic as a get parameter  the flag will be appended to the password , Bcrypt has a character limit of 72 , so if we set a password of more than 72 characters it will be truncated and only the first 72 characters will be hached an the password . I had seen technique in an ippsec video recently , Luckyme :)</p>
+<p>Anyways here is the exploit &raquo; <a class="link" href="https://github.com/f0rk3b0mb/ImaginaryCTF_login"  target="_blank" rel="noopener"
+    >here</a></p>
+<p>flag :   ictf{why_are_bcrypt_truncating_my_passwords?!}</p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 f0rk3b0mb
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
