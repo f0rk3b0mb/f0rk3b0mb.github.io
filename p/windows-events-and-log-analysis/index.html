@@ -3,7 +3,7 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Windows event log analysis is an important skill in threat hunting. These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis
 Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; here.
-In this tutorial i will be analysing the following files from cybertalents blue scholarship.'>
+In this tutorial i will be analysing the files from cybertalents blue scholarship.'>
 <title>Windows events and log analysis</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/'>
@@ -11,14 +11,14 @@ In this tutorial i will be analysing the following files from cybertalents blue 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Windows events and log analysis'>
 <meta property='og:description' content='Windows event log analysis is an important skill in threat hunting. These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis
 Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; here.
-In this tutorial i will be analysing the following files from cybertalents blue scholarship.'>
+In this tutorial i will be analysing the files from cybertalents blue scholarship.'>
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-07-31T16:18:16&#43;03:00'/><meta property='article:modified_time' content='2023-07-31T16:18:16&#43;03:00'/>
 <meta name="twitter:title" content="Windows events and log analysis">
 <meta name="twitter:description" content="Windows event log analysis is an important skill in threat hunting. These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis
 Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; here.
-In this tutorial i will be analysing the following files from cybertalents blue scholarship.">
+In this tutorial i will be analysing the files from cybertalents blue scholarship.">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
 var doNotTrack = false;
@@ -418,11 +418,11 @@ if (!doNotTrack) {
 These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis</p>
 <p>Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &raquo; <a class="link" href="https://github.com/WithSecureLabs/chainsaw"  target="_blank" rel="noopener"
     >here</a>.</p>
-<p>In this tutorial i will be analysing the following files from cybertalents blue scholarship.</p>
+<p>In this tutorial i will be analysing the  files from cybertalents blue scholarship.</p>
 <hr>
 <h3 id="1--chainsaw-search">1.  chainsaw search</h3>
 <p>an attacker after compromising the machine added a new account as admin. can you find the name of the new account? flag format : flag{md5 of string}</p>
-<p>file: <a class="link" href="/files/Security436509324654726509.evtx" >ex1</a></p>
+<p>file &raquo;&raquo; <a class="link" href="/files/Security436509324654726509.evtx" >ex1</a></p>
 <p>In windows, each event has a unique event id. So we have to find event id for account creation , a quick google search</p>
 <p><img src="/images/windows_logs/event.png"
 	
@@ -461,7 +461,7 @@ These logs silently record system events, security incidents, and user interacti
 <p>SAM means security account manager , it is a database that stores accounts on windows systems. Usename is sam md5hash ba0e0cde1bf72c28d435c89a66afc61a.</p>
 <hr>
 <h3 id="2-chainsaw-hunt">2. chainsaw hunt</h3>
-<p>file: <a class="link" href="/files/logs.evtx" >here</a></p>
+<p>file &raquo;&raquo; <a class="link" href="/files/logs.evtx" >here</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
