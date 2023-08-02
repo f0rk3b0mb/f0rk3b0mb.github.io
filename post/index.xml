@@ -12,7 +12,17 @@
         <pubDate>Mon, 31 Jul 2023 16:18:16 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/</guid>
-        <description>&lt;p&gt;Windows event log analysis is an important skill in threat hunting.
+        <description>&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/download.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;logo&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Windows event log analysis is an important skill in threat hunting.
 These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis&lt;/p&gt;
 &lt;p&gt;Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/WithSecureLabs/chainsaw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;.&lt;/p&gt;
