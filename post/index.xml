@@ -6,7 +6,172 @@
         <description>Recent content in Posts on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 23 Jul 2023 12:41:18 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 31 Jul 2023 16:18:16 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Windows events and log analysis</title>
+        <link>https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/</link>
+        <pubDate>Mon, 31 Jul 2023 16:18:16 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/</guid>
+        <description>&lt;p&gt;Windows event log analysis is an important skill in threat hunting.
+These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis&lt;/p&gt;
+&lt;p&gt;Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/WithSecureLabs/chainsaw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this tutorial i will be analysing the following files from cybertalents blue scholarship.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;1--chainsaw-search&#34;&gt;1.  chainsaw search&lt;/h3&gt;
+&lt;p&gt;an attacker after compromising the machine added a new account as admin. can you find the name of the new account? flag format : flag{md5 of string}&lt;/p&gt;
+&lt;p&gt;file: &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/Security436509324654726509.evtx&#34; &gt;ex1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In windows, each event has a unique event id. So we have to find event id for account creation , a quick google search&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/event.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;event_id&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Then in chainsaw&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+./chainsaw/chainsaw-gnu search  -t &lt;span class=&#34;s1&#34;&gt;&amp;#39;Event.System.EventID: =4720&amp;#39;&lt;/span&gt;  Security436509324654726509.evtx
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Here we can filter events with the event id 4720.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/sam.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;sam&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;SAM means security account manager , it is a database that stores accounts on windows systems. Usename is sam md5hash ba0e0cde1bf72c28d435c89a66afc61a.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2-chainsaw-hunt&#34;&gt;2. chainsaw hunt&lt;/h3&gt;
+&lt;p&gt;file: &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/logs.evtx&#34; &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Our network got compromised two days ago by an unknown attacker, and we need to get an answer &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; the following questions:
+
+1. What is the domain&lt;span class=&#34;s1&#34;&gt;&amp;#39;s SID?
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;2. The attacker failed to login to some accounts, What is the attacker&amp;#39;&lt;/span&gt;s machine IP address?
+3. What is the workstation&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;s name that the attacker was using to authenticate with the administrator account?
+
+Flag format: Flag&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;ANS1_ANS2_ANS3&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Since this is account failed login it has event id 4776 for failed login from domain controller. The domain controller in this case is HYDRA-DC.MARVEL.local.&lt;/p&gt;
+&lt;p&gt;Since chainsaw has rules to detect certain events , you can use the folowing command to hunt for events&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+./chainsaw/chainsaw-gnu hunt -r ./chainsaw/rules/ logs.evtx
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This returns alot of output , but retuns events in a format we can easily comprehend.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/format.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;format&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+./chainsaw/chainsaw-gnu hunt --sigma ./chainsaw/sigma/  --mapping ./chainsaw/mappings/sigma-event-logs-all.yml -r ./chainsaw/rules/lateral_movement/ logs/
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;You can use the command above to get more info.
+Now here is where the fun begins.&lt;/p&gt;
+&lt;p&gt;From the logs we can see that there are several users lke pbarker,fcasle, Administrator and these avents are have a common ipaddress  &amp;ldquo;192.168.80.128&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;If we search for the following users in the sigma output , we can find the sid&lt;/p&gt;
+&lt;p&gt;pbarker :   S-1-5-21-271597537-2992796785-3713134209-1105&lt;/p&gt;
+&lt;p&gt;fcastle: S-1-5-21-271597537-2992796785-3713134209-1103&lt;/p&gt;
+&lt;p&gt;Adminitrator : S-1-5-21-271597537-2992796785-3713134209-500&lt;/p&gt;
+&lt;p&gt;The structure of an sid is as follows :&lt;/p&gt;
+&lt;p&gt;S-1-5-21-&lt;!-- raw HTML omitted --&gt;-&amp;lt;relative_id&amp;gt;&lt;/p&gt;
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;p&gt;S: A constant prefix indicating that it is a Security Identifier.&lt;/p&gt;
+&lt;p&gt;1: Revision number (currently always 1).&lt;/p&gt;
+&lt;p&gt;5: Identifier authority value (the identifier authority for Windows is always 5).&lt;/p&gt;
+&lt;p&gt;21: The identifier authority&amp;rsquo;s top-level domain identifier. The actual number may vary depending on the Windows version or configuration but is typically 21 for Windows domains.&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;: The SID for the domain. It is a unique value assigned to each domain by the domain controller during domain creation.&lt;/p&gt;
+&lt;p&gt;&amp;lt;relative_id&amp;gt;: A relative identifier that uniquely identifies a specific security principal within the domain. For users and groups, this relative ID is usually the RID (Relative Identifier) assigned by the domain controller.&lt;/p&gt;
+&lt;p&gt;so in this case domain sid is &amp;ldquo;S-1-5-21-271597537-2992796785-3713134209&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;To get the workstation you can ue the command we used earlier to filter events using event id&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+./chainsaw/chainsaw-gnu search  -t &lt;span class=&#34;s1&#34;&gt;&amp;#39;Event.System.EventID: =4776&amp;#39;&lt;/span&gt;  logs/ &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep -i workstation
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/workstation.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;workstation&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;workstation: THEPUNISHER&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/thepunisher.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;workstation&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;flag is Flag{S-1-5-21-271597537-2992796785-3713134209-500_192.168.80.128_THEPUNISHER}&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>ImaginaryCTF2023</title>
         <link>https://f0rk3b0mb.github.io/p/imaginaryctf2023/</link>
         <pubDate>Sun, 23 Jul 2023 12:41:18 +0300</pubDate>

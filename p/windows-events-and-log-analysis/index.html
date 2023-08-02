@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Wireshark packet analysis (basic) To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along &amp;raquo; here.
-You can also download this &amp;raquo; here. I will use this pcap to demonstrate how to extract files from captured network traffic.
-DEMO 1  How many packets have been captured?
-The number of packets is shown at the right bottom of the screenshot above: 1309'>
-<title>Packet analysis using Wireshark</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Windows event log analysis is an important skill in threat hunting. These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis
+Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; here.
+In this tutorial i will be analysing the following files from cybertalents blue scholarship.'>
+<title>Windows events and log analysis</title>
 
-<link rel='canonical' href='https://f0rk3b0mb.github.io/p/packet-analysis-using-wireshark/'>
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Packet analysis using Wireshark'>
-<meta property='og:description' content='Wireshark packet analysis (basic) To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along &amp;raquo; here.
-You can also download this &amp;raquo; here. I will use this pcap to demonstrate how to extract files from captured network traffic.
-DEMO 1  How many packets have been captured?
-The number of packets is shown at the right bottom of the screenshot above: 1309'>
-<meta property='og:url' content='https://f0rk3b0mb.github.io/p/packet-analysis-using-wireshark/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Windows events and log analysis'>
+<meta property='og:description' content='Windows event log analysis is an important skill in threat hunting. These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis
+Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; here.
+In this tutorial i will be analysing the following files from cybertalents blue scholarship.'>
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-07-14T11:47:02&#43;03:00'/><meta property='article:modified_time' content='2023-07-14T11:47:02&#43;03:00'/>
-<meta name="twitter:title" content="Packet analysis using Wireshark">
-<meta name="twitter:description" content="Wireshark packet analysis (basic) To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along &amp;raquo; here.
-You can also download this &amp;raquo; here. I will use this pcap to demonstrate how to extract files from captured network traffic.
-DEMO 1  How many packets have been captured?
-The number of packets is shown at the right bottom of the screenshot above: 1309">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-07-31T16:18:16&#43;03:00'/><meta property='article:modified_time' content='2023-07-31T16:18:16&#43;03:00'/>
+<meta name="twitter:title" content="Windows events and log analysis">
+<meta name="twitter:description" content="Windows event log analysis is an important skill in threat hunting. These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis
+Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; here.
+In this tutorial i will be analysing the following files from cybertalents blue scholarship.">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
 var doNotTrack = false;
@@ -334,12 +331,8 @@ if (!doNotTrack) {
   <ol>
     <li>
       <ol>
-        <li><a href="#wireshark-packet-analysis-basic">Wireshark packet analysis (basic)</a>
-          <ol>
-            <li><a href="#demo-1">DEMO 1</a></li>
-            <li><a href="#demo-2">DEMO 2</a></li>
-          </ol>
-        </li>
+        <li><a href="#1--chainsaw-search">1.  chainsaw search</a></li>
+        <li><a href="#2-chainsaw-hunt">2. chainsaw hunt</a></li>
       </ol>
     </li>
   </ol>
@@ -369,7 +362,7 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/packet-analysis-using-wireshark/">Packet analysis using Wireshark</a>
+            <a href="/p/windows-events-and-log-analysis/">Windows events and log analysis</a>
         </h2>
     
         
@@ -391,7 +384,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jul 14, 2023</time>
+                <time class="article-time--published">Jul 31, 2023</time>
             </div>
         
 
@@ -421,162 +414,163 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h3 id="wireshark-packet-analysis-basic">Wireshark packet analysis (basic)</h3>
-<p>To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along &raquo; <a class="link" href="/files/capture.pcap" >here</a>.</p>
-<p>You can also download this &raquo;  <a class="link" href="/files/strom.pcapng" >here</a>. I will use this pcap to demonstrate how to extract files from captured network traffic.</p>
-<h4 id="demo-1">DEMO 1</h4>
+    <p>Windows event log analysis is an important skill in threat hunting.
+These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis</p>
+<p>Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &raquo; <a class="link" href="https://github.com/WithSecureLabs/chainsaw"  target="_blank" rel="noopener"
+    >here</a>.</p>
+<p>In this tutorial i will be analysing the following files from cybertalents blue scholarship.</p>
 <hr>
-<p>How many packets have been captured?</p>
-<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-28-48.png"
+<h3 id="1--chainsaw-search">1.  chainsaw search</h3>
+<p>an attacker after compromising the machine added a new account as admin. can you find the name of the new account? flag format : flag{md5 of string}</p>
+<p>file: <a class="link" href="/files/Security436509324654726509.evtx" >ex1</a></p>
+<p>In windows, each event has a unique event id. So we have to find event id for account creation , a quick google search</p>
+<p><img src="/images/windows_logs/event.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="App Screenshot"
+		alt="event_id"
 	
 	
 ></p>
-<p>The number of packets is shown at the right bottom of the screenshot above: 1309</p>
-<hr>
-<p>What is the IP address of the attacker?</p>
-<p>Here we will use the TCP filter in Wireshark as shown below:</p>
-<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2008-09-44.png"
+<p>Then in chainsaw</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+./chainsaw/chainsaw-gnu search  -t <span class="s1">&#39;Event.System.EventID: =4720&#39;</span>  Security436509324654726509.evtx
+
+</code></pre></td></tr></table>
+</div>
+</div><p>Here we can filter events with the event id 4720.</p>
+<p><img src="/images/windows_logs/sam.jpg"
 	
 	
 	
 	loading="lazy"
 	
-		alt="App Screenshot"
+		alt="sam"
 	
 	
 ></p>
-<p>The IP address is 45.15.156.72</p>
+<p>SAM means security account manager , it is a database that stores accounts on windows systems. Usename is sam md5hash ba0e0cde1bf72c28d435c89a66afc61a.</p>
 <hr>
-<p>Which city is the IP address based in?</p>
-<p>We will use an online IP locator tool:</p>
-<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-37-57.png"
+<h3 id="2-chainsaw-hunt">2. chainsaw hunt</h3>
+<p>file: <a class="link" href="/files/logs.evtx" >here</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Our network got compromised two days ago by an unknown attacker, and we need to get an answer <span class="k">for</span> the following questions:
+
+1. What is the domain<span class="s1">&#39;s SID?
+</span><span class="s1">2. The attacker failed to login to some accounts, What is the attacker&#39;</span>s machine IP address?
+3. What is the workstation<span class="err">&#39;</span>s name that the attacker was using to authenticate with the administrator account?
+
+Flag format: Flag<span class="o">{</span>ANS1_ANS2_ANS3<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>Since this is account failed login it has event id 4776 for failed login from domain controller. The domain controller in this case is HYDRA-DC.MARVEL.local.</p>
+<p>Since chainsaw has rules to detect certain events , you can use the folowing command to hunt for events</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+./chainsaw/chainsaw-gnu hunt -r ./chainsaw/rules/ logs.evtx
+
+</code></pre></td></tr></table>
+</div>
+</div><p>This returns alot of output , but retuns events in a format we can easily comprehend.</p>
+<p><img src="/images/windows_logs/format.jpg"
 	
 	
 	
 	loading="lazy"
 	
-		alt="App Screenshot"
+		alt="format"
 	
 	
 ></p>
-<p>The city is Amsterdam</p>
-<hr>
-<p>How many DNS servers are in the pcap?</p>
-<p>Here we just use the DNS filter in Wireshark:</p>
-<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-39-57.png"
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+./chainsaw/chainsaw-gnu hunt --sigma ./chainsaw/sigma/  --mapping ./chainsaw/mappings/sigma-event-logs-all.yml -r ./chainsaw/rules/lateral_movement/ logs/
+
+</code></pre></td></tr></table>
+</div>
+</div><p>You can use the command above to get more info.
+Now here is where the fun begins.</p>
+<p>From the logs we can see that there are several users lke pbarker,fcasle, Administrator and these avents are have a common ipaddress  &ldquo;192.168.80.128&rdquo;</p>
+<p>If we search for the following users in the sigma output , we can find the sid</p>
+<p>pbarker :   S-1-5-21-271597537-2992796785-3713134209-1105</p>
+<p>fcastle: S-1-5-21-271597537-2992796785-3713134209-1103</p>
+<p>Adminitrator : S-1-5-21-271597537-2992796785-3713134209-500</p>
+<p>The structure of an sid is as follows :</p>
+<p>S-1-5-21-<!-- raw HTML omitted -->-&lt;relative_id&gt;</p>
+<p>Where:</p>
+<p>S: A constant prefix indicating that it is a Security Identifier.</p>
+<p>1: Revision number (currently always 1).</p>
+<p>5: Identifier authority value (the identifier authority for Windows is always 5).</p>
+<p>21: The identifier authority&rsquo;s top-level domain identifier. The actual number may vary depending on the Windows version or configuration but is typically 21 for Windows domains.</p>
+<p><!-- raw HTML omitted -->: The SID for the domain. It is a unique value assigned to each domain by the domain controller during domain creation.</p>
+<p>&lt;relative_id&gt;: A relative identifier that uniquely identifies a specific security principal within the domain. For users and groups, this relative ID is usually the RID (Relative Identifier) assigned by the domain controller.</p>
+<p>so in this case domain sid is &ldquo;S-1-5-21-271597537-2992796785-3713134209&rdquo;</p>
+<p>To get the workstation you can ue the command we used earlier to filter events using event id</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
+./chainsaw/chainsaw-gnu search  -t <span class="s1">&#39;Event.System.EventID: =4776&#39;</span>  logs/ <span class="p">|</span> grep -i workstation
+
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/windows_logs/workstation.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="App Screenshot"
+		alt="workstation"
 	
 	
 ></p>
-<p>The answer is two. There is one with IP xxx.100 and xxx.101</p>
-<hr>
-<p>What is the IP of the NTP server?</p>
-<p>Here we will use the NTP filter in Wireshark:</p>
-<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2008-09-52.png"
+<p>workstation: THEPUNISHER</p>
+<p><img src="/images/windows_logs/thepunisher.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="App Screenshot"
+		alt="workstation"
 	
 	
 ></p>
-<p>The IP address, as you can see above, is 51.145.123.29</p>
-<hr>
-<p>What machine ID was transmitted to the attacker?</p>
-<p>Here we will follow the TCP stream of one of the requests to the attacker as shown below. This time we will use the IP address filter <code>&lt;ip.addr == 45.15.156.72&gt;</code>:</p>
-<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-45-38.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="App Screenshot"
-	
-	
-></p>
-<p>The machine ID is a parameter of the POST request.</p>
-<hr>
-<p>What is the user-agent?</p>
-<p>As you can see from the picture above, the user-agent is &ldquo;x&rdquo;</p>
-<hr>
-<p>What was the MAC address of the compromised machine?</p>
-<p>We just have to double click on one of the TCP packets between the attacker and compromised machine as shown below. The MAC address is on the blue line I have highlighted:</p>
-<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-50-18.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="App Screenshot"
-	
-	
-></p>
-<hr>
-<p>What email address is the registrar of the IP address?</p>
-<p>Here we will conduct a WHOIS search on the IP address. To make it even easier, we will combine it with a grep filter for the @ symbol, which is used in email addresses:</p>
-<p><img src="/images/wireshark/Screenshot%20from%202023-03-01%2007-53-54.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="App Screenshot"
-	
-	
-></p>
-<hr>
-<h4 id="demo-2">DEMO 2</h4>
-<p>Scrolling through the pcap, you can see weird filenames ending in .ts. I googled this and found out that it is a file extension for video files.</p>
-<p>To extract files, you will first have to identify the stream of the files you want to extract. In this case, it&rsquo;s stream 3. Select packet &gt; right click &gt; follow TCP stream.</p>
-<p>You can move through subsequent streams by using the stream buttons:</p>
-<p><img src="/images/wireshark/stream.jpg"
-	
-	
-	
-	loading="lazy"
-	
-		alt="stream"
-	
-	
-></p>
-<p>You now have to export the stream to a file. In my case, I called the file filtered.pcapng:</p>
-<p><img src="/images/wireshark/export.jpg"
-	
-	
-	
-	loading="lazy"
-	
-		alt="export"
-	
-	
-></p>
-<p>Open the filtered.pcapng in Wireshark. Go to File &gt; Export Objects &gt; HTTP:</p>
-<p><img src="/images/wireshark/objects.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="objects"
-	
-	
-></p>
-<p>You can click on each and then save. The resulting files can be opened with any video player. The flag is in WyK2SW5mcYDArna2IlwZ4C4SwDjZ717a5.ts.</p>
-<hr>
-<p>The above challenges are a good entry to learning to use Wireshark and understanding networking.</p>
+<p>flag is Flag{S-1-5-21-271597537-2992796785-3713134209-500_192.168.80.128_THEPUNISHER}</p>
 
 </section>
 
@@ -613,12 +607,12 @@ if (!doNotTrack) {
             
                 
 <article class="">
-    <a href="/p/windows-events-and-log-analysis/">
+    <a href="/p/packet-analysis-using-wireshark/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Windows events and log analysis</h2>
+            <h2 class="article-title">Packet analysis using Wireshark</h2>
         </div>
     </a>
 </article>
