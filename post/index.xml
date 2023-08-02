@@ -67,6 +67,7 @@ These logs silently record system events, security incidents, and user interacti
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;SAM means security account manager , it is a database that stores accounts on windows systems. Usename is sam md5hash ba0e0cde1bf72c28d435c89a66afc61a.&lt;/p&gt;
+&lt;p&gt;flag{ba0e0cde1bf72c28d435c89a66afc61a}&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;2-chainsaw-hunt&#34;&gt;2. chainsaw hunt&lt;/h3&gt;
 &lt;p&gt;file &amp;raquo;&amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/logs.evtx&#34; &gt;here&lt;/a&gt;&lt;/p&gt;
