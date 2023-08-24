@@ -126,13 +126,13 @@ Now here is where the fun begins.&lt;/p&gt;
 &lt;p&gt;fcastle: S-1-5-21-271597537-2992796785-3713134209-1103&lt;/p&gt;
 &lt;p&gt;Adminitrator : S-1-5-21-271597537-2992796785-3713134209-500&lt;/p&gt;
 &lt;p&gt;The structure of an sid is as follows :&lt;/p&gt;
-&lt;p&gt;S-1-5-21-&lt;!-- raw HTML omitted --&gt;-&amp;lt;relative_id&amp;gt;&lt;/p&gt;
+&lt;p&gt;S-1-5-21-&lt;domain&gt;-&amp;lt;relative_id&amp;gt;&lt;/p&gt;
 &lt;p&gt;Where:&lt;/p&gt;
 &lt;p&gt;S: A constant prefix indicating that it is a Security Identifier.&lt;/p&gt;
 &lt;p&gt;1: Revision number (currently always 1).&lt;/p&gt;
 &lt;p&gt;5: Identifier authority value (the identifier authority for Windows is always 5).&lt;/p&gt;
 &lt;p&gt;21: The identifier authority&amp;rsquo;s top-level domain identifier. The actual number may vary depending on the Windows version or configuration but is typically 21 for Windows domains.&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;: The SID for the domain. It is a unique value assigned to each domain by the domain controller during domain creation.&lt;/p&gt;
+&lt;p&gt;&lt;domain&gt;: The SID for the domain. It is a unique value assigned to each domain by the domain controller during domain creation.&lt;/p&gt;
 &lt;p&gt;&amp;lt;relative_id&amp;gt;: A relative identifier that uniquely identifies a specific security principal within the domain. For users and groups, this relative ID is usually the RID (Relative Identifier) assigned by the domain controller.&lt;/p&gt;
 &lt;p&gt;so in this case domain sid is &amp;ldquo;S-1-5-21-271597537-2992796785-3713134209&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;To get the workstation you can ue the command we used earlier to filter events using event id&lt;/p&gt;
@@ -1676,16 +1676,9 @@ chown www-data:www-data -R /var/www/html
 &lt;li&gt;🌱 I am a university cybersecurity student and a person with passion in  cybersecurity and tech in general&lt;/li&gt;
 &lt;li&gt;📫 You can email me at : &lt;a class=&#34;link&#34; href=&#34;mailto:abelbiketi@gmail.com&#34; &gt;abelbiketi@gmail.com&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://github.com/saadeghi/saadeghi/blob/master/dino.gif&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;dino&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.buymeacoffee.com/f0rk3b0mb&#34;&gt; &lt;img align=&#34;left&#34; src=&#34;https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png&#34; height=&#34;50&#34; width=&#34;210&#34; alt=&#34;f0rk3b0mb&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/br&gt;
+&lt;/br&gt;
 &lt;p&gt;&lt;img src=&#34;https://profile-counter.glitch.me/f0rk3b0mb/count.svg&#34;
 	
 	

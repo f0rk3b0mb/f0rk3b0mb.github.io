@@ -537,13 +537,13 @@ Now here is where the fun begins.</p>
 <p>fcastle: S-1-5-21-271597537-2992796785-3713134209-1103</p>
 <p>Adminitrator : S-1-5-21-271597537-2992796785-3713134209-500</p>
 <p>The structure of an sid is as follows :</p>
-<p>S-1-5-21-<!-- raw HTML omitted -->-&lt;relative_id&gt;</p>
+<p>S-1-5-21-<domain>-&lt;relative_id&gt;</p>
 <p>Where:</p>
 <p>S: A constant prefix indicating that it is a Security Identifier.</p>
 <p>1: Revision number (currently always 1).</p>
 <p>5: Identifier authority value (the identifier authority for Windows is always 5).</p>
 <p>21: The identifier authority&rsquo;s top-level domain identifier. The actual number may vary depending on the Windows version or configuration but is typically 21 for Windows domains.</p>
-<p><!-- raw HTML omitted -->: The SID for the domain. It is a unique value assigned to each domain by the domain controller during domain creation.</p>
+<p><domain>: The SID for the domain. It is a unique value assigned to each domain by the domain controller during domain creation.</p>
 <p>&lt;relative_id&gt;: A relative identifier that uniquely identifies a specific security principal within the domain. For users and groups, this relative ID is usually the RID (Relative Identifier) assigned by the domain controller.</p>
 <p>so in this case domain sid is &ldquo;S-1-5-21-271597537-2992796785-3713134209&rdquo;</p>
 <p>To get the workstation you can ue the command we used earlier to filter events using event id</p>
