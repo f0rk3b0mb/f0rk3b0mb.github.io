@@ -3,11 +3,11 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Shehacks intervasity ctf 2023 This ctf onsite at usiu , nairobi . I particpated online.
  web category
- Graph1 This was an easy chalenge that teated knowledge in graphql queries
+ Graph1 This was an easy chalenge that tested knowledge in graphql queries
 the graphql endpoint was located at /graphql.
 for more info on how to enumerate graphql &amp;raquo; here
 So basicaly if we send the query below we get introspection on the grapql endpoint
-1 2  {__schema{types{name,fields{name}}}}   remember to set the content-type to &amp;ldquo;appication/graphql&amp;rdquo; when sending the request'>
+1 2  {__schema{types{name,fields{name}}}}   You can then use &amp;raquo; here to visualize the schema'>
 <title>Shehacks_intrervasity_2023</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/shehacks_intrervasity_2023/'>
@@ -15,22 +15,22 @@ So basicaly if we send the query below we get introspection on the grapql endpoi
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Shehacks_intrervasity_2023'>
 <meta property='og:description' content='Shehacks intervasity ctf 2023 This ctf onsite at usiu , nairobi . I particpated online.
  web category
- Graph1 This was an easy chalenge that teated knowledge in graphql queries
+ Graph1 This was an easy chalenge that tested knowledge in graphql queries
 the graphql endpoint was located at /graphql.
 for more info on how to enumerate graphql &amp;raquo; here
 So basicaly if we send the query below we get introspection on the grapql endpoint
-1 2  {__schema{types{name,fields{name}}}}   remember to set the content-type to &amp;ldquo;appication/graphql&amp;rdquo; when sending the request'>
+1 2  {__schema{types{name,fields{name}}}}   You can then use &amp;raquo; here to visualize the schema'>
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/shehacks_intrervasity_2023/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-09-22T14:29:32&#43;03:00'/><meta property='article:modified_time' content='2023-09-22T14:29:32&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/shctf.jpg' />
 <meta name="twitter:title" content="Shehacks_intrervasity_2023">
 <meta name="twitter:description" content="Shehacks intervasity ctf 2023 This ctf onsite at usiu , nairobi . I particpated online.
  web category
- Graph1 This was an easy chalenge that teated knowledge in graphql queries
+ Graph1 This was an easy chalenge that tested knowledge in graphql queries
 the graphql endpoint was located at /graphql.
 for more info on how to enumerate graphql &amp;raquo; here
 So basicaly if we send the query below we get introspection on the grapql endpoint
-1 2  {__schema{types{name,fields{name}}}}   remember to set the content-type to &amp;ldquo;appication/graphql&amp;rdquo; when sending the request"><meta name="twitter:card" content="summary_large_image">
+1 2  {__schema{types{name,fields{name}}}}   You can then use &amp;raquo; here to visualize the schema"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/shctf.jpg' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
@@ -451,7 +451,7 @@ if (!doNotTrack) {
 <p>web category</p>
 <hr>
 <h2 id="graph1">Graph1</h2>
-<p>This was an easy chalenge that teated knowledge in graphql queries</p>
+<p>This was an easy chalenge that tested knowledge in graphql queries</p>
 <p>the graphql endpoint was located at /graphql.</p>
 <p>for more info on how to enumerate graphql &raquo; <a class="link" href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/graphql"  target="_blank" rel="noopener"
     >here</a></p>
@@ -466,7 +466,19 @@ if (!doNotTrack) {
 
 </code></pre></td></tr></table>
 </div>
-</div><p>remember to set the content-type to &ldquo;appication/graphql&rdquo; when sending the request</p>
+</div><p>You can then use &raquo; <a class="link" href="http://nathanrandal.com/graphql-visualizer/"  target="_blank" rel="noopener"
+    >here</a> to visualize  the schema</p>
+<p><img src="/images/shctf/graphql-erd.svg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="graphql"
+	
+	
+></p>
+<p>remember to set the content-type to &ldquo;appication/graphql&rdquo; when sending the request</p>
 <p>From this we find out that there is a field known as getFlag. We can then run the query below to get the flag . It was base64 encoded , so we decode it to get the flag</p>
 <p><img src="/images/shctf/getflag.png"
 	
