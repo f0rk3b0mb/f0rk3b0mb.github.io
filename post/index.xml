@@ -204,7 +204,8 @@ eyJfdXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0.ZQ59CA.CUKCpa3SPstLemcqmuEDrSqmp
 &lt;hr&gt;
 &lt;h2 id=&#34;snifferdog4&#34;&gt;SnifferDog4&lt;/h2&gt;
 &lt;p&gt;What is the domain SID for 192.168.56.103 shctf{S&amp;hellip;}&lt;/p&gt;
-&lt;p&gt;For this we just use  the filter &amp;ldquo;ip.addr == 192.168.56.103&amp;rdquo; then find &amp;ldquo;S-1-5&amp;rdquo;  this is the format for sid  you can learn more &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;&#34; &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For this we just use  the filter &amp;ldquo;ip.addr == 192.168.56.103&amp;rdquo; then find &amp;ldquo;S-1-5&amp;rdquo;  this is the format for sid  you can learn more &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/#2-chainsaw-hunt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/shctf/sid.png&#34;
 	
 	
