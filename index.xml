@@ -2027,7 +2027,16 @@ chown www-data:www-data -R /var/www/html
 &lt;script src=&#34;https://tryhackme.com/badge/1265805&#34;&gt;&lt;/script&gt;
 &lt;/br&gt;
 &lt;/br&gt;
-![Visitor Count](https://profile-counter.glitch.me/f0rk3b0mb/count.svg)
+&lt;p&gt;&lt;img src=&#34;https://profile-counter.glitch.me/f0rk3b0mb/count.svg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Visitor Count&#34;
+	
+	
+&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
