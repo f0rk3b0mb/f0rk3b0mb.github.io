@@ -6,7 +6,15 @@
         <description>Recent content in Categories on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 27 Oct 2023 08:52:15 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 25 Nov 2023 08:48:38 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>reads</title>
+        <link>https://f0rk3b0mb.github.io/categories/reads/</link>
+        <pubDate>Sat, 25 Nov 2023 08:48:38 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/categories/reads/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>ctf writeups</title>
         <link>https://f0rk3b0mb.github.io/categories/writeups/</link>
         <pubDate>Fri, 27 Oct 2023 08:52:15 +0300</pubDate>
@@ -20,14 +28,6 @@
         <pubDate>Wed, 25 Oct 2023 13:12:22 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/categories/htb-boxes/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>reads</title>
-        <link>https://f0rk3b0mb.github.io/categories/reads/</link>
-        <pubDate>Mon, 31 Jul 2023 16:18:16 +0300</pubDate>
-        
-        <guid>https://f0rk3b0mb.github.io/categories/reads/</guid>
         <description></description>
         </item>
         
