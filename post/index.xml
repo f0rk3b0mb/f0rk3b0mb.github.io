@@ -15,6 +15,7 @@
         <description>&lt;img src="https://f0rk3b0mb.github.io/cover/wazuh.png" alt="Featured image of post Thm_wazuh" /&gt;&lt;h2 id=&#34;wazuh&#34;&gt;Wazuh&lt;/h2&gt;
 &lt;p&gt;This is  a writeup of Wazuh module on tryhackme. This is in the SOC Level 1 path.
 ENjoy :)&lt;/p&gt;
+&lt;p&gt;Wazuh is  an opensource XDR and SIEM service&lt;/p&gt;
 &lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
