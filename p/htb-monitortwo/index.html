@@ -17,7 +17,8 @@ As always we begin with a port scan
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/htb-monitortwo/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-06-02T16:31:02&#43;03:00'/><meta property='article:modified_time' content='2023-06-02T16:31:02&#43;03:00'/>
-<meta name="twitter:title" content="HTB Monitortwo">
+<meta name="twitter:site" content="@f0rk3b0mb">
+    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="HTB Monitortwo">
 <meta name="twitter:description" content="HTB monitortwo writeup categoty : web
 difficulty : easy
 As always we begin with a port scan
@@ -663,6 +664,48 @@ chown www-data:www-data -R /var/www/html
      
     
         
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "f0rk3b0mb" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
     
 
     <footer class="site-footer">
