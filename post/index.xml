@@ -12,7 +12,7 @@
         <pubDate>Sun, 03 Dec 2023 11:56:27 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/thm_splunk/</guid>
-        <description>&lt;h2 id=&#34;thm-investigating-with-splunk&#34;&gt;Thm Investigating with splunk&lt;/h2&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/thm.svg" alt="Featured image of post Thm_splunk" /&gt;&lt;h2 id=&#34;thm-investigating-with-splunk&#34;&gt;Thm Investigating with splunk&lt;/h2&gt;
 &lt;p&gt;This room is for pactice on the Jnuior Penetration tester path on TryHackMe &amp;raquo;&amp;gt; &lt;a class=&#34;link&#34; href=&#34;https://tryhackme.com/room/investigatingwithsplunk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -202,7 +202,7 @@ ans: hxxp[://]10[.]10[.]10[.]5/news[.]php
         <pubDate>Sat, 25 Nov 2023 08:48:38 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/thm_wazuh/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/wazuh.png" alt="Featured image of post Thm_wazuh" /&gt;&lt;h2 id=&#34;wazuh&#34;&gt;Wazuh&lt;/h2&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/thm.svg" alt="Featured image of post Thm_wazuh" /&gt;&lt;h2 id=&#34;wazuh&#34;&gt;Wazuh&lt;/h2&gt;
 &lt;p&gt;This is  a writeup of Wazuh module on tryhackme. This is in the SOC Level 1 path.   &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://tryhackme.com/room/wazuhct&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;
 ENjoy :)&lt;/p&gt;
@@ -421,7 +421,7 @@ agent-001
         <pubDate>Fri, 27 Oct 2023 08:52:15 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/hack_the_boo2023/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/hackthebox.jpeg" alt="Featured image of post Hack_the_boo2023" /&gt;&lt;h2 id=&#34;hackthebox---hack-the-boo-2023-writeup&#34;&gt;Hackthebox - Hack the boo 2023 writeup&lt;/h2&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/htb.svg" alt="Featured image of post Hack_the_boo2023" /&gt;&lt;h2 id=&#34;hackthebox---hack-the-boo-2023-writeup&#34;&gt;Hackthebox - Hack the boo 2023 writeup&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;hauntmart&#34;&gt;HauntMart&lt;/h3&gt;
 &lt;p&gt;Category: web
@@ -576,7 +576,7 @@ http://127.0.1.3:1337/api/addAdmin?username&lt;span class=&#34;o&#34;&gt;=&lt;/s
         <pubDate>Wed, 25 Oct 2023 13:12:22 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/thm_owasp/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/tryhackme.png" alt="Featured image of post Thm_owasp" /&gt;&lt;h2 id=&#34;thm-owasp&#34;&gt;Thm owasp&lt;/h2&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/thm.svg" alt="Featured image of post Thm_owasp" /&gt;&lt;h2 id=&#34;thm-owasp&#34;&gt;Thm owasp&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;command-injection-practical&#34;&gt;Command Injection Practical&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1062,7 +1062,7 @@ brute force
         <pubDate>Mon, 09 Oct 2023 16:06:15 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/blackhat_mea_2023/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/blackhat.png" alt="Featured image of post Blackhat_mea_2023" /&gt;&lt;h1 id=&#34;blackhat-mea-2023-ctf-writeup&#34;&gt;Blackhat Mea 2023 ctf writeup&lt;/h1&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/bh.png" alt="Featured image of post Blackhat_mea_2023" /&gt;&lt;h1 id=&#34;blackhat-mea-2023-ctf-writeup&#34;&gt;Blackhat Mea 2023 ctf writeup&lt;/h1&gt;
 &lt;p&gt;We participated this ctf as Chasing X fr334aks X L3v3l 6  and managed to get pos 178. It wasn&amp;rsquo;t easy. I Managed to solve the web challenge below.&lt;/p&gt;
 &lt;h2 id=&#34;authy&#34;&gt;Authy&lt;/h2&gt;
 &lt;p&gt;For this challenge we are provided with an api endpoint and challenge source&lt;/p&gt;
@@ -1192,7 +1192,7 @@ curl -X POST -H &lt;span class=&#34;s2&#34;&gt;&amp;#34;Content-Type: applicatio
         <pubDate>Fri, 22 Sep 2023 14:29:32 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/shehacks_intrervasity_2023/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/shctf.jpg" alt="Featured image of post Shehacks_intrervasity_2023" /&gt;&lt;h3 id=&#34;shehacks-intervasity-ctf-2023&#34;&gt;Shehacks intervasity ctf 2023&lt;/h3&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/shehacks.png" alt="Featured image of post Shehacks_intrervasity_2023" /&gt;&lt;h3 id=&#34;shehacks-intervasity-ctf-2023&#34;&gt;Shehacks intervasity ctf 2023&lt;/h3&gt;
 &lt;p&gt;This ctf onsite at usiu , nairobi . I particpated online.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;web category&lt;/p&gt;
@@ -1406,7 +1406,7 @@ eyJfdXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6ImFkbWluIn0.ZQ59CA.CUKCpa3SPstLemcqmuEDrSqmp
         <pubDate>Mon, 31 Jul 2023 16:18:16 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/windows-events-and-log-analysis/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/windows_logs.avif" alt="Featured image of post Windows events and log analysis" /&gt;&lt;p&gt;Windows event log analysis is an important skill in threat hunting.
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/4020769.jpg" alt="Featured image of post Windows events and log analysis" /&gt;&lt;p&gt;Windows event log analysis is an important skill in threat hunting.
 These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis&lt;/p&gt;
 &lt;p&gt;Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/WithSecureLabs/chainsaw&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -1572,7 +1572,7 @@ Now here is where the fun begins.&lt;/p&gt;
         <pubDate>Sun, 23 Jul 2023 12:41:18 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/imaginaryctf2023/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/ictf_banner.png" alt="Featured image of post ImaginaryCTF2023" /&gt;&lt;h3 id=&#34;imaginaryctf&#34;&gt;ImaginaryCTF&lt;/h3&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/imaginary_ctf.jpg" alt="Featured image of post ImaginaryCTF2023" /&gt;&lt;h3 id=&#34;imaginaryctf&#34;&gt;ImaginaryCTF&lt;/h3&gt;
 &lt;h4 id=&#34;imaginaryctf-web-writeups&#34;&gt;Imaginaryctf web writeups&lt;/h4&gt;
 &lt;hr&gt;
 &lt;h4 id=&#34;idoriot&#34;&gt;Idoriot&lt;/h4&gt;
@@ -1917,7 +1917,7 @@ pwhash,username
         <pubDate>Fri, 14 Jul 2023 11:47:02 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/packet-analysis-using-wireshark/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/packet_analysis.avif" alt="Featured image of post Packet analysis using Wireshark" /&gt;&lt;h3 id=&#34;wireshark-packet-analysis-basic&#34;&gt;Wireshark packet analysis (basic)&lt;/h3&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/5613.jpg" alt="Featured image of post Packet analysis using Wireshark" /&gt;&lt;h3 id=&#34;wireshark-packet-analysis-basic&#34;&gt;Wireshark packet analysis (basic)&lt;/h3&gt;
 &lt;p&gt;To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/capture.pcap&#34; &gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;You can also download this &amp;raquo;  &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/strom.pcapng&#34; &gt;here&lt;/a&gt;. I will use this pcap to demonstrate how to extract files from captured network traffic.&lt;/p&gt;
 &lt;h4 id=&#34;demo-1&#34;&gt;DEMO 1&lt;/h4&gt;
@@ -2546,7 +2546,7 @@ where D is any number between 1-9
         <pubDate>Fri, 09 Jun 2023 17:22:15 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/htb-pc/</guid>
-        <description>&lt;h3 id=&#34;htb-pc-writeup&#34;&gt;htb pc writeup&lt;/h3&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/htb.svg" alt="Featured image of post HTB PC" /&gt;&lt;h3 id=&#34;htb-pc-writeup&#34;&gt;htb pc writeup&lt;/h3&gt;
 &lt;p&gt;category: web&lt;/p&gt;
 &lt;p&gt;difficulty: easy&lt;/p&gt;
 &lt;p&gt;Hello, and welcome to another walkthrough of a htb machine.&lt;/p&gt;
@@ -2761,7 +2761,7 @@ Since we dont have login creds , I searched for exploits aganist pyload  and luc
         <pubDate>Fri, 02 Jun 2023 16:31:02 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/htb-monitortwo/</guid>
-        <description>&lt;h4 id=&#34;htb-monitortwo-writeup&#34;&gt;HTB monitortwo writeup&lt;/h4&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/htb.svg" alt="Featured image of post HTB Monitortwo" /&gt;&lt;h4 id=&#34;htb-monitortwo-writeup&#34;&gt;HTB monitortwo writeup&lt;/h4&gt;
 &lt;p&gt;categoty : web&lt;/p&gt;
 &lt;p&gt;difficulty : easy&lt;/p&gt;
 &lt;p&gt;As always we begin with a port scan&lt;/p&gt;
@@ -2945,7 +2945,7 @@ chown www-data:www-data -R /var/www/html
         <pubDate>Wed, 31 May 2023 12:59:47 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/htb-cyberapocalypse-2023/</guid>
-        <description>&lt;p&gt;check it out on my github &amp;raquo;  &lt;a class=&#34;link&#34; href=&#34;https://github.com/f0rk3b0mb/htb-cyberapocalypse-2023-writeup&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/ca-logo-2023.webp" alt="Featured image of post htb cyberapocalypse 2023" /&gt;&lt;p&gt;check it out on my github &amp;raquo;  &lt;a class=&#34;link&#34; href=&#34;https://github.com/f0rk3b0mb/htb-cyberapocalypse-2023-writeup&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
@@ -2955,7 +2955,7 @@ chown www-data:www-data -R /var/www/html
         <pubDate>Sun, 21 May 2023 12:44:03 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/deadsec-2023/</guid>
-        <description>&lt;h3 id=&#34;xee1&#34;&gt;xee1&lt;/h3&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/deadsec.jpeg" alt="Featured image of post Deadsec 2023" /&gt;&lt;h3 id=&#34;xee1&#34;&gt;xee1&lt;/h3&gt;
 &lt;p&gt;category: web&lt;/p&gt;
 &lt;h4 id=&#34;solution&#34;&gt;solution&lt;/h4&gt;
 &lt;p&gt;From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field.&lt;/p&gt;
