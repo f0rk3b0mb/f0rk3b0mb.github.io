@@ -12,7 +12,7 @@
         <pubDate>Sat, 06 Jan 2024 18:29:32 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/irisctf_whats_my_password/</guid>
-        <description>&lt;h3 id=&#34;whats-my-password-solve-script&#34;&gt;Whats my password solve script&lt;/h3&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/iris.png" alt="Featured image of post Irisctf_whats_my_password" /&gt;&lt;h3 id=&#34;whats-my-password-solve-script&#34;&gt;Whats my password solve script&lt;/h3&gt;
 &lt;p&gt;category : web
 difficulty: easy&lt;/p&gt;
 &lt;p&gt;Vulnerability is error based blind sqli&lt;/p&gt;
@@ -80,7 +80,7 @@ difficulty: easy&lt;/p&gt;
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;####flag: irisctf{my_p422W0RD_1S_SQl1}&lt;/p&gt;
+&lt;/div&gt;&lt;h4 id=&#34;flag-irisctfmy_p422w0rd_1s_sql1&#34;&gt;flag: irisctf{my_p422W0RD_1S_SQl1}&lt;/h4&gt;
 </description>
         </item>
         <item>

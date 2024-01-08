@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://f0rk3b0mb.github.io/categories/</loc>
+    <lastmod>2024-01-06T18:29:32+03:00</lastmod>
+  </url><url>
+    <loc>https://f0rk3b0mb.github.io/categories/writeups/</loc>
+    <lastmod>2024-01-06T18:29:32+03:00</lastmod>
+  </url><url>
     <loc>https://f0rk3b0mb.github.io/</loc>
     <lastmod>2024-01-06T18:29:32+03:00</lastmod>
   </url><url>
@@ -11,9 +17,6 @@
     <loc>https://f0rk3b0mb.github.io/post/</loc>
     <lastmod>2024-01-06T18:29:32+03:00</lastmod>
   </url><url>
-    <loc>https://f0rk3b0mb.github.io/categories/</loc>
-    <lastmod>2023-12-03T11:56:27+03:00</lastmod>
-  </url><url>
     <loc>https://f0rk3b0mb.github.io/categories/thm-boxes/</loc>
     <lastmod>2023-12-03T11:56:27+03:00</lastmod>
   </url><url>
@@ -22,9 +25,6 @@
   </url><url>
     <loc>https://f0rk3b0mb.github.io/p/thm_wazuh/</loc>
     <lastmod>2023-11-25T08:48:38+03:00</lastmod>
-  </url><url>
-    <loc>https://f0rk3b0mb.github.io/categories/writeups/</loc>
-    <lastmod>2023-10-27T08:52:15+03:00</lastmod>
   </url><url>
     <loc>https://f0rk3b0mb.github.io/p/hack_the_boo2023/</loc>
     <lastmod>2023-10-27T08:52:15+03:00</lastmod>
