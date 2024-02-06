@@ -6,7 +6,336 @@
         <description>Recent content in Posts on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 20 Jan 2024 22:14:59 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 06 Feb 2024 15:57:25 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Soc_analyst_lab</title>
+        <link>https://f0rk3b0mb.github.io/p/soc_analyst_lab/</link>
+        <pubDate>Tue, 06 Feb 2024 15:57:25 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/soc_analyst_lab/</guid>
+        <description>&lt;h3 id=&#34;soc-lab-setup&#34;&gt;SOC Lab Setup&lt;/h3&gt;
+&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
+&lt;p&gt;This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.&lt;/p&gt;
+&lt;p&gt;As is did this i followed steps from this blog post &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://blog.ecapuano.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt; . Credits!!&lt;/p&gt;
+&lt;h4 id=&#34;summary&#34;&gt;Summary&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Setup&lt;/li&gt;
+&lt;li&gt;Intrusion&lt;/li&gt;
+&lt;li&gt;Blocking attacks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;setup&#34;&gt;Setup&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Setup of vms(ubuntu server and windows)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;NOTE: im using a computer with the following specs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;8gb RAM&lt;/li&gt;
+&lt;li&gt;intel i5&lt;/li&gt;
+&lt;li&gt;500gb hard disk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You might want to allocate different amount of resources for your vms depending on the specs of your hardware. As for me my specs constrained me , my vms were slow esp the windows vm. I allocated 2gb  for the windows vm and 1gb for the ubuntu server.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/ubuntu.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ubuntu&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/windows.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;windows&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Installing of limacharlie sensor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;LimaCharlie is a very powerful “SecOps Cloud Platform” . Check it out &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://limacharlie.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C2 (command and control)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For the C2  i used sliver-server  by bishop fox&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Sliver is an open source cross-platform adversary emulation/red team framework, it can be used by organizations of all sizes to perform security testing
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;I created a C2 payload and dropped it in the windows vm.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/upload.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;upload&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Using the implant we  can access the windows vm from the ubuntu server attack machine.&lt;/p&gt;
+&lt;p&gt;Below is a list of running processes&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;82
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;83
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;84
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;85
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;89
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;90
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;91
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;92
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;93
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;94
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;95
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;96
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;97
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;.
+├── [0]  [System Process]
+│   └── [4]  System
+│       ├── [1444]  Memory Compression
+│       ├── [72]  Registry
+│       └── [528]  smss.exe
+├── [632]  csrss.exe
+├── [732]  csrss.exe
+├── [776]  wininit.exe
+│   ├── [864]  services.exe
+│   │   ├── [2160]  Sysmon64.exe
+│   │   ├── [3708]  svchost.exe
+│   │   ├── [1348]  svchost.exe
+│   │   ├── [1508]  svchost.exe
+│   │   ├── [1668]  svchost.exe
+│   │   │   └── [5768]  audiodg.exe
+│   │   ├── [2152]  vm3dservice.exe
+│   │   │   └── [2284]  vm3dservice.exe
+│   │   ├── [1128]  svchost.exe
+│   │   │   ├── [648]  taskhostw.exe
+│   │   │   ├── [1960]  sihost.exe
+│   │   │   ├── [2436]  CompatTelRunner.exe
+│   │   │   │   ├── [2488]  conhost.exe
+│   │   │   │   └── [1236]  CompatTelRunner.exe
+│   │   │   ├── [2520]  MicrosoftEdgeUpdate.exe
+│   │   │   └── [3460]  taskhostw.exe
+│   │   ├── [2124]  vmtoolsd.exe
+│   │   ├── [4368]  svchost.exe
+│   │   ├── [3500]  SecurityHealthService.exe
+│   │   ├── [6548]  svchost.exe
+│   │   ├── [1636]  svchost.exe
+│   │   ├── [1772]  svchost.exe
+│   │   ├── [1788]  svchost.exe
+│   │   ├── [3100]  SgrmBroker.exe
+│   │   ├── [1304]  svchost.exe
+│   │   ├── [2168]  VGAuthService.exe
+│   │   ├── [2132]  rphcp.exe
+│   │   ├── [628]  svchost.exe
+│   │   ├── [896]  spoolsv.exe
+│   │   ├── [992]  svchost.exe
+│   │   │   ├── [1284]  ShellExperienceHost.exe
+│   │   │   ├── [1580]  RuntimeBroker.exe
+│   │   │   ├── [3240]  BackgroundTransferHost.exe
+│   │   │   ├── [4376]  backgroundTaskHost.exe
+│   │   │   ├── [5572]  RuntimeBroker.exe
+│   │   │   ├── [740]  unsecapp.exe
+│   │   │   ├── [1156]  dllhost.exe
+│   │   │   ├── [5608]  SearchApp.exe
+│   │   │   ├── [6004]  RuntimeBroker.exe
+│   │   │   ├── [4352]  RuntimeBroker.exe
+│   │   │   ├── [2476]  WmiPrvSE.exe
+│   │   │   ├── [3680]  WmiPrvSE.exe
+│   │   │   ├── [3892]  TextInputHost.exe
+│   │   │   ├── [3932]  StartMenuExperienceHost.exe
+│   │   │   ├── [4488]  MoUsoCoreWorker.exe
+│   │   │   ├── [1256]  RuntimeBroker.exe
+│   │   │   ├── [3552]  smartscreen.exe
+│   │   │   ├── [5064]  SearchApp.exe
+│   │   │   └── [1216]  TiWorker.exe
+│   │   ├── [2984]  dllhost.exe
+│   │   ├── [2092]  TrustedInstaller.exe
+│   │   ├── [2376]  svchost.exe
+│   │   ├── [3912]  SearchIndexer.exe
+│   │   ├── [5652]  svchost.exe
+│   │   ├── [1172]  svchost.exe
+│   │   │   ├── [3152]  ctfmon.exe
+│   │   │   └── [4800]  CompatTelRunner.exe
+│   │   │       └── [2944]  conhost.exe
+│   │   ├── [1520]  svchost.exe
+│   │   ├── [1532]  svchost.exe
+│   │   ├── [1832]  msdtc.exe
+│   │   ├── [736]  svchost.exe
+│   │   ├── [4852]  sppsvc.exe
+│   │   ├── [5172]  svchost.exe
+│   │   ├── [1292]  svchost.exe
+│   │   ├── [1628]  svchost.exe
+│   │   ├── [1640]  svchost.exe
+│   │   └── [2120]  svchost.exe
+│   ├── [876]  lsass.exe
+│   └── [1016]  fontdrvhost.exe
+├── [784]  winlogon.exe
+│   ├── [1008]  fontdrvhost.exe
+│   └── [1040]  dwm.exe
+├── [3328]  explorer.exe
+│   ├── [3512]  SecurityHealthSystray.exe
+│   ├── [3880]  vmtoolsd.exe
+│   ├── [4272]  OneDrive.exe
+│   └── [6984]  cmd.exe
+│       ├── [1696]  CONTINUED_CARRY.exe
+│       └── [3612]  conhost.exe
+├── [6808]  setup.exe
+│   ├── [7032]  setup.exe
+│   └── [3008]  MicrosoftEdgeUpdate.exe
+└── [6952]  Microsoft.SharePoint.exe
+
+⚠️  Security Product(s): Sysmon64, Windows Smart Screen
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Inturn we can observe the malware in the limacharlie telementery. We can detect our maliciuos process apart from the the legitimate processes. we can also view it network connections.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/detection.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;process&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;intrusion&#34;&gt;Intrusion&lt;/h4&gt;
+&lt;p&gt;I can steal creds by dumping lsass.exe from the windows box memory to my attack machine&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/dump.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;dump&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;This will generate telementery in limacharkie that we can search with &amp;ldquo;SENSITIVE_PROCESS_ACCESS&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/detection.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;detection&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;We can create an edr rule to alert once thei type of activity occurs&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/rule.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;detection&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;blocking-attacks&#34;&gt;Blocking attacks&lt;/h4&gt;
+&lt;p&gt;to be continued&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Knightctf_2024</title>
         <link>https://f0rk3b0mb.github.io/p/knightctf_2024/</link>
         <pubDate>Sat, 20 Jan 2024 22:14:59 +0300</pubDate>

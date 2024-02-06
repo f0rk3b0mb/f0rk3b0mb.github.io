@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='SOC Lab Setup Introduction This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.
+As is did this i followed steps from this blog post &amp;raquo; here . Credits!!
+Summary  Setup Intrusion Blocking attacks  Setup  Setup of vms(ubuntu server and windows)  NOTE: im using a computer with the following specs:'>
+<title>Soc_analyst_lab</title>
+
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/soc_analyst_lab/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Soc_analyst_lab'>
+<meta property='og:description' content='SOC Lab Setup Introduction This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.
+As is did this i followed steps from this blog post &amp;raquo; here . Credits!!
+Summary  Setup Intrusion Blocking attacks  Setup  Setup of vms(ubuntu server and windows)  NOTE: im using a computer with the following specs:'>
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/soc_analyst_lab/'>
+<meta property='og:site_name' content='f0rk3b0mb'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-02-06T15:57:25&#43;03:00'/><meta property='article:modified_time' content='2024-02-06T15:57:25&#43;03:00'/>
+<meta name="twitter:site" content="@f0rk3b0mb">
+    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Soc_analyst_lab">
+<meta name="twitter:description" content="SOC Lab Setup Introduction This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.
+As is did this i followed steps from this blog post &amp;raquo; here . Credits!!
+Summary  Setup Intrusion Blocking attacks  Setup  Setup of vms(ubuntu server and windows)  NOTE: im using a computer with the following specs:">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-45FL0WGH80', { 'anonymize_ip': false });
+}
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/profile_huf077503059140d44e06db4f515bdfac7_70175_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😎</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">f0rk3b0mb</a></h1>
+            <h2 class="site-description">Ctf player p3rf3ctr00t_ke | Cybersecurity | Infosec | web_security_analyst</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://discordapp.com/users/888054460956422195'
+                        target="_blank"
+                        title="discord"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="UTF-8"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+    <g>
+        <path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" fill="#5865F2" fill-rule="nonzero">
+</path>
+    </g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/f0rk3b0mb'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://ke.linkedin.com/in/abel-biketi-261212257'
+                        target="_blank"
+                        title="linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <title>LinkedIn-color</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+
+</defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Color-" transform="translate(-702.000000, -265.000000)" fill="#007EBB">
+            <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" id="LinkedIn">
+
+</path>
+        </g>
+    </g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/f0rk3b0mb'
+                        target="_blank"
+                        title="twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>about</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#soc-lab-setup">SOC Lab Setup</a>
+          <ol>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#setup">Setup</a></li>
+            <li><a href="#intrusion">Intrusion</a></li>
+            <li><a href="#blocking-attacks">Blocking attacks</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/soc_analyst_lab/">Soc_analyst_lab</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 06, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h3 id="soc-lab-setup">SOC Lab Setup</h3>
+<h4 id="introduction">Introduction</h4>
+<p>This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.</p>
+<p>As is did this i followed steps from this blog post &raquo; <a class="link" href="https://blog.ecapuano.com/"  target="_blank" rel="noopener"
+    >here</a> . Credits!!</p>
+<h4 id="summary">Summary</h4>
+<ul>
+<li>Setup</li>
+<li>Intrusion</li>
+<li>Blocking attacks</li>
+</ul>
+<h4 id="setup">Setup</h4>
+<ul>
+<li>Setup of vms(ubuntu server and windows)</li>
+</ul>
+<p>NOTE: im using a computer with the following specs:</p>
+<ul>
+<li>8gb RAM</li>
+<li>intel i5</li>
+<li>500gb hard disk</li>
+</ul>
+<p>You might want to allocate different amount of resources for your vms depending on the specs of your hardware. As for me my specs constrained me , my vms were slow esp the windows vm. I allocated 2gb  for the windows vm and 1gb for the ubuntu server.</p>
+<p><img src="/images/soc_lab/ubuntu.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="ubuntu"
+	
+	
+></p>
+<p><img src="/images/soc_lab/windows.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="windows"
+	
+	
+></p>
+<ul>
+<li>Installing of limacharlie sensor</li>
+</ul>
+<p>LimaCharlie is a very powerful “SecOps Cloud Platform” . Check it out &raquo; <a class="link" href="https://limacharlie.io/"  target="_blank" rel="noopener"
+    >here</a></p>
+<ul>
+<li>C2 (command and control)</li>
+</ul>
+<p>For the C2  i used sliver-server  by bishop fox</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Sliver is an open source cross-platform adversary emulation/red team framework, it can be used by organizations of all sizes to perform security testing
+
+</code></pre></td></tr></table>
+</div>
+</div><p>I created a C2 payload and dropped it in the windows vm.</p>
+<p><img src="/images/soc_lab/upload.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="upload"
+	
+	
+></p>
+<p>Using the implant we  can access the windows vm from the ubuntu server attack machine.</p>
+<p>Below is a list of running processes</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
+</span><span class="lnt">96
+</span><span class="lnt">97
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">.
+├── [0]  [System Process]
+│   └── [4]  System
+│       ├── [1444]  Memory Compression
+│       ├── [72]  Registry
+│       └── [528]  smss.exe
+├── [632]  csrss.exe
+├── [732]  csrss.exe
+├── [776]  wininit.exe
+│   ├── [864]  services.exe
+│   │   ├── [2160]  Sysmon64.exe
+│   │   ├── [3708]  svchost.exe
+│   │   ├── [1348]  svchost.exe
+│   │   ├── [1508]  svchost.exe
+│   │   ├── [1668]  svchost.exe
+│   │   │   └── [5768]  audiodg.exe
+│   │   ├── [2152]  vm3dservice.exe
+│   │   │   └── [2284]  vm3dservice.exe
+│   │   ├── [1128]  svchost.exe
+│   │   │   ├── [648]  taskhostw.exe
+│   │   │   ├── [1960]  sihost.exe
+│   │   │   ├── [2436]  CompatTelRunner.exe
+│   │   │   │   ├── [2488]  conhost.exe
+│   │   │   │   └── [1236]  CompatTelRunner.exe
+│   │   │   ├── [2520]  MicrosoftEdgeUpdate.exe
+│   │   │   └── [3460]  taskhostw.exe
+│   │   ├── [2124]  vmtoolsd.exe
+│   │   ├── [4368]  svchost.exe
+│   │   ├── [3500]  SecurityHealthService.exe
+│   │   ├── [6548]  svchost.exe
+│   │   ├── [1636]  svchost.exe
+│   │   ├── [1772]  svchost.exe
+│   │   ├── [1788]  svchost.exe
+│   │   ├── [3100]  SgrmBroker.exe
+│   │   ├── [1304]  svchost.exe
+│   │   ├── [2168]  VGAuthService.exe
+│   │   ├── [2132]  rphcp.exe
+│   │   ├── [628]  svchost.exe
+│   │   ├── [896]  spoolsv.exe
+│   │   ├── [992]  svchost.exe
+│   │   │   ├── [1284]  ShellExperienceHost.exe
+│   │   │   ├── [1580]  RuntimeBroker.exe
+│   │   │   ├── [3240]  BackgroundTransferHost.exe
+│   │   │   ├── [4376]  backgroundTaskHost.exe
+│   │   │   ├── [5572]  RuntimeBroker.exe
+│   │   │   ├── [740]  unsecapp.exe
+│   │   │   ├── [1156]  dllhost.exe
+│   │   │   ├── [5608]  SearchApp.exe
+│   │   │   ├── [6004]  RuntimeBroker.exe
+│   │   │   ├── [4352]  RuntimeBroker.exe
+│   │   │   ├── [2476]  WmiPrvSE.exe
+│   │   │   ├── [3680]  WmiPrvSE.exe
+│   │   │   ├── [3892]  TextInputHost.exe
+│   │   │   ├── [3932]  StartMenuExperienceHost.exe
+│   │   │   ├── [4488]  MoUsoCoreWorker.exe
+│   │   │   ├── [1256]  RuntimeBroker.exe
+│   │   │   ├── [3552]  smartscreen.exe
+│   │   │   ├── [5064]  SearchApp.exe
+│   │   │   └── [1216]  TiWorker.exe
+│   │   ├── [2984]  dllhost.exe
+│   │   ├── [2092]  TrustedInstaller.exe
+│   │   ├── [2376]  svchost.exe
+│   │   ├── [3912]  SearchIndexer.exe
+│   │   ├── [5652]  svchost.exe
+│   │   ├── [1172]  svchost.exe
+│   │   │   ├── [3152]  ctfmon.exe
+│   │   │   └── [4800]  CompatTelRunner.exe
+│   │   │       └── [2944]  conhost.exe
+│   │   ├── [1520]  svchost.exe
+│   │   ├── [1532]  svchost.exe
+│   │   ├── [1832]  msdtc.exe
+│   │   ├── [736]  svchost.exe
+│   │   ├── [4852]  sppsvc.exe
+│   │   ├── [5172]  svchost.exe
+│   │   ├── [1292]  svchost.exe
+│   │   ├── [1628]  svchost.exe
+│   │   ├── [1640]  svchost.exe
+│   │   └── [2120]  svchost.exe
+│   ├── [876]  lsass.exe
+│   └── [1016]  fontdrvhost.exe
+├── [784]  winlogon.exe
+│   ├── [1008]  fontdrvhost.exe
+│   └── [1040]  dwm.exe
+├── [3328]  explorer.exe
+│   ├── [3512]  SecurityHealthSystray.exe
+│   ├── [3880]  vmtoolsd.exe
+│   ├── [4272]  OneDrive.exe
+│   └── [6984]  cmd.exe
+│       ├── [1696]  CONTINUED_CARRY.exe
+│       └── [3612]  conhost.exe
+├── [6808]  setup.exe
+│   ├── [7032]  setup.exe
+│   └── [3008]  MicrosoftEdgeUpdate.exe
+└── [6952]  Microsoft.SharePoint.exe
+
+⚠️  Security Product(s): Sysmon64, Windows Smart Screen
+
+</code></pre></td></tr></table>
+</div>
+</div><p>Inturn we can observe the malware in the limacharlie telementery. We can detect our maliciuos process apart from the the legitimate processes. we can also view it network connections.</p>
+<p><img src="/images/soc_lab/detection.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="process"
+	
+	
+></p>
+<h4 id="intrusion">Intrusion</h4>
+<p>I can steal creds by dumping lsass.exe from the windows box memory to my attack machine</p>
+<p><img src="/images/soc_lab/dump.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="dump"
+	
+	
+></p>
+<p>This will generate telementery in limacharkie that we can search with &ldquo;SENSITIVE_PROCESS_ACCESS&rdquo;</p>
+<p><img src="/images/soc_lab/detection.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="detection"
+	
+	
+></p>
+<p>We can create an edr rule to alert once thei type of activity occurs</p>
+<p><img src="/images/soc_lab/rule.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="detection"
+	
+	
+></p>
+<h4 id="blocking-attacks">Blocking attacks</h4>
+<p>to be continued&hellip;</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="f0rk3b0mb/f0rk3b0mb.github.io"
+    data-repo-id="R_kgDOJkJRlQ"
+    data-category="General"
+    data-category-id="DIC_kwDOJkJRlc4CbrS7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="1"
+    data-lang="en"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('1');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2024 f0rk3b0mb
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
