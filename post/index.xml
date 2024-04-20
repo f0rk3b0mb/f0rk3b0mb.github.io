@@ -648,7 +648,7 @@ Nmap done: 1 IP address (1 host up) scanned in 59.76 seconds
         <pubDate>Tue, 06 Feb 2024 15:57:25 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/soc_analyst_lab/</guid>
-        <description>&lt;h3 id=&#34;soc-lab-setup&#34;&gt;SOC Lab Setup&lt;/h3&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/soc_lab.jpg" alt="Featured image of post Soc_analyst_lab" /&gt;&lt;h3 id=&#34;soc-lab-setup&#34;&gt;SOC Lab Setup&lt;/h3&gt;
 &lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
 &lt;p&gt;This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.&lt;/p&gt;
 &lt;p&gt;As is did this i followed steps from this blog post &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://blog.ecapuano.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
