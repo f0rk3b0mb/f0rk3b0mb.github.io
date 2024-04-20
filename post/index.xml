@@ -387,6 +387,8 @@ RUN rm -rf *
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;NOTE: Beyond this point i did after the ctf , i did not solve this one.&lt;/p&gt;
+&lt;p&gt;Official writeup &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/hackthebox/cyber-apocalypse-2024/tree/main/web/%5BEasy%5D%20Testimonial&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/hackthebox/cyber-apocalypse-2024/tree/main/web/%5BEasy%5D%20Testimonial&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -656,6 +658,7 @@ Nmap done: 1 IP address (1 host up) scanned in 59.76 seconds
 &lt;li&gt;Setup&lt;/li&gt;
 &lt;li&gt;Intrusion&lt;/li&gt;
 &lt;li&gt;Blocking attacks&lt;/li&gt;
+&lt;li&gt;Tuning False Positives&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;setup&#34;&gt;Setup&lt;/h4&gt;
 &lt;ul&gt;
@@ -954,7 +957,7 @@ Nmap done: 1 IP address (1 host up) scanned in 59.76 seconds
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;We can create an edr rule to alert once thei type of activity occurs&lt;/p&gt;
+&lt;p&gt;We can create an edr rule to alert once this type of activity occurs&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/rule.png&#34;
 	
 	
@@ -965,8 +968,314 @@ Nmap done: 1 IP address (1 host up) scanned in 59.76 seconds
 	
 	
 &gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;event: SENSITIVE_PROCESS_ACCESS
+op: ends with
+path: event/*/TARGET/FILE_PATH
+value: lsass.exe
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This rule will detect &amp;ldquo;SENSITIVE_PROCEE_ACCESS&amp;rdquo; with process being &amp;ldquo;lsass.exe&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;To respond we use:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;- action: report
+  name: LSASS access
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This will generate a detection report that we can view in the detections menu.&lt;/p&gt;
 &lt;h4 id=&#34;blocking-attacks&#34;&gt;Blocking attacks&lt;/h4&gt;
-&lt;p&gt;to be continued&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Here we are going to craft rules to take action when detections are made&lt;/p&gt;
+&lt;p&gt;in thbis i ran thsi command :&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;vssadmin delete shadows /all
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Which will delete volume shadow copies. This is just an example of a process that may indicate suspicious activity on a system&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/shadow.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;detection&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Then we craft an Response rule:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/vsadmin.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;rule&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;This rule will terminate the parent process when it is detected.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;- action: report
+  name: vss_deletion_kill_it
+- action: task
+  command:
+    - deny_tree
+    - &amp;lt;&amp;lt;routing/parent&amp;gt;&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/worked.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;shell&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;This hung shell is an indication that it worked succesfully&lt;/p&gt;
+&lt;h4 id=&#34;tuning-false-positives&#34;&gt;Tuning False Positives&lt;/h4&gt;
+&lt;p&gt;Here we craft a false positive detection rule. This is whereby we can prevent alerts when normal system processes are run, thus causing alot of noise.&lt;/p&gt;
+&lt;p&gt;I crafted to detect when whoami.exe is run. This is just an example.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;op: and
+rules:
+  - op : is
+    path: cat
+    value: Whoami Utility Execution
+  - op: is
+    path: detect/event/FILE_PATH
+    value: C:\Windows\system32\whoami.exe
+  - op: is
+    path: detect/event/COMMAND_LINE
+    value: &amp;#39;&amp;#34;C:\Windows\system32\whoami.exe&amp;#34;&amp;#39;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;After testing it:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/testing.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;testing&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;It works!!&lt;/p&gt;
+&lt;p&gt;If i run whoami when  the rule is enabled i get no alaert, however whn  i disable it i get an alert.&lt;/p&gt;
+&lt;h4 id=&#34;automated-yara-scanning&#34;&gt;Automated Yara Scanning&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;
+YARA is a tool primarily used for identifying and classifying malware based on textual or binary patterns. It allows researchers and security professionals to craft rules that describe unique characteristics of specific malware families or malicious behaviors.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;There are well crafted rules for sliver (our c2 server) on the internet. We will use this &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://gist.githubusercontent.com/ecapuano/2c59ff1ea354f1aae905d6e12dc8e25b/raw/831d7b7b6c748f05123c6ac1a5144490985a7fe6/sliver.yara&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ule sliver_github_file_paths_function_names {
+  meta:
+    author = &amp;#34;NCSC UK&amp;#34;
+    description = &amp;#34;Detects Sliver Windows and Linux implants based on paths and function names within the binary&amp;#34;
+  strings:
+    $p1 = &amp;#34;/sliver/&amp;#34;
+    $p2 = &amp;#34;sliverpb.&amp;#34;
+    $fn1 = &amp;#34;RevToSelfReq&amp;#34;
+    $fn2 = &amp;#34;ScreenshotReq&amp;#34;
+    $fn3 = &amp;#34;IfconfigReq&amp;#34;
+    $fn4 = &amp;#34;SideloadReq&amp;#34;
+    $fn5 = &amp;#34;InvokeMigrateReq&amp;#34;
+    $fn6 = &amp;#34;KillSessionReq&amp;#34;
+    $fn7 = &amp;#34;ImpersonateReq&amp;#34;
+    $fn8 = &amp;#34;NamedPipesReq&amp;#34;
+  condition:
+    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and (all of ($p*) or 3 of ($fn*))
+}
+
+rule sliver_proxy_isNotFound_retn_cmp_uniq {
+  meta:
+    author = &amp;#34;NCSC UK&amp;#34;
+    description = &amp;#34;Detects Sliver implant framework based on some unique CMPs within the Proxy isNotFound function. False positives may occur&amp;#34;
+  strings:
+    $ = {C644241800C381F9B3B5E9B2}
+    $ = {8B481081F90CAED682}
+  condition:
+    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and all of them
+}
+
+rule sliver_nextCCServer_calcs {
+  meta:
+    author = &amp;#34;NCSC UK&amp;#34;
+    description = &amp;#34;Detects Sliver implant framework based on instructions from the nextCCServer function. False positives may occur&amp;#34;
+  strings:
+    $ = {4889D3489948F7F94839CA????48C1E204488B0413488B4C1308}
+  condition:
+    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and all of them
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;We will also need a rule to detect when yara is matched.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;event: YARA_DETECTION
+op: and
+rules:
+  - not: true
+    op: exists
+    path: event/PROCESS/*
+  - op: exists
+    path: event/RULE_NAME
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/yara_console.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;yara_matched&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/yara_detected.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;yara_matched&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;From here we can create rules to automatically scan new executables and those in the downloads directory.&lt;/p&gt;
+&lt;p&gt;With this we can uleash the full power of the EDR to scan and detect malicious processes and files&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Untiol next time!!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/f0rk3b0mb/BIC_defcon31_TTchat/blob/d03d6a5f5ea2f3f7c0d481f44518cd919f128b76/images/download.jpeg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;bye&#34;
+	
+	
+&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
