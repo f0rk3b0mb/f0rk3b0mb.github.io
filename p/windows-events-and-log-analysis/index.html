@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Windows event log analysis is an important skill in threat hunting. These logs silently record system events, security incidents, and user interactions, providing crucial insights into system health and security. In this blog, we will explore the art of Windows Event Log analysis
 Im going to discuss log analysis of windows events in linux, we will be utilizing a tool called chainsaw, you can get it &amp;raquo; here.
@@ -453,13 +453,11 @@ These logs silently record system events, security incidents, and user interacti
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-./chainsaw/chainsaw-gnu search  -t <span class="s1">&#39;Event.System.EventID: =4720&#39;</span>  Security436509324654726509.evtx
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">./chainsaw/chainsaw-gnu search  -t <span class="s1">&#39;Event.System.EventID: =4720&#39;</span>  Security436509324654726509.evtx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Here we can filter events with the event id 4720.</p>
 <p><img src="/images/windows_logs/sam.jpg"
@@ -488,14 +486,14 @@ These logs silently record system events, security incidents, and user interacti
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Our network got compromised two days ago by an unknown attacker, and we need to get an answer <span class="k">for</span> the following questions:
-
-1. What is the domain<span class="s1">&#39;s SID?
-</span><span class="s1">2. The attacker failed to login to some accounts, What is the attacker&#39;</span>s machine IP address?
-3. What is the workstation<span class="err">&#39;</span>s name that the attacker was using to authenticate with the administrator account?
-
-Flag format: Flag<span class="o">{</span>ANS1_ANS2_ANS3<span class="o">}</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Our network got compromised two days ago by an unknown attacker, and we need to get an answer <span class="k">for</span> the following questions:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. What is the domain<span class="s1">&#39;s SID?
+</span></span></span><span class="line"><span class="cl"><span class="s1">2. The attacker failed to login to some accounts, What is the attacker&#39;</span>s machine IP address?
+</span></span><span class="line"><span class="cl">3. What is the workstation<span class="err">&#39;</span>s name that the attacker was using to authenticate with the administrator account?
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Flag format: Flag<span class="o">{</span>ANS1_ANS2_ANS3<span class="o">}</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Since this is account failed login it has event id 4776 for failed login from domain controller. The domain controller in this case is HYDRA-DC.MARVEL.local.</p>
 <p>Since chainsaw has rules to detect certain events , you can use the folowing command to hunt for events</p>
@@ -503,13 +501,11 @@ Flag format: Flag<span class="o">{</span>ANS1_ANS2_ANS3<span class="o">}</span>
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-./chainsaw/chainsaw-gnu hunt -r ./chainsaw/rules/ logs.evtx
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">./chainsaw/chainsaw-gnu hunt -r ./chainsaw/rules/ logs.evtx
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>This returns alot of output , but retuns events in a format we can easily comprehend.</p>
 <p><img src="/images/windows_logs/format.jpg"
@@ -526,13 +522,11 @@ Flag format: Flag<span class="o">{</span>ANS1_ANS2_ANS3<span class="o">}</span>
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-./chainsaw/chainsaw-gnu hunt --sigma ./chainsaw/sigma/  --mapping ./chainsaw/mappings/sigma-event-logs-all.yml -r ./chainsaw/rules/lateral_movement/ logs/
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">./chainsaw/chainsaw-gnu hunt --sigma ./chainsaw/sigma/  --mapping ./chainsaw/mappings/sigma-event-logs-all.yml -r ./chainsaw/rules/lateral_movement/ logs/
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>You can use the command above to get more info.
 Now here is where the fun begins.</p>
@@ -556,13 +550,11 @@ Now here is where the fun begins.</p>
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-./chainsaw/chainsaw-gnu search  -t <span class="s1">&#39;Event.System.EventID: =4776&#39;</span>  logs/ <span class="p">|</span> grep -i workstation
-
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">./chainsaw/chainsaw-gnu search  -t <span class="s1">&#39;Event.System.EventID: =4776&#39;</span>  logs/ <span class="p">|</span> grep -i workstation
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="/images/windows_logs/workstation.png"
 	

