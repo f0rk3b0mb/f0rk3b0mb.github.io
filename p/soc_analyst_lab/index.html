@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='SOC Lab Setup Introduction This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.
 As is did this i followed steps from this blog post &amp;raquo; here . Credits!!
-Summary Setup Intrusion Blocking attacks Tuning False Positives Setup Setup of vms(ubuntu server and windows) NOTE: im using a computer with the following specs:'>
+Summary  Setup Intrusion Blocking attacks Tuning False Positives  Setup  Setup of vms(ubuntu server and windows)  NOTE: im using a computer with the following specs:'>
 <title>Soc_analyst_lab</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/soc_analyst_lab/'>
@@ -11,7 +11,7 @@ Summary Setup Intrusion Blocking attacks Tuning False Positives Setup Setup of v
 <link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Soc_analyst_lab'>
 <meta property='og:description' content='SOC Lab Setup Introduction This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.
 As is did this i followed steps from this blog post &amp;raquo; here . Credits!!
-Summary Setup Intrusion Blocking attacks Tuning False Positives Setup Setup of vms(ubuntu server and windows) NOTE: im using a computer with the following specs:'>
+Summary  Setup Intrusion Blocking attacks Tuning False Positives  Setup  Setup of vms(ubuntu server and windows)  NOTE: im using a computer with the following specs:'>
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/soc_analyst_lab/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-02-06T15:57:25&#43;03:00'/><meta property='article:modified_time' content='2024-02-06T15:57:25&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/soc_lab.jpg' />
@@ -19,7 +19,7 @@ Summary Setup Intrusion Blocking attacks Tuning False Positives Setup Setup of v
     <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Soc_analyst_lab">
 <meta name="twitter:description" content="SOC Lab Setup Introduction This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.
 As is did this i followed steps from this blog post &amp;raquo; here . Credits!!
-Summary Setup Intrusion Blocking attacks Tuning False Positives Setup Setup of vms(ubuntu server and windows) NOTE: im using a computer with the following specs:"><meta name="twitter:card" content="summary_large_image">
+Summary  Setup Intrusion Blocking attacks Tuning False Positives  Setup  Setup of vms(ubuntu server and windows)  NOTE: im using a computer with the following specs:"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/soc_lab.jpg' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
@@ -492,10 +492,12 @@ if (!doNotTrack) {
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Sliver is an open source cross-platform adversary emulation/red team framework, it can be used by organizations of all sizes to perform security testing
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Sliver is an open source cross-platform adversary emulation/red team framework, it can be used by organizations of all sizes to perform security testing
+
+</code></pre></td></tr></table>
 </div>
 </div><p>I created a C2 payload and dropped it in the windows vm.</p>
 <p><img src="/images/soc_lab/upload.png"
@@ -608,105 +610,107 @@ if (!doNotTrack) {
 </span><span class="lnt">94
 </span><span class="lnt">95
 </span><span class="lnt">96
+</span><span class="lnt">97
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.
-</span></span><span class="line"><span class="cl">├── [0]  [System Process]
-</span></span><span class="line"><span class="cl">│   └── [4]  System
-</span></span><span class="line"><span class="cl">│       ├── [1444]  Memory Compression
-</span></span><span class="line"><span class="cl">│       ├── [72]  Registry
-</span></span><span class="line"><span class="cl">│       └── [528]  smss.exe
-</span></span><span class="line"><span class="cl">├── [632]  csrss.exe
-</span></span><span class="line"><span class="cl">├── [732]  csrss.exe
-</span></span><span class="line"><span class="cl">├── [776]  wininit.exe
-</span></span><span class="line"><span class="cl">│   ├── [864]  services.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [2160]  Sysmon64.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [3708]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1348]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1508]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1668]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   │   └── [5768]  audiodg.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [2152]  vm3dservice.exe
-</span></span><span class="line"><span class="cl">│   │   │   └── [2284]  vm3dservice.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1128]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [648]  taskhostw.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [1960]  sihost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [2436]  CompatTelRunner.exe
-</span></span><span class="line"><span class="cl">│   │   │   │   ├── [2488]  conhost.exe
-</span></span><span class="line"><span class="cl">│   │   │   │   └── [1236]  CompatTelRunner.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [2520]  MicrosoftEdgeUpdate.exe
-</span></span><span class="line"><span class="cl">│   │   │   └── [3460]  taskhostw.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [2124]  vmtoolsd.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [4368]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [3500]  SecurityHealthService.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [6548]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1636]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1772]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1788]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [3100]  SgrmBroker.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1304]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [2168]  VGAuthService.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [2132]  rphcp.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [628]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [896]  spoolsv.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [992]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [1284]  ShellExperienceHost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [1580]  RuntimeBroker.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [3240]  BackgroundTransferHost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [4376]  backgroundTaskHost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [5572]  RuntimeBroker.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [740]  unsecapp.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [1156]  dllhost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [5608]  SearchApp.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [6004]  RuntimeBroker.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [4352]  RuntimeBroker.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [2476]  WmiPrvSE.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [3680]  WmiPrvSE.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [3892]  TextInputHost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [3932]  StartMenuExperienceHost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [4488]  MoUsoCoreWorker.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [1256]  RuntimeBroker.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [3552]  smartscreen.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [5064]  SearchApp.exe
-</span></span><span class="line"><span class="cl">│   │   │   └── [1216]  TiWorker.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [2984]  dllhost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [2092]  TrustedInstaller.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [2376]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [3912]  SearchIndexer.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [5652]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1172]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   │   ├── [3152]  ctfmon.exe
-</span></span><span class="line"><span class="cl">│   │   │   └── [4800]  CompatTelRunner.exe
-</span></span><span class="line"><span class="cl">│   │   │       └── [2944]  conhost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1520]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1532]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1832]  msdtc.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [736]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [4852]  sppsvc.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [5172]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1292]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1628]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   ├── [1640]  svchost.exe
-</span></span><span class="line"><span class="cl">│   │   └── [2120]  svchost.exe
-</span></span><span class="line"><span class="cl">│   ├── [876]  lsass.exe
-</span></span><span class="line"><span class="cl">│   └── [1016]  fontdrvhost.exe
-</span></span><span class="line"><span class="cl">├── [784]  winlogon.exe
-</span></span><span class="line"><span class="cl">│   ├── [1008]  fontdrvhost.exe
-</span></span><span class="line"><span class="cl">│   └── [1040]  dwm.exe
-</span></span><span class="line"><span class="cl">├── [3328]  explorer.exe
-</span></span><span class="line"><span class="cl">│   ├── [3512]  SecurityHealthSystray.exe
-</span></span><span class="line"><span class="cl">│   ├── [3880]  vmtoolsd.exe
-</span></span><span class="line"><span class="cl">│   ├── [4272]  OneDrive.exe
-</span></span><span class="line"><span class="cl">│   └── [6984]  cmd.exe
-</span></span><span class="line"><span class="cl">│       ├── [1696]  CONTINUED_CARRY.exe
-</span></span><span class="line"><span class="cl">│       └── [3612]  conhost.exe
-</span></span><span class="line"><span class="cl">├── [6808]  setup.exe
-</span></span><span class="line"><span class="cl">│   ├── [7032]  setup.exe
-</span></span><span class="line"><span class="cl">│   └── [3008]  MicrosoftEdgeUpdate.exe
-</span></span><span class="line"><span class="cl">└── [6952]  Microsoft.SharePoint.exe
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">⚠️  Security Product(s): Sysmon64, Windows Smart Screen
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">.
+├── [0]  [System Process]
+│   └── [4]  System
+│       ├── [1444]  Memory Compression
+│       ├── [72]  Registry
+│       └── [528]  smss.exe
+├── [632]  csrss.exe
+├── [732]  csrss.exe
+├── [776]  wininit.exe
+│   ├── [864]  services.exe
+│   │   ├── [2160]  Sysmon64.exe
+│   │   ├── [3708]  svchost.exe
+│   │   ├── [1348]  svchost.exe
+│   │   ├── [1508]  svchost.exe
+│   │   ├── [1668]  svchost.exe
+│   │   │   └── [5768]  audiodg.exe
+│   │   ├── [2152]  vm3dservice.exe
+│   │   │   └── [2284]  vm3dservice.exe
+│   │   ├── [1128]  svchost.exe
+│   │   │   ├── [648]  taskhostw.exe
+│   │   │   ├── [1960]  sihost.exe
+│   │   │   ├── [2436]  CompatTelRunner.exe
+│   │   │   │   ├── [2488]  conhost.exe
+│   │   │   │   └── [1236]  CompatTelRunner.exe
+│   │   │   ├── [2520]  MicrosoftEdgeUpdate.exe
+│   │   │   └── [3460]  taskhostw.exe
+│   │   ├── [2124]  vmtoolsd.exe
+│   │   ├── [4368]  svchost.exe
+│   │   ├── [3500]  SecurityHealthService.exe
+│   │   ├── [6548]  svchost.exe
+│   │   ├── [1636]  svchost.exe
+│   │   ├── [1772]  svchost.exe
+│   │   ├── [1788]  svchost.exe
+│   │   ├── [3100]  SgrmBroker.exe
+│   │   ├── [1304]  svchost.exe
+│   │   ├── [2168]  VGAuthService.exe
+│   │   ├── [2132]  rphcp.exe
+│   │   ├── [628]  svchost.exe
+│   │   ├── [896]  spoolsv.exe
+│   │   ├── [992]  svchost.exe
+│   │   │   ├── [1284]  ShellExperienceHost.exe
+│   │   │   ├── [1580]  RuntimeBroker.exe
+│   │   │   ├── [3240]  BackgroundTransferHost.exe
+│   │   │   ├── [4376]  backgroundTaskHost.exe
+│   │   │   ├── [5572]  RuntimeBroker.exe
+│   │   │   ├── [740]  unsecapp.exe
+│   │   │   ├── [1156]  dllhost.exe
+│   │   │   ├── [5608]  SearchApp.exe
+│   │   │   ├── [6004]  RuntimeBroker.exe
+│   │   │   ├── [4352]  RuntimeBroker.exe
+│   │   │   ├── [2476]  WmiPrvSE.exe
+│   │   │   ├── [3680]  WmiPrvSE.exe
+│   │   │   ├── [3892]  TextInputHost.exe
+│   │   │   ├── [3932]  StartMenuExperienceHost.exe
+│   │   │   ├── [4488]  MoUsoCoreWorker.exe
+│   │   │   ├── [1256]  RuntimeBroker.exe
+│   │   │   ├── [3552]  smartscreen.exe
+│   │   │   ├── [5064]  SearchApp.exe
+│   │   │   └── [1216]  TiWorker.exe
+│   │   ├── [2984]  dllhost.exe
+│   │   ├── [2092]  TrustedInstaller.exe
+│   │   ├── [2376]  svchost.exe
+│   │   ├── [3912]  SearchIndexer.exe
+│   │   ├── [5652]  svchost.exe
+│   │   ├── [1172]  svchost.exe
+│   │   │   ├── [3152]  ctfmon.exe
+│   │   │   └── [4800]  CompatTelRunner.exe
+│   │   │       └── [2944]  conhost.exe
+│   │   ├── [1520]  svchost.exe
+│   │   ├── [1532]  svchost.exe
+│   │   ├── [1832]  msdtc.exe
+│   │   ├── [736]  svchost.exe
+│   │   ├── [4852]  sppsvc.exe
+│   │   ├── [5172]  svchost.exe
+│   │   ├── [1292]  svchost.exe
+│   │   ├── [1628]  svchost.exe
+│   │   ├── [1640]  svchost.exe
+│   │   └── [2120]  svchost.exe
+│   ├── [876]  lsass.exe
+│   └── [1016]  fontdrvhost.exe
+├── [784]  winlogon.exe
+│   ├── [1008]  fontdrvhost.exe
+│   └── [1040]  dwm.exe
+├── [3328]  explorer.exe
+│   ├── [3512]  SecurityHealthSystray.exe
+│   ├── [3880]  vmtoolsd.exe
+│   ├── [4272]  OneDrive.exe
+│   └── [6984]  cmd.exe
+│       ├── [1696]  CONTINUED_CARRY.exe
+│       └── [3612]  conhost.exe
+├── [6808]  setup.exe
+│   ├── [7032]  setup.exe
+│   └── [3008]  MicrosoftEdgeUpdate.exe
+└── [6952]  Microsoft.SharePoint.exe
+
+⚠️  Security Product(s): Sysmon64, Windows Smart Screen
+
+</code></pre></td></tr></table>
 </div>
 </div><p>Inturn we can observe the malware in the limacharlie telementery. We can detect our maliciuos process apart from the the legitimate processes. we can also view it network connections.</p>
 <p><img src="/images/soc_lab/detection.png"
@@ -759,13 +763,15 @@ if (!doNotTrack) {
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">event: SENSITIVE_PROCESS_ACCESS
-</span></span><span class="line"><span class="cl">op: ends with
-</span></span><span class="line"><span class="cl">path: event/*/TARGET/FILE_PATH
-</span></span><span class="line"><span class="cl">value: lsass.exe
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">event: SENSITIVE_PROCESS_ACCESS
+op: ends with
+path: event/*/TARGET/FILE_PATH
+value: lsass.exe
+
+</code></pre></td></tr></table>
 </div>
 </div><p>This rule will detect &ldquo;SENSITIVE_PROCEE_ACCESS&rdquo; with process being &ldquo;lsass.exe&rdquo;</p>
 <p>To respond we use:</p>
@@ -773,11 +779,13 @@ if (!doNotTrack) {
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- action: report
-</span></span><span class="line"><span class="cl">  name: LSASS access
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">- action: report
+  name: LSASS access
+
+</code></pre></td></tr></table>
 </div>
 </div><p>This will generate a detection report that we can view in the detections menu.</p>
 <h4 id="blocking-attacks">Blocking attacks</h4>
@@ -786,10 +794,14 @@ if (!doNotTrack) {
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vssadmin delete shadows /all
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vssadmin delete shadows /all
+
+
+</code></pre></td></tr></table>
 </div>
 </div><p>Which will delete volume shadow copies. This is just an example of a process that may indicate suspicious activity on a system</p>
 <p><img src="/images/soc_lab/shadow.png"
@@ -822,15 +834,17 @@ if (!doNotTrack) {
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">- action: report
-</span></span><span class="line"><span class="cl">  name: vss_deletion_kill_it
-</span></span><span class="line"><span class="cl">- action: task
-</span></span><span class="line"><span class="cl">  command:
-</span></span><span class="line"><span class="cl">    - deny_tree
-</span></span><span class="line"><span class="cl">    - &lt;&lt;routing/parent&gt;&gt;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">- action: report
+  name: vss_deletion_kill_it
+- action: task
+  command:
+    - deny_tree
+    - &lt;&lt;routing/parent&gt;&gt;
+
+</code></pre></td></tr></table>
 </div>
 </div><p><img src="/images/soc_lab/worked.png"
 	
@@ -859,20 +873,22 @@ if (!doNotTrack) {
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">op: and
-</span></span><span class="line"><span class="cl">rules:
-</span></span><span class="line"><span class="cl">  - op : is
-</span></span><span class="line"><span class="cl">    path: cat
-</span></span><span class="line"><span class="cl">    value: Whoami Utility Execution
-</span></span><span class="line"><span class="cl">  - op: is
-</span></span><span class="line"><span class="cl">    path: detect/event/FILE_PATH
-</span></span><span class="line"><span class="cl">    value: C:\Windows\system32\whoami.exe
-</span></span><span class="line"><span class="cl">  - op: is
-</span></span><span class="line"><span class="cl">    path: detect/event/COMMAND_LINE
-</span></span><span class="line"><span class="cl">    value: &#39;&#34;C:\Windows\system32\whoami.exe&#34;&#39;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">op: and
+rules:
+  - op : is
+    path: cat
+    value: Whoami Utility Execution
+  - op: is
+    path: detect/event/FILE_PATH
+    value: C:\Windows\system32\whoami.exe
+  - op: is
+    path: detect/event/COMMAND_LINE
+    value: &#39;&#34;C:\Windows\system32\whoami.exe&#34;&#39;
+
+</code></pre></td></tr></table>
 </div>
 </div><p>After testing it:</p>
 <p><img src="/images/soc_lab/testing.png"
@@ -892,11 +908,13 @@ if (!doNotTrack) {
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">YARA is a tool primarily used for identifying and classifying malware based on textual or binary patterns. It allows researchers and security professionals to craft rules that describe unique characteristics of specific malware families or malicious behaviors.
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
+YARA is a tool primarily used for identifying and classifying malware based on textual or binary patterns. It allows researchers and security professionals to craft rules that describe unique characteristics of specific malware families or malicious behaviors.
+
+</code></pre></td></tr></table>
 </div>
 </div><p>There are well crafted rules for sliver (our c2 server) on the internet. We will use this &raquo; <a class="link" href="https://gist.githubusercontent.com/ecapuano/2c59ff1ea354f1aae905d6e12dc8e25b/raw/831d7b7b6c748f05123c6ac1a5144490985a7fe6/sliver.yara"  target="_blank" rel="noopener"
     >here</a></p>
@@ -941,71 +959,77 @@ if (!doNotTrack) {
 </span><span class="lnt">37
 </span><span class="lnt">38
 </span><span class="lnt">39
+</span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ule sliver_github_file_paths_function_names {
-</span></span><span class="line"><span class="cl">  meta:
-</span></span><span class="line"><span class="cl">    author = &#34;NCSC UK&#34;
-</span></span><span class="line"><span class="cl">    description = &#34;Detects Sliver Windows and Linux implants based on paths and function names within the binary&#34;
-</span></span><span class="line"><span class="cl">  strings:
-</span></span><span class="line"><span class="cl">    $p1 = &#34;/sliver/&#34;
-</span></span><span class="line"><span class="cl">    $p2 = &#34;sliverpb.&#34;
-</span></span><span class="line"><span class="cl">    $fn1 = &#34;RevToSelfReq&#34;
-</span></span><span class="line"><span class="cl">    $fn2 = &#34;ScreenshotReq&#34;
-</span></span><span class="line"><span class="cl">    $fn3 = &#34;IfconfigReq&#34;
-</span></span><span class="line"><span class="cl">    $fn4 = &#34;SideloadReq&#34;
-</span></span><span class="line"><span class="cl">    $fn5 = &#34;InvokeMigrateReq&#34;
-</span></span><span class="line"><span class="cl">    $fn6 = &#34;KillSessionReq&#34;
-</span></span><span class="line"><span class="cl">    $fn7 = &#34;ImpersonateReq&#34;
-</span></span><span class="line"><span class="cl">    $fn8 = &#34;NamedPipesReq&#34;
-</span></span><span class="line"><span class="cl">  condition:
-</span></span><span class="line"><span class="cl">    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and (all of ($p*) or 3 of ($fn*))
-</span></span><span class="line"><span class="cl">}
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">rule sliver_proxy_isNotFound_retn_cmp_uniq {
-</span></span><span class="line"><span class="cl">  meta:
-</span></span><span class="line"><span class="cl">    author = &#34;NCSC UK&#34;
-</span></span><span class="line"><span class="cl">    description = &#34;Detects Sliver implant framework based on some unique CMPs within the Proxy isNotFound function. False positives may occur&#34;
-</span></span><span class="line"><span class="cl">  strings:
-</span></span><span class="line"><span class="cl">    $ = {C644241800C381F9B3B5E9B2}
-</span></span><span class="line"><span class="cl">    $ = {8B481081F90CAED682}
-</span></span><span class="line"><span class="cl">  condition:
-</span></span><span class="line"><span class="cl">    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and all of them
-</span></span><span class="line"><span class="cl">}
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">rule sliver_nextCCServer_calcs {
-</span></span><span class="line"><span class="cl">  meta:
-</span></span><span class="line"><span class="cl">    author = &#34;NCSC UK&#34;
-</span></span><span class="line"><span class="cl">    description = &#34;Detects Sliver implant framework based on instructions from the nextCCServer function. False positives may occur&#34;
-</span></span><span class="line"><span class="cl">  strings:
-</span></span><span class="line"><span class="cl">    $ = {4889D3489948F7F94839CA????48C1E204488B0413488B4C1308}
-</span></span><span class="line"><span class="cl">  condition:
-</span></span><span class="line"><span class="cl">    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and all of them
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ule sliver_github_file_paths_function_names {
+  meta:
+    author = &#34;NCSC UK&#34;
+    description = &#34;Detects Sliver Windows and Linux implants based on paths and function names within the binary&#34;
+  strings:
+    $p1 = &#34;/sliver/&#34;
+    $p2 = &#34;sliverpb.&#34;
+    $fn1 = &#34;RevToSelfReq&#34;
+    $fn2 = &#34;ScreenshotReq&#34;
+    $fn3 = &#34;IfconfigReq&#34;
+    $fn4 = &#34;SideloadReq&#34;
+    $fn5 = &#34;InvokeMigrateReq&#34;
+    $fn6 = &#34;KillSessionReq&#34;
+    $fn7 = &#34;ImpersonateReq&#34;
+    $fn8 = &#34;NamedPipesReq&#34;
+  condition:
+    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and (all of ($p*) or 3 of ($fn*))
+}
+
+rule sliver_proxy_isNotFound_retn_cmp_uniq {
+  meta:
+    author = &#34;NCSC UK&#34;
+    description = &#34;Detects Sliver implant framework based on some unique CMPs within the Proxy isNotFound function. False positives may occur&#34;
+  strings:
+    $ = {C644241800C381F9B3B5E9B2}
+    $ = {8B481081F90CAED682}
+  condition:
+    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and all of them
+}
+
+rule sliver_nextCCServer_calcs {
+  meta:
+    author = &#34;NCSC UK&#34;
+    description = &#34;Detects Sliver implant framework based on instructions from the nextCCServer function. False positives may occur&#34;
+  strings:
+    $ = {4889D3489948F7F94839CA????48C1E204488B0413488B4C1308}
+  condition:
+    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and all of them
+}
+
+</code></pre></td></tr></table>
 </div>
 </div><p>We will also need a rule to detect when yara is matched.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">event: YARA_DETECTION
-</span></span><span class="line"><span class="cl">op: and
-</span></span><span class="line"><span class="cl">rules:
-</span></span><span class="line"><span class="cl">  - not: true
-</span></span><span class="line"><span class="cl">    op: exists
-</span></span><span class="line"><span class="cl">    path: event/PROCESS/*
-</span></span><span class="line"><span class="cl">  - op: exists
-</span></span><span class="line"><span class="cl">    path: event/RULE_NAME
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">event: YARA_DETECTION
+op: and
+rules:
+  - not: true
+    op: exists
+    path: event/PROCESS/*
+  - op: exists
+    path: event/RULE_NAME
+
+
+</code></pre></td></tr></table>
 </div>
 </div><p><img src="/images/soc_lab/yara_console.png"
 	

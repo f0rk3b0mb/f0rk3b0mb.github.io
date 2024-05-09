@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Wazuh This is a writeup of Wazuh module on tryhackme. This is in the SOC Level 1 path. &amp;raquo; here ENjoy :)
 Wazuh is an opensource XDR and SIEM service
-Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 1. When was Wazuh released? 2015 2. What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?'>
+Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 14  1. When was Wazuh released? 2015 2. What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?'>
 <title>Thm_wazuh</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/thm_wazuh/'>
@@ -11,7 +11,7 @@ Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 1. When was Wazuh released? 2015 2. What is 
 <link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Thm_wazuh'>
 <meta property='og:description' content='Wazuh This is a writeup of Wazuh module on tryhackme. This is in the SOC Level 1 path. &amp;raquo; here ENjoy :)
 Wazuh is an opensource XDR and SIEM service
-Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 1. When was Wazuh released? 2015 2. What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?'>
+Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 14  1. When was Wazuh released? 2015 2. What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?'>
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/thm_wazuh/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-11-25T08:48:38&#43;03:00'/><meta property='article:modified_time' content='2023-11-25T08:48:38&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/thm.svg' />
@@ -19,7 +19,7 @@ Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 1. When was Wazuh released? 2015 2. What is 
     <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Thm_wazuh">
 <meta name="twitter:description" content="Wazuh This is a writeup of Wazuh module on tryhackme. This is in the SOC Level 1 path. &amp;raquo; here ENjoy :)
 Wazuh is an opensource XDR and SIEM service
-Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 1. When was Wazuh released? 2015 2. What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?"><meta name="twitter:card" content="summary_large_image">
+Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 14  1. When was Wazuh released? 2015 2. What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/thm.svg' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
@@ -455,22 +455,24 @@ ENjoy :)</p>
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
+</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.  When was Wazuh released?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2015
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2. 
-</span></span><span class="line"><span class="cl">What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">agent
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">3.
-</span></span><span class="line"><span class="cl">Lastly, what is the term for a device that is responsible for managing these devices?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">manager
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1.  When was Wazuh released?
+
+2015
+
+2. 
+What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?
+
+agent
+
+3.
+Lastly, what is the term for a device that is responsible for managing these devices?
+
+manager
+
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="wazuh-agents">Wazuh agents</h3>
 <div class="highlight"><div class="chroma">
@@ -486,16 +488,16 @@ ENjoy :)</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">How many agents does this Wazuh management server manage?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2.
-</span></span><span class="line"><span class="cl">What are the status of the agents managed by this Wazuh management server?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">disconnected
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1.
+How many agents does this Wazuh management server manage?
+
+2
+
+2.
+What are the status of the agents managed by this Wazuh management server?
+
+disconnected
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="wazuh-vulnerability-assessment--security-events">Wazuh Vulnerability Assessment &amp; Security Events</h3>
 <div class="highlight"><div class="chroma">
@@ -506,11 +508,11 @@ ENjoy :)</p>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">How many &#34;Security Event&#34; alerts have been generated by the agent &#34;AGENT-001&#34;?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">196
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1.
+How many &#34;Security Event&#34; alerts have been generated by the agent &#34;AGENT-001&#34;?
+
+196
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="collecting-windows-logs-with-wazuh">Collecting Windows Logs with Wazuh</h3>
 <div class="highlight"><div class="chroma">
@@ -526,16 +528,16 @@ ENjoy :)</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">What is the name of the tool that we can use to monitor system events?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">sysmon
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2.
-</span></span><span class="line"><span class="cl">What standard application on Windows do these system events get recorded to?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">event viewer
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1.
+What is the name of the tool that we can use to monitor system events?
+
+sysmon
+
+2.
+What standard application on Windows do these system events get recorded to?
+
+event viewer
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="collecting-linux-logs-with-wazuh">Collecting Linux Logs with Wazuh</h3>
 <div class="highlight"><div class="chroma">
@@ -546,36 +548,38 @@ ENjoy :)</p>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">What is the full file path to the rules located on a Wazuh management server?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/var/ossec/ruleset/rules
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1.
+What is the full file path to the rules located on a Wazuh management server?
+
+/var/ossec/ruleset/rules
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="auditing-commands-on-linux-with-wazuh">Auditing Commands on Linux with Wazuh</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">What application do we use on Linux to monitor events such as command execution?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">auditd
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2. 
-</span></span><span class="line"><span class="cl">What is the full path &amp; filename for where the aforementioned application stores rules?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/etc/audit/ruled.d/audit.rules
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1.
+What application do we use on Linux to monitor events such as command execution?
+
+auditd
+
+2. 
+What is the full path &amp; filename for where the aforementioned application stores rules?
+
+/etc/audit/ruled.d/audit.rules
+
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="wazuh-api">Wazuh API</h3>
 <div class="highlight"><div class="chroma">
@@ -599,28 +603,30 @@ ENjoy :)</p>
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
+</span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">What is the name of the standard Linux tool that we can use to make requests to  the Wazuh management server?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">curl
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2.
-</span></span><span class="line"><span class="cl">What HTTP method would we use to retrieve information for a Wazuh management server API?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">GET
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">3.
-</span></span><span class="line"><span class="cl">What HTTP method would we use to perform an action on a Wazuh management server API?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">PUT
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">4.
-</span></span><span class="line"><span class="cl">Use the API console to find the Wazuh server&#39;s version.
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">v4.2.5
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1.
+What is the name of the standard Linux tool that we can use to make requests to  the Wazuh management server?
+
+curl
+
+2.
+What HTTP method would we use to retrieve information for a Wazuh management server API?
+
+GET
+
+3.
+What HTTP method would we use to perform an action on a Wazuh management server API?
+
+PUT
+
+4.
+Use the API console to find the Wazuh server&#39;s version.
+
+v4.2.5
+
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="generating-reports-with-wazuh">Generating Reports with Wazuh</h3>
 <div class="highlight"><div class="chroma">
@@ -629,13 +635,15 @@ ENjoy :)</p>
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">Analyse the report. What is the name of the agent that has generated the most alerts?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">agent-001
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">1.
+Analyse the report. What is the name of the agent that has generated the most alerts?
+
+agent-001
+
+</code></pre></td></tr></table>
 </div>
 </div>
 </section>
