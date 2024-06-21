@@ -23,8 +23,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;A failover cluster is a group of independent computers that work together to increase the availability and scalability of clustered roles (formerly called clustered applications and services). The clustered servers (called nodes) are connected by physical cables and by software. If one or more of the cluster nodes fail, other nodes begin to provide service (a process known as failover). In addition, the clustered roles are proactively monitored to verify that they are working properly. If they are not working, they are restarted or moved to another node.
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Here we are going to setup iscsi disks and a cluster with node servers.&lt;/p&gt;
-&lt;p&gt;The disk can be physical or virtual , for this tutorial im goinG to use a virtual harddisk.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;Here we are going to setup iscsi disks and a cluster with 2 node servers.&lt;/p&gt;
+&lt;p&gt;The disk can be physical or virtual , for this tutorial im going to use a virtual harddisk.&lt;/p&gt;
 &lt;p&gt;You will also need:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;vmware workstation&lt;/li&gt;
@@ -63,7 +63,7 @@
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;2 setup Domain Controller&lt;/p&gt;
-&lt;p&gt;Create a domain server and add the other vm to the domain&lt;/p&gt;
+&lt;p&gt;Create a domain server and add the other 2 vms to the domain&lt;/p&gt;
 &lt;p&gt;follow this tutorials here to do the same &amp;raquo;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.manageengine.com/products/active-directory-audit/kb/how-to/how-to-setup-a-domain-controller.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;setup DC&lt;/a&gt;&lt;/p&gt;
@@ -87,14 +87,21 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;This will enable the other device to access the domain pingpong.local without need of specifying the ip address. 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You will also need to  set a static iP address for the server.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You will also need to  set a static iP address for the domain controller server.
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;Create Iscsi disk&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;win-aee7p2dtadm.pingpong.local&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/disk1.png&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iSCSI is an IP-based standard for transferring data that supports host access by carrying SCSI commands over IP networks.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/disk1.png&#34;
 	
 	
 	
@@ -191,12 +198,12 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Use the ip address  we set for the DC to discover the iscsi instance.&lt;/p&gt;
 &lt;p&gt;Then connect.&lt;/p&gt;
-&lt;p&gt;Then go to windows create and formart disk partition to initialize the disk.&lt;/p&gt;
+&lt;p&gt;Then go to windows &amp;ldquo;create and formart disk partition&amp;rdquo; application to initialize the disk.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ol start=&#34;5&#34;&gt;
 &lt;li&gt;Setup Cluster&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;We are going to setup the cluster. Make sure you login as a domain user in the node. If you dont you will get stuck when creating the cluster.&lt;/p&gt;
+&lt;p&gt;We are going to setup the cluster. Make sure you login with domain user account in the nodes. If you dont you will get an error when creating the cluster.&lt;/p&gt;
 &lt;p&gt;Im creating the cluster in node 1&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster1.png&#34;
 	
@@ -261,7 +268,7 @@
 &lt;li&gt;Connect nodes to Cluster&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Use same steps as in stage 5 to add a node to the cluster&lt;/p&gt;
-&lt;p&gt;You can do this cliking add node in the cluster that we just created in 5&lt;/p&gt;
+&lt;p&gt;You can do this clicking add node in the cluster that we just created in 5&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster6.png&#34;
 	
 	
@@ -277,6 +284,7 @@
 &lt;li&gt;Test cluster&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;If you shutdown on vm the disk become online on the other and vice versa. The status also changes to down or up depending on which node is up.&lt;/p&gt;
+&lt;p&gt;This is a succesful demonstration of setup of hight availability in windows server. This can be applied to lots of services and real time application. The one demonstarted above is high availability for storage device.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster7.png&#34;
 	
 	
