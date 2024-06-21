@@ -1,31 +1,314 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>reads on f0rk3b0mb</title>
+        <title>Reads on f0rk3b0mb</title>
         <link>https://f0rk3b0mb.github.io/categories/reads/</link>
-        <description>Recent content in reads on f0rk3b0mb</description>
+        <description>Recent content in Reads on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Tue, 06 Feb 2024 15:57:25 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/reads/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>en</language>
+        <lastBuildDate>Fri, 21 Jun 2024 14:23:40 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/reads/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Windows_server_high_availability_cluster</title>
+        <link>https://f0rk3b0mb.github.io/p/windows_server_high_availability_cluster/</link>
+        <pubDate>Fri, 21 Jun 2024 14:23:40 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/windows_server_high_availability_cluster/</guid>
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/4020769.jpg" alt="Featured image of post Windows_server_high_availability_cluster" /&gt;&lt;p&gt;Windows Server High Availability Setup&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;A failover cluster is a group of independent computers that work together to increase the availability and scalability of clustered roles (formerly called clustered applications and services). The clustered servers (called nodes) are connected by physical cables and by software. If one or more of the cluster nodes fail, other nodes begin to provide service (a process known as failover). In addition, the clustered roles are proactively monitored to verify that they are working properly. If they are not working, they are restarted or moved to another node.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Here we are going to setup iscsi disks and a cluster with node servers.&lt;/p&gt;
+&lt;p&gt;The disk can be physical or virtual , for this tutorial im goinG to use a virtual harddisk.&lt;/p&gt;
+&lt;p&gt;You will also need:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;vmware workstation&lt;/li&gt;
+&lt;li&gt;3 windows server operation systems (im using 2022)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;Install required components&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We will need the following components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;File Server&lt;/li&gt;
+&lt;li&gt;Iscsi Target Server&lt;/li&gt;
+&lt;li&gt;Failover Clustering&lt;/li&gt;
+&lt;li&gt;Active Directory Domain Services&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/install1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;comp&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/install2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;comp&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;2 setup Domain Controller&lt;/p&gt;
+&lt;p&gt;Create a domain server and add the other vm to the domain&lt;/p&gt;
+&lt;p&gt;follow this tutorials here to do the same &amp;raquo;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.manageengine.com/products/active-directory-audit/kb/how-to/how-to-setup-a-domain-controller.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;setup DC&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;add computer to domain&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Before you begin you have to set the dns server that can resolve the dc domain name in the network settings.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;For this instance the dns is the same as the ip of the DC controller.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;This will enable the other device to access the domain pingpong.local without need of specifying the ip address. 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You will also need to  set a static iP address for the server.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Create Iscsi disk&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;win-aee7p2dtadm.pingpong.local&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/disk1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;iscsi&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/disk2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;iscsi&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/disk3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;iscsi&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/disk4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;iscsi&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/disk5.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;iscsi&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/disk6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;iscsi&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/disk7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;iscsi&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Iscsi initialization&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We now need to initialize the disk on both instances&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/connect1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;init&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/connect2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;init&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Use the ip address  we set for the DC to discover the iscsi instance.&lt;/p&gt;
+&lt;p&gt;Then connect.&lt;/p&gt;
+&lt;p&gt;Then go to windows create and formart disk partition to initialize the disk.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Setup Cluster&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We are going to setup the cluster. Make sure you login as a domain user in the node. If you dont you will get stuck when creating the cluster.&lt;/p&gt;
+&lt;p&gt;Im creating the cluster in node 1&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;cluster&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Choose you current computer as the cluster server&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;disk&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Then add the disk that we had created earlier as storage.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Configure cluster quorum&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Learn more about this &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows-server/failover-clustering/manage-cluster-quorum&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;disk&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;disk&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster5.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;disk&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Connect nodes to Cluster&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Use same steps as in stage 5 to add a node to the cluster&lt;/p&gt;
+&lt;p&gt;You can do this cliking add node in the cluster that we just created in 5&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;disk&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Test cluster&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you shutdown on vm the disk become online on the other and vice versa. The status also changes to down or up depending on which node is up.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;disk&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Soc_analyst_lab</title>
         <link>https://f0rk3b0mb.github.io/p/soc_analyst_lab/</link>
         <pubDate>Tue, 06 Feb 2024 15:57:25 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/soc_analyst_lab/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/soc_lab.jpg" alt="Featured image of post Soc_analyst_lab" /&gt;&lt;h3 id=&#34;soc-lab-setup&#34;&gt;SOC Lab Setup&lt;/h3&gt;
-&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
-&lt;p&gt;This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.&lt;/p&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/soc_lab.jpg" alt="Featured image of post Soc_analyst_lab" /&gt;&lt;h3 id=&#34;soc-lab-setup&#34;&gt;SOC Lab Setup
+&lt;/h3&gt;&lt;h4 id=&#34;introduction&#34;&gt;Introduction
+&lt;/h4&gt;&lt;p&gt;This is my documentation of a lab setup for a SOC (Security operation center) environment. I decided to pursue this project with the aim of learning about endpoint detection and response. SOC analysis is more about blue teaming and detecting threats in an environment.&lt;/p&gt;
 &lt;p&gt;As is did this i followed steps from this blog post &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://blog.ecapuano.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt; . Credits!!&lt;/p&gt;
-&lt;h4 id=&#34;summary&#34;&gt;Summary&lt;/h4&gt;
-&lt;ul&gt;
+&lt;h4 id=&#34;summary&#34;&gt;Summary
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;Setup&lt;/li&gt;
 &lt;li&gt;Intrusion&lt;/li&gt;
 &lt;li&gt;Blocking attacks&lt;/li&gt;
 &lt;li&gt;Tuning False Positives&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;setup&#34;&gt;Setup&lt;/h4&gt;
-&lt;ul&gt;
+&lt;h4 id=&#34;setup&#34;&gt;Setup
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;Setup of vms(ubuntu server and windows)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;NOTE: im using a computer with the following specs:&lt;/p&gt;
@@ -67,12 +350,10 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;Sliver is an open source cross-platform adversary emulation/red team framework, it can be used by organizations of all sizes to perform security testing
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Sliver is an open source cross-platform adversary emulation/red team framework, it can be used by organizations of all sizes to perform security testing
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;I created a C2 payload and dropped it in the windows vm.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/upload.png&#34;
@@ -185,107 +466,105 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;94
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;95
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;96
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;97
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;.
-├── [0]  [System Process]
-│   └── [4]  System
-│       ├── [1444]  Memory Compression
-│       ├── [72]  Registry
-│       └── [528]  smss.exe
-├── [632]  csrss.exe
-├── [732]  csrss.exe
-├── [776]  wininit.exe
-│   ├── [864]  services.exe
-│   │   ├── [2160]  Sysmon64.exe
-│   │   ├── [3708]  svchost.exe
-│   │   ├── [1348]  svchost.exe
-│   │   ├── [1508]  svchost.exe
-│   │   ├── [1668]  svchost.exe
-│   │   │   └── [5768]  audiodg.exe
-│   │   ├── [2152]  vm3dservice.exe
-│   │   │   └── [2284]  vm3dservice.exe
-│   │   ├── [1128]  svchost.exe
-│   │   │   ├── [648]  taskhostw.exe
-│   │   │   ├── [1960]  sihost.exe
-│   │   │   ├── [2436]  CompatTelRunner.exe
-│   │   │   │   ├── [2488]  conhost.exe
-│   │   │   │   └── [1236]  CompatTelRunner.exe
-│   │   │   ├── [2520]  MicrosoftEdgeUpdate.exe
-│   │   │   └── [3460]  taskhostw.exe
-│   │   ├── [2124]  vmtoolsd.exe
-│   │   ├── [4368]  svchost.exe
-│   │   ├── [3500]  SecurityHealthService.exe
-│   │   ├── [6548]  svchost.exe
-│   │   ├── [1636]  svchost.exe
-│   │   ├── [1772]  svchost.exe
-│   │   ├── [1788]  svchost.exe
-│   │   ├── [3100]  SgrmBroker.exe
-│   │   ├── [1304]  svchost.exe
-│   │   ├── [2168]  VGAuthService.exe
-│   │   ├── [2132]  rphcp.exe
-│   │   ├── [628]  svchost.exe
-│   │   ├── [896]  spoolsv.exe
-│   │   ├── [992]  svchost.exe
-│   │   │   ├── [1284]  ShellExperienceHost.exe
-│   │   │   ├── [1580]  RuntimeBroker.exe
-│   │   │   ├── [3240]  BackgroundTransferHost.exe
-│   │   │   ├── [4376]  backgroundTaskHost.exe
-│   │   │   ├── [5572]  RuntimeBroker.exe
-│   │   │   ├── [740]  unsecapp.exe
-│   │   │   ├── [1156]  dllhost.exe
-│   │   │   ├── [5608]  SearchApp.exe
-│   │   │   ├── [6004]  RuntimeBroker.exe
-│   │   │   ├── [4352]  RuntimeBroker.exe
-│   │   │   ├── [2476]  WmiPrvSE.exe
-│   │   │   ├── [3680]  WmiPrvSE.exe
-│   │   │   ├── [3892]  TextInputHost.exe
-│   │   │   ├── [3932]  StartMenuExperienceHost.exe
-│   │   │   ├── [4488]  MoUsoCoreWorker.exe
-│   │   │   ├── [1256]  RuntimeBroker.exe
-│   │   │   ├── [3552]  smartscreen.exe
-│   │   │   ├── [5064]  SearchApp.exe
-│   │   │   └── [1216]  TiWorker.exe
-│   │   ├── [2984]  dllhost.exe
-│   │   ├── [2092]  TrustedInstaller.exe
-│   │   ├── [2376]  svchost.exe
-│   │   ├── [3912]  SearchIndexer.exe
-│   │   ├── [5652]  svchost.exe
-│   │   ├── [1172]  svchost.exe
-│   │   │   ├── [3152]  ctfmon.exe
-│   │   │   └── [4800]  CompatTelRunner.exe
-│   │   │       └── [2944]  conhost.exe
-│   │   ├── [1520]  svchost.exe
-│   │   ├── [1532]  svchost.exe
-│   │   ├── [1832]  msdtc.exe
-│   │   ├── [736]  svchost.exe
-│   │   ├── [4852]  sppsvc.exe
-│   │   ├── [5172]  svchost.exe
-│   │   ├── [1292]  svchost.exe
-│   │   ├── [1628]  svchost.exe
-│   │   ├── [1640]  svchost.exe
-│   │   └── [2120]  svchost.exe
-│   ├── [876]  lsass.exe
-│   └── [1016]  fontdrvhost.exe
-├── [784]  winlogon.exe
-│   ├── [1008]  fontdrvhost.exe
-│   └── [1040]  dwm.exe
-├── [3328]  explorer.exe
-│   ├── [3512]  SecurityHealthSystray.exe
-│   ├── [3880]  vmtoolsd.exe
-│   ├── [4272]  OneDrive.exe
-│   └── [6984]  cmd.exe
-│       ├── [1696]  CONTINUED_CARRY.exe
-│       └── [3612]  conhost.exe
-├── [6808]  setup.exe
-│   ├── [7032]  setup.exe
-│   └── [3008]  MicrosoftEdgeUpdate.exe
-└── [6952]  Microsoft.SharePoint.exe
-
-⚠️  Security Product(s): Sysmon64, Windows Smart Screen
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1444&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Memory&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Compression&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;72&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Registry&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;528&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;smss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;632&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;csrss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;732&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;csrss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;776&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;wininit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;864&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2160&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Sysmon64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3708&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1348&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1508&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1668&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5768&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;audiodg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2152&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;vm3dservice&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2284&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;vm3dservice&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;648&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;taskhostw&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1960&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;sihost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2436&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;CompatTelRunner&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2488&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;conhost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1236&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;CompatTelRunner&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2520&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;MicrosoftEdgeUpdate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3460&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;taskhostw&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2124&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;vmtoolsd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4368&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;SecurityHealthService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6548&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1636&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1772&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1788&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;SgrmBroker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1304&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2168&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;VGAuthService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2132&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;rphcp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;628&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;896&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;spoolsv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;992&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1284&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;ShellExperienceHost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1580&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;RuntimeBroker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3240&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;BackgroundTransferHost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4376&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;backgroundTaskHost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5572&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;RuntimeBroker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;740&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;unsecapp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1156&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;dllhost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5608&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;SearchApp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6004&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;RuntimeBroker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4352&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;RuntimeBroker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2476&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;WmiPrvSE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3680&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;WmiPrvSE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3892&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;TextInputHost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3932&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;StartMenuExperienceHost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4488&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;MoUsoCoreWorker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1256&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;RuntimeBroker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3552&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;smartscreen&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5064&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;SearchApp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1216&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;TiWorker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2984&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;dllhost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2092&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;TrustedInstaller&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2376&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3912&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;SearchIndexer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5652&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1172&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3152&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;ctfmon&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4800&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;CompatTelRunner&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2944&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;conhost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1520&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1532&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1832&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;msdtc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;736&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4852&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;sppsvc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5172&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1292&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1628&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1640&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;svchost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;876&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;lsass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1016&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;fontdrvhost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;784&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;winlogon&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1008&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;fontdrvhost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1040&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;dwm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3328&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;explorer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3512&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;SecurityHealthSystray&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3880&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;vmtoolsd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4272&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;OneDrive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6984&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;cmd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1696&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;CONTINUED_CARRY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;       &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3612&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;conhost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6808&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;setup&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;├──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7032&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;setup&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;│&lt;/span&gt;   &lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3008&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;MicrosoftEdgeUpdate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;└──&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6952&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Microsoft&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SharePoint&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exe&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;⚠️&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Security&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Product&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Sysmon64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Windows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Smart&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Screen&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Inturn we can observe the malware in the limacharlie telementery. We can detect our maliciuos process apart from the the legitimate processes. we can also view it network connections.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/detection.png&#34;
@@ -298,8 +577,8 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h4 id=&#34;intrusion&#34;&gt;Intrusion&lt;/h4&gt;
-&lt;p&gt;I can steal creds by dumping lsass.exe from the windows box memory to my attack machine&lt;/p&gt;
+&lt;h4 id=&#34;intrusion&#34;&gt;Intrusion
+&lt;/h4&gt;&lt;p&gt;I can steal creds by dumping lsass.exe from the windows box memory to my attack machine&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/dump.png&#34;
 	
 	
@@ -338,15 +617,13 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;event: SENSITIVE_PROCESS_ACCESS
-op: ends with
-path: event/*/TARGET/FILE_PATH
-value: lsass.exe
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;event: SENSITIVE_PROCESS_ACCESS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;op: ends with
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;path: event/*/TARGET/FILE_PATH
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;value: lsass.exe
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;This rule will detect &amp;ldquo;SENSITIVE_PROCEE_ACCESS&amp;rdquo; with process being &amp;ldquo;lsass.exe&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;To respond we use:&lt;/p&gt;
@@ -354,29 +631,23 @@ value: lsass.exe
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;- action: report
-  name: LSASS access
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- action: report
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  name: LSASS access
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;This will generate a detection report that we can view in the detections menu.&lt;/p&gt;
-&lt;h4 id=&#34;blocking-attacks&#34;&gt;Blocking attacks&lt;/h4&gt;
-&lt;p&gt;Here we are going to craft rules to take action when detections are made&lt;/p&gt;
+&lt;h4 id=&#34;blocking-attacks&#34;&gt;Blocking attacks
+&lt;/h4&gt;&lt;p&gt;Here we are going to craft rules to take action when detections are made&lt;/p&gt;
 &lt;p&gt;in thbis i ran thsi command :&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;vssadmin delete shadows /all
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vssadmin delete shadows /all
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Which will delete volume shadow copies. This is just an example of a process that may indicate suspicious activity on a system&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/shadow.png&#34;
@@ -409,17 +680,15 @@ value: lsass.exe
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;- action: report
-  name: vss_deletion_kill_it
-- action: task
-  command:
-    - deny_tree
-    - &amp;lt;&amp;lt;routing/parent&amp;gt;&amp;gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- action: report
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  name: vss_deletion_kill_it
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;- action: task
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  command:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    - deny_tree
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    - &amp;lt;&amp;lt;routing/parent&amp;gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/worked.png&#34;
 	
@@ -432,8 +701,8 @@ value: lsass.exe
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;This hung shell is an indication that it worked succesfully&lt;/p&gt;
-&lt;h4 id=&#34;tuning-false-positives&#34;&gt;Tuning False Positives&lt;/h4&gt;
-&lt;p&gt;Here we craft a false positive detection rule. This is whereby we can prevent alerts when normal system processes are run, thus causing alot of noise.&lt;/p&gt;
+&lt;h4 id=&#34;tuning-false-positives&#34;&gt;Tuning False Positives
+&lt;/h4&gt;&lt;p&gt;Here we craft a false positive detection rule. This is whereby we can prevent alerts when normal system processes are run, thus causing alot of noise.&lt;/p&gt;
 &lt;p&gt;I crafted to detect when whoami.exe is run. This is just an example.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -448,22 +717,20 @@ value: lsass.exe
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;op: and
-rules:
-  - op : is
-    path: cat
-    value: Whoami Utility Execution
-  - op: is
-    path: detect/event/FILE_PATH
-    value: C:\Windows\system32\whoami.exe
-  - op: is
-    path: detect/event/COMMAND_LINE
-    value: &amp;#39;&amp;#34;C:\Windows\system32\whoami.exe&amp;#34;&amp;#39;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;op: and
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rules:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - op : is
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    path: cat
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    value: Whoami Utility Execution
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - op: is
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    path: detect/event/FILE_PATH
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    value: C:\Windows\system32\whoami.exe
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - op: is
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    path: detect/event/COMMAND_LINE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    value: &amp;#39;&amp;#34;C:\Windows\system32\whoami.exe&amp;#34;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;After testing it:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/testing.png&#34;
@@ -478,18 +745,16 @@ rules:
 &gt;&lt;/p&gt;
 &lt;p&gt;It works!!&lt;/p&gt;
 &lt;p&gt;If i run whoami when  the rule is enabled i get no alaert, however whn  i disable it i get an alert.&lt;/p&gt;
-&lt;h4 id=&#34;automated-yara-scanning&#34;&gt;Automated Yara Scanning&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;automated-yara-scanning&#34;&gt;Automated Yara Scanning
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;
-YARA is a tool primarily used for identifying and classifying malware based on textual or binary patterns. It allows researchers and security professionals to craft rules that describe unique characteristics of specific malware families or malicious behaviors.
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;YARA&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;tool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;primarily&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;used&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;identifying&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;classifying&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;malware&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;based&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;on&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;textual&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binary&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;patterns&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;It&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;allows&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;researchers&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;security&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;professionals&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;craft&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rules&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;that&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;describe&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unique&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;characteristics&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;specific&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;malware&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;families&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;malicious&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;behaviors&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;There are well crafted rules for sliver (our c2 server) on the internet. We will use this &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://gist.githubusercontent.com/ecapuano/2c59ff1ea354f1aae905d6e12dc8e25b/raw/831d7b7b6c748f05123c6ac1a5144490985a7fe6/sliver.yara&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;&lt;/p&gt;
@@ -534,77 +799,71 @@ YARA is a tool primarily used for identifying and classifying malware based on t
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ule sliver_github_file_paths_function_names {
-  meta:
-    author = &amp;#34;NCSC UK&amp;#34;
-    description = &amp;#34;Detects Sliver Windows and Linux implants based on paths and function names within the binary&amp;#34;
-  strings:
-    $p1 = &amp;#34;/sliver/&amp;#34;
-    $p2 = &amp;#34;sliverpb.&amp;#34;
-    $fn1 = &amp;#34;RevToSelfReq&amp;#34;
-    $fn2 = &amp;#34;ScreenshotReq&amp;#34;
-    $fn3 = &amp;#34;IfconfigReq&amp;#34;
-    $fn4 = &amp;#34;SideloadReq&amp;#34;
-    $fn5 = &amp;#34;InvokeMigrateReq&amp;#34;
-    $fn6 = &amp;#34;KillSessionReq&amp;#34;
-    $fn7 = &amp;#34;ImpersonateReq&amp;#34;
-    $fn8 = &amp;#34;NamedPipesReq&amp;#34;
-  condition:
-    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and (all of ($p*) or 3 of ($fn*))
-}
-
-rule sliver_proxy_isNotFound_retn_cmp_uniq {
-  meta:
-    author = &amp;#34;NCSC UK&amp;#34;
-    description = &amp;#34;Detects Sliver implant framework based on some unique CMPs within the Proxy isNotFound function. False positives may occur&amp;#34;
-  strings:
-    $ = {C644241800C381F9B3B5E9B2}
-    $ = {8B481081F90CAED682}
-  condition:
-    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and all of them
-}
-
-rule sliver_nextCCServer_calcs {
-  meta:
-    author = &amp;#34;NCSC UK&amp;#34;
-    description = &amp;#34;Detects Sliver implant framework based on instructions from the nextCCServer function. False positives may occur&amp;#34;
-  strings:
-    $ = {4889D3489948F7F94839CA????48C1E204488B0413488B4C1308}
-  condition:
-    (uint32(0) == 0x464C457F or (uint16(0) == 0x5A4D and uint16(uint32(0x3c)) == 0x4550)) and all of them
-}
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ule&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sliver_github_file_paths_function_names&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;meta&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;author&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;NCSC UK&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;description&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Detects Sliver Windows and Linux implants based on paths and function names within the binary&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;strings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/sliver/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;sliverpb.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fn1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;RevToSelfReq&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fn2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ScreenshotReq&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fn3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;IfconfigReq&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fn4&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SideloadReq&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fn5&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;InvokeMigrateReq&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fn6&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;KillSessionReq&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fn7&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;ImpersonateReq&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fn8&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;NamedPipesReq&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;condition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uint32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x464C457F&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uint16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x5A4D&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;uint16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uint32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x3c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x4550&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;all&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rule&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sliver_proxy_isNotFound_retn_cmp_uniq&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;meta&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;author&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;NCSC UK&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;description&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Detects Sliver implant framework based on some unique CMPs within the Proxy isNotFound function. False positives may occur&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;strings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C644241800C381F9B3B5E9B2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;B481081F90CAED682&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;condition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uint32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x464C457F&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uint16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x5A4D&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;uint16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uint32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x3c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x4550&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;all&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;them&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;rule&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sliver_nextCCServer_calcs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;meta&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;author&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;NCSC UK&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;description&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Detects Sliver implant framework based on instructions from the nextCCServer function. False positives may occur&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;strings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4889&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;D3489948F7F94839CA&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;????&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;48&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C1E204488B0413488B4C1308&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;condition&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uint32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x464C457F&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uint16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x5A4D&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;uint16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uint32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x3c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x4550&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;all&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;them&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;We will also need a rule to detect when yara is matched.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;event: YARA_DETECTION
-op: and
-rules:
-  - not: true
-    op: exists
-    path: event/PROCESS/*
-  - op: exists
-    path: event/RULE_NAME
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;event: YARA_DETECTION
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;op: and
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rules:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - not: true
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    op: exists
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    path: event/PROCESS/*
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  - op: exists
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    path: event/RULE_NAME
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/soc_lab/yara_console.png&#34;
 	
@@ -654,8 +913,8 @@ These logs silently record system events, security incidents, and user interacti
     &gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this tutorial i will be analysing the  files from cybertalents blue scholarship.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;1--chainsaw-search&#34;&gt;1.  chainsaw search&lt;/h3&gt;
-&lt;p&gt;an attacker after compromising the machine added a new account as admin. can you find the name of the new account? flag format : flag{md5 of string}&lt;/p&gt;
+&lt;h3 id=&#34;1--chainsaw-search&#34;&gt;1.  chainsaw search
+&lt;/h3&gt;&lt;p&gt;an attacker after compromising the machine added a new account as admin. can you find the name of the new account? flag format : flag{md5 of string}&lt;/p&gt;
 &lt;p&gt;file &amp;raquo;&amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/Security436509324654726509.evtx&#34; &gt;ex1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In windows, each event has a unique event id. So we have to find event id for account creation , a quick google search&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/event.png&#34;
@@ -673,13 +932,11 @@ These logs silently record system events, security incidents, and user interacti
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
-./chainsaw/chainsaw-gnu search  -t &lt;span class=&#34;s1&#34;&gt;&amp;#39;Event.System.EventID: =4720&amp;#39;&lt;/span&gt;  Security436509324654726509.evtx
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./chainsaw/chainsaw-gnu search  -t &lt;span class=&#34;s1&#34;&gt;&amp;#39;Event.System.EventID: =4720&amp;#39;&lt;/span&gt;  Security436509324654726509.evtx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Here we can filter events with the event id 4720.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/sam.jpg&#34;
@@ -695,8 +952,8 @@ These logs silently record system events, security incidents, and user interacti
 &lt;p&gt;SAM means security account manager , it is a database that stores accounts on windows systems. Usename is sam md5hash ba0e0cde1bf72c28d435c89a66afc61a.&lt;/p&gt;
 &lt;p&gt;flag{ba0e0cde1bf72c28d435c89a66afc61a}&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;2-chainsaw-hunt&#34;&gt;2. chainsaw hunt&lt;/h3&gt;
-&lt;p&gt;file &amp;raquo;&amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/logs.evtx&#34; &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-chainsaw-hunt&#34;&gt;2. chainsaw hunt
+&lt;/h3&gt;&lt;p&gt;file &amp;raquo;&amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/logs.evtx&#34; &gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -708,14 +965,14 @@ These logs silently record system events, security incidents, and user interacti
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Our network got compromised two days ago by an unknown attacker, and we need to get an answer &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; the following questions:
-
-1. What is the domain&lt;span class=&#34;s1&#34;&gt;&amp;#39;s SID?
-&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;2. The attacker failed to login to some accounts, What is the attacker&amp;#39;&lt;/span&gt;s machine IP address?
-3. What is the workstation&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;s name that the attacker was using to authenticate with the administrator account?
-
-Flag format: Flag&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;ANS1_ANS2_ANS3&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Our network got compromised two days ago by an unknown attacker, and we need to get an answer &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; the following questions:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. What is the domain&lt;span class=&#34;s1&#34;&gt;&amp;#39;s SID?
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s1&#34;&gt;2. The attacker failed to login to some accounts, What is the attacker&amp;#39;&lt;/span&gt;s machine IP address?
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. What is the workstation&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;s name that the attacker was using to authenticate with the administrator account?
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Flag format: Flag&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;ANS1_ANS2_ANS3&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Since this is account failed login it has event id 4776 for failed login from domain controller. The domain controller in this case is HYDRA-DC.MARVEL.local.&lt;/p&gt;
 &lt;p&gt;Since chainsaw has rules to detect certain events , you can use the folowing command to hunt for events&lt;/p&gt;
@@ -723,13 +980,11 @@ Flag format: Flag&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;ANS1_ANS2_ANS3&lt;s
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
-./chainsaw/chainsaw-gnu hunt -r ./chainsaw/rules/ logs.evtx
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./chainsaw/chainsaw-gnu hunt -r ./chainsaw/rules/ logs.evtx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;This returns alot of output , but retuns events in a format we can easily comprehend.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/format.jpg&#34;
@@ -746,13 +1001,11 @@ Flag format: Flag&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;ANS1_ANS2_ANS3&lt;s
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
-./chainsaw/chainsaw-gnu hunt --sigma ./chainsaw/sigma/  --mapping ./chainsaw/mappings/sigma-event-logs-all.yml -r ./chainsaw/rules/lateral_movement/ logs/
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./chainsaw/chainsaw-gnu hunt --sigma ./chainsaw/sigma/  --mapping ./chainsaw/mappings/sigma-event-logs-all.yml -r ./chainsaw/rules/lateral_movement/ logs/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;You can use the command above to get more info.
 Now here is where the fun begins.&lt;/p&gt;
@@ -776,13 +1029,11 @@ Now here is where the fun begins.&lt;/p&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
-./chainsaw/chainsaw-gnu search  -t &lt;span class=&#34;s1&#34;&gt;&amp;#39;Event.System.EventID: =4776&amp;#39;&lt;/span&gt;  logs/ &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep -i workstation
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./chainsaw/chainsaw-gnu search  -t &lt;span class=&#34;s1&#34;&gt;&amp;#39;Event.System.EventID: =4776&amp;#39;&lt;/span&gt;  logs/ &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep -i workstation
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_logs/workstation.png&#34;
 	
@@ -814,11 +1065,11 @@ Now here is where the fun begins.&lt;/p&gt;
         <pubDate>Fri, 14 Jul 2023 11:47:02 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/packet-analysis-using-wireshark/</guid>
-        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/5613.jpg" alt="Featured image of post Packet analysis using Wireshark" /&gt;&lt;h3 id=&#34;wireshark-packet-analysis-basic&#34;&gt;Wireshark packet analysis (basic)&lt;/h3&gt;
-&lt;p&gt;To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/capture.pcap&#34; &gt;here&lt;/a&gt;.&lt;/p&gt;
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/5613.jpg" alt="Featured image of post Packet analysis using Wireshark" /&gt;&lt;h3 id=&#34;wireshark-packet-analysis-basic&#34;&gt;Wireshark packet analysis (basic)
+&lt;/h3&gt;&lt;p&gt;To demonstrate this, I will be analyzing a pcap from bicWC. You can also download this pcap and follow along &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/capture.pcap&#34; &gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;You can also download this &amp;raquo;  &lt;a class=&#34;link&#34; href=&#34;https://f0rk3b0mb.github.io/files/strom.pcapng&#34; &gt;here&lt;/a&gt;. I will use this pcap to demonstrate how to extract files from captured network traffic.&lt;/p&gt;
-&lt;h4 id=&#34;demo-1&#34;&gt;DEMO 1&lt;/h4&gt;
-&lt;hr&gt;
+&lt;h4 id=&#34;demo-1&#34;&gt;DEMO 1
+&lt;/h4&gt;&lt;hr&gt;
 &lt;p&gt;How many packets have been captured?&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/Screenshot%20from%202023-03-01%2007-28-48.png&#34;
 	
@@ -931,8 +1182,8 @@ Now here is where the fun begins.&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id=&#34;demo-2&#34;&gt;DEMO 2&lt;/h4&gt;
-&lt;p&gt;Scrolling through the pcap, you can see weird filenames ending in .ts. I googled this and found out that it is a file extension for video files.&lt;/p&gt;
+&lt;h4 id=&#34;demo-2&#34;&gt;DEMO 2
+&lt;/h4&gt;&lt;p&gt;Scrolling through the pcap, you can see weird filenames ending in .ts. I googled this and found out that it is a file extension for video files.&lt;/p&gt;
 &lt;p&gt;To extract files, you will first have to identify the stream of the files you want to extract. In this case, it&amp;rsquo;s stream 3. Select packet &amp;gt; right click &amp;gt; follow TCP stream.&lt;/p&gt;
 &lt;p&gt;You can move through subsequent streams by using the stream buttons:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/wireshark/stream.jpg&#34;
