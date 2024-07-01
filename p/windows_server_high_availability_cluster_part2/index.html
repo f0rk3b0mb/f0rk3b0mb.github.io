@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Wazuh This is a writeup of Wazuh module on tryhackme. This is in the SOC Level 1 path. &raquo; here ENjoy :) Wazuh is an opensource XDR and SIEM service Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 1. When was Wazuh released? 2015 2. What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?">
-<title>Thm_wazuh</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Windows Server High Availability Setup Part2 Check out part 1 &raquo; here to be able to proceed to this stage Windows Server High Availability Setup of Nodes Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1 My disk is &ldquo;cluster disk 1&rdquo; For this demonstration im going to make nginx web server application persistent across the nodes.">
+<title>Windows_server_high_availability_cluster_part2</title>
 
-<link rel='canonical' href='https://f0rk3b0mb.github.io/p/thm_wazuh/'>
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/windows_server_high_availability_cluster_part2/'>
 
-<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Thm_wazuh">
-<meta property='og:description' content="Wazuh This is a writeup of Wazuh module on tryhackme. This is in the SOC Level 1 path. &raquo; here ENjoy :) Wazuh is an opensource XDR and SIEM service Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 1. When was Wazuh released? 2015 2. What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?">
-<meta property='og:url' content='https://f0rk3b0mb.github.io/p/thm_wazuh/'>
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Windows_server_high_availability_cluster_part2">
+<meta property='og:description' content="Windows Server High Availability Setup Part2 Check out part 1 &raquo; here to be able to proceed to this stage Windows Server High Availability Setup of Nodes Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1 My disk is &ldquo;cluster disk 1&rdquo; For this demonstration im going to make nginx web server application persistent across the nodes.">
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/windows_server_high_availability_cluster_part2/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-11-25T08:48:38&#43;03:00'/><meta property='article:modified_time' content='2023-11-25T08:48:38&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/thm.svg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-07-01T09:38:06&#43;03:00'/><meta property='article:modified_time' content='2024-07-01T09:38:06&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/4020769.jpg' />
 <meta name="twitter:site" content="@f0rk3b0mb">
-    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Thm_wazuh">
-<meta name="twitter:description" content="Wazuh This is a writeup of Wazuh module on tryhackme. This is in the SOC Level 1 path. &raquo; here ENjoy :) Wazuh is an opensource XDR and SIEM service Intro 1 2 3 4 5 6 7 8 9 10 11 12 13 1. When was Wazuh released? 2015 2. What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/thm.svg' />
+    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Windows_server_high_availability_cluster_part2">
+<meta name="twitter:description" content="Windows Server High Availability Setup Part2 Check out part 1 &raquo; here to be able to proceed to this stage Windows Server High Availability Setup of Nodes Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1 My disk is &ldquo;cluster disk 1&rdquo; For this demonstration im going to make nginx web server application persistent across the nodes."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/4020769.jpg' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
 <script>
 var doNotTrack = false;
@@ -259,57 +259,15 @@ if (!doNotTrack) {
     </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ol>
-    <li><a href="#wazuh">Wazuh</a>
-      <ol>
-        <li><a href="#intro">Intro</a></li>
-        <li><a href="#wazuh-agents">Wazuh agents</a></li>
-        <li><a href="#wazuh-vulnerability-assessment--security-events">Wazuh Vulnerability Assessment &amp; Security Events</a></li>
-        <li><a href="#collecting-windows-logs-with-wazuh">Collecting Windows Logs with Wazuh</a></li>
-        <li><a href="#collecting-linux-logs-with-wazuh">Collecting Linux Logs with Wazuh</a></li>
-        <li><a href="#auditing-commands-on-linux-with-wazuh">Auditing Commands on Linux with Wazuh</a></li>
-        <li><a href="#wazuh-api">Wazuh API</a></li>
-        <li><a href="#generating-reports-with-wazuh">Generating Reports with Wazuh</a></li>
-      </ol>
-    </li>
-  </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/thm_wazuh/">
+            <a href="/p/windows_server_high_availability_cluster_part2/">
                 
-                    <img src="/cover/thm.svg" loading="lazy" alt="Featured image of post Thm_wazuh" />
+                    <img src="/cover/4020769.jpg" loading="lazy" alt="Featured image of post Windows_server_high_availability_cluster_part2" />
                 
             </a>
         </div>
@@ -319,8 +277,8 @@ if (!doNotTrack) {
     
     <header class="article-category">
         
-            <a href="/categories/thm--boxes/" >
-                Thm  Boxes
+            <a href="/categories/reads/" >
+                Reads
             </a>
         
     </header>
@@ -328,7 +286,7 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/thm_wazuh/">Thm_wazuh</a>
+            <a href="/p/windows_server_high_availability_cluster_part2/">Windows_server_high_availability_cluster_part2</a>
         </h2>
     
         
@@ -350,7 +308,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Nov 25, 2023</time>
+                <time class="article-time--published">Jul 01, 2024</time>
             </div>
         
 
@@ -365,7 +323,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -380,210 +338,59 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h2 id="wazuh">Wazuh
-</h2><p>This is  a writeup of Wazuh module on tryhackme. This is in the SOC Level 1 path.   &raquo; <a class="link" href="https://tryhackme.com/room/wazuhct"  target="_blank" rel="noopener"
-    >here</a>
-ENjoy :)</p>
-<p>Wazuh is  an opensource XDR and SIEM service</p>
-<h3 id="intro">Intro
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.  When was Wazuh released?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2015
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2. 
-</span></span><span class="line"><span class="cl">What is the term that Wazuh calls a device that is being monitored for suspicious activity and potential security threats?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">agent
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">3.
-</span></span><span class="line"><span class="cl">Lastly, what is the term for a device that is responsible for managing these devices?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">manager
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="wazuh-agents">Wazuh agents
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">How many agents does this Wazuh management server manage?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2.
-</span></span><span class="line"><span class="cl">What are the status of the agents managed by this Wazuh management server?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">disconnected
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="wazuh-vulnerability-assessment--security-events">Wazuh Vulnerability Assessment &amp; Security Events
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">How many &#34;Security Event&#34; alerts have been generated by the agent &#34;AGENT-001&#34;?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">196
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="collecting-windows-logs-with-wazuh">Collecting Windows Logs with Wazuh
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="mf">1.</span>
-</span></span><span class="line"><span class="cl"><span class="n">What</span> <span class="n">is</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="k">tool</span> <span class="n">that</span> <span class="n">we</span> <span class="n">can</span> <span class="n">use</span> <span class="n">to</span> <span class="n">monitor</span> <span class="n">system</span> <span class="n">events</span><span class="err">?</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">sysmon</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="mf">2.</span>
-</span></span><span class="line"><span class="cl"><span class="n">What</span> <span class="n">standard</span> <span class="n">application</span> <span class="n">on</span> <span class="n">Windows</span> <span class="k">do</span> <span class="n">these</span> <span class="n">system</span> <span class="n">events</span> <span class="n">get</span> <span class="n">recorded</span> <span class="n">to</span><span class="err">?</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">event</span> <span class="n">viewer</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="collecting-linux-logs-with-wazuh">Collecting Linux Logs with Wazuh
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="mf">1.</span>
-</span></span><span class="line"><span class="cl"><span class="n">What</span> <span class="n">is</span> <span class="n">the</span> <span class="n">full</span> <span class="n">file</span> <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">rules</span> <span class="n">located</span> <span class="n">on</span> <span class="n">a</span> <span class="n">Wazuh</span> <span class="n">management</span> <span class="n">server</span><span class="err">?</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">ossec</span><span class="o">/</span><span class="n">ruleset</span><span class="o">/</span><span class="n">rules</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="auditing-commands-on-linux-with-wazuh">Auditing Commands on Linux with Wazuh
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">What application do we use on Linux to monitor events such as command execution?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">auditd
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">2. 
-</span></span><span class="line"><span class="cl">What is the full path &amp; filename for where the aforementioned application stores rules?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">/etc/audit/ruled.d/audit.rules
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="wazuh-api">Wazuh API
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="mf">1.</span>
-</span></span><span class="line"><span class="cl"><span class="n">What</span> <span class="n">is</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">standard</span> <span class="n">Linux</span> <span class="k">tool</span> <span class="n">that</span> <span class="n">we</span> <span class="n">can</span> <span class="n">use</span> <span class="n">to</span> <span class="n">make</span> <span class="n">requests</span> <span class="n">to</span>  <span class="n">the</span> <span class="n">Wazuh</span> <span class="n">management</span> <span class="n">server</span><span class="err">?</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">curl</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="mf">2.</span>
-</span></span><span class="line"><span class="cl"><span class="n">What</span> <span class="n">HTTP</span> <span class="n">method</span> <span class="n">would</span> <span class="n">we</span> <span class="n">use</span> <span class="n">to</span> <span class="n">retrieve</span> <span class="n">information</span> <span class="k">for</span> <span class="n">a</span> <span class="n">Wazuh</span> <span class="n">management</span> <span class="n">server</span> <span class="n">API</span><span class="err">?</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">GET</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="mf">3.</span>
-</span></span><span class="line"><span class="cl"><span class="n">What</span> <span class="n">HTTP</span> <span class="n">method</span> <span class="n">would</span> <span class="n">we</span> <span class="n">use</span> <span class="n">to</span> <span class="n">perform</span> <span class="n">an</span> <span class="n">action</span> <span class="n">on</span> <span class="n">a</span> <span class="n">Wazuh</span> <span class="n">management</span> <span class="n">server</span> <span class="n">API</span><span class="err">?</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">PUT</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="mf">4.</span>
-</span></span><span class="line"><span class="cl"><span class="n">Use</span> <span class="n">the</span> <span class="n">API</span> <span class="n">console</span> <span class="n">to</span> <span class="n">find</span> <span class="n">the</span> <span class="n">Wazuh</span> <span class="n">server</span><span class="s1">&#39;s version.</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">v4</span><span class="o">.</span><span class="mf">2.5</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="generating-reports-with-wazuh">Generating Reports with Wazuh
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.
-</span></span><span class="line"><span class="cl">Analyse the report. What is the name of the agent that has generated the most alerts?
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">agent-001
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
+    <p>Windows Server High Availability Setup Part2</p>
+<p>Check out part 1 &raquo; <a class="link" href="http://127.0.0.1:1313/p/windows_server_high_availability_cluster/"  target="_blank" rel="noopener"
+    >here</a> to be able to proceed to this stage</p>
+<p>Windows Server High Availability Setup of Nodes</p>
+<hr>
+<p>Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1</p>
+<p><img src="/images/windows_ha/new_disk.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="storage"
+	
+	
+></p>
+<p>My disk is &ldquo;cluster disk 1&rdquo;</p>
+<hr>
+<p>For this demonstration im going to make nginx web server application persistent across the nodes. So i copied nginx files to the cluster disk.</p>
+<p><img src="/images/windows_ha/nginx.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="nginx"
+	
+	
+></p>
+<p>Then create a role with the executable path and parameters start the nginx server</p>
+<p>Go to roles in failover cluster manager applucation and create an empty role.
+Then add resource in this case is a generic application. You can add services and native processes or even containers of you want those to be persistent.</p>
+<p><img src="/images/windows_ha/generic_app.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>Then confirm, ensure the role is up with no errors.</p>
+<p>With that we have configured nginx to be persistent across nodes. If you turn off node 1 it will be started in node 2 with all the data persistent across the nodes.</p>
+<p>From there you can setup the networking part of your appplication to ensure they can be accessed from other endpoints.</p>
+<p><img src="/images/windows_ha/access.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<hr>
+
 </section>
 
 
@@ -611,6 +418,91 @@ ENjoy :)</p>
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/windows_server_high_availability_cluster/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/4020769.jpg" loading="lazy" data-key="" data-hash="/cover/4020769.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows_server_high_availability_cluster</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/soc_analyst_lab/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/soc_lab.jpg" loading="lazy" data-key="" data-hash="/cover/soc_lab.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Soc_analyst_lab</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/windows-events-and-log-analysis/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/4020769.jpg" loading="lazy" data-key="" data-hash="/cover/4020769.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Windows events and log analysis</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/packet-analysis-using-wireshark/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/5613.jpg" loading="lazy" data-key="" data-hash="/cover/5613.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Packet analysis using Wireshark</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

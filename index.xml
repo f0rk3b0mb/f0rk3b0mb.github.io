@@ -6,7 +6,67 @@
         <description>Recent content on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Fri, 21 Jun 2024 14:23:40 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 01 Jul 2024 09:38:06 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Windows_server_high_availability_cluster_part2</title>
+        <link>https://f0rk3b0mb.github.io/p/windows_server_high_availability_cluster_part2/</link>
+        <pubDate>Mon, 01 Jul 2024 09:38:06 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/windows_server_high_availability_cluster_part2/</guid>
+        <description>&lt;img src="https://f0rk3b0mb.github.io/cover/4020769.jpg" alt="Featured image of post Windows_server_high_availability_cluster_part2" /&gt;&lt;p&gt;Windows Server High Availability Setup Part2&lt;/p&gt;
+&lt;p&gt;Check out part 1 &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;http://127.0.0.1:1313/p/windows_server_high_availability_cluster/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt; to be able to proceed to this stage&lt;/p&gt;
+&lt;p&gt;Windows Server High Availability Setup of Nodes&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/new_disk.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;storage&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;My disk is &amp;ldquo;cluster disk 1&amp;rdquo;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;For this demonstration im going to make nginx web server application persistent across the nodes. So i copied nginx files to the cluster disk.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/nginx.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;nginx&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Then create a role with the executable path and parameters start the nginx server&lt;/p&gt;
+&lt;p&gt;Go to roles in failover cluster manager applucation and create an empty role.
+Then add resource in this case is a generic application. You can add services and native processes or even containers of you want those to be persistent.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/generic_app.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Then confirm, ensure the role is up with no errors.&lt;/p&gt;
+&lt;p&gt;With that we have configured nginx to be persistent across nodes. If you turn off node 1 it will be started in node 2 with all the data persistent across the nodes.&lt;/p&gt;
+&lt;p&gt;From there you can setup the networking part of your appplication to ensure they can be accessed from other endpoints.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/access.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
         <title>Windows_server_high_availability_cluster</title>
         <link>https://f0rk3b0mb.github.io/p/windows_server_high_availability_cluster/</link>
         <pubDate>Fri, 21 Jun 2024 14:23:40 +0300</pubDate>
