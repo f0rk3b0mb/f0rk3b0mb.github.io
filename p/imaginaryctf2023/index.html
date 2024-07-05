@@ -15,16 +15,25 @@
     <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="ImaginaryCTF2023">
 <meta name="twitter:description" content="ImaginaryCTF Imaginaryctf web writeups Idoriot This web challenge was very simple , while registering a new user you could set their id , so just set user_id as 0 and login to get the flag. Idoriot revenge This challenge is related to the first one but we can set the user id as a parameter , in the source , there is this filter 1 2 3 4 5 6 7 8 9 10 11 if (isset($_GET[&#39;user_id&#39;])) { $user_id = (int) $_GET[&#39;user_id&#39;]; // Check if the user is admin if ($user_id == &#34;php&#34; &amp;&amp; preg_match(&#34;/&#34;."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/imaginary_ctf.jpg' />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-45FL0WGH80', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-45FL0WGH80');
+        }
+      </script>
+    
+  
+
 
     </head>
     <body class="

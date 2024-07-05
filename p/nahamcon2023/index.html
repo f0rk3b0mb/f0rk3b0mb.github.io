@@ -14,16 +14,25 @@
 <meta name="twitter:site" content="@f0rk3b0mb">
     <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Nahamcon2023">
 <meta name="twitter:description" content="Nahamcon CTF 2023 writeups warmups blobber Thic challenge had a downloadable part , the file was a sqlite database. I opened the file using sqlite database browser browsing the data there is only gibberish , except on line 238 where data is a blob object.Blobs in sqlite is whereby files can be addedtto database as entries. Read more here we can use this sql statement to get the blob 1 2 select data from blobber where id=238 Then save it to a file , the resulting file in is a bzip2 archive, extracting , you get an image of the flag">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-45FL0WGH80', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-45FL0WGH80');
+        }
+      </script>
+    
+  
+
 
     </head>
     <body class="

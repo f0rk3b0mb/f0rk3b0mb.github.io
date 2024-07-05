@@ -15,8 +15,8 @@
         <description>&lt;img src="https://f0rk3b0mb.github.io/cover/4020769.jpg" alt="Featured image of post Windows_server_high_availability_cluster_part2" /&gt;&lt;p&gt;Windows Server High Availability Setup Part2&lt;/p&gt;
 &lt;p&gt;Check out part 1 &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;http://127.0.0.1:1313/p/windows_server_high_availability_cluster/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt; to be able to proceed to this stage&lt;/p&gt;
-&lt;p&gt;Windows Server High Availability Setup of Nodes&lt;/p&gt;
-&lt;hr&gt;
+&lt;h3 id=&#34;1-windows-server-high-availability-setup-of-roles&#34;&gt;1. Windows Server High Availability Setup of Roles
+&lt;/h3&gt;&lt;hr&gt;
 &lt;p&gt;Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/new_disk.png&#34;
 	
@@ -91,10 +91,8 @@ Then add resource in this case is a generic application. You can add services an
 &lt;li&gt;3 windows server operation systems (im using 2022)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;ol&gt;
-&lt;li&gt;Install required components&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;We will need the following components:&lt;/p&gt;
+&lt;h3 id=&#34;1-install-required-components&#34;&gt;1. Install required components
+&lt;/h3&gt;&lt;p&gt;We will need the following components:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;File Server&lt;/li&gt;
 &lt;li&gt;Iscsi Target Server&lt;/li&gt;
@@ -122,8 +120,8 @@ Then add resource in this case is a generic application. You can add services an
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;2 setup Domain Controller&lt;/p&gt;
-&lt;p&gt;Create a domain server and add the other 2 vms to the domain&lt;/p&gt;
+&lt;h3 id=&#34;2-setup-domain-controller&#34;&gt;2 setup Domain Controller
+&lt;/h3&gt;&lt;p&gt;Create a domain server and add the other 2 vms to the domain&lt;/p&gt;
 &lt;p&gt;follow this tutorials here to do the same &amp;raquo;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.manageengine.com/products/active-directory-audit/kb/how-to/how-to-setup-a-domain-controller.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;setup DC&lt;/a&gt;&lt;/p&gt;
@@ -150,10 +148,8 @@ Then add resource in this case is a generic application. You can add services an
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You will also need to  set a static iP address for the domain controller server.
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;Create Iscsi disk&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;/div&gt;&lt;h3 id=&#34;3-create-iscsi-disk&#34;&gt;3. Create Iscsi disk
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -232,10 +228,8 @@ Then add resource in this case is a generic application. You can add services an
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;Iscsi initialization&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;We now need to initialize the disk on both instances&lt;/p&gt;
+&lt;h3 id=&#34;4-iscsi-initialization&#34;&gt;4. Iscsi initialization
+&lt;/h3&gt;&lt;p&gt;We now need to initialize the disk on both instances&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/connect1.png&#34;
 	
 	
@@ -260,10 +254,8 @@ Then add resource in this case is a generic application. You can add services an
 &lt;p&gt;Then connect.&lt;/p&gt;
 &lt;p&gt;Then go to windows &amp;ldquo;create and formart disk partition&amp;rdquo; application to initialize the disk.&lt;/p&gt;
 &lt;hr&gt;
-&lt;ol start=&#34;5&#34;&gt;
-&lt;li&gt;Setup Cluster&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;We are going to setup the cluster. Make sure you login with domain user account in the nodes. If you dont you will get an error when creating the cluster.&lt;/p&gt;
+&lt;h3 id=&#34;5-setup-cluster&#34;&gt;5. Setup Cluster
+&lt;/h3&gt;&lt;p&gt;We are going to setup the cluster. Make sure you login with domain user account in the nodes. If you dont you will get an error when creating the cluster.&lt;/p&gt;
 &lt;p&gt;Im creating the cluster in node 1&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster1.png&#34;
 	
@@ -288,10 +280,8 @@ Then add resource in this case is a generic application. You can add services an
 &gt;&lt;/p&gt;
 &lt;p&gt;Then add the disk that we had created earlier as storage.&lt;/p&gt;
 &lt;hr&gt;
-&lt;ol start=&#34;6&#34;&gt;
-&lt;li&gt;Configure cluster quorum&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Learn more about this &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows-server/failover-clustering/manage-cluster-quorum&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;6-configure-cluster-quorum&#34;&gt;6. Configure cluster quorum
+&lt;/h3&gt;&lt;p&gt;Learn more about this &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows-server/failover-clustering/manage-cluster-quorum&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster3.png&#34;
 	
@@ -324,10 +314,8 @@ Then add resource in this case is a generic application. You can add services an
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;ol start=&#34;7&#34;&gt;
-&lt;li&gt;Connect nodes to Cluster&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Use same steps as in stage 5 to add a node to the cluster&lt;/p&gt;
+&lt;h3 id=&#34;7-connect-nodes-to-cluster&#34;&gt;7. Connect nodes to Cluster
+&lt;/h3&gt;&lt;p&gt;Use same steps as in stage 5 to add a node to the cluster&lt;/p&gt;
 &lt;p&gt;You can do this clicking add node in the cluster that we just created in 5&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster6.png&#34;
 	
@@ -340,10 +328,8 @@ Then add resource in this case is a generic application. You can add services an
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;ol start=&#34;8&#34;&gt;
-&lt;li&gt;Test cluster&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;If you shutdown on vm the disk become online on the other and vice versa. The status also changes to down or up depending on which node is up.&lt;/p&gt;
+&lt;h3 id=&#34;8-test-cluster&#34;&gt;8. Test cluster
+&lt;/h3&gt;&lt;p&gt;If you shutdown on vm the disk become online on the other and vice versa. The status also changes to down or up depending on which node is up.&lt;/p&gt;
 &lt;p&gt;This is a succesful demonstration of setup of hight availability in windows server. This can be applied to lots of services and real time application. The one demonstarted above is high availability for storage device.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/windows_ha/cluster7.png&#34;
 	

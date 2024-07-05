@@ -15,16 +15,25 @@
     <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Deadsec 2023">
 <meta name="twitter:description" content="xee1 category: web solution From the title you can tell this is a classic xxe challenge , when you capture the login request in burp repeater you will realize that the username is echoed out , so we have to make sure the output of our xxe payload is reflected in the page through the user name field. I crafted a payload to read /flag.txt , we also need to pass it through a php filter , we get the flag in base64 format"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/deadsec.jpeg' />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-45FL0WGH80', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-45FL0WGH80');
+        }
+      </script>
+    
+  
+
 
     </head>
     <body class="

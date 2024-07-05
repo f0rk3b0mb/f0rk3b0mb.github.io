@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Windows Server High Availability Setup Part2 Check out part 1 &raquo; here to be able to proceed to this stage Windows Server High Availability Setup of Nodes Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1 My disk is &ldquo;cluster disk 1&rdquo; For this demonstration im going to make nginx web server application persistent across the nodes.">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Windows Server High Availability Setup Part2 Check out part 1 &raquo; here to be able to proceed to this stage 1. Windows Server High Availability Setup of Roles Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1 My disk is &ldquo;cluster disk 1&rdquo; For this demonstration im going to make nginx web server application persistent across the nodes.">
 <title>Windows_server_high_availability_cluster_part2</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/windows_server_high_availability_cluster_part2/'>
 
 <link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Windows_server_high_availability_cluster_part2">
-<meta property='og:description' content="Windows Server High Availability Setup Part2 Check out part 1 &raquo; here to be able to proceed to this stage Windows Server High Availability Setup of Nodes Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1 My disk is &ldquo;cluster disk 1&rdquo; For this demonstration im going to make nginx web server application persistent across the nodes.">
+<meta property='og:description' content="Windows Server High Availability Setup Part2 Check out part 1 &raquo; here to be able to proceed to this stage 1. Windows Server High Availability Setup of Roles Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1 My disk is &ldquo;cluster disk 1&rdquo; For this demonstration im going to make nginx web server application persistent across the nodes.">
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/windows_server_high_availability_cluster_part2/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-07-01T09:38:06&#43;03:00'/><meta property='article:modified_time' content='2024-07-01T09:38:06&#43;03:00'/><meta property='og:image' content='https://f0rk3b0mb.github.io/cover/4020769.jpg' />
 <meta name="twitter:site" content="@f0rk3b0mb">
     <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Windows_server_high_availability_cluster_part2">
-<meta name="twitter:description" content="Windows Server High Availability Setup Part2 Check out part 1 &raquo; here to be able to proceed to this stage Windows Server High Availability Setup of Nodes Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1 My disk is &ldquo;cluster disk 1&rdquo; For this demonstration im going to make nginx web server application persistent across the nodes."><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Windows Server High Availability Setup Part2 Check out part 1 &raquo; here to be able to proceed to this stage 1. Windows Server High Availability Setup of Roles Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1 My disk is &ldquo;cluster disk 1&rdquo; For this demonstration im going to make nginx web server application persistent across the nodes."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://f0rk3b0mb.github.io/cover/4020769.jpg' />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-45FL0WGH80', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-45FL0WGH80');
+        }
+      </script>
+    
+  
+
 
     </head>
     <body class="
@@ -259,7 +268,42 @@ if (!doNotTrack) {
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#1-windows-server-high-availability-setup-of-roles">1. Windows Server High Availability Setup of Roles</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="has-image main-article">
@@ -341,8 +385,8 @@ if (!doNotTrack) {
     <p>Windows Server High Availability Setup Part2</p>
 <p>Check out part 1 &raquo; <a class="link" href="http://127.0.0.1:1313/p/windows_server_high_availability_cluster/"  target="_blank" rel="noopener"
     >here</a> to be able to proceed to this stage</p>
-<p>Windows Server High Availability Setup of Nodes</p>
-<hr>
+<h3 id="1-windows-server-high-availability-setup-of-roles">1. Windows Server High Availability Setup of Roles
+</h3><hr>
 <p>Youll need to create a iscsi virtual hard disk through the domain controller and add it to the cluster , that step is in part 1</p>
 <p><img src="/images/windows_ha/new_disk.png"
 	
