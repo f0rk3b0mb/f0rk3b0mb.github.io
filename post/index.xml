@@ -13,13 +13,13 @@
         
         <guid>https://f0rk3b0mb.github.io/p/bsidesnrb2024/</guid>
         <description>&lt;img src="https://f0rk3b0mb.github.io/cover/perfect.png" alt="Featured image of post BsidesNrb2024" /&gt;&lt;h1 id=&#34;bsides-nairobi-cyberchallenge-2024-writeup&#34;&gt;Bsides Nairobi Cyberchallenge 2024 writeup
-&lt;/h1&gt;&lt;p&gt;This is a writeup for the web challenges in Bsides Nairobi Cyberchallnege held physically at Strathmore university, Nairobi&lt;/p&gt;
+&lt;/h1&gt;&lt;p&gt;This is a writeup for the web challenges in Bsides Nairobi Cyberchallenge held physically at Strathmore university, Nairobi&lt;/p&gt;
 &lt;p&gt;My team p3rf3ctr00t won , for the second year in a row. :)&lt;/p&gt;
 &lt;h2 id=&#34;web-category&#34;&gt;Web category
 &lt;/h2&gt;&lt;hr&gt;
 &lt;h3 id=&#34;mr-donor&#34;&gt;Mr donor
 &lt;/h3&gt;&lt;p&gt;Here we are given a wordpress site. With donation forms.&lt;/p&gt;
-&lt;p&gt;So first thing first i use wpscan to enumerate the site. There isint alot of content.&lt;/p&gt;
+&lt;p&gt;So first things first, i use wpscan to enumerate the site. There isint alot of content.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -29,20 +29,22 @@
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;use&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;thsi&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;enumerate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;users&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;use&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;this&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;enumerate&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;users&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;wpscan&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;3.85&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;212.227&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;we get one user - admin_magharibi&lt;/p&gt;
-&lt;p&gt;From  the scan we can alse see that there is a plugin called &amp;ldquo;give&amp;rdquo; version 3.41.0&lt;/p&gt;
+&lt;p&gt;From  the scan we can also see that there is a plugin called &amp;ldquo;give&amp;rdquo; version 3.41.0&lt;/p&gt;
 &lt;p&gt;Looking on the internet we can see that it is vulnerable to CVE-2024-5932  so we can achieve code execution.&lt;/p&gt;
 &lt;p&gt;I used this exploit &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/EQSTLab/CVE-2024-5932&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In the shell we can see that there are 3 users&lt;/p&gt;
-&lt;p&gt;backup_svc
-ctfroom
-ubuntu&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;backup_svc&lt;/li&gt;
+&lt;li&gt;ctfroom&lt;/li&gt;
+&lt;li&gt;ubuntu&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;checking the contents of wp-config.php&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -131,7 +133,8 @@ ubuntu&lt;/p&gt;
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;I started cracking it in the background while i looked around. Checking the crontab&amp;hellip;&lt;/p&gt;
+&lt;p&gt;I started cracking it in the background while i looked around.&lt;/p&gt;
+&lt;p&gt;Checking the crontab&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/bsides2024/cron.png&#34;
 	
 	
@@ -150,8 +153,8 @@ ubuntu&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sshpass&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;vnG^W6q%zjt^S&amp;#39;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ssh&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StrictHostKeychecking&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;no&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UserKnownHostsFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dev&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;null&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;backup_svc&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;127.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.1&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;cp -R /var/www/wordpress /wp_backup&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;as you can see teh backup_svc userpassword is exposed.&lt;/p&gt;
-&lt;p&gt;Login via ssh ad backup_svc, checking what the user can run as sudo&amp;hellip;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;as you can see teh backup_svc user password is exposed.&lt;/p&gt;
+&lt;p&gt;Login via ssh as backup_svc, checking what the user can run as sudo&amp;hellip;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -180,7 +183,7 @@ ubuntu&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;pixel-blunder&#34;&gt;Pixel Blunder
-&lt;/h3&gt;&lt;p&gt;This challenge gave a web interface with a file upload functionality. Seeing this it should click immediately that we are testing file upload bypasses.&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;This challenge gave a web interface with a file upload functionality. Seeing this it should click immediately that we are testing file upload vulnerabilities.&lt;/p&gt;
 &lt;p&gt;The site was checking if the image was valid through the magic bytes.&lt;/p&gt;
 &lt;p&gt;So we need to craft a php shell with png magic bytes.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -305,8 +308,8 @@ ubuntu&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;Uploading the file we still get nothing.&lt;/p&gt;
 &lt;p&gt;There is still one more step&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;Uploading the file the file-extension is stripped and if you know a php web server , it will not parse anything anyfile that doesnt have the &amp;ldquo;.php&amp;rdquo; file extension.&lt;/p&gt;
-&lt;p&gt;THe trick for this id to use two extension so that it strips one and leaves the other like &amp;ldquo;shell.php.php&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Uploading the file the file-extension is stripped and if you know a php web server , it will not try to parse anyfile that doesnt have the proper  php file extension.&lt;/p&gt;
+&lt;p&gt;THe trick for this is to use two extensions so that it strips one and leaves the other like &amp;ldquo;shell.php.php&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/bsides2024/shell.png&#34;
 	
 	
@@ -333,8 +336,8 @@ ubuntu&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;I solved this challenge ten minutes to time so i might not explain properly how i did this.&lt;/p&gt;
-&lt;p&gt;Afyer loggin in with the creds we are provided with a blackpage. Looking at the backend we can see that it uses flask . TIP: if you ever see flask in the backend most probably there is SSTI. So you have to look for user controlled input that is being diplayed in the page.&lt;/p&gt;
-&lt;p&gt;There was a hint for the chal , so i used the word bsides as a parameter&lt;/p&gt;
+&lt;p&gt;After loggin in with the creds we are provided with a black page. Looking at the backend we can see that it uses flask . TIP: if you ever see flask in the backend most probably there is SSTI. So you have to look for user controlled input that is being diplayed in the page.&lt;/p&gt;
+&lt;p&gt;There was a hint for the chal , so i used the word &amp;ldquo;bsides&amp;rdquo; as a parameter&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -354,7 +357,7 @@ ubuntu&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;You have said: Error: unhashable type: &amp;#39;set
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;I googled it and saw it was caused by python eval. So we can get code execution by using the payload below&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;I googled it and saw it was caused by python eval(). So we can get code execution by using the payload below&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/bsides2024/eval.png&#34;
 	
 	
