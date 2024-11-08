@@ -6,7 +6,15 @@
         <description>Recent content in Categories on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sat, 26 Oct 2024 17:13:14 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 08 Nov 2024 14:33:30 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Labs</title>
+        <link>https://f0rk3b0mb.github.io/categories/labs/</link>
+        <pubDate>Fri, 08 Nov 2024 14:33:30 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/categories/labs/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>ctf writeups</title>
         <link>https://f0rk3b0mb.github.io/categories/writeups/</link>
         <pubDate>Sat, 26 Oct 2024 17:13:14 +0300</pubDate>
