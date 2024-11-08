@@ -908,6 +908,7 @@
 	
 ></p>
 <p>This is an easy way to pwn both machines , ill try to find another way in.</p>
+<p>We pwned CASTLEBLACK :).</p>
 <hr>
 <h3 id="enumerate-users">Enumerate users
 </h3><div class="highlight"><div class="chroma">
@@ -1193,7 +1194,7 @@
 ></p>
 <p>Here we willl utilize a tool <a class="link" href="https://github.com/Hackndo/pyGPOAbuse"  target="_blank" rel="noopener"
     >pygpoabuse</a></p>
-<p>We need to get the gpoid  , this can be done by loggin in via rdp  as jon.snow and running</p>
+<p>We need to get the gpo id  , this can be done by loggin in via rdp  as jon.snow and running</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1214,6 +1215,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>This creates an admin user called &ldquo;john&rdquo; with the password &ldquo;H4x00r123..&rdquo;</p>
+<p>This user is a Domain Admin.</p>
 <p>We can now login via winrm</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1366,31 +1368,10 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>We also get another plaintext creds   &lsquo;NORTH\robb.stark:sexywolfy&rsquo;</p>
-<hr>
-<p>Checking this use on Bloodhound we can see that there is a path to domain admin.</p>
-<p><img src="/images/goad_light/admin.jpeg"
-	
-	
-	
-	loading="lazy"
-	
-		alt="root"
-	
-	
-></p>
-<p>THe user has generic all , so we can add ourselves to domain admin group</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">net group &#34;Domain Admins&#34; john /add /domain
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>From here we can login to the domain controller</p>
-<p>And we pwn the north :)</p>
+<p>We can crack the other passwords using <a class="link" href="https://crackstation.net"  target="_blank" rel="noopener"
+    >crackstation</a>.</p>
+<p>NTLM hashes are just md5 hashes with the fancy name:).</p>
+<p>And we pwn the NORTH :)</p>
 <hr>
 
 </section>
