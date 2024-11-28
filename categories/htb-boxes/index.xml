@@ -181,7 +181,7 @@ Difficulty: medium   (easy for me. haha)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;user.txt :)&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;acds&#34;&gt;ACDS
+&lt;h3 id=&#34;adcs&#34;&gt;ADCS
 &lt;/h3&gt;&lt;p&gt;From bloodhound you can see that user management_svc has genericWrite on user ca_operator. So we can chage the password. You can also use the shadow creds technique to get the nthash instead.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
