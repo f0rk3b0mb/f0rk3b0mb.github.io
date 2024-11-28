@@ -12,7 +12,10 @@
         <pubDate>Thu, 28 Nov 2024 17:13:33 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/p/hackthebox-certified/</guid>
-        <description>&lt;p&gt;ip: 10.10.11.41&lt;/p&gt;
+        <description>&lt;p&gt;Writeup for hackthebox machine certified&amp;gt;&lt;/p&gt;
+&lt;p&gt;Os: windows
+Difficulty: medium   (easy for me. haha)&lt;/p&gt;
+&lt;p&gt;ip: 10.10.11.41&lt;/p&gt;
 &lt;p&gt;Initial Creds:  judith.mader / judith09&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;port-scan&#34;&gt;Port Scan

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="ip: 10.10.11.41 Initial Creds: judith.mader / judith09 Port Scan 1 2 3 4 5 6 7 8 9 10 11 12 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPss hostname: dc01.certified.htb User Enumeration Kerberoasting We can try kerberoaating to obtain hashes that we can crack using hashcat.">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Writeup for hackthebox machine certified&gt; Os: windows Difficulty: medium (easy for me. haha) ip: 10.10.11.41 Initial Creds: judith.mader / judith09 Port Scan 1 2 3 4 5 6 7 8 9 10 11 12 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPss hostname: dc01.">
 <title>Hackthebox certified</title>
 
 <link rel='canonical' href='https://f0rk3b0mb.github.io/p/hackthebox-certified/'>
 
 <link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Hackthebox certified">
-<meta property='og:description' content="ip: 10.10.11.41 Initial Creds: judith.mader / judith09 Port Scan 1 2 3 4 5 6 7 8 9 10 11 12 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPss hostname: dc01.certified.htb User Enumeration Kerberoasting We can try kerberoaating to obtain hashes that we can crack using hashcat.">
+<meta property='og:description' content="Writeup for hackthebox machine certified&gt; Os: windows Difficulty: medium (easy for me. haha) ip: 10.10.11.41 Initial Creds: judith.mader / judith09 Port Scan 1 2 3 4 5 6 7 8 9 10 11 12 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPss hostname: dc01.">
 <meta property='og:url' content='https://f0rk3b0mb.github.io/p/hackthebox-certified/'>
 <meta property='og:site_name' content='f0rk3b0mb'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-28T17:13:33&#43;03:00'/><meta property='article:modified_time' content='2024-11-28T17:13:33&#43;03:00'/>
 <meta name="twitter:site" content="@f0rk3b0mb">
     <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Hackthebox certified">
-<meta name="twitter:description" content="ip: 10.10.11.41 Initial Creds: judith.mader / judith09 Port Scan 1 2 3 4 5 6 7 8 9 10 11 12 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPss hostname: dc01.certified.htb User Enumeration Kerberoasting We can try kerberoaating to obtain hashes that we can crack using hashcat.">
+<meta name="twitter:description" content="Writeup for hackthebox machine certified&gt; Os: windows Difficulty: medium (easy for me. haha) ip: 10.10.11.41 Initial Creds: judith.mader / judith09 Port Scan 1 2 3 4 5 6 7 8 9 10 11 12 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPss hostname: dc01.">
   
     
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
@@ -377,7 +377,10 @@
     <section class="article-content">
     
     
-    <p>ip: 10.10.11.41</p>
+    <p>Writeup for hackthebox machine certified&gt;</p>
+<p>Os: windows
+Difficulty: medium   (easy for me. haha)</p>
+<p>ip: 10.10.11.41</p>
 <p>Initial Creds:  judith.mader / judith09</p>
 <hr>
 <h3 id="port-scan">Port Scan
