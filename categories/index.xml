@@ -6,15 +6,7 @@
         <description>Recent content in Categories on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Thu, 28 Nov 2024 17:13:33 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Htb Boxes</title>
-        <link>https://f0rk3b0mb.github.io/categories/htb-boxes/</link>
-        <pubDate>Thu, 28 Nov 2024 17:13:33 +0300</pubDate>
-        
-        <guid>https://f0rk3b0mb.github.io/categories/htb-boxes/</guid>
-        <description></description>
-        </item>
-        <item>
+        <lastBuildDate>Fri, 08 Nov 2024 14:33:30 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Labs</title>
         <link>https://f0rk3b0mb.github.io/categories/labs/</link>
         <pubDate>Fri, 08 Nov 2024 14:33:30 +0300</pubDate>
@@ -36,6 +28,14 @@
         <pubDate>Mon, 01 Jul 2024 09:38:06 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/categories/reads/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Htb Boxes</title>
+        <link>https://f0rk3b0mb.github.io/categories/htb-boxes/</link>
+        <pubDate>Wed, 28 Feb 2024 22:44:28 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/categories/htb-boxes/</guid>
         <description></description>
         </item>
         <item>
