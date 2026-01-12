@@ -236,7 +236,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Shellcode can also be encoded using XOR or by generating it using tools such as &lt;a class=&#34;link&#34; href=&#34;https://github.com/TheWover/donut&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/div&gt;&lt;p&gt;Shellcode can also be encoded using XOR or by generating it using tools such as &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/TheWover/donut&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;donut&lt;/a&gt; that can generate  undetectable shellcode.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -584,7 +584,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Using the above techniques i can run shellcode from Havoc c2 to get a callback&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;To test if your compiled malware will be detected you can use this tool. It does checking for bytes that can be flagged by Ms Defender. It can also check for ASMI bypass &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/rasta-mouse/ThreatCheck&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ThreatCheck&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Using the above techniques i load shellcode from Havoc c2 to get a callback&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/malware/visual_studio.png&#34;
 	
 	
