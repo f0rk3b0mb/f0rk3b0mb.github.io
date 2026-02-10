@@ -6,7 +6,23 @@
         <description>Recent content in Categories on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Fri, 12 Sep 2025 09:41:59 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 12 Jan 2026 12:04:06 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Malware</title>
+        <link>https://f0rk3b0mb.github.io/categories/malware/</link>
+        <pubDate>Mon, 12 Jan 2026 12:04:06 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/categories/malware/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Reads</title>
+        <link>https://f0rk3b0mb.github.io/categories/reads/</link>
+        <pubDate>Mon, 12 Jan 2026 12:04:06 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/categories/reads/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>ctf writeups</title>
         <link>https://f0rk3b0mb.github.io/categories/writeups/</link>
         <pubDate>Fri, 12 Sep 2025 09:41:59 +0300</pubDate>
@@ -28,14 +44,6 @@
         <pubDate>Fri, 08 Nov 2024 14:33:30 +0300</pubDate>
         
         <guid>https://f0rk3b0mb.github.io/categories/labs/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Reads</title>
-        <link>https://f0rk3b0mb.github.io/categories/reads/</link>
-        <pubDate>Mon, 01 Jul 2024 09:38:06 +0300</pubDate>
-        
-        <guid>https://f0rk3b0mb.github.io/categories/reads/</guid>
         <description></description>
         </item>
         <item>
