@@ -260,7 +260,16 @@ At this stage, no vulnerability is necessarily exploited and no code execution i
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$lnk.Save()
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;![alt text](/images/mdv/new artifacts.png)&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/new_artifacts.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;alt text&#34;
+	
+	
+&gt;&lt;/p&gt;
 &lt;p&gt;We get a callback as the excel opens&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/c2.png&#34;
 	
