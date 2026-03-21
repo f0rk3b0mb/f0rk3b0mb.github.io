@@ -229,7 +229,8 @@ At this stage, no vulnerability is necessarily exploited and no code execution i
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;If we try to open that&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/container.png&#34;
+&lt;p&gt;This means the macro loaded successfully&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://f0rk3b0mb.github.io/images/mdv/success.png&#34;
 	
 	
 	
@@ -239,7 +240,6 @@ At this stage, no vulnerability is necessarily exploited and no code execution i
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;This means the macro loaded successfully&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;For the exe payload , just replace the link and remove the xlam&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
