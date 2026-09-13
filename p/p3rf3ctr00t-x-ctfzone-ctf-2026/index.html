@@ -685,7 +685,33 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>There was a sanitize funtion for the file name that stripped &ldquo;../&rdquo; from the payload hence this directory bypass is required.</p>
-<p><img src="/images/pr2026/flag5.png"
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Filename sanitizer used by /api/download</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># &#34;....//&#34; survives a single replace(&#34;../&#34;, &#34;&#34;) pass and</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># collapses back into &#34;../&#34; (replace() removes the match at index 2-4,</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># leaving the outer characters joined into a fresh &#34;../&#34;).</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sanitize</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;../&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;..</span><span class="se">\\</span><span class="s2">&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/images/pr2026/flag5.png"
 	
 	
 	
